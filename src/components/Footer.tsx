@@ -1,7 +1,30 @@
+import styled from "styled-components";
+
+const FooterBar = styled.footer`
+  width: 100%;
+  text-align: center;
+  padding: 2.5rem 0 2rem 0;
+  font-size: 1rem;
+  color: #888;
+  background: transparent;
+  font-family: inherit;
+  letter-spacing: 0.01em;
+`;
+
+const Mail = styled.a`
+  color: #e10073;
+  text-decoration: none;
+  font-weight: 500;
+  &:hover {
+    text-decoration: underline;
+  }
+`;
+
 export default function Footer() {
   return (
-    <footer className="bg-gray-800 text-white text-center py-6 text-sm mt-10">
-      &copy; {new Date().getFullYear()} SC Konstanz-Wollmatingen • grimm@sckw.de
-    </footer>
+    <FooterBar>
+      &copy; {new Date().getFullYear()} SC Konstanz-Wollmatingen &bull;{" "}
+      <Mail href="mailto:grimm@sckw.de">grimm@sckw.de</Mail>
+    </FooterBar>
   );
 }
