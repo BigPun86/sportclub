@@ -241,7 +241,7 @@ Error generating stack: `+l.message+`
     background: #b8005a;
   }
 `,vy=G.main`
-  max-width: 80%;
+  max-width: 1200px;
   margin: 0 auto;
   background: #fff;
   color: #222;
