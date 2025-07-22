@@ -126,7 +126,7 @@ Error generating stack: `+e.message+`
   color: ${({statusType:i})=>i==="verfügbar"?"#1a7f37":i==="vergeben"?"#c40000":"#b38f00"};
   border-top: 1px solid #eee;
 `;function ja({title:i,price:s,status:o,benefits:r}){let S="neutral";o.toLowerCase().includes("verfügbar")?S="verfügbar":o.toLowerCase().includes("vergeben")&&(S="vergeben");const z=i.match(new RegExp("^(\\p{Emoji_Presentation}|\\p{Extended_Pictographic}|[\\u2600-\\u27BF])\\s*","u")),R=z?z[0]:"",B=z?i.replace(R,"").trim():i;return vt.jsxs(jv,{children:[vt.jsxs(Gv,{children:[vt.jsxs(Xv,{children:[R&&vt.jsx("span",{style:{fontSize:"1.6em"},children:R}),B]}),vt.jsx(Qv,{children:s})]}),vt.jsx(Zv,{children:r.map((D,E)=>vt.jsx("li",{children:D},E))}),vt.jsx(Vv,{statusType:S,children:o})]})}const Lv=Ft.section`
-  background: url("/hero.jpg") center/cover no-repeat;
+  background: url("hero.jpg") center/cover no-repeat;
   min-height: 320px;
   display: flex;
   align-items: center;
