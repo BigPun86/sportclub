@@ -1,11 +1,14 @@
 // import Header from "./components/Header";
 import Footer from "./components/Footer";
-import SponsorBox from "./components/SponsorBox";
+import SponsoringGrid from "./components/SponsoringGrid";
+import SponsoringAccordion from "./components/SponsoringAccordion";
+import DonationComponent from "./components/DonationSection";
+import SponsoringUsage from "./components/SponsoringUsage";
 import Gallery from "./components/Gallery";
 import styled from "styled-components";
 
-import { EMAIL_KONTAKT } from "./components/SponsorBox";
 import sponsoringPakete from "./data/sponsoringPakete.json";
+import SupporterBanner from "./components/SupporterBanner";
 
 import "./App.css";
 
@@ -29,7 +32,7 @@ const HeroOverlay = styled.div`
 const HeroTitle = styled.h1`
   position: relative;
   color: #fff;
-  font-size: 3rem;
+  font-size: clamp(2rem, 6vw, 3rem);
   font-weight: 900;
   letter-spacing: 0.04em;
   text-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
@@ -37,10 +40,26 @@ const HeroTitle = styled.h1`
   text-align: center;
 `;
 
-const HeroButton = styled.a`
+const HeroSubtitle = styled.h2`
+  position: relative;
+  color: #fff;
+  font-size: clamp(1.2rem, 4vw, 2rem);
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  text-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+  z-index: 1;
+  text-align: center;
+  margin-top: 0.5rem;
+`;
+
+interface HeroButtonProps {
+  secondary?: boolean;
+}
+
+const HeroButton = styled.a<HeroButtonProps>`
   display: inline-block;
-  margin-top: 1.2rem;
-  background: #e10073;
+  background: ${(props) =>
+    props.secondary ? "rgba(255, 255, 255, 0.2)" : "#e10073"};
   color: #fff;
   font-weight: 700;
   font-size: 1.1rem;
@@ -48,11 +67,25 @@ const HeroButton = styled.a`
   border-radius: 30px;
   text-decoration: none;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  transition: background 0.2s;
+  transition: all 0.2s;
   z-index: 1;
+  border: ${(props) =>
+    props.secondary ? "2px solid rgba(255, 255, 255, 0.4)" : "none"};
+  backdrop-filter: ${(props) => (props.secondary ? "blur(10px)" : "none")};
+
   &:hover {
-    background: #b8005a;
+    background: ${(props) =>
+      props.secondary ? "rgba(255, 255, 255, 0.3)" : "#b8005a"};
+    transform: translateY(-2px);
   }
+`;
+
+const HeroButtonGroup = styled.div`
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.2rem;
+  flex-wrap: wrap;
+  justify-content: center;
 `;
 
 const Content = styled.main`
@@ -69,21 +102,13 @@ const Content = styled.main`
 `;
 
 const Headline = styled.h2`
-  font-size: 2.25rem;
+  font-size: clamp(1.8rem, 5vw, 2.25rem);
   color: #222;
   font-weight: 800;
   margin-bottom: 3rem;
   border-bottom: 4px solid #e10073;
   display: inline-block;
-`;
-
-const Grid = styled.div<{ columns: number }>`
-  display: grid;
-  gap: 2rem;
-  grid-template-columns: repeat(${({ columns }) => columns}, 1fr);
-  @media (max-width: 900px) {
-    grid-template-columns: 1fr;
-  }
+  scroll-margin-top: 80px; /* Für Anker-Navigation */
 `;
 
 const Logos = styled.div`
@@ -96,30 +121,28 @@ const Logos = styled.div`
 `;
 
 export default function App() {
-  // Mailto-Link für allgemeinen Sponsoring-Button
-  const subject = encodeURIComponent("Allgemeine Sponsoring-Anfrage");
-  const body = encodeURIComponent(
-    `Hallo liebes SCKW-Team,\n\nich interessiere mich für ein Sponsoring beim SC Konstanz-Wollmatingen.\nBitte nehmen Sie Kontakt mit mir auf und senden Sie mir Informationen zu den Möglichkeiten und Paketen.\n\nMein Name: \nFirma (optional): \nTelefon (optional): \n\nIch freue mich auf Ihre Rückmeldung!\nHerzliche Grüße\n`
-  );
-  const mailto = `mailto:${EMAIL_KONTAKT}?subject=${subject}&body=${body}`;
-
-  const columns: number = 2;
-
   return (
     <>
       {/* <Header /> */}
       <Hero>
         <HeroOverlay />
         <HeroContent>
-          <HeroTitle>
-            SC Konstanz-Wollmatingen
-            <br />
+          <HeroTitle>SC Konstanz-Wollmatingen</HeroTitle>
+          <HeroSubtitle>
             Ihre Marke im Fokus – direkt am Spielfeldrand
-          </HeroTitle>
+          </HeroSubtitle>
+          <HeroButtonGroup>
+            <HeroButton href="#sponsoring-pakete">
+              Jetzt Sponsor werden
+            </HeroButton>
+            <HeroButton href="#spenden" secondary>
+              Spenden
+            </HeroButton>
+          </HeroButtonGroup>
         </HeroContent>
       </Hero>
       <Content>
-        <Headline>Sponsoring-Pakete 2025/2026</Headline>
+        <Headline id="sponsoring-pakete">Sponsoring-Pakete 2025/2026</Headline>
         <IntroBlock>
           <IntroText>
             Gemeinsam für den Sport in Konstanz: Unterstützen Sie unsere Teams,
@@ -127,21 +150,13 @@ export default function App() {
             Ihr Engagement als Sponsor macht den Unterschied – auf und neben dem
             Spielfeld!
           </IntroText>
-          <HeroButton href={mailto}>Jetzt Sponsor werden</HeroButton>
         </IntroBlock>
 
-        <Grid columns={columns}>
-          {sponsoringPakete.map((paket, idx) => (
-            <SponsorBox key={paket.title + idx} {...paket} />
-          ))}
-        </Grid>
-        <SponsorInfoBox>
-          <b>Hinweis:</b> Die Banden und Banner gehen in das Eigentum des
-          Sponsors über. Die Material- und Herstellungskosten für Banden/Banner
-          sind im Sponsoring-Betrag nicht enthalten und werden separat
-          berechnet. Wir kümmern uns um Bestellung, Produktion und das Anbringen
-          – Sie müssen sich um nichts kümmern!
-        </SponsorInfoBox>
+        <SponsoringGrid packages={sponsoringPakete} />
+        <SponsoringAccordion />
+        <DonationComponent />
+        <SponsoringUsage />
+        <SupporterBanner />
         <ReachSection>
           <ReachHeadline>Unsere Reichweite & Kanäle</ReachHeadline>
           <ReachGrid>
@@ -232,23 +247,6 @@ export default function App() {
           </MagazineGrid>
         </MagazineSection>
 
-        <DonationSection>
-          <DonationHeadline>
-            Jetzt unterstützen – Spenden für den Verein
-          </DonationHeadline>
-          <DonationText>
-            Jede Spende hilft uns, unsere Jugendarbeit, den Spielbetrieb und
-            besondere Projekte zu fördern. Unterstützen Sie den SC
-            Konstanz-Wollmatingen direkt und unkompliziert:
-          </DonationText>
-          <PayPalButton
-            href="https://www.paypal.com/donate"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Mit PayPal spenden
-          </PayPalButton>
-        </DonationSection>
         <Logos>
           {/*
           <img
@@ -424,6 +422,7 @@ const HeroContent = styled.div`
   flex-direction: column;
   align-items: center;
   width: 100%;
+  padding: 0 2rem 3.5rem 2rem;
 `;
 
 // Styled Components für IntroBlock
@@ -607,52 +606,4 @@ const PriceValue = styled.div`
 const PriceSize = styled.div`
   font-size: 0.98rem;
   color: #666;
-`;
-
-// Styled Components für Spendenbereich
-const DonationSection = styled.section`
-  background: #fff6fa;
-  border-radius: 10px;
-  padding: 2.5rem 2rem;
-  margin: 3rem auto 2rem auto;
-  box-shadow: 0 2px 12px rgba(225, 0, 115, 0.06);
-  text-align: center;
-`;
-const DonationHeadline = styled.h3`
-  font-size: clamp(1.5rem, 2vw, 1.8rem);
-  color: #e10073;
-  font-weight: 800;
-  margin-bottom: 1.2rem;
-`;
-const DonationText = styled.p`
-  font-size: 1.13rem;
-  color: #222;
-  margin-bottom: 1.5rem;
-`;
-const PayPalButton = styled.a`
-  display: inline-block;
-  background: #0070ba;
-  color: #fff;
-  font-weight: 700;
-  font-size: 1.13rem;
-  padding: 0.8rem 2.1rem;
-  border-radius: 28px;
-  text-decoration: none;
-  box-shadow: 0 4px 16px rgba(0, 112, 186, 0.13);
-  transition: background 0.2s, transform 0.1s;
-  &:hover {
-    background: #003087;
-    transform: scale(1.04);
-  }
-`;
-
-const SponsorInfoBox = styled.div`
-  background: #fff6fa;
-  color: #b8005a;
-  border-left: 5px solid #e10073;
-  border-radius: 8px;
-  margin: 2rem 0 2.5rem 0;
-  padding: 1.2rem 1.5rem;
-  font-size: 1.08rem;
-  box-shadow: 0 1px 8px rgba(225, 0, 115, 0.06);
 `;
