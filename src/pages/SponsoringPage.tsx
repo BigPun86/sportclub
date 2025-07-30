@@ -5,25 +5,30 @@ import DonationComponent from "../components/DonationSection";
 import SponsoringUsage from "../components/SponsoringUsage";
 import Gallery from "../components/Gallery";
 import styled from "styled-components";
+import { getGalleryHeroImage } from "../utils/imageLoader";
 
 import sponsoringPakete from "../data/sponsoringPakete.json";
 import SupporterBanner from "../components/SupporterBanner";
 
 const Hero = styled.section`
-  background: url("hero.jpg") center/cover no-repeat;
-  min-height: 320px;
+  background: url("${getGalleryHeroImage("herren", 4)}") center/cover;
+  min-height: 400px;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   padding-bottom: 1.5rem;
-  background-color: rgba(0, 0, 0, 0.5);
-`;
 
-const HeroOverlay = styled.div`
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.35);
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+  }
 `;
 
 const HeroTitle = styled.h1`
@@ -370,7 +375,6 @@ export default function SponsoringPage() {
   return (
     <>
       <Hero>
-        <HeroOverlay />
         <HeroContent>
           <HeroTitle>SC Konstanz-Wollmatingen</HeroTitle>
           <HeroSubtitle>

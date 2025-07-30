@@ -1,49 +1,16 @@
 import styled from "styled-components";
-import { useMemo, useState } from "react";
-
-// Import all images recursively from assets/gallery
-const imageModules = import.meta.glob(
-  "../assets/gallery/**/*.{jpg,jpeg,png,gif,webp}",
-  { eager: true, import: "default" }
-);
-
-function shuffleArray<T>(array: T[]): T[] {
-  const arr = [...array];
-  for (let i = arr.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [arr[i], arr[j]] = [arr[j], arr[i]];
-  }
-  return arr;
-}
-
-function groupImagesByFolder(modules: Record<string, string>) {
-  const groups: Record<string, string[]> = {};
-  Object.entries(modules).forEach(([path, url]) => {
-    // Extract folder name after 'gallery/'
-    const match = path.match(/gallery\/(.*?)\//);
-    const folder = match ? match[1] : "Sonstige";
-    if (!groups[folder]) groups[folder] = [];
-    groups[folder].push(url);
-  });
-  // Optional: shuffle images within each folder
-  Object.keys(groups).forEach((folder) => {
-    groups[folder] = shuffleArray(groups[folder]);
-  });
-  return groups;
-}
+import { useState, useEffect } from "react";
+import { getGalleryImages } from "../utils/imageLoader";
 
 export default function Gallery() {
-  const grouped = useMemo(
-    () => groupImagesByFolder(imageModules as Record<string, string>),
-    []
-  );
+  const grouped = getGalleryImages();
   const [lightbox, setLightbox] = useState<{
     folder: string;
     idx: number;
   } | null>(null);
 
   // Lightbox ESC schließen
-  useMemo(() => {
+  useEffect(() => {
     if (!lightbox) return;
     const handler = (e: KeyboardEvent) => {
       if (e.key === "Escape") setLightbox(null);

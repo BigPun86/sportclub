@@ -33,7 +33,7 @@ const SectionSubtitle = styled.p`
 const UsageGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 2rem;
+  gap: 3rem;
   margin-top: 3rem;
 `;
 
@@ -57,10 +57,13 @@ const DepartmentHeader = styled.div`
   margin-bottom: 1.5rem;
   padding-bottom: 1rem;
   border-bottom: 2px solid #e10073;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 `;
 
 const DepartmentIcon = styled.span`
-  font-size: 2.5rem;
+  font-size: 1.5rem;
   margin-right: 1rem;
 `;
 
@@ -115,30 +118,18 @@ const CostInfo = styled.div`
 
 const usageData = [
   {
-    department: "Herren",
+    department: "Damen & Herren",
     icon: "⚽",
     items: [
       { icon: "👕", text: "Trikots (Spiel & Training)" },
-      { icon: "👨‍🏫", text: "Trainer-Gehälter" },
+      { icon: "👨‍🏫", text: "Aufwandsentschädigungen Übungsleiter" },
       { icon: "⚽", text: "Equipment & Trainingsbälle" },
-      { icon: "🚌", text: "Auswärtsfahrten" },
-      { icon: "🏟️", text: "Spielbetrieb & Platzkosten" },
-    ],
-    costInfo: "Fokus: Spielbetrieb & Trainerkosten",
-  },
-  {
-    department: "Damen",
-    icon: "⚽",
-    items: [
-      { icon: "👕", text: "Trikots (Spiel & Training)" },
-      { icon: "👨‍🏫", text: "Trainer-Gehälter" },
-      { icon: "🥅", text: "Torwart-Ausrüstung" },
       { icon: "🚌", text: "Auswärtsfahrten" },
       { icon: "🏟️", text: "Spielbetrieb & Platzkosten" },
     ],
     costInfo: "Fokus: Spielbetrieb & Equipment",
   },
-  {
+  /*  {
     department: "Renovierung Fürstenbergsportplatz",
     icon: "🏗️",
     items: [
@@ -149,18 +140,30 @@ const usageData = [
       { icon: "🚧", text: "Sicherheitsmaßnahmen & Zäune" },
     ],
     costInfo: "Großprojekt: Modernisierung der Sportanlage",
-  },
+  }, */
   {
     department: "Cheerleading",
     icon: "💃",
     items: [
-      { icon: "👗", text: "Tanz-Outfits & Kostüme" },
-      { icon: "👨‍🏫", text: "Trainer-Gehälter" },
+      { icon: "🎽", text: "Cheerleading Uniformen" },
+      { icon: "👨‍🏫", text: "Aufwandsentschädigungen Übungsleiter" },
       { icon: "🏆", text: "Wettkämpfe & Turniere" },
       { icon: "🎵", text: "Musik & Choreografie" },
       { icon: "🚌", text: "Auswärtsfahrten" },
     ],
     costInfo: "Fokus: Wettkämpfe & Ausrüstung",
+  },
+  {
+    department: "Fördergruppe",
+    icon: "🎯",
+    items: [
+      { icon: "👕", text: "Zuschuss zu Trikots (Training)" },
+      { icon: "🥅", text: "Minitore & Equipment" },
+      { icon: "🏟️", text: "Platzkosten" },
+      { icon: "⚽", text: "Trainingsbälle & Zubehör" },
+      { icon: "👨‍🏫", text: "Kosten Übungsleiter" },
+    ],
+    costInfo: "Unterstützung für alle Abteilungen",
   },
   {
     department: "Allgemein",
@@ -173,18 +176,6 @@ const usageData = [
       { icon: "📢", text: "Kommunikation & Marketing" },
     ],
     costInfo: "Grundlage für alle Abteilungen",
-  },
-  {
-    department: "Fördergruppe",
-    icon: "🎯",
-    items: [
-      { icon: "👕", text: "Zuschuss zu Trikots (Training)" },
-      { icon: "🥅", text: "Minitore & Equipment" },
-      { icon: "🏟️", text: "Fangnetze & Infrastruktur" },
-      { icon: "⚽", text: "Trainingsbälle & Zubehör" },
-      { icon: "🛠️", text: "Wartung & Reparaturen" },
-    ],
-    costInfo: "Unterstützung für alle Abteilungen",
   },
 ];
 

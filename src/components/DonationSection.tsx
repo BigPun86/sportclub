@@ -146,6 +146,9 @@ const TaxInfo = styled.div`
   border-radius: 10px;
   padding: 1.5rem;
   margin-top: 2rem;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
 `;
 
 const TaxInfoTitle = styled.h4`
@@ -156,6 +159,9 @@ const TaxInfoTitle = styled.h4`
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
 `;
 
 const TaxInfoText = styled.p`

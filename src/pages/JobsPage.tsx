@@ -1,15 +1,27 @@
 import styled from "styled-components";
 import Footer from "../components/Footer";
 import jobsData from "../data/jobsData.json";
+import { getGalleryHeroImage } from "../utils/imageLoader";
 
 const Hero = styled.section`
-  background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #06b6d4 100%);
-  min-height: 320px;
+  background: url("${getGalleryHeroImage("herren", 1)}") center/cover;
+  min-height: 400px;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   padding-bottom: 1.5rem;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+  }
 `;
 
 const HeroContent = styled.div`

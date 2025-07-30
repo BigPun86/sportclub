@@ -84,6 +84,12 @@ export default function Navigation() {
           <NavLink to="/jobs" $active={location.pathname === "/jobs"}>
             💼 Jobbörse
           </NavLink>
+          <NavLink
+            to="/renovierung"
+            $active={location.pathname === "/renovierung"}
+          >
+            🏗️ Renovierung
+          </NavLink>
         </NavLinks>
       </NavContent>
     </NavContainer>

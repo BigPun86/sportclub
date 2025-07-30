@@ -1,11 +1,9 @@
 import styled from "styled-components";
 import sponsoringPakete from "../data/sponsoringPakete.json";
-// Logo-Imports wie in SponsorBox
-import ricobetLogo from "../assets/sponsors/ricobet.png";
-import grafhardenbergLogo from "../assets/sponsors/grafhardenberg.png";
-import tastyLogo from "../assets/sponsors/tasty.png";
-import hortaLogo from "../assets/sponsors/horta.png";
-import logansLogo from "../assets/sponsors/logans.png";
+import { getSponsorImages } from "../utils/imageLoader";
+
+// Get all sponsor images
+const sponsorImages = getSponsorImages();
 
 // Typen für Sponsor
 interface Sponsor {
@@ -27,20 +25,7 @@ interface Paket {
 
 // Hilfsfunktion für Logo
 const getSponsorLogo = (imageName: string): string | undefined => {
-  switch (imageName) {
-    case "ricobet.png":
-      return ricobetLogo;
-    case "grafhardenberg.png":
-      return grafhardenbergLogo;
-    case "tasty.png":
-      return tastyLogo;
-    case "horta.png":
-      return hortaLogo;
-    case "logans.png":
-      return logansLogo;
-    default:
-      return undefined;
-  }
+  return sponsorImages[imageName.toLowerCase()] || undefined;
 };
 
 // Alle Sponsoren aus Paketen extrahieren
