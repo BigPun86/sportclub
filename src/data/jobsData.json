@@ -1,0 +1,42 @@
+[
+  {
+    "id": "tasty-kfz-mechaniker",
+    "title": "Kfz-Mechatroniker (m/w/d)",
+    "company": "Tasty Delivery GmbH",
+    "logo": "tasty.png",
+    "tags": ["Vollzeit", "Konstanz", "Ausbildung möglich"],
+    "description": "Verstärke unser Team in der modernen Kfz-Werkstatt. Wir bieten eine abwechslungsreiche Tätigkeit mit modernster Technik und ein tolles Betriebsklima.",
+    "type": "Standard",
+    "isExample": true
+  },
+  {
+    "id": "grafhardenberg-verkauf",
+    "title": "Verkaufsberater Audi (m/w/d)",
+    "company": "Audi Zentrum Singen - Graf Hardenberg GmbH",
+    "logo": "grafhardenberg.png",
+    "tags": ["Vollzeit", "Singen", "Quereinsteiger willkommen"],
+    "description": "Werde Teil unseres erfolgreichen Verkaufsteams im Audi Zentrum Singen. Wir bieten eine strukturierte Einarbeitung und attraktive Verdienstmöglichkeiten.",
+    "type": "Boosted",
+    "isExample": true
+  },
+  {
+    "id": "ricobet-marketing",
+    "title": "Marketing Manager (m/w/d)",
+    "company": "RicoBet Deutschland",
+    "logo": "ricobet.png",
+    "tags": ["Vollzeit", "Remote möglich", "Berufserfahrung"],
+    "description": "Gestalte mit uns die Zukunft des digitalen Marketings. Kreativität, Datenanalyse und Teamwork stehen bei uns im Fokus.",
+    "type": "Standard",
+    "isExample": true
+  },
+  {
+    "id": "logans-service",
+    "title": "Servicekraft Gastronomie (m/w/d)",
+    "company": "Logan's Linde Wollmatingen",
+    "logo": "logans.png",
+    "tags": ["Teilzeit/Vollzeit", "Konstanz", "Flexible Zeiten"],
+    "description": "Unterstütze unser gastfreundliches Team in einem der beliebtesten Restaurants in Konstanz. Wir suchen motivierte Menschen mit Leidenschaft für Service.",
+    "type": "Basis",
+    "isExample": true
+  }
+]
