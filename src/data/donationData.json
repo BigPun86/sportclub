@@ -1,0 +1,81 @@
+{
+  "lastUpdated": "2024-07-30T10:00:00Z",
+  "totalGoal": 28000,
+  "packages": {
+    "kabinen": {
+      "goal": 8000,
+      "current": 1200,
+      "donors": [
+        {
+          "name": "Maria Schmidt",
+          "amount": 500,
+          "comment": "Für die Zukunft unserer Kinder! Der Fürstenberg braucht neue Kabinen.",
+          "date": "2024-07-29",
+          "paypalTransactionId": "example_txn_001"
+        },
+        {
+          "name": "Anonymous",
+          "amount": 250,
+          "comment": "Tolle Initiative, weiter so!",
+          "date": "2024-07-28",
+          "anonymous": true,
+          "paypalTransactionId": "example_txn_002"
+        },
+        {
+          "name": "Thomas Müller",
+          "amount": 450,
+          "comment": "Als ehemaliger Spieler freue ich mich über die Renovierung.",
+          "date": "2024-07-27",
+          "paypalTransactionId": "example_txn_003"
+        }
+      ]
+    },
+    "fassade": {
+      "goal": 15000,
+      "current": 2100,
+      "donors": [
+        {
+          "name": "Local Business GmbH",
+          "amount": 1000,
+          "comment": "Gerne unterstützen wir den Vereinssport in Konstanz!",
+          "date": "2024-07-29",
+          "paypalTransactionId": "example_txn_004"
+        },
+        {
+          "name": "Familie Weber",
+          "amount": 300,
+          "comment": "Der Fürstenberg soll wieder schön werden.",
+          "date": "2024-07-28",
+          "paypalTransactionId": "example_txn_005"
+        },
+        {
+          "name": "Stefan K.",
+          "amount": 800,
+          "date": "2024-07-26",
+          "paypalTransactionId": "example_txn_006"
+        }
+      ]
+    },
+    "waschkueche": {
+      "goal": 5000,
+      "current": 450,
+      "donors": [
+        {
+          "name": "Anonymous",
+          "amount": 200,
+          "comment": "Moderne Geräte sind wichtig für den Verein.",
+          "date": "2024-07-28",
+          "anonymous": true,
+          "paypalTransactionId": "example_txn_007"
+        },
+        {
+          "name": "Petra Hoffmann",
+          "amount": 250,
+          "comment": "Für saubere Trikots! 😊",
+          "date": "2024-07-27",
+          "paypalTransactionId": "example_txn_008"
+        }
+      ]
+    }
+  }
+}

@@ -78,7 +78,10 @@ export default function Navigation() {
         </Logo>
 
         <NavLinks>
-          <NavLink to="/" $active={location.pathname === "/"}>
+          <NavLink
+            to="/sponsoring"
+            $active={location.pathname === "/sponsoring"}
+          >
             🤝 Sponsoring
           </NavLink>
           <NavLink to="/jobs" $active={location.pathname === "/jobs"}>

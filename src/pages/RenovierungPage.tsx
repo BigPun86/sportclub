@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Footer from "../components/Footer";
 import { useState, useEffect } from "react";
 import { getRenovationImages, getGalleryHeroImage } from "../utils/imageLoader";
+import DonationTracker from "../components/DonationTracker";
 
 const Hero = styled.section`
   background: url("${getGalleryHeroImage("herren", 18)}") center/cover;
@@ -491,44 +492,6 @@ const DonationButton = styled.a`
   }
 `;
 
-const ProgressSection = styled.section`
-  background: #f8fafc;
-  border-radius: 12px;
-  padding: 2rem;
-  margin: 3rem 0;
-`;
-
-const ProgressTitle = styled.h4`
-  font-size: 1.3rem;
-  font-weight: 700;
-  color: #059669;
-  margin-bottom: 1rem;
-  text-align: center;
-`;
-
-const ProgressBar = styled.div`
-  width: 100%;
-  height: 20px;
-  background: #e2e8f0;
-  border-radius: 10px;
-  overflow: hidden;
-  margin-bottom: 1rem;
-`;
-
-const ProgressFill = styled.div<{ $progress: number }>`
-  width: ${(props) => props.$progress}%;
-  height: 100%;
-  background: linear-gradient(90deg, #059669, #10b981);
-  transition: width 0.3s ease;
-`;
-
-const ProgressText = styled.div`
-  display: flex;
-  justify-content: space-between;
-  font-size: 0.9rem;
-  color: #64748b;
-`;
-
 const renovationImages = getRenovationImages();
 
 // Carousel Komponente
@@ -650,10 +613,6 @@ function Lightbox({
 }
 
 export default function RenovierungPage() {
-  const totalGoal = 28000; // Beispielziel in EUR
-  const currentAmount = 3200; // Beispiel aktueller Stand
-  const progress = (currentAmount / totalGoal) * 100;
-
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxImages, setLightboxImages] = useState<
     Array<{ src: string; alt: string }>
@@ -850,21 +809,12 @@ export default function RenovierungPage() {
             gemeinsam können wir unserem Kultplatz das geben, was er verdient.
           </DonationText>
 
-          <ProgressSection>
-            <ProgressTitle>Unser Fortschritt</ProgressTitle>
-            <ProgressBar>
-              <ProgressFill $progress={progress} />
-            </ProgressBar>
-            <ProgressText>
-              <span>{currentAmount.toLocaleString("de-DE")} € gesammelt</span>
-              <span>Ziel: {totalGoal.toLocaleString("de-DE")} €</span>
-            </ProgressText>
-          </ProgressSection>
+          <DonationTracker realTime={false} />
 
           <DonationButtons>
             <DonationButton
               className="primary"
-              href="https://www.paypal.me/sckw2012"
+              href="https://www.paypal.com/donate/?hosted_button_id=NRFWJ3SGN37XW"
               target="_blank"
               rel="noopener noreferrer"
             >

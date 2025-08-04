@@ -40,7 +40,7 @@ function shuffleArray<T>(array: T[]): T[] {
   return arr;
 }
 
-// Gallery Images - organized by folder with shuffling
+// Gallery Images - organized by folder with shuffling and custom sorting
 export const getGalleryImages = (): Record<string, string[]> => {
   const groups: Record<string, string[]> = {};
   Object.entries(galleryModules).forEach(([path, url]) => {
@@ -54,7 +54,25 @@ export const getGalleryImages = (): Record<string, string[]> => {
     groups[folder] = shuffleArray(groups[folder]);
   });
 
-  return groups;
+  // Sort folders in specified order: JFV, Cheerleading, Damen, Herren
+  const sortedGroups: Record<string, string[]> = {};
+  const folderOrder = ["jfv", "cheerleading", "damen", "herren"];
+
+  // Add folders in specified order
+  folderOrder.forEach((folder) => {
+    if (groups[folder]) {
+      sortedGroups[folder] = groups[folder];
+    }
+  });
+
+  // Add any remaining folders that weren't in the specified order
+  Object.keys(groups).forEach((folder) => {
+    if (!folderOrder.includes(folder.toLowerCase())) {
+      sortedGroups[folder] = groups[folder];
+    }
+  });
+
+  return sortedGroups;
 };
 
 // Sponsor Images - organized by filename

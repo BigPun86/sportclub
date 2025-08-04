@@ -1,0 +1,61 @@
+name: Update Donation Data
+
+on:
+  schedule:
+    # Run every hour during business hours (8 AM - 8 PM CET)
+    - cron: "0 6-18 * * *"
+  workflow_dispatch: # Allow manual triggering
+
+env:
+  TZ: Europe/Berlin
+
+jobs:
+  update-donations:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18"
+
+      - name: Install dependencies
+        run: |
+          npm install axios
+
+      - name: Fetch PayPal donations
+        env:
+          PAYPAL_CLIENT_ID: ${{ secrets.PAYPAL_CLIENT_ID }}
+          PAYPAL_CLIENT_SECRET: ${{ secrets.PAYPAL_CLIENT_SECRET }}
+          PAYPAL_SANDBOX: ${{ secrets.PAYPAL_SANDBOX || 'false' }}
+        run: node scripts/fetch-donations.js
+
+      - name: Check for changes
+        id: changes
+        run: |
+          if [ -n "$(git status --porcelain src/data/donationData.json)" ]; then
+            echo "changes=true" >> $GITHUB_OUTPUT
+          else
+            echo "changes=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Commit and push changes
+        if: steps.changes.outputs.changes == 'true'
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add src/data/donationData.json
+          git commit -m "🔄 Auto-update donation data - $(date '+%Y-%m-%d %H:%M:%S')"
+          git push
+
+      - name: Create update summary
+        if: steps.changes.outputs.changes == 'true'
+        run: |
+          echo "✅ Donation data updated successfully!" >> $GITHUB_STEP_SUMMARY
+          echo "📊 Check the latest donations on your website" >> $GITHUB_STEP_SUMMARY
+          echo "🕒 Last updated: $(date '+%Y-%m-%d %H:%M:%S CET')" >> $GITHUB_STEP_SUMMARY
