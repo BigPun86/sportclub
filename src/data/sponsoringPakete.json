@@ -86,7 +86,7 @@
     "benefits": [
       "Namensrecht Stadion (z. B. Firma-Arena)",
       "1 Banner (5x2 m) am Gelände",
-      "1/1 Seite im Stadionmagazin",
+      "1 Seite im Stadionmagazin",
       "Social Media PROMINENT: Begrüßungspost + Logo bei allen Posts/Reels (Vor- & Nachbericht, Story) mit größter Fläche",
       "Stadionansage bei jedem Heimspiel",
       "Website STARTSEITE PREMIUM: Logo prominent auf der Startseite mit größter Fläche"
@@ -110,7 +110,7 @@
         "icon": "🖼️"
       },
       {
-        "text": "1/2 Seite im Stadionmagazin",
+        "text": "1 Seite im Stadionmagazin",
         "highlight": false,
         "icon": "📰"
       },
@@ -162,7 +162,7 @@
         "icon": "🖼️"
       },
       {
-        "text": "1/4 Seite im Stadionmagazin",
+        "text": "1/2 Seite im Stadionmagazin",
         "highlight": false,
         "icon": "📰"
       },
@@ -203,6 +203,11 @@
         "text": "1 Bande (3x1 m, 6 Monate)",
         "highlight": false,
         "icon": "🏟️"
+      },
+      {
+        "text": "1/4 Seite im Stadionmagazin",
+        "highlight": false,
+        "icon": "📰"
       },
       {
         "text": "Website: Startseite Basis*",
@@ -276,9 +281,14 @@
         "icon": "🏟️"
       },
       {
-        "text": "Alle Heimspiele",
+        "text": "Präsenz am Spielfeld bei allen Heimspielen",
         "highlight": true,
         "icon": "⚽"
+      },
+      {
+        "text": "Social Media: Begrüßungspost",
+        "highlight": true,
+        "icon": "📱"
       },
       {
         "text": "Website: Sponsoren-Seite*",

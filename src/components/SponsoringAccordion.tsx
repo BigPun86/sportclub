@@ -4,8 +4,8 @@ import styled from "styled-components";
 const AccordionContainer = styled.div`
   margin: 2rem 0;
   border-radius: 12px;
-  background: #f8f9fa;
-  border: 1px solid #e9ecef;
+  background: ${(p) => p.theme.colors.bgMuted};
+  border: 1px solid ${(p) => p.theme.colors.border};
   overflow: hidden;
 `;
 
@@ -20,20 +20,25 @@ const AccordionItem = styled.div`
 const AccordionHeader = styled.button<{ isOpen: boolean }>`
   width: 100%;
   padding: 1rem 1.5rem;
-  background: ${(props) => (props.isOpen ? "#fff" : "#f8f9fa")};
+  background: ${(props) =>
+    props.isOpen ? props.theme.colors.bg : props.theme.colors.bgMuted};
   border: none;
   text-align: left;
   cursor: pointer;
   font-size: clamp(1rem, 2.5vw, 1.1rem);
   font-weight: 600;
-  color: #222;
+  color: ${(p) => p.theme.colors.text};
   display: flex;
   justify-content: space-between;
   align-items: center;
   transition: all 0.3s ease;
 
+  span {
+    text-align: left;
+  }
+
   &:hover {
-    background: #fff;
+    background: ${(p) => p.theme.colors.bg};
   }
 
   &:focus {
@@ -46,11 +51,11 @@ const AccordionIcon = styled.span<{ isOpen: boolean }>`
   font-size: 1.2rem;
   transition: transform 0.3s ease;
   transform: ${(props) => (props.isOpen ? "rotate(180deg)" : "rotate(0deg)")};
-  color: #e10073;
+  color: ${(p) => p.theme.colors.primary};
 `;
 
 const AccordionContent = styled.div<{ isOpen: boolean }>`
-  background: #fff;
+  background: ${(p) => p.theme.colors.bg};
   overflow: hidden;
   transition: all 0.3s ease;
   max-height: ${(props) => (props.isOpen ? "500px" : "0")};
@@ -61,10 +66,11 @@ const AccordionBody = styled.div`
   padding: 1.5rem;
   line-height: 1.6;
   font-size: clamp(0.9rem, 2.5vw, 1rem);
-  color: #444;
+  color: ${(p) => p.theme.colors.text};
+  text-align: left;
 
   b {
-    color: #e10073;
+    color: ${(p) => p.theme.colors.primary};
     font-weight: 600;
   }
 

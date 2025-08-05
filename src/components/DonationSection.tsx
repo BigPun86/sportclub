@@ -430,7 +430,7 @@ export default function DonationSection() {
             <BankDetails>
               <BankRow>
                 <BankLabel>Kontoinhaber:</BankLabel>
-                <BankValue>SC Konstanz-Wollmatingen</BankValue>
+                <BankValue>SC Konstanz-Wollmatingen e.V.</BankValue>
               </BankRow>
               <BankRow>
                 <BankLabel>IBAN:</BankLabel>

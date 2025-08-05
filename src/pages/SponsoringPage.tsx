@@ -527,6 +527,24 @@ export default function SponsoringPage() {
 
           <AbteilungsGrid>
             <AbteilungsBox>
+              <AbteilungsTitel>1. Mannschaft (Damen)</AbteilungsTitel>
+              <AbteilungsText>
+                Die frisch in die Landesliga aufgestiegene Frauenmannschaft 1
+                will sich im ersten Tabellendrittel einordnen. Auch im
+                Südbadischen Pokal erhofft sie sich Achtungserfolge. Die
+                längeren Auswärtsfahrten in dieser Liga bringen erhöhte
+                Reisekosten mit sich, für die wir gezielt Unterstützung suchen.
+              </AbteilungsText>
+            </AbteilungsBox>
+            <AbteilungsBox>
+              <AbteilungsTitel>2. Mannschaft (Damen)</AbteilungsTitel>
+              <AbteilungsText>
+                Die Frauenmannschaft 2 setzt sich zum Ziel um die Meisterschaft
+                mitzuspielen und den breiten, qualitativ hochwertigen Kader voll
+                zu nutzen.
+              </AbteilungsText>
+            </AbteilungsBox>
+            <AbteilungsBox>
               <AbteilungsTitel>1. Mannschaft (Herren)</AbteilungsTitel>
               <AbteilungsText>
                 Unser klares Ziel ist der Aufstieg in die nächsthöhere Liga.
@@ -542,15 +560,6 @@ export default function SponsoringPage() {
                 Auch hier sind gezielte Fördermaßnahmen und eine stabile
                 finanzielle Basis entscheidend, um das sportliche Potenzial voll
                 auszuschöpfen.
-              </AbteilungsText>
-            </AbteilungsBox>
-            <AbteilungsBox>
-              <AbteilungsTitel>Damenmannschaft</AbteilungsTitel>
-              <AbteilungsText>
-                Unsere Damen möchten sich in der Landesliga unter den besten
-                drei Teams etablieren und ihren Bezirkspokal verteidigen. Die
-                längeren Auswärtsfahrten in dieser Liga bringen erhöhte
-                Reisekosten mit sich, für die wir gezielt Unterstützung suchen.
               </AbteilungsText>
             </AbteilungsBox>
             <AbteilungsBox>

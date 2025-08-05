@@ -492,6 +492,121 @@ const DonationButton = styled.a`
   }
 `;
 
+// Modal für Bankdaten
+const Modal = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+`;
+
+const ModalContent = styled.div`
+  background: white;
+  border-radius: 16px;
+  padding: 2.5rem;
+  max-width: 500px;
+  width: 100%;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  position: relative;
+`;
+
+const ModalHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+`;
+
+const ModalTitle = styled.h3`
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #e10073;
+  margin: 0;
+`;
+
+const CloseButton = styled.button`
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #666;
+  padding: 0.5rem;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+
+  &:hover {
+    background: #f0f0f0;
+  }
+`;
+
+const BankDetails = styled.div`
+  background: #f8f9fb;
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+`;
+
+const BankRow = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+`;
+
+const BankLabel = styled.span`
+  font-weight: 600;
+  color: #333;
+  font-size: 1rem;
+`;
+
+const BankValue = styled.span`
+  font-family: "Courier New", monospace;
+  color: #e10073;
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+`;
+
+const CopyButton = styled.button`
+  background: #e10073;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.8rem 1.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+  font-size: 0.95rem;
+
+  &:hover {
+    background: #b8005a;
+  }
+`;
+
+const ModalNote = styled.p`
+  color: #666;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin: 1.5rem 0 0 0;
+  text-align: center;
+`;
+
 const renovationImages = getRenovationImages();
 
 // Carousel Komponente
@@ -618,6 +733,7 @@ export default function RenovierungPage() {
     Array<{ src: string; alt: string }>
   >([]);
   const [lightboxIndex, setLightboxIndex] = useState(0);
+  const [showBankModal, setShowBankModal] = useState(false);
 
   const openLightbox = (
     images: Array<{ src: string; alt: string }>,
@@ -626,6 +742,15 @@ export default function RenovierungPage() {
     setLightboxImages(images);
     setLightboxIndex(index);
     setLightboxOpen(true);
+  };
+
+  const handleBankClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setShowBankModal(true);
+  };
+
+  const handleCopyIBAN = () => {
+    navigator.clipboard.writeText("DE12 6905 0001 0000 0228 06");
   };
 
   return (
@@ -809,7 +934,7 @@ export default function RenovierungPage() {
             gemeinsam können wir unserem Kultplatz das geben, was er verdient.
           </DonationText>
 
-          <DonationTracker realTime={false} />
+          <DonationTracker realTime={true} />
 
           <DonationButtons>
             <DonationButton
@@ -820,7 +945,7 @@ export default function RenovierungPage() {
             >
               💳 Mit PayPal spenden
             </DonationButton>
-            <DonationButton href="mailto:grimm@sckw.de?subject=Sportplatz Renovierung - Bankverbindung&body=Hallo liebes SCKW-Team,%0A%0Aich möchte für die Sportplatz-Renovierung spenden und benötige die Bankverbindung.%0A%0AMein Name: %0AFirma: %0ASpendenhöhe: %0A%0ABitte senden Sie mir die Kontodaten zu.%0A%0AHerzliche Grüße">
+            <DonationButton href="#" onClick={handleBankClick}>
               🏦 Per Überweisung spenden
             </DonationButton>
           </DonationButtons>
@@ -828,6 +953,40 @@ export default function RenovierungPage() {
       </Content>
 
       <Footer />
+
+      {showBankModal && (
+        <Modal onClick={() => setShowBankModal(false)}>
+          <ModalContent onClick={(e) => e.stopPropagation()}>
+            <ModalHeader>
+              <ModalTitle>Kontoverbindung für Spenden</ModalTitle>
+              <CloseButton onClick={() => setShowBankModal(false)}>
+                ×
+              </CloseButton>
+            </ModalHeader>
+
+            <BankDetails>
+              <BankRow>
+                <BankLabel>Kontoinhaber:</BankLabel>
+                <BankValue>SC Konstanz-Wollmatingen</BankValue>
+              </BankRow>
+              <BankRow>
+                <BankLabel>IBAN:</BankLabel>
+                <BankValue>DE12 6905 0001 0000 0228 06</BankValue>
+              </BankRow>
+              <BankRow>
+                <BankLabel>BIC:</BankLabel>
+                <BankValue>SOLADES1KNZ</BankValue>
+              </BankRow>
+            </BankDetails>
+
+            <CopyButton onClick={handleCopyIBAN}>📋 IBAN kopieren</CopyButton>
+
+            <ModalNote>
+              Klicken Sie außerhalb dieses Fensters oder auf × zum Schließen
+            </ModalNote>
+          </ModalContent>
+        </Modal>
+      )}
 
       {lightboxOpen && (
         <Lightbox
