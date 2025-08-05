@@ -10,10 +10,13 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist",
+    "test:donations": "node scripts/fetch-donations.js"
   },
   "dependencies": {
     "@types/react-router-dom": "^5.3.3",
+    "axios": "^1.11.0",
+    "dotenv": "^17.2.1",
     "keen-slider": "^6.8.6",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",

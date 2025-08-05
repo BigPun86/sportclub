@@ -1,6 +1,15 @@
-const axios = require("axios");
-const fs = require("fs").promises;
-const path = require("path");
+import axios from "axios";
+import fs from "fs/promises";
+import path from "path";
+import { fileURLToPath } from "url";
+import dotenv from "dotenv";
+
+// ES Module __dirname equivalent
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Load .env file for local testing
+dotenv.config({ path: path.join(__dirname, "..", ".env") });
 
 // PayPal API Configuration
 const PAYPAL_API_BASE =
@@ -10,6 +19,16 @@ const PAYPAL_API_BASE =
 
 const CLIENT_ID = process.env.PAYPAL_CLIENT_ID;
 const CLIENT_SECRET = process.env.PAYPAL_CLIENT_SECRET;
+
+// Debug info für lokales Testing
+console.log("🔧 PayPal API Configuration:");
+console.log(`Base URL: ${PAYPAL_API_BASE}`);
+console.log(
+  `Client ID: ${CLIENT_ID ? CLIENT_ID.substring(0, 10) + "..." : "NOT SET"}`
+);
+console.log(`Client Secret: ${CLIENT_SECRET ? "***SET***" : "NOT SET"}`);
+console.log(`Sandbox Mode: ${process.env.PAYPAL_SANDBOX}`);
+console.log("");
 
 // Donation packages mapping - used to categorize donations
 const PACKAGE_KEYWORDS = {
