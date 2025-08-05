@@ -1,0 +1,61 @@
+name: PayPal Webhook Handler
+
+on:
+  repository_dispatch:
+    types: [paypal-donation]
+  workflow_dispatch: # Allow manual triggering
+
+env:
+  TZ: Europe/Berlin
+
+jobs:
+  process-donation:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18"
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Process PayPal webhook
+        env:
+          GITHUB_WEBHOOK_PAYLOAD: ${{ toJson(github.event.client_payload) }}
+        run: node scripts/webhook-handler.js
+
+      - name: Check for changes
+        id: git-check
+        run: |
+          if git diff --quiet HEAD -- src/data/donationData.json; then
+            echo "changes=false" >> $GITHUB_OUTPUT
+          else
+            echo "changes=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Commit and push changes
+        if: steps.git-check.outputs.changes == 'true'
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add src/data/donationData.json
+          git commit -m "🎉 New donation received - $(date '+%Y-%m-%d %H:%M:%S')"
+          git push
+
+      - name: Create update summary
+        if: steps.git-check.outputs.changes == 'true'
+        run: |
+          echo "## 🎉 Donation Processed Successfully!" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- **Time:** $(date '+%Y-%m-%d %H:%M:%S')" >> $GITHUB_STEP_SUMMARY
+          echo "- **Status:** ✅ Donation data updated" >> $GITHUB_STEP_SUMMARY
+          echo "- **File:** src/data/donationData.json updated" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "The website will show the new donation in a few minutes!" >> $GITHUB_STEP_SUMMARY
