@@ -267,6 +267,10 @@ Herzliche Grüße
   align-items: center;
   transition: all 0.3s ease;
 
+  span {
+    text-align: left;
+  }
+
   &:hover {
     background: #fff;
   }
@@ -291,6 +295,7 @@ Herzliche Grüße
   line-height: 1.6;
   font-size: clamp(0.9rem, 2.5vw, 1rem);
   color: #444;
+  text-align: left;
 
   b {
     color: #e10073;
