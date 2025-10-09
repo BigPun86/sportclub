@@ -15,7 +15,7 @@ export default function Header() {
           </h1>
         </div>
         <a
-          href="mailto:grimm@sckw.de"
+          href="mailto:sponsoring@sckw.de"
           className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 text-sm"
         >
           Jetzt Sponsor werden

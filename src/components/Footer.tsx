@@ -24,7 +24,7 @@ export default function Footer() {
   return (
     <FooterBar>
       &copy; {new Date().getFullYear()} SC Konstanz-Wollmatingen &bull;{" "}
-      <Mail href="mailto:grimm@sckw.de">grimm@sckw.de</Mail>
+      <Mail href="mailto:sponsoring@sckw.de">sponsoring@sckw.de</Mail>
     </FooterBar>
   );
 }

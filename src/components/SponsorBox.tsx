@@ -210,7 +210,7 @@ const ModalClose = styled.button`
   cursor: pointer;
 `;
 
-export const EMAIL_KONTAKT = "grimm@sckw.de";
+export const EMAIL_KONTAKT = "sponsoring@sckw.de";
 
 export default function SponsorBox({
   title,

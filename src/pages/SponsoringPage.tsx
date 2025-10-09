@@ -9,6 +9,10 @@ import { getGalleryHeroImage } from "../utils/imageLoader";
 
 import sponsoringPakete from "../data/sponsoringPakete.json";
 import SupporterBanner from "../components/SupporterBanner";
+import SponsorCategoriesGrid, {
+  SponsorCategory,
+} from "../components/SponsorCategories";
+import { ContactSection } from "../components/ContactSection";
 
 const Hero = styled.section`
   background: url("${getGalleryHeroImage("herren", 4)}") center/cover;
@@ -34,24 +38,27 @@ const Hero = styled.section`
 const HeroTitle = styled.h1`
   position: relative;
   color: #fff;
-  font-size: clamp(2rem, 6vw, 3rem);
+  font-size: clamp(2.5rem, 7vw, 4rem);
   font-weight: 900;
-  letter-spacing: 0.04em;
-  text-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+  letter-spacing: -0.02em;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
   z-index: 1;
   text-align: center;
+  line-height: 1.1;
+  margin-bottom: 1rem;
 `;
 
 const HeroSubtitle = styled.h2`
   position: relative;
   color: #fff;
-  font-size: clamp(1.2rem, 4vw, 2rem);
-  font-weight: 900;
-  letter-spacing: 0.04em;
-  text-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+  font-size: clamp(1.4rem, 4vw, 2.2rem);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  text-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
   z-index: 1;
   text-align: center;
-  margin-top: 0.5rem;
+  margin-top: 0;
+  opacity: 0.95;
 `;
 
 interface HeroButtonProps {
@@ -61,24 +68,32 @@ interface HeroButtonProps {
 const HeroButton = styled.a<HeroButtonProps>`
   display: inline-block;
   background: ${(props) =>
-    props.secondary ? "rgba(255, 255, 255, 0.2)" : "#e10073"};
+    props.secondary ? "rgba(255, 255, 255, 0.15)" : "#e10073"};
   color: #fff;
   font-weight: 700;
-  font-size: 1.1rem;
-  padding: 0.7rem 2.1rem;
-  border-radius: 30px;
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  padding: 1rem 2.5rem;
+  border-radius: 50px;
   text-decoration: none;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  transition: all 0.2s;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 1;
   border: ${(props) =>
-    props.secondary ? "2px solid rgba(255, 255, 255, 0.4)" : "none"};
-  backdrop-filter: ${(props) => (props.secondary ? "blur(10px)" : "none")};
+    props.secondary ? "2px solid rgba(255, 255, 255, 0.5)" : "none"};
+  backdrop-filter: ${(props) => (props.secondary ? "blur(15px)" : "none")};
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
 
   &:hover {
     background: ${(props) =>
-      props.secondary ? "rgba(255, 255, 255, 0.3)" : "#b8005a"};
-    transform: translateY(-2px);
+      props.secondary ? "rgba(255, 255, 255, 0.25)" : "#b8005a"};
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  }
+
+  &:focus {
+    outline: 3px solid rgba(255, 255, 255, 0.5);
+    outline-offset: 2px;
   }
 `;
 
@@ -104,13 +119,20 @@ const Content = styled.main`
 `;
 
 const Headline = styled.h2`
-  font-size: clamp(1.8rem, 5vw, 2.25rem);
+  font-size: clamp(2rem, 5vw, 3rem);
   color: #222;
   font-weight: 800;
   margin-bottom: 3rem;
-  border-bottom: 4px solid #e10073;
+  margin-top: 4rem;
+  border-bottom: 5px solid #e10073;
   display: inline-block;
-  scroll-margin-top: 80px; /* Für Anker-Navigation */
+  scroll-margin-top: 100px; /* Für Anker-Navigation */
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+
+  &:first-of-type {
+    margin-top: 2rem;
+  }
 `;
 
 const Logos = styled.div`
@@ -199,11 +221,13 @@ const IntroBlock = styled.div`
 `;
 
 const IntroText = styled.p`
-  font-size: clamp(1.13rem, 1.5vw, 1.25rem);
-  color: #222;
+  font-size: clamp(1.2rem, 2vw, 1.4rem);
+  color: #444;
   text-align: center;
-  margin-bottom: 1.1rem;
-  max-width: 700px;
+  margin-bottom: 2rem;
+  max-width: 800px;
+  line-height: 1.6;
+  font-weight: 500;
 `;
 
 // Styled Components für Reichweite-Sektion
@@ -369,6 +393,46 @@ const PriceValue = styled.div`
 const PriceSize = styled.div`
   font-size: 0.98rem;
   color: #666;
+`;
+
+// Accessibility Helper
+const SROnly = styled.h2`
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+`;
+
+// Styled Components für Ballspende Visual
+const BallspendeSection = styled.section`
+  background: #f7f7fa;
+  border-radius: 12px;
+  padding: 2rem;
+  margin: 2rem 0;
+  text-align: center;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.03);
+`;
+
+const BallspendeImage = styled.img`
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  margin: 0 auto;
+  display: block;
+
+  @media (min-width: 768px) {
+    max-width: 600px;
+  }
+
+  @media (min-width: 1024px) {
+    max-width: 700px;
+  }
 `;
 
 // Styled Components für Bus-Werbeflächen
@@ -554,75 +618,155 @@ export default function SponsoringPage() {
       <Hero>
         <HeroContent>
           <HeroTitle>SC Konstanz-Wollmatingen</HeroTitle>
-          <HeroSubtitle>
-            Ihre Marke im Fokus – direkt am Spielfeldrand
-          </HeroSubtitle>
+          <HeroSubtitle>Werden Sie Teil unserer Erfolgsgeschichte</HeroSubtitle>
           <HeroButtonGroup>
-            <HeroButton href="#sponsoring-pakete">
-              Jetzt Sponsor werden
+            <HeroButton href="#sponsoring-kategorien">
+              Sponsoring-Übersicht
             </HeroButton>
-            <HeroButton href="#spenden" secondary>
-              Spenden
+            <HeroButton href="#kontakt" secondary>
+              Kontakt aufnehmen
             </HeroButton>
           </HeroButtonGroup>
         </HeroContent>
       </Hero>
+
       <Content>
-        <Headline id="sponsoring-pakete">Sponsoring-Pakete 2025/2026</Headline>
+        {/* Landing Page: Sponsor-Kategorien Übersicht */}
+        <Headline id="sponsoring-kategorien">Sponsoring-Möglichkeiten</Headline>
         <IntroBlock>
           <IntroText>
-            Gemeinsam für den Sport in Konstanz: Unterstützen Sie unsere Teams,
-            fördern Sie Talente und werden Sie Teil einer starken Gemeinschaft.
-            Ihr Engagement als Sponsor macht den Unterschied – auf und neben dem
-            Spielfeld!
+            Finden Sie das perfekte Sponsoring-Paket für Ihr Unternehmen. Von
+            exklusiven Premium-Partnerschaften bis hin zu lokalen
+            Werbemöglichkeiten – bei uns ist für jeden das Richtige dabei.
           </IntroText>
         </IntroBlock>
 
-        <SponsoringGrid packages={sponsoringPakete} />
+        {/* Sponsor-Kategorien Grid */}
+        <section aria-labelledby="sponsor-categories-heading">
+          <SROnly id="sponsor-categories-heading">
+            Sponsoring-Kategorien Übersicht
+          </SROnly>
+          <SponsorCategoriesGrid
+            role="region"
+            aria-label="Sponsoring-Kategorien"
+          >
+            <SponsorCategory
+              icon="🏆"
+              title="Premium-Partnerschaften"
+              description="Exklusive Sponsoring-Möglichkeiten für Großunternehmen ab 5.000€"
+              packages={[
+                "• Hauptsponsor (15.000€)",
+                "• Stadionpartner (12.000€)",
+                "• Co-Sponsor (9.500€)",
+              ]}
+              buttonHref="#premium-pakete"
+              buttonText="Premium-Pakete ansehen"
+            />
+
+            <SponsorCategory
+              icon="🏢"
+              title="Lokale Werbung"
+              description="Sichtbarkeit bei Heimspielen und lokale Präsenz ab 800€"
+              packages={[
+                "• SILBER-Paket (5.000€)",
+                "• Bandenwerbung (800€)",
+                "• Community-Partner (2.000€)",
+              ]}
+              buttonHref="#lokale-pakete"
+              buttonText="Lokale Pakete ansehen"
+            />
+
+            <SponsorCategory
+              icon="🌟"
+              title="Starter & Spenden"
+              description="Einfacher Einstieg in die Vereinsförderung ab 150€"
+              packages={[
+                "• Ballspende (150€)",
+                "• Ballspende 5er Pack (500€)",
+                "• Platz-Renovierung Spende (ab 100€)",
+              ]}
+              buttonHref="#starter-pakete"
+              buttonText="Starter-Pakete ansehen"
+            />
+          </SponsorCategoriesGrid>
+        </section>
+
+        {/* Haupt-Sponsoring-Pakete */}
+        <section aria-labelledby="premium-pakete">
+          <Headline id="premium-pakete">Premium-Sponsoring-Pakete</Headline>
+          <SponsoringGrid
+            packages={sponsoringPakete.filter(
+              (pkg) =>
+                pkg.price === "15.000 €/Jahr" ||
+                pkg.price === "12.000 €/Jahr" ||
+                pkg.price === "9.500 €/Jahr"
+            )}
+          />
+        </section>
+
+        <section aria-labelledby="lokale-pakete">
+          <Headline id="lokale-pakete">Lokale Werbemöglichkeiten</Headline>
+          <SponsoringGrid
+            packages={sponsoringPakete.filter(
+              (pkg) =>
+                pkg.price === "5.000 €/Jahr" ||
+                pkg.price === "800 €/Jahr" ||
+                pkg.price === "2.000 €/Jahr"
+            )}
+          />
+        </section>
+
+        <section aria-labelledby="starter-pakete">
+          <Headline id="starter-pakete">Starter & Spenden-Optionen</Headline>
+
+          {/* Ballspende Visual */}
+          <BallspendeSection>
+            <BallspendeImage
+              src="/src/assets/ballspende.png"
+              alt="Ballspende - Vielen Dank - DerbyStar Bundesliga Fußball mit SC Konstanz-Wollmatingen Logo"
+            />
+          </BallspendeSection>
+
+          <SponsoringGrid
+            packages={sponsoringPakete.filter(
+              (pkg) =>
+                pkg.price === "150 €/pro Spiel" ||
+                pkg.price === "500 €/5 Spiele" ||
+                pkg.price.includes("Ab 100")
+            )}
+          />
+        </section>
+
+        {/* Erweiterte Informationen (Accordion) */}
         <SponsoringAccordion />
-        <DonationComponent />
-        <SponsoringUsage />
-        <SupporterBanner />
+
+        {/* Reichweite & Impact */}
         <ReachSection>
-          <ReachHeadline>Unsere Reichweite & Kanäle</ReachHeadline>
+          <ReachHeadline>Warum SC Konstanz-Wollmatingen?</ReachHeadline>
           <ReachGrid>
             <ReachBox>
-              <ReachTitle>📱 Social Media</ReachTitle>
+              <ReachTitle>📊 Erreichte Reichweite</ReachTitle>
               <ReachList>
-                <li>Instagram: 2.500+ Follower</li>
-                <li>Reel-Reichweite bis 200k</li>
-                <li>Facebook: 1.800+ Follower</li>
+                <li>15+ Heimspiele pro Saison</li>
+                <li>200+ Zuschauer pro Spiel</li>
+                <li>2.500+ Instagram Follower</li>
+                <li>5.000+ monatliche Website-Besucher</li>
               </ReachList>
             </ReachBox>
             <ReachBox>
-              <ReachTitle>🌐 Website & Online</ReachTitle>
+              <ReachTitle>🏆 Sportlicher Erfolg</ReachTitle>
               <ReachList>
-                <li>Monatliche Besucher: 5.000+</li>
-                <li>Newsletter-Abonnenten: 450+</li>
-                <li>Durchschnittliche Seitenaufrufe: 15.000+</li>
-                <li>Google-Sichtbarkeit: 95% lokale Suche</li>
-              </ReachList>
-            </ReachBox>
-            <ReachBox>
-              <ReachTitle>🏟️ Offline & Events</ReachTitle>
-              <ReachList>
-                <li>Heimspiele pro Saison: 15+</li>
-                <li>Durchschnittliche Zuschauer: 200+</li>
-                <li>Events & Turniere: 8+ pro Jahr</li>
-                <li>Stadionheft-Auflage: 300+ pro Spiel</li>
-              </ReachList>
-            </ReachBox>
-            <ReachBox>
-              <ReachTitle>📢 Zusätzliche Kanäle</ReachTitle>
-              <ReachList>
-                <li>Pressearbeit & Medienkontakte</li>
-                <li>Kooperationen mit lokalen Partnern</li>
-                <li>Vereinsfeste & Community-Events</li>
-                <li>Jugendförderung & Nachwuchsarbeit</li>
+                <li>1. Damenmannschaft in Landesliga</li>
+                <li>2. Mannschaften pro Abteilung</li>
+                <li>Cheerleading-Team aktiv</li>
+                <li>Jugendförderung etabliert</li>
               </ReachList>
             </ReachBox>
           </ReachGrid>
         </ReachSection>
+
+        {/* Werbemöglichkeiten */}
+        <Headline>Werbemöglichkeiten</Headline>
 
         <MagazineSection>
           <MagazineHeadline>
@@ -660,27 +804,18 @@ export default function SponsoringPage() {
                   <MagazineBullet />
                   Digitale Version (Social Media & Website)
                 </MagazineListItem>
-                <MagazineListItem>
-                  <MagazineBullet />
-                  1.000 – 1.500 Online Zugriffe je Ausgabe
-                </MagazineListItem>
-                <MagazineListItem>
-                  <MagazineBullet />
-                  DIN A4 Stadionmagazin
-                </MagazineListItem>
               </MagazineList>
             </MagazineInfo>
           </MagazineGrid>
         </MagazineSection>
 
-        {/* Bus-Werbeflächen Abschnitt */}
         <BusSection>
-          <BusHeadline>
-            Werbeflächen auf dem Vereinsbus
-          </BusHeadline>
+          <BusHeadline>Werbeflächen auf dem Vereinsbus</BusHeadline>
           <BusText>
-            Unser Vereinsbus ist jede Woche in Konstanz, im Landkreis und bei Auswärtsspielen unterwegs – ein idealer Ort für Ihre Werbung!
-            Unterstützen Sie den SC Konstanz-Wollmatingen und profitieren Sie von lokaler Sichtbarkeit auf einer unserer attraktiven Werbeflächen.
+            Unser Vereinsbus ist jede Woche in Konstanz, im Landkreis und bei
+            Auswärtsspielen unterwegs – ein idealer Ort für Ihre Werbung!
+            Unterstützen Sie den SC Konstanz-Wollmatingen und profitieren Sie
+            von lokaler Sichtbarkeit.
           </BusText>
 
           <BusGrid>
@@ -689,21 +824,21 @@ export default function SponsoringPage() {
               <BusTable>
                 <thead>
                   <tr>
-                    <th>Position / Beschreibung</th>
+                    <th>Position</th>
                     <th>Sichtbarkeit</th>
-                    <th>Preis / Jahr (netto)</th>
+                    <th>Preis / Jahr</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td>Heckfläche (ca. 100×80 cm) – ideal für großes Logo & Claim</td>
+                    <td>Heckfläche (100×80 cm)</td>
                     <td>Sehr hoch</td>
                     <td>1.200 €</td>
                   </tr>
                   <tr>
-                    <td>Seitentüren links/rechts – großflächige Logos</td>
+                    <td>Seitentüren (links/rechts)</td>
                     <td>Hoch</td>
-                    <td>je 900 €, beide Seiten 1.600 €</td>
+                    <td>je 900 €</td>
                   </tr>
                   <tr>
                     <td>Hintere Seitenflächen</td>
@@ -719,46 +854,21 @@ export default function SponsoringPage() {
               <BusTable>
                 <thead>
                   <tr>
-                    <th>Position / Beschreibung</th>
+                    <th>Position</th>
                     <th>Sichtbarkeit</th>
-                    <th>Preis / Jahr (netto)</th>
+                    <th>Preis / Jahr</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td>Fensterstreifen über Seitenfenstern (15 cm Höhe)</td>
+                    <td>Fensterstreifen (15 cm Höhe)</td>
                     <td>Mittel</td>
                     <td>400 € je Seite</td>
                   </tr>
                   <tr>
-                    <td>Frontstoßstange / Front unten</td>
+                    <td>Frontstoßstange</td>
                     <td>Gering–mittel</td>
                     <td>250 €</td>
-                  </tr>
-                </tbody>
-              </BusTable>
-            </BusCard>
-
-            <BusCard>
-              <BusCardTitle>Kleinflächen / Unterstützer</BusCardTitle>
-              <BusTable>
-                <thead>
-                  <tr>
-                    <th>Position / Beschreibung</th>
-                    <th>Sichtbarkeit</th>
-                    <th>Preis / Jahr (netto)</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>Stickerfläche (20×20 cm, Heck o. Seite)</td>
-                    <td>Mittel</td>
-                    <td>100 €</td>
-                  </tr>
-                  <tr>
-                    <td>Innenraumfläche (z. B. QR-Code-Plakette)</td>
-                    <td>Gering</td>
-                    <td>50 €</td>
                   </tr>
                 </tbody>
               </BusTable>
@@ -769,7 +879,10 @@ export default function SponsoringPage() {
             <BusOptionsTitle>Zusatzoptionen:</BusOptionsTitle>
             <BusOptionsList>
               <li>Mehrjahresrabatt: 10 % (2 Jahre), 15 % (3 Jahre)</li>
-              <li>Kombi-Paket Online + Bus: +150 € für Logo & Link auf partner.sckw.de</li>
+              <li>
+                Kombi-Paket Online + Bus: +150 € für Logo & Link auf
+                partner.sckw.de
+              </li>
               <li>Design & Folierung: optionaler Kostenbeitrag (50–100 €)</li>
             </BusOptionsList>
           </BusOptions>
@@ -785,120 +898,32 @@ export default function SponsoringPage() {
           </BusCTA>
         </BusSection>
 
-        <Logos>
-          {/*
-          <img
-            src="https://dummyimage.com/120x40/000/fff&text=RICO+Bet"
-            alt="RICO Bet"
-            height="40"
-          />
-          <img
-            src="https://dummyimage.com/120x40/000/fff&text=horta"
-            alt="horta"
-            height="40"
-          />
-          <img
-            src="https://dummyimage.com/120x40/000/fff&text=TASTY+DELIVERY"
-            alt="TASTY DELIVERY"
-            height="40"
-          /> */}
-        </Logos>
-        <Section>
-          <SectionHeadline>
-            Unsere Ziele und Ihr Beitrag als Sponsor
-          </SectionHeadline>
-          <SectionText>
-            Der SC Konstanz-Wollmatingen blickt mit großer Motivation auf die
-            Saison 2025/26. Unsere Abteilungen verfolgen ambitionierte, aber
-            realistische Ziele, die wir mit Ihrer Unterstützung erreichen
-            möchten:
-          </SectionText>
+        {/* Kontakt & nächste Schritte */}
+        <ContactSection
+          headline="Bereit für eine Partnerschaft?"
+          description="Gemeinsam können wir Großartiges erreichen! Kontaktieren Sie uns für ein persönliches Gespräch über Ihre Sponsoring-Möglichkeiten beim SC Konstanz-Wollmatingen."
+          contactInfos={[
+            {
+              icon: "📧",
+              title: "E-Mail",
+              content: "sponsoring@sckw.de",
+              isEmail: true,
+            },
+            {
+              icon: "📍",
+              title: "Adresse",
+              content:
+                "SC Konstanz-Wollmatingen e.V.\nSchleyerweg 5\nD-78467 Konstanz",
+            },
+            {
+              icon: "💼",
+              title: "Rechtliches",
+              content:
+                "Gemeinnütziger Verein\nSpenden steuerlich absetzbar\nSchnelle Abwicklung garantiert",
+            },
+          ]}
+        />
 
-          <AbteilungsGrid>
-            <AbteilungsBox>
-              <AbteilungsTitel>1. Mannschaft (Damen)</AbteilungsTitel>
-              <AbteilungsText>
-                Die frisch in die Landesliga aufgestiegene Frauenmannschaft 1
-                will sich im ersten Tabellendrittel einordnen. Auch im
-                Südbadischen Pokal erhofft sie sich Achtungserfolge. Die
-                längeren Auswärtsfahrten in dieser Liga bringen erhöhte
-                Reisekosten mit sich, für die wir gezielt Unterstützung suchen.
-              </AbteilungsText>
-            </AbteilungsBox>
-            <AbteilungsBox>
-              <AbteilungsTitel>2. Mannschaft (Damen)</AbteilungsTitel>
-              <AbteilungsText>
-                Die Frauenmannschaft 2 setzt sich zum Ziel um die Meisterschaft
-                mitzuspielen und den breiten, qualitativ hochwertigen Kader voll
-                zu nutzen.
-              </AbteilungsText>
-            </AbteilungsBox>
-            <AbteilungsBox>
-              <AbteilungsTitel>1. Mannschaft (Herren)</AbteilungsTitel>
-              <AbteilungsText>
-                Unser klares Ziel ist der Aufstieg in die nächsthöhere Liga.
-                Dafür investieren wir in eine gezielte sportliche
-                Weiterentwicklung und benötigen insbesondere Unterstützung für
-                die Finanzierung von Trainings- und Spielbetrieb.
-              </AbteilungsText>
-            </AbteilungsBox>
-            <AbteilungsBox>
-              <AbteilungsTitel>2. Mannschaft (Herren)</AbteilungsTitel>
-              <AbteilungsText>
-                Die zweite Mannschaft strebt einen Platz unter den Top 3 an.
-                Auch hier sind gezielte Fördermaßnahmen und eine stabile
-                finanzielle Basis entscheidend, um das sportliche Potenzial voll
-                auszuschöpfen.
-              </AbteilungsText>
-            </AbteilungsBox>
-            <AbteilungsBox>
-              <AbteilungsTitel>Cheerleading</AbteilungsTitel>
-              <AbteilungsText>
-                Das Cheerleading-Team plant die Teilnahme an mehreren Turnieren
-                und benötigt dringend einen neuen Trikotsatz
-                (Cheerleading-Uniformen). Auch hier sind Reisekosten ein
-                wichtiger Faktor, um die Teilnahme an Wettbewerben zu
-                ermöglichen.
-              </AbteilungsText>
-            </AbteilungsBox>
-            <AbteilungsBox>
-              <AbteilungsTitel>Fördergruppe / Jugend</AbteilungsTitel>
-              <AbteilungsText>
-                Mit der Fördergruppe legen wir den Grundstein für den neuen
-                Jugendfußball-Förderverein (JFV) Konstanz. Unser Ziel ist es,
-                gezielt Talente zu fördern und ihnen durch qualifizierte Trainer
-                optimale Entwicklungsmöglichkeiten zu bieten. Für die
-                Finanzierung von Trainerfortbildungen und zusätzlichem
-                Trainingsmaterial sind wir auf Unterstützung angewiesen.
-              </AbteilungsText>
-            </AbteilungsBox>
-            <AbteilungsBox>
-              <AbteilungsTitel>
-                Vereinsziel: Langfristige Partnerschaften
-              </AbteilungsTitel>
-              <AbteilungsText>
-                Unser übergeordnetes Ziel ist es, langfristige Partner zu
-                gewinnen, die uns sportlich wie wirtschaftlich begleiten und
-                gemeinsam mit uns die Weiterentwicklung des Vereins in den
-                kommenden Jahren aktiv mitgestalten möchten.
-              </AbteilungsText>
-            </AbteilungsBox>
-          </AbteilungsGrid>
-
-          <SectionText>
-            <b>Warum Ihre Unterstützung wichtig ist:</b>
-            <br />
-            Die genannten Ziele sind nur mit einer soliden finanziellen Basis
-            erreichbar. Ihre Förderung trägt dazu bei, Reisekosten zu decken,
-            moderne Ausrüstung bereitzustellen und die sportliche Entwicklung
-            aller Teams nachhaltig zu sichern. Sie investieren damit direkt in
-            die Zukunft des Sports in Konstanz und in die Entwicklung junger
-            Talente.
-            <br />
-            <br />
-            Wir freuen uns, gemeinsam mit Ihnen diese Ziele zu verwirklichen!
-          </SectionText>
-        </Section>
         <Gallery />
       </Content>
       <Footer />

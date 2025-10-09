@@ -411,7 +411,7 @@ export default function DonationSection() {
         <ContactTitle>📧 Spendenquittung anfordern</ContactTitle>
         <ContactText>
           Für Spenden über 200 EUR richten Sie bitte die Anforderung einer
-          Spendenquittung per E-Mail an <strong>grimm@sckw.de</strong> oder
+          Spendenquittung per E-Mail an <strong>sponsoring@sckw.de</strong> oder
           schriftlich an die Postanschrift des Vereins. Bitte geben Sie Ihre
           Anschrift, Telefonnummer und den Verwendungszweck an.
         </ContactText>

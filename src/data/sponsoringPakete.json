@@ -277,15 +277,20 @@
     ]
   },
   {
-    "title": "⚽ BALLSPENDE",
+    "title": "⚽ Ballspende",
     "price": "150 €/pro Spiel",
     "status": "🟩 Verfügbar",
     "maxSponsors": 10,
     "sponsors": [],
     "keyBenefits": [
       {
-        "text": "Namensnennung vor dem Spiel",
+        "text": "Social Media Post am Spieltag",
         "highlight": true,
+        "icon": "📱"
+      },
+      {
+        "text": "Namensnennung vor dem Spiel",
+        "highlight": false,
         "icon": "📢"
       },
       {
@@ -300,7 +305,7 @@
     ]
   },
   {
-    "title": "⚽ BALLSPENDE 5er Pack",
+    "title": "⚽ Ballspende 5er Pack",
     "price": "500 €/5 Spiele",
     "status": "🟩 Verfügbar",
     "maxSponsors": 5,

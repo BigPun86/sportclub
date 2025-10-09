@@ -144,7 +144,7 @@ const PackageTitle = styled.div`
   font-size: clamp(1rem, 2.5vw, 1.2rem);
 `;
 
-export const EMAIL_KONTAKT = "grimm@sckw.de";
+export const EMAIL_KONTAKT = "sponsoring@sckw.de";
 
 export default function SponsoringTable({ packages }: SponsoringTableProps) {
   // Status-Typ für Farbe bestimmen
