@@ -2,17 +2,9 @@
   {
     "title": "🏆 Hauptsponsor",
     "price": "15.000 €/Jahr",
-    "status": "✅ Vergeben",
+    "status": "🟩 Verfügbar",
     "maxSponsors": 1,
-    "sponsors": [
-      {
-        "name": "RicoBet",
-        "image": "ricobet.png",
-        "website": null,
-        "since": "2023",
-        "until": "2025"
-      }
-    ],
+    "sponsors": [],
     "keyBenefits": [
       {
         "text": "Trikotbrust 1. Mannschaft",
@@ -63,79 +55,66 @@
         "icon": "🏟️"
       },
       {
-        "text": "1 Banner (5x2 m) am Gelände",
-        "highlight": false,
-        "icon": "🖼️"
-      },
-      {
-        "text": "1 Seite im Stadionmagazin",
-        "highlight": false,
-        "icon": "📰"
-      },
-      {
-        "text": "Social Media: Prominent*",
+        "text": "Social Media Post/Monat",
         "highlight": false,
         "icon": "📱"
       },
       {
-        "text": "Website: Startseite Premium*",
+        "text": "Stadionansage bei jedem Heimspiel",
         "highlight": false,
-        "icon": "🌐"
+        "icon": "📢"
+      },
+      {
+        "text": "1 Bande + 4x Plakat",
+        "highlight": true,
+        "icon": "🖼️"
       }
     ],
     "benefits": [
       "Namensrecht Stadion (z. B. Firma-Arena)",
-      "1 Banner (5x2 m) am Gelände",
-      "1 Seite im Stadionmagazin",
-      "Social Media PROMINENT: Begrüßungspost + Logo bei allen Posts/Reels (Vor- & Nachbericht, Story) mit größter Fläche",
+      "Social Media Post/Monat",
       "Stadionansage bei jedem Heimspiel",
-      "Website STARTSEITE PREMIUM: Logo prominent auf der Startseite mit größter Fläche"
+      "1 Bande (5x2 m) am Gelände",
+      "4x Plakat (A1) am Gelände"
     ]
   },
   {
     "title": "🥈 Co-Sponsor",
-    "price": "10.000 €/Jahr",
-    "status": "🟩 Verfügbar",
-    "maxSponsors": 1,
+    "price": "9.500 €/Jahr",
+    "status": "🟨 1 von 2 verfügbar",
+    "maxSponsors": 2,
     "sponsors": [],
     "keyBenefits": [
       {
-        "text": "Trikotärmel 1. Mannschaft",
+        "text": "Trikotärmel",
         "highlight": true,
         "icon": "👕"
       },
       {
-        "text": "1 Banner (5x2 m) am Gelände",
+        "text": "1 Bande",
         "highlight": false,
         "icon": "🖼️"
       },
       {
-        "text": "1 Seite im Stadionmagazin",
-        "highlight": false,
-        "icon": "📰"
-      },
-      {
-        "text": "Social Media: Prominent*",
-        "highlight": false,
+        "text": "2x Social Media pro Spiel",
+        "highlight": true,
         "icon": "📱"
       },
       {
-        "text": "Website: Startseite Premium*",
+        "text": "Social Media 1x pro Spiel",
         "highlight": false,
-        "icon": "🌐"
+        "icon": "📱"
       }
     ],
     "benefits": [
       "Trikotärmel 1. Mannschaft",
-      "1 Banner (5x2 m) am Gelände",
-      "1/2 Seite im Stadionmagazin",
-      "2 Stadiondurchsagen pro Heimspiel",
-      "Social Media PROMINENT: Begrüßungspost + Logo bei allen Posts/Reels (Vor- & Nachbericht, Story) mit größter Fläche",
-      "Website STARTSEITE PREMIUM: Logo prominent auf der Startseite mit größter Fläche"
+      "1 Bande (5x2 m) am Gelände",
+      "2x Social Media pro Spiel (Instagram)",
+      "Social Media 1x pro Spiel (Facebook)"
     ]
   },
   {
-    "title": "⭐️ Premium-Partner",
+    "title": "🥈 SILBER",
     "price": "5.000 €/Jahr",
     "status": "🟩 Verfügbar",
     "maxSponsors": 5,
@@ -157,31 +136,31 @@
     ],
     "keyBenefits": [
       {
-        "text": "1 Banner (5x2 m) am Gelände",
+        "text": "1 Bande",
         "highlight": true,
         "icon": "🖼️"
       },
       {
-        "text": "1/2 Seite im Stadionmagazin",
+        "text": "Instagram-Erwähnung",
         "highlight": false,
-        "icon": "📰"
-      },
-      {
-        "text": "Social Media: Erweitert*",
-        "highlight": true,
         "icon": "📱"
       },
       {
-        "text": "Website: Startseite Erweitert*",
+        "text": "Werbeplane am Gelände",
         "highlight": false,
-        "icon": "🌐"
+        "icon": "🏟️"
+      },
+      {
+        "text": "Vereinsplakate + Eventsichtbarkeit",
+        "highlight": true,
+        "icon": "🎉"
       }
     ],
     "benefits": [
-      "1 Banner (5x2 m) am Gelände",
-      "1/4 Seite im Stadionmagazin",
-      "Social Media ERWEITERT: Begrüßungspost + Logo bei Vor-/Nachbericht-Posts mit kleinerer Fläche",
-      "Website STARTSEITE ERWEITERT: Logo auf der Startseite mit kleinerer Fläche"
+      "1 Bande (5x2 m) am Gelände",
+      "Instagram-Erwähnung",
+      "Werbeplane am Gelände",
+      "Vereinsplakate + Eventsichtbarkeit"
     ]
   },
   {
@@ -271,36 +250,83 @@
   {
     "title": "🟧 Bandenwerbung",
     "price": "800 €/Jahr",
-    "status": "🟧 11 vergeben · ~19 verfügbar",
+    "status": "🟩 Verfügbar",
     "maxSponsors": 30,
     "sponsors": [],
     "keyBenefits": [
       {
-        "text": "1 Bande (3x1 m)",
-        "highlight": false,
+        "text": "3x1m Werbebande",
+        "highlight": true,
         "icon": "🏟️"
       },
       {
-        "text": "Präsenz am Spielfeld bei allen Heimspielen",
-        "highlight": true,
+        "text": "Sichtbarkeit bei jedem Heimspiel",
+        "highlight": false,
         "icon": "⚽"
       },
       {
-        "text": "Social Media: Begrüßungspost",
-        "highlight": true,
-        "icon": "📱"
-      },
-      {
-        "text": "Website: Sponsoren-Seite*",
+        "text": "Link auf Homepage optional",
         "highlight": false,
         "icon": "🌐"
       }
     ],
     "benefits": [
-      "1 Bande (3x1 m) am Spielfeldrand",
-      "Sichtbarkeit bei allen Heimspielen",
-      "Website SPONSOREN-SEITE: Auflistung auf separater Sponsoren-Seite",
-      "Einmalkosten: 70 €/lfd. Meter für Herstellung"
+      "3x1m Werbebande am Spielfeldrand",
+      "Sichtbarkeit bei jedem Heimspiel",
+      "Link auf Homepage optional"
+    ]
+  },
+  {
+    "title": "⚽ BALLSPENDE",
+    "price": "150 €/pro Spiel",
+    "status": "🟩 Verfügbar",
+    "maxSponsors": 10,
+    "sponsors": [],
+    "keyBenefits": [
+      {
+        "text": "Namensnennung vor dem Spiel",
+        "highlight": true,
+        "icon": "📢"
+      },
+      {
+        "text": "Namensnennung Halbzeitpause",
+        "highlight": false,
+        "icon": "⏱️"
+      }
+    ],
+    "benefits": [
+      "Namensnennung vor dem Spiel",
+      "Namensnennung in der Halbzeitpause"
+    ]
+  },
+  {
+    "title": "⚽ BALLSPENDE 5er Pack",
+    "price": "500 €/5 Spiele",
+    "status": "🟩 Verfügbar",
+    "maxSponsors": 5,
+    "sponsors": [],
+    "keyBenefits": [
+      {
+        "text": "Ballspende für 5 Spiele",
+        "highlight": true,
+        "icon": "⚽"
+      },
+      {
+        "text": "Namensnennung vor jedem Spiel",
+        "highlight": true,
+        "icon": "📢"
+      },
+      {
+        "text": "Namensnennung Halbzeitpause",
+        "highlight": false,
+        "icon": "⏱️"
+      }
+    ],
+    "benefits": [
+      "Ballspende für 5 Spiele",
+      "Namensnennung vor jedem Spiel",
+      "Namensnennung in der Halbzeitpause bei jedem Spiel",
+      "Günstigerer Preis pro Spiel gegenüber Einzelspende"
     ]
   }
 ]
