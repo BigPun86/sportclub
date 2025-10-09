@@ -371,6 +371,183 @@ const PriceSize = styled.div`
   color: #666;
 `;
 
+// Styled Components für Bus-Werbeflächen
+const BusSection = styled.section`
+  background: #f7f7fa;
+  border-radius: 10px;
+  padding: 2.5rem 2rem;
+  margin: 3rem 0 2rem 0;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.03);
+`;
+
+const BusHeadline = styled.h3`
+  font-size: clamp(1.7rem, 2.5vw, 2.1rem);
+  color: #e10073;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+
+  &::before {
+    content: "🚌";
+    font-size: 1.2em;
+  }
+
+  &::after {
+    content: "🚌";
+    font-size: 1.2em;
+  }
+`;
+
+const BusText = styled.p`
+  font-size: 1.13rem;
+  color: #222;
+  margin-bottom: 2.5rem;
+  line-height: 1.7;
+  text-align: center;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+`;
+
+const BusGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  margin: 2.5rem 0;
+  width: 100%;
+`;
+
+const BusCard = styled.div`
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.04);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const BusCardTitle = styled.h4`
+  font-size: 1.3rem;
+  color: #e10073;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  text-align: center;
+`;
+
+const BusTable = styled.table`
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+
+  th {
+    background: #e10073;
+    color: white;
+    padding: 0.75rem 0.5rem;
+    text-align: left;
+    font-weight: 600;
+    border: 1px solid #d00068;
+  }
+
+  td {
+    padding: 0.75rem 0.5rem;
+    border: 1px solid #ddd;
+    background: #fff;
+  }
+
+  tr:nth-child(even) td {
+    background: #f9f9f9;
+  }
+
+  tr:hover td {
+    background: #f0f0f0;
+  }
+`;
+
+const BusOptions = styled.div`
+  background: #fff;
+  border-radius: 8px;
+  padding: 2rem;
+  margin: 2.5rem 0;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.04);
+`;
+
+const BusOptionsTitle = styled.h4`
+  font-size: 1.3rem;
+  color: #e10073;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-align: center;
+`;
+
+const BusOptionsList = styled.ul`
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  li {
+    color: #222;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 0.75rem;
+    padding-left: 1.5rem;
+    position: relative;
+
+    &:before {
+      content: "✓";
+      color: #e10073;
+      font-weight: bold;
+      position: absolute;
+      left: 0;
+    }
+  }
+`;
+
+const BusCTA = styled.div`
+  background: #e10073;
+  color: white;
+  border-radius: 8px;
+  padding: 2rem;
+  text-align: center;
+  margin: 2.5rem 0;
+`;
+
+const BusCTATitle = styled.h4`
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+`;
+
+const BusCTAText = styled.p`
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  opacity: 0.9;
+`;
+
+const BusCTAEmail = styled.a`
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  font-weight: 700;
+  font-size: 1.1rem;
+  padding: 0.8rem 2rem;
+  border-radius: 25px;
+  text-decoration: none;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.2s;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.3);
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: translateY(-2px);
+  }
+`;
+
 export default function SponsoringPage() {
   return (
     <>
@@ -495,6 +672,118 @@ export default function SponsoringPage() {
             </MagazineInfo>
           </MagazineGrid>
         </MagazineSection>
+
+        {/* Bus-Werbeflächen Abschnitt */}
+        <BusSection>
+          <BusHeadline>
+            Werbeflächen auf dem Vereinsbus
+          </BusHeadline>
+          <BusText>
+            Unser Vereinsbus ist jede Woche in Konstanz, im Landkreis und bei Auswärtsspielen unterwegs – ein idealer Ort für Ihre Werbung!
+            Unterstützen Sie den SC Konstanz-Wollmatingen und profitieren Sie von lokaler Sichtbarkeit auf einer unserer attraktiven Werbeflächen.
+          </BusText>
+
+          <BusGrid>
+            <BusCard>
+              <BusCardTitle>Premium-Flächen</BusCardTitle>
+              <BusTable>
+                <thead>
+                  <tr>
+                    <th>Position / Beschreibung</th>
+                    <th>Sichtbarkeit</th>
+                    <th>Preis / Jahr (netto)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Heckfläche (ca. 100×80 cm) – ideal für großes Logo & Claim</td>
+                    <td>Sehr hoch</td>
+                    <td>1.200 €</td>
+                  </tr>
+                  <tr>
+                    <td>Seitentüren links/rechts – großflächige Logos</td>
+                    <td>Hoch</td>
+                    <td>je 900 €, beide Seiten 1.600 €</td>
+                  </tr>
+                  <tr>
+                    <td>Hintere Seitenflächen</td>
+                    <td>Mittel–hoch</td>
+                    <td>je 600 €</td>
+                  </tr>
+                </tbody>
+              </BusTable>
+            </BusCard>
+
+            <BusCard>
+              <BusCardTitle>Standard-Flächen</BusCardTitle>
+              <BusTable>
+                <thead>
+                  <tr>
+                    <th>Position / Beschreibung</th>
+                    <th>Sichtbarkeit</th>
+                    <th>Preis / Jahr (netto)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Fensterstreifen über Seitenfenstern (15 cm Höhe)</td>
+                    <td>Mittel</td>
+                    <td>400 € je Seite</td>
+                  </tr>
+                  <tr>
+                    <td>Frontstoßstange / Front unten</td>
+                    <td>Gering–mittel</td>
+                    <td>250 €</td>
+                  </tr>
+                </tbody>
+              </BusTable>
+            </BusCard>
+
+            <BusCard>
+              <BusCardTitle>Kleinflächen / Unterstützer</BusCardTitle>
+              <BusTable>
+                <thead>
+                  <tr>
+                    <th>Position / Beschreibung</th>
+                    <th>Sichtbarkeit</th>
+                    <th>Preis / Jahr (netto)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Stickerfläche (20×20 cm, Heck o. Seite)</td>
+                    <td>Mittel</td>
+                    <td>100 €</td>
+                  </tr>
+                  <tr>
+                    <td>Innenraumfläche (z. B. QR-Code-Plakette)</td>
+                    <td>Gering</td>
+                    <td>50 €</td>
+                  </tr>
+                </tbody>
+              </BusTable>
+            </BusCard>
+          </BusGrid>
+
+          <BusOptions>
+            <BusOptionsTitle>Zusatzoptionen:</BusOptionsTitle>
+            <BusOptionsList>
+              <li>Mehrjahresrabatt: 10 % (2 Jahre), 15 % (3 Jahre)</li>
+              <li>Kombi-Paket Online + Bus: +150 € für Logo & Link auf partner.sckw.de</li>
+              <li>Design & Folierung: optionaler Kostenbeitrag (50–100 €)</li>
+            </BusOptionsList>
+          </BusOptions>
+
+          <BusCTA>
+            <BusCTATitle>➡️ Interesse an einer Bus-Werbefläche?</BusCTATitle>
+            <BusCTAText>
+              Kontaktieren Sie uns für verfügbare Plätze und Layoutvorschläge:
+            </BusCTAText>
+            <BusCTAEmail href="mailto:sponsoring@sckw.de">
+              📧 sponsoring@sckw.de
+            </BusCTAEmail>
+          </BusCTA>
+        </BusSection>
 
         <Logos>
           {/*
