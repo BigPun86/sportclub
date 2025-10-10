@@ -803,7 +803,8 @@ export default function SponsoringPage() {
               📖 Aktuelle Ausgabe als Beispiel
             </MagazinePreviewTitle>
             <MagazinePreviewText>
-              Schauen Sie sich die letzte Ausgabe unseres Stadionmagazins an und sehen Sie, wie Ihre Werbung wirken könnte.
+              Schauen Sie sich die letzte Ausgabe unseres Stadionmagazins an und
+              sehen Sie, wie Ihre Werbung wirken könnte.
             </MagazinePreviewText>
             <MagazineDownloadButton
               href="/StadionMagazin.pdf"
