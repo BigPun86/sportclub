@@ -1,69 +1,124 @@
-# React + TypeScript + Vite
+# SC Konstanz-Wollmatingen e.V. - Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Eine moderne React/TypeScript Website für den Sportclub Konstanz-Wollmatingen e.V. mit Fokus auf Sponsoring und Mitglieder-Engagement.
 
-Currently, two official plugins are available:
+## 🚀 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Hauptfunktionen
+- **Sponsoring-Seite** - Übersichtliche Darstellung von Sponsoring-Möglichkeiten
+- **Team-Galerie** - Bilder der verschiedenen Mannschaften und Abteilungen
+- **Spenden-Funktion** - Einfache Online-Spende für Vereinsprojekte
+- **Kontakt** - Einfacher Kontakt zu Vorstand und Abteilungen
 
-## Expanding the ESLint configuration
+### Technische Features
+- **React 18** mit TypeScript für Typsicherheit
+- **Vite** für schnelle Entwicklung und optimierte Builds
+- **Styled Components** für konsistente UI-Styles
+- **Responsive Design** für alle Geräte
+- **Accessibility** (WCAG-konform)
+- **SEO-optimiert** für bessere Auffindbarkeit
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 📁 Projektstruktur
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+```
+src/
+├── assets/           # Bilder und Medien
+│   ├── gallery/     # Team-Fotos und Galerie
+│   ├── sponsors/    # Sponsor-Logos
+│   └── renovation/  # Renovierungs-Bilder
+├── components/      # Wiederverwendbare UI-Komponenten
+├── data/           # JSON-Daten für Inhalte
+├── pages/          # Seiten-Komponenten
+└── utils/          # Hilfsfunktionen
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+public/             # Statische Assets
+├── logo.svg               # Hauptlogo
+├── logo-transaprent.svg   # Logo mit transparentem Hintergrund
+├── StadionMagazin.pdf     # Aktuelle Vereinszeitschrift
+└── ballspende.png         # Ballspende-Beispielbild
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🎨 Design-System
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Farben
+- **Primär**: `#e10073` (Pink/Rot)
+- **Sekundär**: `#ff6b9d` (Hellrosa)
+- **Akzent**: `#b8005a` (Dunkelrosa)
+- **Text**: `#222` (Dunkelgrau)
+- **Hintergrund**: `#fff` (Weiß), `#f7f7fa` (Hellgrau)
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Typografie
+- **Überschriften**: `clamp()` für responsive Größen
+- **Fließtext**: 16px Basis mit guter Lesbarkeit
+- **Buttons**: Konsistente Padding und Hover-Effekte
+
+## 🔧 Entwicklung
+
+### Voraussetzungen
+```bash
+Node.js 18+
+npm oder yarn
 ```
+
+### Installation
+```bash
+npm install
+```
+
+### Entwicklung
+```bash
+npm run dev
+```
+
+### Build für Produktion
+```bash
+npm run build
+```
+
+### Linting
+```bash
+npm run lint
+```
+
+## 📦 Assets & Medien
+
+### Logos
+- `logo.svg` - Hauptlogo für dunkle Hintergründe
+- `logo-transaprent.svg` - Logo mit transparentem Hintergrund (Favicon)
+
+### Dokumente
+- `StadionMagazin.pdf` - Aktuelle Vereinszeitschrift für Sponsoren
+- `ballspende.png` - Beispielbild für Ballspende-Pakete
+
+### Bilder
+- Team-Fotos in `/src/assets/gallery/`
+- Sponsor-Logos in `/src/assets/sponsors/`
+- Hero-Bilder und sonstige Assets
+
+## 🌐 Deployment
+
+Die Website läuft auf GitHub Pages und wird automatisch bei jedem Push auf den `main`-Branch deployed.
+
+**Live-URL**: [https://sc-konstanz-wollmatingen.de](https://sc-konstanz-wollmatingen.de)
+
+## 📋 Content-Management
+
+### Sponsoring-Pakete
+Die Sponsoring-Pakete werden in `src/data/sponsoringPakete.json` definiert und automatisch auf der Sponsoring-Seite angezeigt.
+
+### Bilder
+Team-Bilder und Galerie-Bilder werden im `src/assets/gallery/`-Ordner verwaltet und automatisch geladen.
+
+### Texte & Inhalte
+Die meisten Texte sind direkt in den React-Komponenten definiert für einfache Aktualisierung.
+
+## 🔒 Sicherheit
+
+- Alle Formulare validieren Eingaben
+- Bilder werden optimiert geladen
+- Keine sensiblen Daten im Frontend
+- Sichere API-Kommunikation (wenn implementiert)
+
+## 📞 Kontakt
+
+Bei Fragen oder Problemen kontaktieren Sie das Entwicklerteam über die Kontakt-Seite der Website.
