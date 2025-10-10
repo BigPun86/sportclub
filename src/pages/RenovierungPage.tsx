@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Footer from "../components/Footer";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { getRenovationImages, getGalleryHeroImage } from "../utils/imageLoader";
 import DonationTracker from "../components/DonationTracker";
 
@@ -685,13 +685,13 @@ function Lightbox({
 }) {
   const [currentIndex, setCurrentIndex] = useState(initialIndex);
 
-  const nextImage = () => {
+  const nextImage = useCallback(() => {
     setCurrentIndex((prev) => (prev + 1) % images.length);
-  };
+  }, [images.length]);
 
-  const prevImage = () => {
+  const prevImage = useCallback(() => {
     setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
-  };
+  }, [images.length]);
 
   useEffect(() => {
     const handleKeyPress = (e: KeyboardEvent) => {
@@ -702,7 +702,7 @@ function Lightbox({
 
     document.addEventListener("keydown", handleKeyPress);
     return () => document.removeEventListener("keydown", handleKeyPress);
-  }, []);
+  }, [onClose, nextImage, prevImage]);
 
   return (
     <LightboxOverlay onClick={onClose}>

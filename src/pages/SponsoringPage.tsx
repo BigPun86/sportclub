@@ -1,14 +1,11 @@
 import Footer from "../components/Footer";
 import SponsoringGrid from "../components/SponsoringGrid";
 import SponsoringAccordion from "../components/SponsoringAccordion";
-import DonationComponent from "../components/DonationSection";
-import SponsoringUsage from "../components/SponsoringUsage";
 import Gallery from "../components/Gallery";
 import styled from "styled-components";
 import { getGalleryHeroImage } from "../utils/imageLoader";
 
 import sponsoringPakete from "../data/sponsoringPakete.json";
-import SupporterBanner from "../components/SupporterBanner";
 import SponsorCategoriesGrid, {
   SponsorCategory,
 } from "../components/SponsorCategories";
@@ -133,70 +130,6 @@ const Headline = styled.h2`
   &:first-of-type {
     margin-top: 2rem;
   }
-`;
-
-const Logos = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 3rem;
-  margin: 3rem 0 1.5rem 0;
-  flex-wrap: wrap;
-`;
-
-// Styled Components für den neuen Abschnitt
-const Section = styled.section`
-  background: #f7f7fa;
-  border-radius: 10px;
-  padding: 2.5rem 2rem;
-  margin: 3rem 0 2rem 0;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.03);
-`;
-
-const SectionHeadline = styled.h3`
-  font-size: 1.7rem;
-  color: #e10073;
-  font-weight: 800;
-  margin-bottom: 1.2rem;
-`;
-
-const SectionText = styled.p`
-  font-size: 1.13rem;
-  color: #222;
-  margin-bottom: 1.2rem;
-  line-height: 1.7;
-`;
-
-const AbteilungsGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1.5rem;
-  margin: 2.5rem 0 2rem 0;
-`;
-
-const AbteilungsBox = styled.div`
-  background: #fff;
-  border-radius: 8px;
-  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.04);
-  padding: 1.3rem 1.1rem 1.1rem 1.1rem;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-`;
-
-const AbteilungsTitel = styled.div`
-  font-size: 1.13rem;
-  font-weight: 700;
-  color: #e10073;
-  margin-bottom: 0.5rem;
-  text-align: center;
-  width: 100%;
-`;
-
-const AbteilungsText = styled.div`
-  font-size: 1.04rem;
-  color: #222;
-  line-height: 1.6;
 `;
 
 // Styled Components für HeroContent
@@ -722,7 +655,7 @@ export default function SponsoringPage() {
           {/* Ballspende Visual */}
           <BallspendeSection>
             <BallspendeImage
-              src="/src/assets/ballspende.png"
+              src="/ballspende.png"
               alt="Ballspende - Vielen Dank - DerbyStar Bundesliga Fußball mit SC Konstanz-Wollmatingen Logo"
             />
           </BallspendeSection>

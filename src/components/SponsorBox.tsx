@@ -152,27 +152,39 @@ const Status = styled.div<{ statusType: string }>`
 const CTAButton = styled.a<{ isVergeben?: boolean }>`
   background: ${(props) => (props.isVergeben ? "#ccc" : "#e10073")};
   color: #fff;
-  font-weight: 700;
-  font-size: clamp(1rem, 2.5vw, 1.13rem);
-  padding: clamp(0.6rem, 2vw, 0.8rem) clamp(1.5rem, 4vw, 2.1rem);
-  border: none;
-  border-radius: 28px;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0.875rem 1.75rem;
+  border: ${(props) =>
+    props.isVergeben ? "2px solid #ccc" : "2px solid #e10073"};
+  border-radius: 25px;
   margin-top: auto;
   margin-bottom: 0.5rem;
   cursor: ${(props) => (props.isVergeben ? "default" : "pointer")};
   box-shadow: 0 4px 16px rgba(225, 0, 115, 0.13);
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.2s ease;
   z-index: 2;
   position: relative;
   display: inline-block;
   text-align: center;
   text-decoration: none;
   pointer-events: ${(props) => (props.isVergeben ? "none" : "auto")};
+
   &:hover {
     background: ${(props) => (props.isVergeben ? "#ccc" : "#b8005a")};
-    transform: ${(props) => (props.isVergeben ? "none" : "scale(1.04)")};
+    border-color: ${(props) => (props.isVergeben ? "#ccc" : "#b8005a")};
+    transform: ${(props) => (props.isVergeben ? "none" : "translateY(-1px)")};
+    box-shadow: ${(props) =>
+      props.isVergeben
+        ? "0 4px 16px rgba(225, 0, 115, 0.13)"
+        : "0 6px 20px rgba(225, 0, 115, 0.25)"};
   }
-  margin-bottom: 2.5rem;
+
+  &:focus {
+    outline: 3px solid
+      ${(props) => (props.isVergeben ? "#ccc" : "rgba(225, 0, 115, 0.5)")};
+    outline-offset: 2px;
+  }
 `;
 
 const ModalOverlay = styled.div`

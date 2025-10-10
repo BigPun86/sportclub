@@ -57,7 +57,7 @@ const ContactText = styled.p<{ $isEmail?: boolean }>`
 interface ContactInfo {
   icon: string;
   title: string;
-  content: string | JSX.Element;
+  content: string | React.JSX.Element;
   isEmail?: boolean;
 }
 

@@ -88,44 +88,23 @@ const SponsorCategoryPackages = styled.div`
 
 const SponsorCategoryButton = styled.a`
   display: inline-block;
-  background: linear-gradient(135deg, #e10073, #ff6b9d);
+  background: #e10073;
   color: white;
-  font-weight: 700;
-  font-size: clamp(0.95rem, 1.8vw, 1.05rem);
-  padding: 1rem 2rem;
-  border-radius: 50px;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0.875rem 1.75rem;
+  border-radius: 25px;
   text-decoration: none;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  border: 2px solid transparent;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  position: relative;
-  overflow: hidden;
-
-  &::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      rgba(255, 255, 255, 0.2),
-      transparent
-    );
-    transition: left 0.5s;
-  }
+  transition: all 0.2s ease;
+  border: 2px solid #e10073;
+  text-transform: none;
+  letter-spacing: 0.02em;
 
   &:hover {
-    background: linear-gradient(135deg, #b8005a, #e10073);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(225, 0, 115, 0.4);
-
-    &::before {
-      left: 100%;
-    }
+    background: #b8005a;
+    border-color: #b8005a;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(225, 0, 115, 0.3);
   }
 
   &:focus {

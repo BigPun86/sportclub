@@ -115,19 +115,30 @@ const CTAButton = styled.a<{ isVergeben?: boolean }>`
   display: inline-block;
   background: ${(props) => (props.isVergeben ? "#ccc" : "#e10073")};
   color: #fff;
-  font-weight: 700;
+  font-weight: 600;
   font-size: 1rem;
-  padding: 0.8rem 2rem;
-  border-radius: 30px;
+  padding: 0.875rem 1.75rem;
+  border-radius: 25px;
   text-decoration: none;
   text-align: center;
   transition: all 0.2s ease;
   pointer-events: ${(props) => (props.isVergeben ? "none" : "auto")};
   margin-top: auto;
+  border: ${(props) =>
+    props.isVergeben ? "2px solid #ccc" : "2px solid #e10073"};
 
   &:hover {
     background: ${(props) => (props.isVergeben ? "#ccc" : "#b8005a")};
-    transform: ${(props) => (props.isVergeben ? "none" : "scale(1.05)")};
+    border-color: ${(props) => (props.isVergeben ? "#ccc" : "#b8005a")};
+    transform: ${(props) => (props.isVergeben ? "none" : "translateY(-1px)")};
+    box-shadow: ${(props) =>
+      props.isVergeben ? "none" : "0 4px 12px rgba(225, 0, 115, 0.3)"};
+  }
+
+  &:focus {
+    outline: 3px solid
+      ${(props) => (props.isVergeben ? "#ccc" : "rgba(225, 0, 115, 0.5)")};
+    outline-offset: 2px;
   }
 `;
 
