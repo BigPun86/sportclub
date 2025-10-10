@@ -743,13 +743,23 @@ export default function SponsoringPage() {
         <section aria-labelledby="starter-pakete">
           <Headline id="starter-pakete">Starter & Spenden-Optionen</Headline>
 
-          {/* Ballspende Preview */}
+          <SponsoringGrid
+            packages={sponsoringPakete.filter(
+              (pkg) =>
+                pkg.price === "150 €/pro Spiel" ||
+                pkg.price === "500 €/5 Spiele" ||
+                pkg.price.includes("Ab 100")
+            )}
+          />
+
+          {/* Ballspende Preview - nach den Paketen */}
           <BallspendePreview>
             <BallspendePreviewTitle>
               ⚽ Ballspende-Beispiel ansehen
             </BallspendePreviewTitle>
             <BallspendePreviewText>
-              Schauen Sie sich an, wie eine Ballspende mit Ihrem Logo aussehen könnte.
+              Schauen Sie sich an, wie eine Ballspende mit Ihrem Logo aussehen
+              könnte.
             </BallspendePreviewText>
             <BallspendeViewButton
               href="/ballspende.png"
@@ -759,15 +769,6 @@ export default function SponsoringPage() {
               📸 Beispielbild öffnen
             </BallspendeViewButton>
           </BallspendePreview>
-
-          <SponsoringGrid
-            packages={sponsoringPakete.filter(
-              (pkg) =>
-                pkg.price === "150 €/pro Spiel" ||
-                pkg.price === "500 €/5 Spiele" ||
-                pkg.price.includes("Ab 100")
-            )}
-          />
         </section>
 
         {/* Reichweite & Impact - früher zeigen */}
