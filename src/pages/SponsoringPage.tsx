@@ -695,11 +695,8 @@ export default function SponsoringPage() {
           </ReachGrid>
         </ReachSection>
 
-        {/* Erweiterte Informationen (Accordion) - später zeigen */}
-        <SponsoringAccordion />
-
-        {/* Werbemöglichkeiten */}
-        <Headline>Werbemöglichkeiten</Headline>
+        {/* Zusätzliche Werbemöglichkeiten - nach den wichtigsten Infos */}
+        <Headline>Zusätzliche Werbemöglichkeiten</Headline>
 
         <MagazineSection>
           <MagazineHeadline>
@@ -743,7 +740,9 @@ export default function SponsoringPage() {
         </MagazineSection>
 
         <BusSection>
-          <BusHeadline>Werbeflächen auf dem Vereinsbus</BusHeadline>
+          <BusHeadline>
+            Werbeflächen auf dem Vereinsbus
+          </BusHeadline>
           <BusText>
             Unser Vereinsbus ist jede Woche in Konstanz, im Landkreis und bei
             Auswärtsspielen unterwegs – ein idealer Ort für Ihre Werbung!
@@ -830,6 +829,10 @@ export default function SponsoringPage() {
             </BusCTAEmail>
           </BusCTA>
         </BusSection>
+
+        {/* Erweiterte Informationen (Accordion) - ganz am Ende */}
+        <SponsoringAccordion />
+
 
         {/* Kontakt & nächste Schritte */}
         <ContactSection

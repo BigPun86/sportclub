@@ -74,22 +74,31 @@ const SponsorCategoryPackages = styled.div`
   font-size: clamp(0.9rem, 1.5vw, 1rem);
   color: #333;
   margin-bottom: 2.5rem;
-  text-align: center;
   line-height: 1.7;
   padding: 0 1rem;
 
-  /* Zentrierte Bullet Points */
-  ul,
-  ol {
-    display: inline-block;
-    text-align: center;
-    list-style-position: inside;
-    margin: 0;
+  /* Zentrierte Listen */
+  ul, ol {
+    list-style: none;
     padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   li {
     text-align: center;
+    position: relative;
+    padding-left: 1.5rem;
+  }
+
+  li::before {
+    content: "•";
+    color: #e10073;
+    position: absolute;
+    left: 0;
+    font-weight: bold;
   }
 `;
 
