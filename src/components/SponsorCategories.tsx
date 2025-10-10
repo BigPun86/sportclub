@@ -82,7 +82,14 @@ const SponsorCategoryPackages = styled.div`
   ul,
   ol {
     display: inline-block;
-    text-align: left;
+    text-align: center;
+    list-style-position: inside;
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    text-align: center;
   }
 `;
 

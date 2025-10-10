@@ -670,10 +670,7 @@ export default function SponsoringPage() {
           />
         </section>
 
-        {/* Erweiterte Informationen (Accordion) */}
-        <SponsoringAccordion />
-
-        {/* Reichweite & Impact */}
+        {/* Reichweite & Impact - früher zeigen */}
         <ReachSection>
           <ReachHeadline>Warum SC Konstanz-Wollmatingen?</ReachHeadline>
           <ReachGrid>
@@ -697,6 +694,9 @@ export default function SponsoringPage() {
             </ReachBox>
           </ReachGrid>
         </ReachSection>
+
+        {/* Erweiterte Informationen (Accordion) - später zeigen */}
+        <SponsoringAccordion />
 
         {/* Werbemöglichkeiten */}
         <Headline>Werbemöglichkeiten</Headline>
