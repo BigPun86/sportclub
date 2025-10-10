@@ -78,7 +78,8 @@ const SponsorCategoryPackages = styled.div`
   padding: 0 1rem;
 
   /* Zentrierte Listen */
-  ul, ol {
+  ul,
+  ol {
     list-style: none;
     padding: 0;
     margin: 0;

@@ -328,6 +328,65 @@ const PriceSize = styled.div`
   color: #666;
 `;
 
+// Styled Components für Magazin Preview
+const MagazinePreview = styled.div`
+  background: #fff;
+  border-radius: 12px;
+  padding: 2rem;
+  margin-top: 2rem;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  border: 2px solid #f0f0f0;
+
+  &:hover {
+    border-color: #e10073;
+    box-shadow: 0 4px 16px rgba(225, 0, 115, 0.1);
+  }
+`;
+
+const MagazinePreviewTitle = styled.h4`
+  font-size: 1.2rem;
+  color: #e10073;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+`;
+
+const MagazinePreviewText = styled.p`
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+`;
+
+const MagazineDownloadButton = styled.a`
+  display: inline-block;
+  background: #e10073;
+  color: white;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0.875rem 2rem;
+  border-radius: 25px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  border: 2px solid #e10073;
+
+  &:hover {
+    background: #b8005a;
+    border-color: #b8005a;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(225, 0, 115, 0.3);
+  }
+
+  &:focus {
+    outline: 3px solid rgba(225, 0, 115, 0.5);
+    outline-offset: 2px;
+  }
+`;
+
 // Accessibility Helper
 const SROnly = styled.h2`
   position: absolute;
@@ -737,12 +796,27 @@ export default function SponsoringPage() {
               </MagazineList>
             </MagazineInfo>
           </MagazineGrid>
+
+          {/* Magazin Preview */}
+          <MagazinePreview>
+            <MagazinePreviewTitle>
+              📖 Aktuelle Ausgabe als Beispiel
+            </MagazinePreviewTitle>
+            <MagazinePreviewText>
+              Schauen Sie sich die letzte Ausgabe unseres Stadionmagazins an und sehen Sie, wie Ihre Werbung wirken könnte.
+            </MagazinePreviewText>
+            <MagazineDownloadButton
+              href="/StadionMagazin.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              📄 Aktuelle Ausgabe öffnen (PDF)
+            </MagazineDownloadButton>
+          </MagazinePreview>
         </MagazineSection>
 
         <BusSection>
-          <BusHeadline>
-            Werbeflächen auf dem Vereinsbus
-          </BusHeadline>
+          <BusHeadline>Werbeflächen auf dem Vereinsbus</BusHeadline>
           <BusText>
             Unser Vereinsbus ist jede Woche in Konstanz, im Landkreis und bei
             Auswärtsspielen unterwegs – ein idealer Ort für Ihre Werbung!
@@ -832,7 +906,6 @@ export default function SponsoringPage() {
 
         {/* Erweiterte Informationen (Accordion) - ganz am Ende */}
         <SponsoringAccordion />
-
 
         {/* Kontakt & nächste Schritte */}
         <ContactSection
