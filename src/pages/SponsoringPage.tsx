@@ -400,30 +400,62 @@ const SROnly = styled.h2`
   border: 0;
 `;
 
-// Styled Components für Ballspende Visual
-const BallspendeSection = styled.section`
-  background: #f7f7fa;
+// Styled Components für Ballspende Preview
+const BallspendePreview = styled.div`
+  background: #fff;
   border-radius: 12px;
   padding: 2rem;
   margin: 2rem 0;
   text-align: center;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.03);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  border: 2px solid #f0f0f0;
+
+  &:hover {
+    border-color: #e10073;
+    box-shadow: 0 4px 16px rgba(225, 0, 115, 0.1);
+  }
 `;
 
-const BallspendeImage = styled.img`
-  max-width: 100%;
-  height: auto;
-  border-radius: 8px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-  margin: 0 auto;
-  display: block;
+const BallspendePreviewTitle = styled.h4`
+  font-size: 1.2rem;
+  color: #e10073;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+`;
 
-  @media (min-width: 768px) {
-    max-width: 600px;
+const BallspendePreviewText = styled.p`
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+`;
+
+const BallspendeViewButton = styled.a`
+  display: inline-block;
+  background: #e10073;
+  color: white;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0.875rem 2rem;
+  border-radius: 25px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  border: 2px solid #e10073;
+
+  &:hover {
+    background: #b8005a;
+    border-color: #b8005a;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(225, 0, 115, 0.3);
   }
 
-  @media (min-width: 1024px) {
-    max-width: 700px;
+  &:focus {
+    outline: 3px solid rgba(225, 0, 115, 0.5);
+    outline-offset: 2px;
   }
 `;
 
@@ -711,13 +743,22 @@ export default function SponsoringPage() {
         <section aria-labelledby="starter-pakete">
           <Headline id="starter-pakete">Starter & Spenden-Optionen</Headline>
 
-          {/* Ballspende Visual */}
-          <BallspendeSection>
-            <BallspendeImage
-              src="/ballspende.png"
-              alt="Ballspende - Vielen Dank - DerbyStar Bundesliga Fußball mit SC Konstanz-Wollmatingen Logo"
-            />
-          </BallspendeSection>
+          {/* Ballspende Preview */}
+          <BallspendePreview>
+            <BallspendePreviewTitle>
+              ⚽ Ballspende-Beispiel ansehen
+            </BallspendePreviewTitle>
+            <BallspendePreviewText>
+              Schauen Sie sich an, wie eine Ballspende mit Ihrem Logo aussehen könnte.
+            </BallspendePreviewText>
+            <BallspendeViewButton
+              href="/ballspende.png"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              📸 Beispielbild öffnen
+            </BallspendeViewButton>
+          </BallspendePreview>
 
           <SponsoringGrid
             packages={sponsoringPakete.filter(
