@@ -6,6 +6,7 @@ import {
 } from "react-router-dom";
 import Navigation from "./components/Navigation";
 import SponsoringPage from "./pages/SponsoringPage";
+import SponsoringV2Page from "./pages/SponsoringV2Page";
 import JobsPage from "./pages/JobsPage";
 import RenovierungPage from "./pages/RenovierungPage";
 import "./App.css";
@@ -17,6 +18,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Navigate to="/sponsoring" replace />} />
         <Route path="/sponsoring" element={<SponsoringPage />} />
+        <Route path="/sponsoring-v2" element={<SponsoringV2Page />} />
         <Route path="/jobs" element={<JobsPage />} />
         <Route path="/renovierung" element={<RenovierungPage />} />
       </Routes>

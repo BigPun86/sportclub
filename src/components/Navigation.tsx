@@ -159,6 +159,13 @@ export default function Navigation() {
             🤝 Sponsoring
           </NavLink>
           <NavLink
+            to="/sponsoring-v2"
+            $active={location.pathname === "/sponsoring-v2"}
+            onClick={() => setIsMenuOpen(false)}
+          >
+            🚀 Sponsoring V2
+          </NavLink>
+          <NavLink
             to="/jobs"
             $active={location.pathname === "/jobs"}
             onClick={() => setIsMenuOpen(false)}
