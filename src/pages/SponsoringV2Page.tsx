@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import styled from "styled-components";
-import { getGalleryHeroImage } from "../utils/imageLoader";
+import { getGalleryHeroImage, getHeroImage } from "../utils/imageLoader";
 
 // Hero Section - Above the Fold
 const Hero = styled.section`
@@ -351,6 +351,52 @@ const ExampleImage = styled.img`
   object-fit: cover;
 `;
 
+// Generic preview tile (e.g. for PDFs or schematics)
+const PreviewBox = styled.div<{ $bg?: string }>`
+  width: 100%;
+  height: 200px;
+  border-radius: 12px 12px 0 0;
+  background: ${({ $bg }) =>
+    $bg ? `url(${$bg}) center/cover` : `linear-gradient(135deg,#f7f7fa,#ffffff)`};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+
+  &::after {
+    content: "Vorschau";
+    color: #e10073;
+    font-weight: 900;
+    font-size: 1.05rem;
+    background: rgba(255,255,255,0.9);
+    padding: 0.35rem 0.7rem;
+    border-radius: 6px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  }
+`;
+
+const PreviewButton = styled.a`
+  display: inline-block;
+  background: #e10073;
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 0.7rem 1.2rem;
+  border-radius: 24px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  border: 2px solid #e10073;
+
+  &:hover {
+    background: #b8005a;
+    border-color: #b8005a;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(225,0,115,0.25);
+  }
+`;
+
 const ExampleContent = styled.div`
   padding: 1.5rem;
 `;
@@ -561,11 +607,10 @@ export default function SponsoringV2Page() {
         <HeroContent>
           <HeroTitle>Werden Sie Teil der SC-Familie</HeroTitle>
           <HeroSubtitle>
-            Maximale Sichtbarkeit bei 15+ Heimspielen, 2.500+ Instagram-Followern und einer leidenschaftlichen Community
+            Maximale Sichtbarkeit bei 15+ Heimspielen, 2.500+
+            Instagram-Followern und einer leidenschaftlichen Community
           </HeroSubtitle>
-          <HeroCTA href="#kontakt">
-            Jetzt Kontakt aufnehmen
-          </HeroCTA>
+          <HeroCTA href="#kontakt">Jetzt Kontakt aufnehmen</HeroCTA>
         </HeroContent>
       </Hero>
 
@@ -576,7 +621,8 @@ export default function SponsoringV2Page() {
             <ValueIcon>📊</ValueIcon>
             <ValueTitle>Maximale Reichweite</ValueTitle>
             <ValueText>
-              15+ Heimspiele pro Saison mit 200+ Zuschauern, 2.500+ Instagram-Followern und 5.000+ Website-Besuchern monatlich
+              15+ Heimspiele pro Saison mit 200+ Zuschauern, 2.500+
+              Instagram-Followern und 5.000+ Website-Besuchern monatlich
             </ValueText>
             <ValueStats>Live Impact</ValueStats>
           </ValueCard>
@@ -585,7 +631,8 @@ export default function SponsoringV2Page() {
             <ValueIcon>🏆</ValueIcon>
             <ValueTitle>Sportlicher Erfolg</ValueTitle>
             <ValueText>
-              1. Damenmannschaft in Landesliga, Cheerleading-Team aktiv, Jugendförderung etabliert – Ihr Logo bei echten Siegen
+              1. Damenmannschaft in Landesliga, Cheerleading-Team aktiv,
+              Jugendförderung etabliert – Ihr Logo bei echten Siegen
             </ValueText>
             <ValueStats>Emotionale Bindung</ValueStats>
           </ValueCard>
@@ -594,7 +641,8 @@ export default function SponsoringV2Page() {
             <ValueIcon>🤝</ValueIcon>
             <ValueTitle>Community Impact</ValueTitle>
             <ValueText>
-              Werden Sie Teil einer starken Gemeinschaft. Ihre Unterstützung fördert Talente und schafft unvergessliche Momente
+              Werden Sie Teil einer starken Gemeinschaft. Ihre Unterstützung
+              fördert Talente und schafft unvergessliche Momente
             </ValueText>
             <ValueStats>Gemeinsam stark</ValueStats>
           </ValueCard>
@@ -675,6 +723,7 @@ export default function SponsoringV2Page() {
       <ExamplesSection>
         <ExamplesTitle>📸 So sehen Ihre Anzeigen aus</ExamplesTitle>
         <ExamplesGrid>
+          {/* Ballspende */}
           <ExampleCard>
             <ExampleImage src="/ballspende.png" alt="Ballspende Beispiel" />
             <ExampleContent>
@@ -682,25 +731,40 @@ export default function SponsoringV2Page() {
               <ExampleText>
                 Ihr Logo prominent auf Spielbällen – direkt im Einsatz bei Heimspielen
               </ExampleText>
+              <PreviewButton href="/ballspende.png" target="_blank" rel="noopener noreferrer">📸 Beispiel öffnen</PreviewButton>
             </ExampleContent>
           </ExampleCard>
 
+          {/* Stadionmagazin (PDF Preview Tile) */}
           <ExampleCard>
-            <ExampleImage src="/StadionMagazin.pdf" alt="Stadionmagazin Beispiel" />
+            <PreviewBox />
             <ExampleContent>
               <ExampleTitle>📖 Stadionmagazin</ExampleTitle>
               <ExampleText>
                 Professionelle Anzeigen in unserem Stadionheft – 100+ Exemplare pro Spiel
               </ExampleText>
+              <PreviewButton href="/StadionMagazin.pdf" target="_blank" rel="noopener noreferrer">📄 PDF öffnen</PreviewButton>
             </ExampleContent>
           </ExampleCard>
 
+          {/* Bandenwerbung – mit konkret gewünschtem Bild herren_1 */}
           <ExampleCard>
-            <ExampleImage src="/src/assets/gallery/herren/herren_8.jpg" alt="Bandenwerbung Beispiel" />
+            <ExampleImage src={getHeroImage("herren/herren_1")} alt="Bandenwerbung Beispiel" />
             <ExampleContent>
               <ExampleTitle>🖼️ Bandenwerbung</ExampleTitle>
               <ExampleText>
                 Sichtbare Präsenz am Spielfeldrand – bei jedem Heimspiel im Fokus
+              </ExampleText>
+            </ExampleContent>
+          </ExampleCard>
+
+          {/* Buswerbung – Flächenübersicht als Platzhalter */}
+          <ExampleCard>
+            <PreviewBox />
+            <ExampleContent>
+              <ExampleTitle>🚌 Buswerbung (Flächenübersicht)</ExampleTitle>
+              <ExampleText>
+                Heck, Seitentüren und hintere Seitenflächen – markante Werbepositionen mit hoher Sichtbarkeit
               </ExampleText>
             </ExampleContent>
           </ExampleCard>
@@ -713,16 +777,22 @@ export default function SponsoringV2Page() {
         <ProofGrid>
           <Testimonial>
             <TestimonialText>
-              "Die Zusammenarbeit mit SC Konstanz-Wollmatingen hat uns neue Kunden gebracht. Die Community ist unglaublich engagiert!"
+              "Die Zusammenarbeit mit SC Konstanz-Wollmatingen hat uns neue
+              Kunden gebracht. Die Community ist unglaublich engagiert!"
             </TestimonialText>
-            <TestimonialAuthor>Graf Hardenberg - Premium Partner</TestimonialAuthor>
+            <TestimonialAuthor>
+              Graf Hardenberg - Premium Partner
+            </TestimonialAuthor>
           </Testimonial>
 
           <Testimonial>
             <TestimonialText>
-              "Lokale Präsenz bei Heimspielen zahlt sich aus. Die Fans sind loyal und das Team professionell."
+              "Lokale Präsenz bei Heimspielen zahlt sich aus. Die Fans sind
+              loyal und das Team professionell."
             </TestimonialText>
-            <TestimonialAuthor>Logan&apos;s Linde - Community Partner</TestimonialAuthor>
+            <TestimonialAuthor>
+              Logan&apos;s Linde - Community Partner
+            </TestimonialAuthor>
           </Testimonial>
         </ProofGrid>
       </ProofSection>
@@ -731,7 +801,8 @@ export default function SponsoringV2Page() {
       <CTASection id="kontakt">
         <CTATitle>Jetzt Sponsor werden</CTATitle>
         <CTAText>
-          Erhalten Sie in 24 Stunden ein individuelles Angebot. Gemeinsam schaffen wir unvergessliche Momente!
+          Erhalten Sie in 24 Stunden ein individuelles Angebot. Gemeinsam
+          schaffen wir unvergessliche Momente!
         </CTAText>
         <CTAButton href="mailto:sponsoring@sckw.de?subject=Sponsoring-Anfrage">
           📧 Kontakt aufnehmen
@@ -744,22 +815,33 @@ export default function SponsoringV2Page() {
         <FAQGrid>
           <FAQItem>
             <FAQQuestion>Sind die Preise netto?</FAQQuestion>
-            <FAQAnswer>Ja, alle Preise verstehen sich netto zzgl. MwSt.</FAQAnswer>
+            <FAQAnswer>
+              Ja, alle Preise verstehen sich netto zzgl. MwSt.
+            </FAQAnswer>
           </FAQItem>
 
           <FAQItem>
             <FAQQuestion>Wie lange läuft ein Sponsoring-Vertrag?</FAQQuestion>
-            <FAQAnswer>Standard: 1 Jahr mit automatischer Verlängerung. Individuelle Laufzeiten möglich.</FAQAnswer>
+            <FAQAnswer>
+              Standard: 1 Jahr mit automatischer Verlängerung. Individuelle
+              Laufzeiten möglich.
+            </FAQAnswer>
           </FAQItem>
 
           <FAQItem>
             <FAQQuestion>Wie läuft die Gestaltung ab?</FAQQuestion>
-            <FAQAnswer>Wir übernehmen die Gestaltung. Sie liefern Logo + Claim, wir machen den Rest!</FAQAnswer>
+            <FAQAnswer>
+              Wir übernehmen die Gestaltung. Sie liefern Logo + Claim, wir
+              machen den Rest!
+            </FAQAnswer>
           </FAQItem>
 
           <FAQItem>
             <FAQQuestion>Was sind die nächsten Schritte?</FAQQuestion>
-            <FAQAnswer>Kontakt → Gespräch → Angebot → Vertrag → Umsetzung. Alles in 1-2 Wochen möglich.</FAQAnswer>
+            <FAQAnswer>
+              Kontakt → Gespräch → Angebot → Vertrag → Umsetzung. Alles in 1-2
+              Wochen möglich.
+            </FAQAnswer>
           </FAQItem>
         </FAQGrid>
       </FAQSection>
