@@ -1006,75 +1006,163 @@ const ExamplesTitle = styled.h3`
   letter-spacing: -0.02em;
 `;
 
-// Social Proof
-const ProofSection = styled.section`
-  background: white;
-  padding: 5rem 2rem;
+// Social Proof Section - Partner Testimonials
+const ProofSection = styled(Section)`
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #e10073, transparent);
+  }
+`;
+
+const ProofContainer = styled(Container)`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const ProofTitle = styled.h3`
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  color: #e10073;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 2rem;
+  letter-spacing: -0.02em;
+
+  @media (min-width: 768px) {
+    margin-bottom: 3rem;
+  }
 `;
 
 const ProofGrid = styled.div`
-  max-width: 800px;
-  margin: 0 auto;
   display: grid;
-  gap: 2rem;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 900px;
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
 `;
 
 const Testimonial = styled.div`
-  background: #f8f9fa;
-  border-radius: 12px;
-  padding: 2rem;
-  border-left: 4px solid #e10073;
+  background: white;
+  border-radius: 20px;
+  padding: 2rem 1.5rem;
+  border-left: 5px solid #e10073;
   text-align: center;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '"';
+    position: absolute;
+    top: 0.5rem;
+    left: 1rem;
+    font-size: 4rem;
+    color: rgba(225, 0, 115, 0.1);
+    font-family: serif;
+    line-height: 1;
+  }
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(225, 0, 115, 0.15);
+  }
+
+  @media (min-width: 768px) {
+    padding: 2.5rem 2rem;
+  }
 `;
 
 const TestimonialText = styled.p`
-  font-size: 1.1rem;
+  font-size: clamp(1rem, 2.2vw, 1.1rem);
   color: #333;
   font-style: italic;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
   line-height: 1.6;
+  position: relative;
+  z-index: 2;
 `;
 
 const TestimonialAuthor = styled.div`
-  font-size: 1rem;
+  font-size: 0.9rem;
   color: #e10073;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
+
+  @media (min-width: 768px) {
+    font-size: 1rem;
+  }
 `;
 
-const ProofTitle = styled.h3`
-  font-size: 2rem;
-  color: #e10073;
-  font-weight: 800;
-  text-align: center;
-  margin-bottom: 3rem;
-  letter-spacing: -0.02em;
-`;
-
-// CTA Section
-const CTASection = styled.section`
-  background: linear-gradient(135deg, #e10073, #ff6b9d);
-  padding: 5rem 2rem;
+// CTA Section - Final Call to Action
+const CTASection = styled(Section)`
+  background: linear-gradient(135deg, #e10073 0%, #ff6b9d 50%, #e10073 100%);
   text-align: center;
   color: white;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    right: -50%;
+    bottom: -50%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+    background-size: 30px 30px;
+    animation: ${pulse} 3s ease-in-out infinite;
+    opacity: 0.3;
+  }
+`;
+
+const CTAContainer = styled(Container)`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 2;
 `;
 
 const CTATitle = styled.h3`
-  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-size: clamp(1.8rem, 5vw, 2.8rem);
   font-weight: 800;
   margin-bottom: 1rem;
   letter-spacing: -0.02em;
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+
+  @media (min-width: 768px) {
+    margin-bottom: 1.5rem;
+  }
 `;
 
 const CTAText = styled.p`
-  font-size: clamp(1rem, 2vw, 1.2rem);
+  font-size: clamp(1rem, 2.5vw, 1.3rem);
   margin-bottom: 2rem;
-  opacity: 0.9;
-  max-width: 600px;
+  opacity: 0.95;
+  max-width: 650px;
   margin-left: auto;
   margin-right: auto;
   line-height: 1.6;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+
+  @media (min-width: 768px) {
+    margin-bottom: 2.5rem;
+  }
 `;
 
 const CTAButton = styled.a`
@@ -1082,69 +1170,134 @@ const CTAButton = styled.a`
   background: white;
   color: #e10073;
   font-weight: 700;
-  font-size: clamp(1rem, 2vw, 1.2rem);
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
   padding: 1.2rem 3rem;
   border-radius: 50px;
   text-decoration: none;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
   border: 2px solid white;
+  position: relative;
+  z-index: 3;
+  min-width: 250px;
+  text-align: center;
 
   &:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+    transform: translateY(-4px);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.3);
     background: #f8f9fa;
+    border-color: #f0f0f0;
   }
 
   &:focus {
-    outline: 3px solid rgba(255, 255, 255, 0.7);
-    outline-offset: 2px;
+    outline: 3px solid rgba(255, 255, 255, 0.8);
+    outline-offset: 3px;
+  }
+
+  @media (min-width: 768px) {
+    padding: 1.4rem 3.5rem;
+    min-width: 280px;
   }
 `;
 
-// FAQ Section
-const FAQSection = styled.section`
-  background: #f8f9fa;
-  padding: 5rem 2rem;
+// FAQ Section - Frequently Asked Questions
+const FAQSection = styled(Section)`
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #e10073, transparent);
+  }
+`;
+
+const FAQContainer = styled(Container)`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const FAQTitle = styled.h3`
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  color: #e10073;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 2rem;
+  letter-spacing: -0.02em;
+
+  @media (min-width: 768px) {
+    margin-bottom: 3rem;
+  }
 `;
 
 const FAQGrid = styled.div`
-  max-width: 800px;
-  margin: 0 auto;
   display: grid;
-  gap: 1.5rem;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  width: 100%;
+  max-width: 800px;
+
+  @media (min-width: 768px) {
+    gap: 1.5rem;
+  }
 `;
 
 const FAQItem = styled.div`
   background: white;
-  border-radius: 8px;
+  border-radius: 16px;
   padding: 1.5rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-  border: 1px solid #e5e7eb;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.06);
+  border: 2px solid transparent;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #e10073, #ff6b9d);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+  }
+
+  &:hover {
+    border-color: #e10073;
+    box-shadow: 0 8px 32px rgba(225, 0, 115, 0.1);
+    transform: translateY(-2px);
+
+    &::before {
+      transform: scaleX(1);
+    }
+  }
+
+  @media (min-width: 768px) {
+    padding: 2rem;
+  }
 `;
 
 const FAQQuestion = styled.h4`
-  font-size: 1.1rem;
+  font-size: clamp(1rem, 2.2vw, 1.1rem);
   color: #e10073;
   font-weight: 700;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.01em;
 `;
 
 const FAQAnswer = styled.p`
-  font-size: 1rem;
+  font-size: clamp(0.9rem, 2vw, 1rem);
   color: #555;
-  line-height: 1.5;
-`;
-
-const FAQTitle = styled.h3`
-  font-size: 2rem;
-  color: #e10073;
-  font-weight: 800;
-  text-align: center;
-  margin-bottom: 3rem;
-  letter-spacing: -0.02em;
+  line-height: 1.6;
+  margin: 0;
 `;
 
 // Instagram Insights Hook
