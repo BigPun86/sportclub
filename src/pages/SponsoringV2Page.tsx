@@ -351,6 +351,34 @@ const ExampleImage = styled.img`
   object-fit: cover;
 `;
 
+// Featured (größere) Karte: 2/3 Bild, 1/3 Inhalt
+const ExampleCardLarge = styled(ExampleCard)`
+  min-height: 540px;
+  display: flex;
+  flex-direction: column;
+
+  @media (max-width: 768px) {
+    min-height: 420px;
+  }
+`;
+
+const ExampleImageLarge = styled(ExampleImage)`
+  flex: 2 0 66%;
+  height: 66%;
+  min-height: 320px;
+
+  @media (max-width: 768px) {
+    min-height: 260px;
+  }
+`;
+
+const ExampleContentLarge = styled(ExampleContent)`
+  flex: 1 0 34%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`;
+
 // Generic preview tile (e.g. for PDFs or schematics)
 const PreviewBox = styled.div<{ $bg?: string }>`
   width: 100%;
@@ -725,41 +753,27 @@ export default function SponsoringV2Page() {
       <ExamplesSection>
         <ExamplesTitle>📸 So sehen Ihre Anzeigen aus</ExamplesTitle>
         <ExamplesGrid>
+          {/* Stadionmagazin zuerst, als große Karte (2/3 Bild, 1/3 Inhalt) */}
+          <ExampleCardLarge>
+            <ExampleImageLarge src="/pdf-preview.png" alt="Stadionmagazin Cover" />
+            <ExampleContentLarge>
+              <ExampleTitle>📖 Stadionmagazin</ExampleTitle>
+              <ExampleText>
+                Professionelle Anzeigen in unserem Stadionheft – 100+ Exemplare pro Spiel
+              </ExampleText>
+              <PreviewButton href="/StadionMagazin.pdf" target="_blank" rel="noopener noreferrer">📄 PDF öffnen</PreviewButton>
+            </ExampleContentLarge>
+          </ExampleCardLarge>
+
           {/* Ballspende */}
           <ExampleCard>
             <ExampleImage src="/ballspende.png" alt="Ballspende Beispiel" />
             <ExampleContent>
               <ExampleTitle>⚽ Ballspende</ExampleTitle>
               <ExampleText>
-                Ihr Logo prominent auf Spielbällen – direkt im Einsatz bei
-                Heimspielen
+                Ihr Logo prominent auf Spielbällen – direkt im Einsatz bei Heimspielen
               </ExampleText>
-              <PreviewButton
-                href="/ballspende.png"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                📸 Beispiel öffnen
-              </PreviewButton>
-            </ExampleContent>
-          </ExampleCard>
-
-          {/* Stadionmagazin (Bild-Preview) */}
-          <ExampleCard>
-            <ExampleImage src="/pdf-preview.png" alt="Stadionmagazin Cover" />
-            <ExampleContent>
-              <ExampleTitle>📖 Stadionmagazin</ExampleTitle>
-              <ExampleText>
-                Professionelle Anzeigen in unserem Stadionheft – 100+ Exemplare
-                pro Spiel
-              </ExampleText>
-              <PreviewButton
-                href="/StadionMagazin.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                📄 PDF öffnen
-              </PreviewButton>
+              <PreviewButton href="/ballspende.png" target="_blank" rel="noopener noreferrer">📸 Beispiel öffnen</PreviewButton>
             </ExampleContent>
           </ExampleCard>
 
