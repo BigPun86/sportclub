@@ -372,11 +372,12 @@ const ExampleImageLarge = styled(ExampleImage)`
   }
 `;
 
-const ExampleContentLarge = styled(ExampleContent)`
+const ExampleContentLarge = styled.div`
   flex: 1 0 34%;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding: 1.5rem;
 `;
 
 // Generic preview tile (e.g. for PDFs or schematics)
