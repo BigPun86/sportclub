@@ -1411,6 +1411,7 @@ Schnelle Abwicklung garantiert`}]}),u.jsx(z2,{})]}),u.jsx(af,{})]})}const DS=m.s
   min-height: 540px;
   display: flex;
   flex-direction: column;
+  grid-column: 1 / -1; /* nimmt volle Breite der ersten Zeile ein */
 
   @media (max-width: 768px) {
     min-height: 420px;
