@@ -744,13 +744,9 @@ export default function SponsoringV2Page() {
             </ExampleContent>
           </ExampleCard>
 
-          {/* Stadionmagazin (echte PDF-Cover-Preview) */}
+          {/* Stadionmagazin (Bild-Preview) */}
           <ExampleCard>
-            <iframe
-              src="/StadionMagazin.pdf#page=1&zoom=140&toolbar=0&navpanes=0&scrollbar=0"
-              title="Stadionmagazin Vorschau"
-              style={{ width: "100%", height: 200, border: 0, borderRadius: "12px 12px 0 0", background: "#f7f7fa" }}
-            />
+            <ExampleImage src="/pdf-preview.png" alt="Stadionmagazin Cover" />
             <ExampleContent>
               <ExampleTitle>📖 Stadionmagazin</ExampleTitle>
               <ExampleText>
