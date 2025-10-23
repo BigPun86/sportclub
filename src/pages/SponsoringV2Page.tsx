@@ -356,6 +356,7 @@ const ExampleCardLarge = styled(ExampleCard)`
   min-height: 540px;
   display: flex;
   flex-direction: column;
+  grid-column: 1 / -1; /* nimmt volle Breite der ersten Zeile ein */
 
   @media (max-width: 768px) {
     min-height: 420px;
@@ -756,13 +757,23 @@ export default function SponsoringV2Page() {
         <ExamplesGrid>
           {/* Stadionmagazin zuerst, als große Karte (2/3 Bild, 1/3 Inhalt) */}
           <ExampleCardLarge>
-            <ExampleImageLarge src="/pdf-preview.png" alt="Stadionmagazin Cover" />
+            <ExampleImageLarge
+              src="/pdf-preview.png"
+              alt="Stadionmagazin Cover"
+            />
             <ExampleContentLarge>
               <ExampleTitle>📖 Stadionmagazin</ExampleTitle>
               <ExampleText>
-                Professionelle Anzeigen in unserem Stadionheft – 100+ Exemplare pro Spiel
+                Professionelle Anzeigen in unserem Stadionheft – 100+ Exemplare
+                pro Spiel
               </ExampleText>
-              <PreviewButton href="/StadionMagazin.pdf" target="_blank" rel="noopener noreferrer">📄 PDF öffnen</PreviewButton>
+              <PreviewButton
+                href="/StadionMagazin.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                📄 PDF öffnen
+              </PreviewButton>
             </ExampleContentLarge>
           </ExampleCardLarge>
 
@@ -772,9 +783,16 @@ export default function SponsoringV2Page() {
             <ExampleContent>
               <ExampleTitle>⚽ Ballspende</ExampleTitle>
               <ExampleText>
-                Ihr Logo prominent auf Spielbällen – direkt im Einsatz bei Heimspielen
+                Ihr Logo prominent auf Spielbällen – direkt im Einsatz bei
+                Heimspielen
               </ExampleText>
-              <PreviewButton href="/ballspende.png" target="_blank" rel="noopener noreferrer">📸 Beispiel öffnen</PreviewButton>
+              <PreviewButton
+                href="/ballspende.png"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                📸 Beispiel öffnen
+              </PreviewButton>
             </ExampleContent>
           </ExampleCard>
 
