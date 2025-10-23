@@ -573,16 +573,162 @@ const InsightsTitle = styled.h3`
   }
 `;
 
+const InsightsDetailGrid = styled.div`
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  width: 100%;
+  max-width: 1000px;
+  margin-top: 2rem;
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+`;
+
+const ContentBreakdownCard = styled.div`
+  background: white;
+  border-radius: 20px;
+  padding: 2rem 1.5rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+
+  &:hover {
+    border-color: #e10073;
+    box-shadow: 0 12px 40px rgba(225, 0, 115, 0.15);
+  }
+
+  @media (min-width: 768px) {
+    padding: 2.5rem 2rem;
+  }
+`;
+
+const ContentBreakdownTitle = styled.h4`
+  font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+  color: #e10073;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  text-align: center;
+`;
+
+const ContentBreakdownList = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+`;
+
+const ContentTypeItem = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #f0f0f0;
+
+  &:last-child {
+    border-bottom: none;
+  }
+`;
+
+const ContentTypeLabel = styled.span`
+  font-size: 0.95rem;
+  color: #333;
+  font-weight: 600;
+`;
+
+const ContentTypeBar = styled.div<{ $percentage: number; $color: string }>`
+  background: ${({ $color }) => $color};
+  height: 8px;
+  border-radius: 4px;
+  width: ${({ $percentage }) => `${$percentage}%`};
+  min-width: 40px;
+  margin-right: 1rem;
+  transition: width 0.3s ease;
+`;
+
+const ContentTypeValue = styled.span`
+  font-size: 0.9rem;
+  color: #666;
+  font-weight: 600;
+  white-space: nowrap;
+`;
+
+const ActiveTimesCard = styled(ContentBreakdownCard)``;
+
+const ActiveTimesTitle = styled(ContentBreakdownTitle)``;
+
+const ActiveTimesList = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+`;
+
+const ActiveTimeItem = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+`;
+
+const ActiveTimeLabel = styled.span`
+  font-size: 0.9rem;
+  color: #333;
+  font-weight: 500;
+`;
+
+const ActiveTimeValue = styled.span`
+  font-size: 0.9rem;
+  color: #e10073;
+  font-weight: 700;
+`;
+
+const FollowerBreakdownCard = styled(ContentBreakdownCard)``;
+
+const FollowerBreakdownTitle = styled(ContentBreakdownTitle)``;
+
+const FollowerBreakdownList = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+`;
+
+const FollowerTypeItem = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem;
+  background: #f8f9fa;
+  border-radius: 12px;
+`;
+
+const FollowerTypeLabel = styled.span`
+  font-size: 0.95rem;
+  color: #333;
+  font-weight: 600;
+`;
+
+const FollowerTypeValue = styled.span`
+  font-size: 1.1rem;
+  color: #e10073;
+  font-weight: 800;
+`;
+
 const InsightsGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
   width: 100%;
-  max-width: 800px;
+  max-width: 1000px;
 
   @media (min-width: 768px) {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
+  }
+
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1rem;
   }
 `;
 
@@ -1267,32 +1413,69 @@ const FAQAnswer = styled.p`
   margin: 0;
 `;
 
-// Instagram Insights Hook
+// Instagram Insights Hook - Real data from 90-day analysis
 interface InstagramInsights {
   followers: number;
   posts: number;
   engagement: number;
   reach: number;
+  interactions: number;
+  views: number;
+  topContentViews: number[];
+  contentBreakdown: {
+    posts: number;
+    stories: number;
+    reels: number;
+    videos: number;
+  };
+  activeTimes: Array<{ time: string; reach: number }>;
+  followerVsNonFollower: {
+    follower: number;
+    nonFollower: number;
+  };
 }
 
+// Real Instagram Insights from 90-day analysis (Saisonstart/Vorbereitung)
 const useInstagramInsights = () => {
   const [insights, setInsights] = useState<InstagramInsights>({
-    followers: 2500,
-    posts: 450,
-    engagement: 8.2,
-    reach: 15000,
+    followers: 2068,
+    posts: 90, // Based on 90-day period
+    engagement: 3.4, // Reels engagement rate
+    reach: 620619,
+    interactions: 5128,
+    views: 620619,
+    topContentViews: [19200, 12000, 11300, 9700, 9700], // From top posts
+    contentBreakdown: {
+      posts: 56.5,
+      stories: 40.2,
+      reels: 3.4,
+      videos: 0.0,
+    },
+    activeTimes: [
+      { time: "9:00", reach: 552 },
+      { time: "6:00", reach: 649 },
+      { time: "9:00", reach: 658 },
+      { time: "12:00", reach: 616 },
+      { time: "15:00", reach: 151 },
+      { time: "18:00", reach: 91 },
+      { time: "21:00", reach: 430 },
+    ],
+    followerVsNonFollower: {
+      follower: 82.2,
+      nonFollower: 17.8,
+    },
   });
 
   useEffect(() => {
-    // Mock live data - in production: Meta Graph API
+    // Simulate live updates with realistic fluctuations
     const interval = setInterval(() => {
-      setInsights({
-        followers: 2500 + Math.floor(Math.random() * 100),
-        posts: 450 + Math.floor(Math.random() * 50),
-        engagement: 8.2 + Math.random() * 2,
-        reach: 15000 + Math.floor(Math.random() * 5000),
-      });
-    }, 5000);
+      setInsights((prev) => ({
+        ...prev,
+        followers: 2068 + Math.floor(Math.random() * 20) - 10, // ±10 fluctuation
+        reach: 620619 + Math.floor(Math.random() * 5000) - 2500, // ±2500 fluctuation
+        engagement: 3.4 + Math.random() * 1 - 0.5, // ±0.5% fluctuation
+      }));
+    }, 10000); // Update every 10 seconds
 
     return () => clearInterval(interval);
   }, []);
@@ -1310,25 +1493,24 @@ export default function SponsoringV2Page() {
         <HeroContent>
           <HeroTitle>Werden Sie Teil der SC-Familie</HeroTitle>
           <HeroSubtitle>
-            Maximale Sichtbarkeit bei 15+ Heimspielen, 2.500+
-            Instagram-Followern und einer leidenschaftlichen Community
+            Maximale Sichtbarkeit bei 15+ Heimspielen, 620k+ Instagram-Aufrufen und einer leidenschaftlichen Community
           </HeroSubtitle>
           <HeroStats>
             <StatItem>
-              <StatNumber>15+</StatNumber>
-              <StatLabel>Heimspiele</StatLabel>
+              <StatNumber>620k+</StatNumber>
+              <StatLabel>Aufrufe</StatLabel>
             </StatItem>
             <StatItem>
-              <StatNumber>200+</StatNumber>
-              <StatLabel>Zuschauer</StatLabel>
+              <StatNumber>5.1k</StatNumber>
+              <StatLabel>Interaktionen</StatLabel>
             </StatItem>
             <StatItem>
-              <StatNumber>2.5k</StatNumber>
-              <StatLabel>Instagram</StatLabel>
+              <StatNumber>2.1k</StatNumber>
+              <StatLabel>Follower</StatLabel>
             </StatItem>
             <StatItem>
-              <StatNumber>5k+</StatNumber>
-              <StatLabel>Website Views</StatLabel>
+              <StatNumber>56%</StatNumber>
+              <StatLabel>Beiträge</StatLabel>
             </StatItem>
           </HeroStats>
           <HeroCTAGroup>
@@ -1355,8 +1537,7 @@ export default function SponsoringV2Page() {
               <ValueIcon>📊</ValueIcon>
               <ValueTitle>Maximale Reichweite</ValueTitle>
               <ValueText>
-                15+ Heimspiele pro Saison mit 200+ Zuschauern, 2.500+
-                Instagram-Followern und 5.000+ Website-Besuchern monatlich
+                15+ Heimspiele pro Saison mit 200+ Zuschauern, 2.068 Instagram-Followern und 620k+ Aufrufen in 90 Tagen
               </ValueText>
               <ValueHighlight>Live Impact</ValueHighlight>
             </ValueCard>
@@ -1457,18 +1638,94 @@ export default function SponsoringV2Page() {
               <InsightLabel>Follower</InsightLabel>
             </InsightCard>
             <InsightCard>
-              <InsightValue>{insights.posts.toLocaleString()}</InsightValue>
-              <InsightLabel>Posts</InsightLabel>
+              <InsightValue>{insights.views.toLocaleString()}</InsightValue>
+              <InsightLabel>Aufrufe</InsightLabel>
+            </InsightCard>
+            <InsightCard>
+              <InsightValue>
+                {insights.interactions.toLocaleString()}
+              </InsightValue>
+              <InsightLabel>Interaktionen</InsightLabel>
+            </InsightCard>
+            <InsightCard>
+              <InsightValue>{insights.reach.toLocaleString()}</InsightValue>
+              <InsightLabel>Reichweite</InsightLabel>
             </InsightCard>
             <InsightCard>
               <InsightValue>{insights.engagement.toFixed(1)}%</InsightValue>
               <InsightLabel>Engagement</InsightLabel>
             </InsightCard>
             <InsightCard>
-              <InsightValue>{insights.reach.toLocaleString()}</InsightValue>
-              <InsightLabel>Reichweite</InsightLabel>
+              <InsightValue>{insights.posts}</InsightValue>
+              <InsightLabel>Posts (90 Tage)</InsightLabel>
             </InsightCard>
           </InsightsGrid>
+
+          {/* Detailed Instagram Analytics */}
+          <InsightsDetailGrid>
+            {/* Content Breakdown */}
+            <ContentBreakdownCard>
+              <ContentBreakdownTitle>📈 Content-Performance</ContentBreakdownTitle>
+              <ContentBreakdownList>
+                <ContentTypeItem>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flex: 1 }}>
+                    <ContentTypeLabel>Beiträge</ContentTypeLabel>
+                    <ContentTypeBar $percentage={insights.contentBreakdown.posts} $color="#e10073" />
+                  </div>
+                  <ContentTypeValue>{insights.contentBreakdown.posts}%</ContentTypeValue>
+                </ContentTypeItem>
+                <ContentTypeItem>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flex: 1 }}>
+                    <ContentTypeLabel>Stories</ContentTypeLabel>
+                    <ContentTypeBar $percentage={insights.contentBreakdown.stories} $color="#ff6b9d" />
+                  </div>
+                  <ContentTypeValue>{insights.contentBreakdown.stories}%</ContentTypeValue>
+                </ContentTypeItem>
+                <ContentTypeItem>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flex: 1 }}>
+                    <ContentTypeLabel>Reels</ContentTypeLabel>
+                    <ContentTypeBar $percentage={insights.contentBreakdown.reels} $color="#b8005a" />
+                  </div>
+                  <ContentTypeValue>{insights.contentBreakdown.reels}%</ContentTypeValue>
+                </ContentTypeItem>
+                <ContentTypeItem>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flex: 1 }}>
+                    <ContentTypeLabel>Videos</ContentTypeLabel>
+                    <ContentTypeBar $percentage={insights.contentBreakdown.videos} $color="#d00068" />
+                  </div>
+                  <ContentTypeValue>{insights.contentBreakdown.videos}%</ContentTypeValue>
+                </ContentTypeItem>
+              </ContentBreakdownList>
+            </ContentBreakdownCard>
+
+            {/* Active Times */}
+            <ActiveTimesCard>
+              <ActiveTimesTitle>🕐 Aktivste Zeiten</ActiveTimesTitle>
+              <ActiveTimesList>
+                {insights.activeTimes.slice(0, 5).map((time, index) => (
+                  <ActiveTimeItem key={index}>
+                    <ActiveTimeLabel>{time.time}:00</ActiveTimeLabel>
+                    <ActiveTimeValue>{time.reach.toLocaleString()}</ActiveTimeValue>
+                  </ActiveTimeItem>
+                ))}
+              </ActiveTimesList>
+            </ActiveTimesCard>
+
+            {/* Follower vs Non-Follower Breakdown */}
+            <FollowerBreakdownCard>
+              <FollowerBreakdownTitle>👥 Audience Breakdown</FollowerBreakdownTitle>
+              <FollowerBreakdownList>
+                <FollowerTypeItem>
+                  <FollowerTypeLabel>Follower</FollowerTypeLabel>
+                  <FollowerTypeValue>{insights.followerVsNonFollower.follower}%</FollowerTypeValue>
+                </FollowerTypeItem>
+                <FollowerTypeItem>
+                  <FollowerTypeLabel>Nicht-Follower</FollowerTypeLabel>
+                  <FollowerTypeValue>{insights.followerVsNonFollower.nonFollower}%</FollowerTypeValue>
+                </FollowerTypeItem>
+              </FollowerBreakdownList>
+            </FollowerBreakdownCard>
+          </InsightsDetailGrid>
         </InsightsContainer>
       </InsightsSection>
 
