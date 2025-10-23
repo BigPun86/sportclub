@@ -357,7 +357,9 @@ const PreviewBox = styled.div<{ $bg?: string }>`
   height: 200px;
   border-radius: 12px 12px 0 0;
   background: ${({ $bg }) =>
-    $bg ? `url(${$bg}) center/cover` : `linear-gradient(135deg,#f7f7fa,#ffffff)`};
+    $bg
+      ? `url(${$bg}) center/cover`
+      : `linear-gradient(135deg,#f7f7fa,#ffffff)`};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -368,12 +370,12 @@ const PreviewBox = styled.div<{ $bg?: string }>`
     color: #e10073;
     font-weight: 900;
     font-size: 1.05rem;
-    background: rgba(255,255,255,0.9);
+    background: rgba(255, 255, 255, 0.9);
     padding: 0.35rem 0.7rem;
     border-radius: 6px;
     letter-spacing: 0.06em;
     text-transform: uppercase;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   }
 `;
 
@@ -393,7 +395,7 @@ const PreviewButton = styled.a`
     background: #b8005a;
     border-color: #b8005a;
     transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(225,0,115,0.25);
+    box-shadow: 0 4px 12px rgba(225, 0, 115, 0.25);
   }
 `;
 
@@ -729,31 +731,53 @@ export default function SponsoringV2Page() {
             <ExampleContent>
               <ExampleTitle>⚽ Ballspende</ExampleTitle>
               <ExampleText>
-                Ihr Logo prominent auf Spielbällen – direkt im Einsatz bei Heimspielen
+                Ihr Logo prominent auf Spielbällen – direkt im Einsatz bei
+                Heimspielen
               </ExampleText>
-              <PreviewButton href="/ballspende.png" target="_blank" rel="noopener noreferrer">📸 Beispiel öffnen</PreviewButton>
+              <PreviewButton
+                href="/ballspende.png"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                📸 Beispiel öffnen
+              </PreviewButton>
             </ExampleContent>
           </ExampleCard>
 
-          {/* Stadionmagazin (PDF Preview Tile) */}
+          {/* Stadionmagazin (echte PDF-Cover-Preview) */}
           <ExampleCard>
-            <PreviewBox />
+            <iframe
+              src="/StadionMagazin.pdf#page=1&zoom=140&toolbar=0&navpanes=0&scrollbar=0"
+              title="Stadionmagazin Vorschau"
+              style={{ width: "100%", height: 200, border: 0, borderRadius: "12px 12px 0 0", background: "#f7f7fa" }}
+            />
             <ExampleContent>
               <ExampleTitle>📖 Stadionmagazin</ExampleTitle>
               <ExampleText>
-                Professionelle Anzeigen in unserem Stadionheft – 100+ Exemplare pro Spiel
+                Professionelle Anzeigen in unserem Stadionheft – 100+ Exemplare
+                pro Spiel
               </ExampleText>
-              <PreviewButton href="/StadionMagazin.pdf" target="_blank" rel="noopener noreferrer">📄 PDF öffnen</PreviewButton>
+              <PreviewButton
+                href="/StadionMagazin.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                📄 PDF öffnen
+              </PreviewButton>
             </ExampleContent>
           </ExampleCard>
 
           {/* Bandenwerbung – mit konkret gewünschtem Bild herren_1 */}
           <ExampleCard>
-            <ExampleImage src={getHeroImage("herren/herren_1")} alt="Bandenwerbung Beispiel" />
+            <ExampleImage
+              src={getHeroImage("herren/herren_1")}
+              alt="Bandenwerbung Beispiel"
+            />
             <ExampleContent>
               <ExampleTitle>🖼️ Bandenwerbung</ExampleTitle>
               <ExampleText>
-                Sichtbare Präsenz am Spielfeldrand – bei jedem Heimspiel im Fokus
+                Sichtbare Präsenz am Spielfeldrand – bei jedem Heimspiel im
+                Fokus
               </ExampleText>
             </ExampleContent>
           </ExampleCard>
@@ -764,8 +788,10 @@ export default function SponsoringV2Page() {
             <ExampleContent>
               <ExampleTitle>🚌 Buswerbung (Flächenübersicht)</ExampleTitle>
               <ExampleText>
-                Heck, Seitentüren und hintere Seitenflächen – markante Werbepositionen mit hoher Sichtbarkeit
+                Heck, Seitentüren und hintere Seitenflächen – markante
+                Werbepositionen mit hoher Sichtbarkeit
               </ExampleText>
+              <PreviewButton href="#kontakt">Details anfragen</PreviewButton>
             </ExampleContent>
           </ExampleCard>
         </ExamplesGrid>
