@@ -1493,7 +1493,8 @@ export default function SponsoringV2Page() {
         <HeroContent>
           <HeroTitle>Werden Sie Teil der SC-Familie</HeroTitle>
           <HeroSubtitle>
-            Maximale Sichtbarkeit bei 15+ Heimspielen, 620k+ Instagram-Aufrufen und einer leidenschaftlichen Community
+            Maximale Sichtbarkeit bei 15+ Heimspielen, 620k+ Instagram-Aufrufen
+            und einer leidenschaftlichen Community
           </HeroSubtitle>
           <HeroStats>
             <StatItem>
@@ -1537,7 +1538,8 @@ export default function SponsoringV2Page() {
               <ValueIcon>📊</ValueIcon>
               <ValueTitle>Maximale Reichweite</ValueTitle>
               <ValueText>
-                15+ Heimspiele pro Saison mit 200+ Zuschauern, 2.068 Instagram-Followern und 620k+ Aufrufen in 90 Tagen
+                15+ Heimspiele pro Saison mit 200+ Zuschauern, 2.068
+                Instagram-Followern und 620k+ Aufrufen in 90 Tagen
               </ValueText>
               <ValueHighlight>Live Impact</ValueHighlight>
             </ValueCard>
@@ -1546,8 +1548,10 @@ export default function SponsoringV2Page() {
               <ValueIcon>🏆</ValueIcon>
               <ValueTitle>Sportlicher Erfolg</ValueTitle>
               <ValueText>
-                1. Damenmannschaft in Landesliga, Cheerleading-Team aktiv,
-                Jugendförderung etabliert – Ihr Logo bei echten Siegen
+                1. Damen- und 1. Herrenmannschaft in der Landesliga – die
+                Herren mit dem klaren Ziel, zurück in die Verbandsliga
+                aufzusteigen. Cheerleading-Team aktiv, Jugendförderung
+                etabliert – Ihr Logo bei echten Siegen
               </ValueText>
               <ValueHighlight>Emotionale Bindung</ValueHighlight>
             </ValueCard>
@@ -1665,35 +1669,85 @@ export default function SponsoringV2Page() {
           <InsightsDetailGrid>
             {/* Content Breakdown */}
             <ContentBreakdownCard>
-              <ContentBreakdownTitle>📈 Content-Performance</ContentBreakdownTitle>
+              <ContentBreakdownTitle>
+                📈 Content-Performance
+              </ContentBreakdownTitle>
               <ContentBreakdownList>
                 <ContentTypeItem>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flex: 1 }}>
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "0.5rem",
+                      flex: 1,
+                    }}
+                  >
                     <ContentTypeLabel>Beiträge</ContentTypeLabel>
-                    <ContentTypeBar $percentage={insights.contentBreakdown.posts} $color="#e10073" />
+                    <ContentTypeBar
+                      $percentage={insights.contentBreakdown.posts}
+                      $color="#e10073"
+                    />
                   </div>
-                  <ContentTypeValue>{insights.contentBreakdown.posts}%</ContentTypeValue>
+                  <ContentTypeValue>
+                    {insights.contentBreakdown.posts}%
+                  </ContentTypeValue>
                 </ContentTypeItem>
                 <ContentTypeItem>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flex: 1 }}>
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "0.5rem",
+                      flex: 1,
+                    }}
+                  >
                     <ContentTypeLabel>Stories</ContentTypeLabel>
-                    <ContentTypeBar $percentage={insights.contentBreakdown.stories} $color="#ff6b9d" />
+                    <ContentTypeBar
+                      $percentage={insights.contentBreakdown.stories}
+                      $color="#ff6b9d"
+                    />
                   </div>
-                  <ContentTypeValue>{insights.contentBreakdown.stories}%</ContentTypeValue>
+                  <ContentTypeValue>
+                    {insights.contentBreakdown.stories}%
+                  </ContentTypeValue>
                 </ContentTypeItem>
                 <ContentTypeItem>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flex: 1 }}>
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "0.5rem",
+                      flex: 1,
+                    }}
+                  >
                     <ContentTypeLabel>Reels</ContentTypeLabel>
-                    <ContentTypeBar $percentage={insights.contentBreakdown.reels} $color="#b8005a" />
+                    <ContentTypeBar
+                      $percentage={insights.contentBreakdown.reels}
+                      $color="#b8005a"
+                    />
                   </div>
-                  <ContentTypeValue>{insights.contentBreakdown.reels}%</ContentTypeValue>
+                  <ContentTypeValue>
+                    {insights.contentBreakdown.reels}%
+                  </ContentTypeValue>
                 </ContentTypeItem>
                 <ContentTypeItem>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flex: 1 }}>
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "0.5rem",
+                      flex: 1,
+                    }}
+                  >
                     <ContentTypeLabel>Videos</ContentTypeLabel>
-                    <ContentTypeBar $percentage={insights.contentBreakdown.videos} $color="#d00068" />
+                    <ContentTypeBar
+                      $percentage={insights.contentBreakdown.videos}
+                      $color="#d00068"
+                    />
                   </div>
-                  <ContentTypeValue>{insights.contentBreakdown.videos}%</ContentTypeValue>
+                  <ContentTypeValue>
+                    {insights.contentBreakdown.videos}%
+                  </ContentTypeValue>
                 </ContentTypeItem>
               </ContentBreakdownList>
             </ContentBreakdownCard>
@@ -1705,7 +1759,9 @@ export default function SponsoringV2Page() {
                 {insights.activeTimes.slice(0, 5).map((time, index) => (
                   <ActiveTimeItem key={index}>
                     <ActiveTimeLabel>{time.time}:00</ActiveTimeLabel>
-                    <ActiveTimeValue>{time.reach.toLocaleString()}</ActiveTimeValue>
+                    <ActiveTimeValue>
+                      {time.reach.toLocaleString()}
+                    </ActiveTimeValue>
                   </ActiveTimeItem>
                 ))}
               </ActiveTimesList>
@@ -1713,15 +1769,21 @@ export default function SponsoringV2Page() {
 
             {/* Follower vs Non-Follower Breakdown */}
             <FollowerBreakdownCard>
-              <FollowerBreakdownTitle>👥 Audience Breakdown</FollowerBreakdownTitle>
+              <FollowerBreakdownTitle>
+                👥 Audience Breakdown
+              </FollowerBreakdownTitle>
               <FollowerBreakdownList>
                 <FollowerTypeItem>
                   <FollowerTypeLabel>Follower</FollowerTypeLabel>
-                  <FollowerTypeValue>{insights.followerVsNonFollower.follower}%</FollowerTypeValue>
+                  <FollowerTypeValue>
+                    {insights.followerVsNonFollower.follower}%
+                  </FollowerTypeValue>
                 </FollowerTypeItem>
                 <FollowerTypeItem>
                   <FollowerTypeLabel>Nicht-Follower</FollowerTypeLabel>
-                  <FollowerTypeValue>{insights.followerVsNonFollower.nonFollower}%</FollowerTypeValue>
+                  <FollowerTypeValue>
+                    {insights.followerVsNonFollower.nonFollower}%
+                  </FollowerTypeValue>
                 </FollowerTypeItem>
               </FollowerBreakdownList>
             </FollowerBreakdownCard>

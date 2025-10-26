@@ -37,8 +37,10 @@ const LogoText = styled.h1`
   font-weight: 800;
   color: ${(p) => p.theme.colors.primary};
   margin: 0;
+  white-space: nowrap; /* niemals umbrechen */
 
-  @media (max-width: 640px) {
+  /* Auf kleineren Screens nur das Logo anzeigen */
+  @media (max-width: 900px) {
     display: none;
   }
 `;
