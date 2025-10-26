@@ -38,8 +38,9 @@ const Hero = styled.section`
   align-items: center;
   justify-content: center;
   position: relative;
-  padding: 2rem 0;
+  padding: 3rem 0 2rem 0;
   overflow: hidden;
+  scroll-margin-top: 90px; /* Sticky-Header Offset */
 
   &::before {
     content: "";
@@ -232,6 +233,7 @@ const HeroCTA = styled.a<{ $primary?: boolean }>`
 // Section with consistent spacing
 const Section = styled.section`
   padding: 4rem 0;
+  scroll-margin-top: 90px; /* verhindert, dass Anker unter dem Sticky-Header landen */
 
   @media (min-width: 768px) {
     padding: 6rem 0;
@@ -370,6 +372,11 @@ const ValueHighlight = styled.div`
 const PackagesSection = styled(Section)`
   background: white;
   position: relative;
+  margin-top: 1rem;
+
+  @media (min-width: 768px) {
+    margin-top: 2rem;
+  }
 `;
 
 const PackagesGrid = styled.div`
@@ -1548,10 +1555,10 @@ export default function SponsoringV2Page() {
               <ValueIcon>🏆</ValueIcon>
               <ValueTitle>Sportlicher Erfolg</ValueTitle>
               <ValueText>
-                1. Damen- und 1. Herrenmannschaft in der Landesliga – die
-                Herren mit dem klaren Ziel, zurück in die Verbandsliga
-                aufzusteigen. Cheerleading-Team aktiv, Jugendförderung
-                etabliert – Ihr Logo bei echten Siegen
+                1. Damen- und 1. Herrenmannschaft in der Landesliga – die Herren
+                mit dem klaren Ziel, zurück in die Verbandsliga aufzusteigen.
+                Cheerleading-Team aktiv, Jugendförderung etabliert – Ihr Logo
+                bei echten Siegen
               </ValueText>
               <ValueHighlight>Emotionale Bindung</ValueHighlight>
             </ValueCard>

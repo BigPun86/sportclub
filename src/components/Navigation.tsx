@@ -9,6 +9,7 @@ const NavContainer = styled.nav`
   position: sticky;
   top: 0;
   z-index: 100;
+  min-height: 64px; /* Reserve Platz, verhindert Überlappung */
 `;
 
 const NavContent = styled.div`
