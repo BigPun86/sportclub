@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { getHeroImage } from "../utils/imageLoader";
 
 const ChartContainer = styled.div`
   background: white;
@@ -6,7 +7,7 @@ const ChartContainer = styled.div`
   padding: 2rem 1.5rem;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
   border: 1px solid #f0f0f0;
-  max-width: 900px;
+  max-width: 1000px;
   margin: 0 auto;
 
   @media (min-width: 768px) {
@@ -33,61 +34,91 @@ const ChartSubtitle = styled.p`
 const BarsContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1.5rem;
   margin-bottom: 2rem;
 `;
 
 const BarRow = styled.div`
+  display: grid;
+  grid-template-columns: 140px 1fr 100px;
+  gap: 1rem;
+  align-items: center;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+`;
+
+const BarImage = styled.img`
+  width: 140px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+
+  @media (max-width: 768px) {
+    width: 100%;
+    height: 120px;
+  }
+`;
+
+const BarContent = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  flex: 1;
 `;
 
 const BarLabel = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 0.95rem;
-  font-weight: 600;
+  font-size: 0.9rem;
+  font-weight: 700;
   color: #333;
-
-  span:first-child {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-
-  span:last-child {
-    color: #e10073;
-    font-weight: 800;
-    font-size: 1.1rem;
-  }
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 `;
 
 const BarTrack = styled.div`
   background: #f0f0f0;
   border-radius: 9999px;
-  height: 32px;
+  height: 28px;
   overflow: hidden;
   position: relative;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.06);
 `;
 
-const BarFill = styled.div<{ $percent: number; $color: string }>`
-  background: ${({ $color }) => $color};
+const BarFill = styled.div<{ $percent: number; $gradient: string }>`
+  background: ${({ $gradient }) => $gradient};
   height: 100%;
   width: ${({ $percent }) => $percent}%;
   border-radius: 9999px;
-  transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.3);
   
   &::after {
     content: "";
     position: absolute;
     top: 0;
+    left: 0;
     right: 0;
-    width: 4px;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.3);
+    height: 40%;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.3), transparent);
+    border-radius: 9999px 9999px 0 0;
+  }
+`;
+
+const BarValue = styled.div`
+  font-size: 1.3rem;
+  font-weight: 900;
+  color: #e10073;
+  text-align: right;
+  white-space: nowrap;
+
+  @media (max-width: 768px) {
+    text-align: center;
+    font-size: 1.5rem;
   }
 `;
 
@@ -130,22 +161,25 @@ const HighlightBox = styled.div`
 
 const chartData = [
   {
-    label: "Winterpause (Nov-Jan)",
+    label: "Winterpause (Nov–Jan)",
     value: 285000,
-    color: "#9ca3af",
+    gradient: "linear-gradient(135deg, #9ca3af, #6b7280)",
     icon: "❄️",
+    image: getHeroImage("herren/herren_8"),
   },
   {
-    label: "Saison (Jun-Aug)",
+    label: "Saison (Jun–Aug)",
     value: 684000,
-    color: "#e10073",
+    gradient: "linear-gradient(135deg, #e10073, #c70066)",
     icon: "⚽",
+    image: getHeroImage("herren/herren_6"),
   },
   {
     label: "Prognose Saison (konservativ)",
     value: 650000,
-    color: "#ff6b9d",
+    gradient: "linear-gradient(135deg, #ff6b9d, #e10073)",
     icon: "📈",
+    image: getHeroImage("herren/herren_16"),
   },
 ];
 
@@ -156,23 +190,24 @@ export default function InstagramChart() {
     <ChartContainer>
       <ChartTitle>📊 Instagram-Reichweite: Saison vs. Winterpause</ChartTitle>
       <ChartSubtitle>
-        Echte Zahlen aus unserem Account - so entwickelt sich die Sichtbarkeit über das Jahr
+        Echte Zahlen aus unserem Account – so entwickelt sich die Sichtbarkeit über das Jahr
       </ChartSubtitle>
       <BarsContainer>
         {chartData.map((bar) => (
           <BarRow key={bar.label}>
-            <BarLabel>
-              <span>
+            <BarImage src={bar.image} alt={bar.label} />
+            <BarContent>
+              <BarLabel>
                 {bar.icon} {bar.label}
-              </span>
-              <span>{(bar.value / 1000).toFixed(0)}k</span>
-            </BarLabel>
-            <BarTrack>
-              <BarFill
-                $percent={(bar.value / maxValue) * 100}
-                $color={bar.color}
-              />
-            </BarTrack>
+              </BarLabel>
+              <BarTrack>
+                <BarFill
+                  $percent={(bar.value / maxValue) * 100}
+                  $gradient={bar.gradient}
+                />
+              </BarTrack>
+            </BarContent>
+            <BarValue>{(bar.value / 1000).toFixed(0)}k</BarValue>
           </BarRow>
         ))}
       </BarsContainer>
