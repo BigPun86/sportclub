@@ -142,16 +142,55 @@ const CTAButton = styled.a<{ isVergeben?: boolean }>`
   }
 `;
 
-const VergebenMessage = styled.div`
-  color: #666;
-  font-size: 1rem;
-  text-align: center;
-  font-style: italic;
-  margin: 1rem 0;
+const SponsorPresentation = styled.div`
   flex: 1;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding: 1rem 0;
+`;
+
+const SponsorLogo = styled.img`
+  max-width: 180px;
+  max-height: 120px;
+  object-fit: contain;
+  margin-bottom: 1rem;
+`;
+
+const SponsorName = styled.div`
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 0.5rem;
+  text-align: center;
+`;
+
+const SponsorSince = styled.div`
+  font-size: 0.85rem;
+  color: #999;
+  margin-bottom: 1rem;
+  text-align: center;
+`;
+
+const SponsorLink = styled.a`
+  display: inline-block;
+  background: #f0f0f0;
+  color: #e10073;
+  font-weight: 600;
+  font-size: 0.85rem;
+  padding: 0.6rem 1.2rem;
+  border-radius: 20px;
+  text-decoration: none;
+  border: 1px solid #e0e0e0;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: #e10073;
+    color: white;
+    border-color: #e10073;
+    transform: translateY(-1px);
+  }
 `;
 
 export const EMAIL_KONTAKT = "sponsoring@sckw.de";
@@ -234,8 +273,28 @@ export default function SponsoringGrid({ packages }: SponsoringGridProps) {
               </StatusBadge>
             </Header>
 
-            {isVergeben ? (
-              <VergebenMessage>✅ Alle Plätze vergeben</VergebenMessage>
+            {isVergeben && pkg.sponsors && pkg.sponsors.length > 0 ? (
+              <SponsorPresentation>
+                {pkg.sponsors[0].image && (
+                  <SponsorLogo
+                    src={`/sponsors/${pkg.sponsors[0].image}`}
+                    alt={pkg.sponsors[0].name}
+                  />
+                )}
+                <SponsorName>{pkg.sponsors[0].name}</SponsorName>
+                <SponsorSince>
+                  Hauptsponsor seit {pkg.sponsors[0].since}
+                </SponsorSince>
+                {pkg.sponsors[0].website && (
+                  <SponsorLink
+                    href={pkg.sponsors[0].website}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    🔗 Website besuchen
+                  </SponsorLink>
+                )}
+              </SponsorPresentation>
             ) : (
               <BenefitsList>
                 {keyBenefits.map(

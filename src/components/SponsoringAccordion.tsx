@@ -146,7 +146,7 @@ const accordionData: AccordionItemData[] = [
         Die Banden und Banner gehen in das Eigentum des Sponsors über. Die
         Material- und Herstellungskosten für Banden/Banner sind im
         Sponsoring-Betrag nicht enthalten und werden separat berechnet. Wir
-        kümmern uns um Bestellung, Produktion und das Anbringen – Sie müssen
+        kümmern uns um Bestellung, Produktion und das Anbringen - Sie müssen
         sich um nichts kümmern!
       </>
     ),

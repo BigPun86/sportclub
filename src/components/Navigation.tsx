@@ -132,6 +132,7 @@ const MobileToggle = styled.button`
 export default function Navigation() {
   const location = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const ENABLE_RENOVIERUNG = false;
 
   return (
     <NavContainer>
@@ -156,17 +157,13 @@ export default function Navigation() {
         <NavLinks id="mobile-nav" $open={isMenuOpen}>
           <NavLink
             to="/sponsoring"
-            $active={location.pathname === "/sponsoring"}
+            $active={
+              location.pathname === "/sponsoring" ||
+              location.pathname === "/sponsoring-v2"
+            }
             onClick={() => setIsMenuOpen(false)}
           >
             🤝 Sponsoring
-          </NavLink>
-          <NavLink
-            to="/sponsoring-v2"
-            $active={location.pathname === "/sponsoring-v2"}
-            onClick={() => setIsMenuOpen(false)}
-          >
-            🚀 Sponsoring V2
           </NavLink>
           <NavLink
             to="/jobs"
@@ -175,13 +172,15 @@ export default function Navigation() {
           >
             💼 Jobbörse
           </NavLink>
-          <NavLink
-            to="/renovierung"
-            $active={location.pathname === "/renovierung"}
-            onClick={() => setIsMenuOpen(false)}
-          >
-            🏗️ Renovierung
-          </NavLink>
+          {ENABLE_RENOVIERUNG && (
+            <NavLink
+              to="/renovierung"
+              $active={location.pathname === "/renovierung"}
+              onClick={() => setIsMenuOpen(false)}
+            >
+              🏗️ Renovierung
+            </NavLink>
+          )}
         </NavLinks>
       </NavContent>
     </NavContainer>

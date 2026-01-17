@@ -661,7 +661,7 @@ export default function SponsoringPage() {
           <IntroText>
             Finden Sie das perfekte Sponsoring-Paket für Ihr Unternehmen. Von
             exklusiven Premium-Partnerschaften bis hin zu lokalen
-            Werbemöglichkeiten – bei uns ist für jeden das Richtige dabei.
+            Werbemöglichkeiten - bei uns ist für jeden das Richtige dabei.
           </IntroText>
         </IntroBlock>
 
@@ -862,7 +862,7 @@ export default function SponsoringPage() {
           <BusHeadline>Werbeflächen auf dem Vereinsbus</BusHeadline>
           <BusText>
             Unser Vereinsbus ist jede Woche in Konstanz, im Landkreis und bei
-            Auswärtsspielen unterwegs – ein idealer Ort für Ihre Werbung!
+            Auswärtsspielen unterwegs - ein idealer Ort für Ihre Werbung!
             Unterstützen Sie den SC Konstanz-Wollmatingen und profitieren Sie
             von lokaler Sichtbarkeit.
           </BusText>
@@ -891,7 +891,7 @@ export default function SponsoringPage() {
                   </tr>
                   <tr>
                     <td>Hintere Seitenflächen</td>
-                    <td>Mittel–hoch</td>
+                    <td>Mittel-hoch</td>
                     <td>je 600 €</td>
                   </tr>
                 </tbody>
@@ -916,7 +916,7 @@ export default function SponsoringPage() {
                   </tr>
                   <tr>
                     <td>Frontstoßstange</td>
-                    <td>Gering–mittel</td>
+                    <td>Gering-mittel</td>
                     <td>250 €</td>
                   </tr>
                 </tbody>
@@ -932,7 +932,7 @@ export default function SponsoringPage() {
                 Kombi-Paket Online + Bus: +150 € für Logo & Link auf
                 partner.sckw.de
               </li>
-              <li>Design & Folierung: optionaler Kostenbeitrag (50–100 €)</li>
+              <li>Design & Folierung: optionaler Kostenbeitrag (50-100 €)</li>
             </BusOptionsList>
           </BusOptions>
 

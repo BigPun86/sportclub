@@ -203,6 +203,33 @@ export default function SponsoringTable({ packages }: SponsoringTableProps) {
     return { availableSlots, isFullyBooked };
   };
 
+  const getSocialMediaLabel = (pkg: (typeof sponsoringPakete)[0]) => {
+    const benefit = pkg.benefits.find((b) => {
+      const normalized = b.toLowerCase();
+      return (
+        normalized.includes("social media") || normalized.includes("instagram")
+      );
+    });
+    if (!benefit) return "-";
+    const normalized = benefit.toLowerCase();
+    
+    // Neue Abstufungen
+    if (normalized.includes("premium") || normalized.includes("allen")) return "ÜBERALL";
+    if (normalized.includes("sehr präsent")) return "Sehr präsent";
+    if (normalized.includes("regelmässig") || normalized.includes("regelmäßig")) return "Regelmäßig";
+    
+    // Fallback alte Logik
+    if (normalized.includes("prominent")) return "Prominent";
+    if (normalized.includes("basis")) return "Basis";
+    if (normalized.includes("post/monat")) return "Post/Monat";
+    if (normalized.includes("2x") && normalized.includes("pro spiel"))
+      return "2x/Spiel";
+    if (normalized.includes("1x") && normalized.includes("pro spiel"))
+      return "1x/Spiel";
+    if (normalized.includes("erwähnung")) return "Erwähnung";
+    return "Standard";
+  };
+
   return (
     <TableContainer>
       <Table>
@@ -305,12 +332,11 @@ export default function SponsoringTable({ packages }: SponsoringTableProps) {
           <tr>
             <Td>Social Media</Td>
             {packages.map((pkg, index) => {
-              const socialBenefit = pkg.benefits.find((b) =>
-                b.includes("Spieltags-Post")
-              );
+              const socialLabel = getSocialMediaLabel(pkg);
+              const isHighlight = socialLabel === "ÜBERALL" || socialLabel === "Sehr präsent";
               return (
-                <Td key={index} isHighlight={!!socialBenefit}>
-                  {socialBenefit ? "✅ Prominent" : "✅ Standard"}
+                <Td key={index} isHighlight={isHighlight}>
+                  {socialLabel === "-" ? "-" : socialLabel === "ÜBERALL" ? "⭐ ÜBERALL" : `✅ ${socialLabel}`}
                 </Td>
               );
             })}

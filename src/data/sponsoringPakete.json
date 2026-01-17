@@ -2,9 +2,17 @@
   {
     "title": "🏆 Hauptsponsor",
     "price": "15.000 €/Jahr",
-    "status": "🟩 Verfügbar",
+    "status": "🟥 Vergeben",
     "maxSponsors": 1,
-    "sponsors": [],
+    "sponsors": [
+      {
+        "name": "Fuchsbau Immobilien",
+        "image": "fuchsbau-logo.png",
+        "website": "https://immofuchsbau.com/",
+        "since": "2025",
+        "until": "2026"
+      }
+    ],
     "keyBenefits": [
       {
         "text": "Trikotbrust 1. Mannschaft",
@@ -36,9 +44,9 @@
       "Trikotbrust 1. Mannschaft",
       "1 Banner (5x2 m) am Gelände",
       "Logo auf Präsentationsanzügen & Warm-ups",
-      "1 Seite im Stadionmagazin",
+      "1 Seite im Stadionmagazin (15 Ausgaben/Saison)",
       "3 Stadiondurchsagen pro Heimspiel",
-      "Social Media PROMINENT: Begrüßungspost + Logo bei allen Posts/Reels (Vor- & Nachbericht, Story) mit größter Fläche",
+      "Social Media PREMIUM: Logo in ALLEN Spieltag-Posts (~60/Saison) + 4 dedizierte Posts/Jahr + ALLE Spieltag-Stories (~100/Saison)",
       "Website STARTSEITE PREMIUM: Logo prominent auf der Startseite mit größter Fläche"
     ]
   },
@@ -60,6 +68,11 @@
         "icon": "📱"
       },
       {
+        "text": "1/2 Seite im Stadionmagazin",
+        "highlight": true,
+        "icon": "📰"
+      },
+      {
         "text": "Stadionansage bei jedem Heimspiel",
         "highlight": false,
         "icon": "📢"
@@ -72,10 +85,12 @@
     ],
     "benefits": [
       "Namensrecht Stadion (z. B. Firma-Arena)",
-      "Social Media Post/Monat",
+      "1 Banner (5x2 m) am Gelände",
+      "4x Plakat (A1) am Gelände",
+      "1/2 Seite im Stadionmagazin (15 Ausgaben/Saison)",
       "Stadionansage bei jedem Heimspiel",
-      "1 Bande (5x2 m) am Gelände",
-      "4x Plakat (A1) am Gelände"
+      "Social Media SEHR PRÄSENT: 1 dedizierter Post/Monat (12/Jahr) + Logo in allen Heimspiel-Posts (~15) + 2 Stories/Monat (24/Jahr)",
+      "Website: Logo prominent auf Startseite"
     ]
   },
   {
@@ -96,21 +111,22 @@
         "icon": "🖼️"
       },
       {
-        "text": "2x Social Media pro Spiel",
+        "text": "1/4 Seite im Stadionmagazin",
         "highlight": true,
-        "icon": "📱"
+        "icon": "📰"
       },
       {
-        "text": "Social Media 1x pro Spiel",
-        "highlight": false,
+        "text": "2x Social Media pro Spiel",
+        "highlight": true,
         "icon": "📱"
       }
     ],
     "benefits": [
       "Trikotärmel 1. Mannschaft",
-      "1 Bande (5x2 m) am Gelände",
-      "2x Social Media pro Spiel (Instagram)",
-      "Social Media 1x pro Spiel (Facebook)"
+      "1 Banner (5x2 m) am Gelände",
+      "1/4 Seite im Stadionmagazin (15 Ausgaben/Saison)",
+      "Social Media REGELMÄSSIG: 1 dedizierter Post alle 3 Wochen (~15/Jahr) + Logo in jedem 2. Heimspiel-Post (~8) + 1 Story/Monat (12/Jahr)",
+      "Website: Logo prominent auf Startseite"
     ]
   },
   {
@@ -158,9 +174,10 @@
     ],
     "benefits": [
       "1 Bande (5x2 m) am Gelände",
-      "Instagram-Erwähnung",
+      "Social Media: 12 dedizierte Posts/Jahr (1/Monat) + 18 Stories/Jahr (1,5/Monat)",
       "Werbeplane am Gelände",
-      "Vereinsplakate + Eventsichtbarkeit"
+      "Vereinsplakate + Eventsichtbarkeit",
+      "Website: Logo auf Startseite"
     ]
   },
   {
@@ -206,8 +223,8 @@
     ],
     "benefits": [
       "1 Bande (3x1 m, 6 Monate sichtbar)",
-      "Website STARTSEITE BASIS: Logo auf der Startseite mit kleinster Fläche",
-      "Social Media BASIS: Begrüßungspost + 2 zusätzliche Posts pro Jahr",
+      "Website: Logo auf der Startseite",
+      "Social Media: 1 Willkommens-Post + 3 weitere Posts/Jahr (Events, Jubiläum) + 8 Stories/Jahr",
       "Optional: Gemeinsame Events (z. B. CL-Abende) mit dem Team in Ihrer Gastronomie zur gezielten Gäste- und Umsatzsteigerung."
     ]
   },
@@ -273,7 +290,9 @@
     "benefits": [
       "3x1m Werbebande am Spielfeldrand",
       "Sichtbarkeit bei jedem Heimspiel",
-      "Link auf Homepage optional"
+      "Logo sichtbar in Stadion-Posts (wo Banden zu sehen sind)",
+      "Aufnahme in Bandensponsor-Übersicht auf Website",
+      "Optional: +1 dedizierter Post/Jahr gegen Aufpreis (+200 €)"
     ]
   },
   {
@@ -300,8 +319,10 @@
       }
     ],
     "benefits": [
-      "Namensnennung vor dem Spiel",
-      "Namensnennung in der Halbzeitpause"
+      "Stadiondurchsage vor dem Spiel",
+      "Namensnennung in der Halbzeitpause",
+      "1 Instagram-Story vor dem Spiel mit Dankung + Logo",
+      "Logo/Name auf Website (Ballspenden-Seite)"
     ]
   },
   {
@@ -329,9 +350,123 @@
     ],
     "benefits": [
       "Ballspende für 5 Spiele",
-      "Namensnennung vor jedem Spiel",
+      "Stadiondurchsage vor jedem Spiel",
       "Namensnennung in der Halbzeitpause bei jedem Spiel",
+      "5 Instagram-Stories (1 pro Spiel) mit Dankung + Logo",
+      "Logo/Name auf Website (Ballspenden-Seite)",
       "Günstigerer Preis pro Spiel gegenüber Einzelspende"
+    ]
+  },
+  {
+    "title": "🎯 Prämien-Modell STARTER",
+    "price": "Pro Leistung",
+    "status": "🟩 Verfügbar",
+    "maxSponsors": 20,
+    "sponsors": [],
+    "keyBenefits": [
+      {
+        "text": "Pro Tor: 100 €",
+        "highlight": true,
+        "icon": "⚽"
+      },
+      {
+        "text": "Pro Punkt: 150 €",
+        "highlight": false,
+        "icon": "📊"
+      },
+      {
+        "text": "Pro Zu-Null: 300 €",
+        "highlight": true,
+        "icon": "🛡️"
+      },
+      {
+        "text": "Nennung nach jedem Erfolg",
+        "highlight": false,
+        "icon": "📢"
+      }
+    ],
+    "benefits": [
+      "Pro Tor: 100 € (Ø 50 Tore/Saison = 5.000 €)",
+      "Pro Punkt: 150 € (Ø 45 Punkte/Saison = 6.750 €)",
+      "Pro Zu-Null-Spiel: 300 € (Ø 10/Saison = 3.000 €)",
+      "Stadionansage nach jedem Erfolg",
+      "Social Media Erwähnung bei Meilenstein-Toren",
+      "Logo auf Website"
+    ]
+  },
+  {
+    "title": "🏆 Prämien-Modell PREMIUM",
+    "price": "Pro Leistung",
+    "status": "🟩 Verfügbar",
+    "maxSponsors": 5,
+    "sponsors": [],
+    "keyBenefits": [
+      {
+        "text": "Pro Sieg: 800 €",
+        "highlight": true,
+        "icon": "🏆"
+      },
+      {
+        "text": "Pro Punkt: 250 €",
+        "highlight": true,
+        "icon": "📊"
+      },
+      {
+        "text": "Pro Zu-Null: 500 €",
+        "highlight": true,
+        "icon": "🛡️"
+      },
+      {
+        "text": "Social Media nach jedem Erfolg",
+        "highlight": true,
+        "icon": "📱"
+      }
+    ],
+    "benefits": [
+      "Pro Sieg: 800 € (Ø 15 Siege/Saison = 12.000 €)",
+      "Pro Punkt: 250 € (Ø 45 Punkte/Saison = 11.250 €)",
+      "Pro Zu-Null-Spiel: 500 € (Ø 10/Saison = 5.000 €)",
+      "Stadionansage + Social Media Post nach jedem Erfolg",
+      "Namensnennung in Spielberichten",
+      "Logo prominent auf Website",
+      "1 Bande (3x1 m) am Gelände"
+    ]
+  },
+  {
+    "title": "💰 Prämien-Kombi",
+    "price": "Individuell",
+    "status": "🟩 Verfügbar",
+    "maxSponsors": 10,
+    "sponsors": [],
+    "keyBenefits": [
+      {
+        "text": "Basis-Betrag + Erfolgs-Prämien",
+        "highlight": true,
+        "icon": "💼"
+      },
+      {
+        "text": "Planbare Kosten + Upside",
+        "highlight": true,
+        "icon": "📈"
+      },
+      {
+        "text": "Z.B. 2.000€ Fix + 150€/Punkt",
+        "highlight": false,
+        "icon": "🎯"
+      },
+      {
+        "text": "Individuell kombinierbar",
+        "highlight": false,
+        "icon": "🔧"
+      }
+    ],
+    "benefits": [
+      "Basis-Betrag (z.B. 2.000-5.000 €) + variable Prämien",
+      "Beispiel: 3.000 € Fix + 150 €/Punkt = 9.750 € bei 45 Punkten",
+      "Planbare Mindestkosten, Upside bei Erfolg",
+      "Social Media Erwähnung nach jedem Erfolg",
+      "Logo auf Website",
+      "Optional: +1 Bande gegen Aufpreis"
     ]
   }
 ]
