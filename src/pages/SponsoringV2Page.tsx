@@ -22,8 +22,9 @@ const Container = styled.div`
 `;
 
 const Section = styled.section`
-  padding: 4rem 0;
+  padding: 3rem 0;
   scroll-margin-top: 90px;
+  overflow-x: hidden; /* Verhindert, dass Inhalte die Seite verbreitern */
 
   @media (min-width: 768px) {
     padding: 5rem 0;
@@ -32,37 +33,43 @@ const Section = styled.section`
 
 const SectionAlt = styled(Section)`
   background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+  overflow-x: hidden; /* Verhindert, dass Inhalte die Seite verbreitern */
 `;
 
 const SectionHeader = styled.div`
   text-align: center;
-  margin-bottom: 2.5rem;
+  margin-bottom: 2rem;
+  @media (min-width: 768px) {
+    margin-bottom: 3rem;
+  }
 `;
 
 const SectionTitle = styled.h2`
-  font-size: clamp(1.8rem, 5vw, 2.4rem);
+  font-size: clamp(1.6rem, 5vw, 2.4rem);
   color: #e10073;
   font-weight: 800;
   margin-bottom: 0.75rem;
   letter-spacing: -0.02em;
+  padding: 0 0.5rem;
 `;
 
 const SectionSubtitle = styled.p`
-  font-size: clamp(1rem, 2.5vw, 1.15rem);
+  font-size: clamp(0.95rem, 2.5vw, 1.15rem);
   color: #666;
   max-width: 720px;
   margin: 0 auto;
   line-height: 1.6;
+  padding: 0 1rem;
 `;
 
 const Hero = styled.section`
   background: #0b0b0d;
-  min-height: 80vh;
+  min-height: 85vh;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
-  padding: 3rem 0 2rem 0;
+  padding: 4rem 0 3rem 0;
   overflow: hidden;
   scroll-margin-top: 90px;
 `;
@@ -74,16 +81,16 @@ const HeroSlide = styled.div<{ $bg: string; $active: boolean }>`
   opacity: ${({ $active }) => ($active ? 1 : 0)};
   transition: opacity 900ms ease;
   z-index: 1;
-  filter: saturate(1.05) brightness(0.9);
+  filter: saturate(1.05) brightness(0.85);
 `;
 
 const HeroOverlay = styled.div`
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: rgba(0, 0, 0, 0.55);
+  background: rgba(0, 0, 0, 0.5);
   z-index: 2;
-  box-shadow: inset 0 0 120px rgba(0, 0, 0, 0.45);
+  box-shadow: inset 0 0 150px rgba(0, 0, 0, 0.6);
 `;
 
 const HeroContent = styled.div`
@@ -91,28 +98,28 @@ const HeroContent = styled.div`
   z-index: 3;
   text-align: center;
   max-width: 900px;
-  padding: 1rem;
+  padding: 0 1.25rem;
 `;
 
 const HeroTitle = styled.h1`
   color: white;
-  font-size: clamp(2.2rem, 9vw, 4.2rem);
+  font-size: clamp(2rem, 8vw, 4.2rem);
   font-weight: 900;
   margin-bottom: 1rem;
-  text-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
   letter-spacing: -0.02em;
   line-height: 1.1;
 `;
 
 const HeroSubtitle = styled.p`
   color: white;
-  font-size: clamp(1.05rem, 4vw, 1.5rem);
+  font-size: clamp(1rem, 3.5vw, 1.4rem);
   font-weight: 500;
-  margin-bottom: 2rem;
-  text-shadow: 0 3px 12px rgba(0, 0, 0, 0.4);
-  line-height: 1.6;
+  margin-bottom: 2.5rem;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  line-height: 1.5;
   opacity: 0.95;
-  max-width: 720px;
+  max-width: 650px;
   margin-left: auto;
   margin-right: auto;
 `;
@@ -120,45 +127,49 @@ const HeroSubtitle = styled.p`
 const HeroStats = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
-  margin-bottom: 2rem;
-  max-width: 520px;
-  margin-left: auto;
-  margin-right: auto;
+  gap: 0.75rem;
+  margin-bottom: 2.5rem;
+  max-width: 100%;
 
   @media (min-width: 768px) {
-    grid-template-columns: repeat(4, 1fr);
     gap: 1.25rem;
     max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+    grid-template-columns: repeat(4, 1fr);
   }
 `;
 
 const StatItem = styled.div`
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(12px);
   border-radius: 16px;
   padding: 1rem 0.5rem;
   text-align: center;
   border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+  }
 `;
 
 const StatNumber = styled.div`
-  font-size: clamp(1.2rem, 4vw, 1.6rem);
+  font-size: clamp(1.1rem, 4.5vw, 1.6rem);
   font-weight: 900;
   color: white;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.2rem;
 `;
 
 const StatLabel = styled.div`
-  font-size: 0.7rem;
+  font-size: 0.65rem;
   color: rgba(255, 255, 255, 0.9);
   text-transform: uppercase;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.05em;
 
   @media (min-width: 768px) {
-    font-size: 0.8rem;
+    font-size: 0.75rem;
   }
 `;
 
@@ -176,63 +187,79 @@ const HeroCTAGroup = styled.div`
 `;
 
 const HeroCTA = styled.a<{ $primary?: boolean }>`
-  display: inline-block;
-  background: ${({ $primary }) =>
-    $primary ? "white" : "rgba(255, 255, 255, 0.1)"};
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: ${({ $primary }) => ($primary ? "white" : "transparent")};
   color: ${({ $primary }) => ($primary ? "#e10073" : "white")};
-  font-weight: 700;
-  font-size: clamp(0.9rem, 2.5vw, 1.05rem);
-  padding: 1rem 2rem;
+  font-weight: 800;
+  font-size: clamp(0.85rem, 2.5vw, 1rem);
+  padding: 0.9rem 2rem;
   border-radius: 50px;
   text-decoration: none;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  box-shadow: ${({ $primary }) =>
+    $primary ? "0 6px 20px rgba(0, 0, 0, 0.2)" : "none"};
   text-transform: uppercase;
   letter-spacing: 0.05em;
   border: 2px solid
-    ${({ $primary }) => ($primary ? "white" : "rgba(255, 255, 255, 0.3)")};
-  min-width: 200px;
-  text-align: center;
+    ${({ $primary }) => ($primary ? "white" : "rgba(255, 255, 255, 0.4)")};
+  width: 100%;
+  max-width: 280px;
+  min-height: 48px;
+
+  @media (min-width: 768px) {
+    width: auto;
+    min-width: 220px;
+  }
+
+  &:hover {
+    transform: translateY(-3px);
+    background: ${({ $primary }) =>
+      $primary ? "#f8f9fa" : "rgba(255, 255, 255, 0.1)"};
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  }
 `;
 
 const KPIGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1.25rem;
+  gap: 1rem;
   width: 100%;
   max-width: 900px;
   margin: 0 auto;
 
   @media (min-width: 768px) {
     grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
   }
 `;
 
 const KPICard = styled.div`
   background: white;
   border-radius: 16px;
-  padding: 1.5rem 1rem;
+  padding: 1.25rem 0.75rem;
   text-align: center;
   box-shadow: 0 6px 24px rgba(0, 0, 0, 0.06);
   border: 1px solid #f0f0f0;
 `;
 
 const KPIValue = styled.div`
-  font-size: clamp(1.4rem, 4vw, 1.9rem);
+  font-size: clamp(1.2rem, 4.5vw, 1.9rem);
   font-weight: 900;
   color: #e10073;
   margin-bottom: 0.4rem;
 `;
 
 const KPILabel = styled.div`
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   color: #666;
   text-transform: uppercase;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.05em;
 
   @media (min-width: 768px) {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
   }
 `;
 
@@ -240,12 +267,13 @@ const HighlightBox = styled.div`
   background: #fff6fa;
   border: 1px solid #f2c2d9;
   border-radius: 16px;
-  padding: 1.5rem;
+  padding: 1.25rem;
   margin: 2rem auto 0;
   max-width: 900px;
   text-align: center;
   color: #444;
   line-height: 1.6;
+  font-size: 0.95rem;
 `;
 
 const ValueGrid = styled.div`
@@ -296,7 +324,7 @@ const ValueTitle = styled.h3`
 `;
 
 const ValueText = styled.p`
-  font-size: 0.98rem;
+  font-size: 0.95rem;
   color: #555;
   line-height: 1.6;
 `;
@@ -306,43 +334,48 @@ const PackageGroup = styled.div`
 `;
 
 const GroupTitle = styled.h3`
-  font-size: clamp(1.3rem, 3vw, 1.6rem);
+  font-size: clamp(1.2rem, 3.5vw, 1.6rem);
   color: #222;
   font-weight: 800;
-  margin-bottom: 1rem;
+  margin-bottom: 1.25rem;
   text-align: left;
+  padding-left: 0.5rem;
+  border-left: 4px solid #e10073;
 `;
 
 const Note = styled.p`
-  font-size: 0.98rem;
+  font-size: 0.9rem;
   color: #666;
   max-width: 860px;
-  margin: 0.75rem auto 0 auto;
+  margin: 1rem auto 0 auto;
   line-height: 1.6;
   text-align: center;
+  padding: 0 1rem;
 `;
 
 const PillGrid = styled.div`
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1rem;
+  gap: 0.75rem;
   max-width: 900px;
   margin: 0 auto;
 
   @media (min-width: 768px) {
     grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
   }
 `;
 
 const Pill = styled.div`
   background: white;
-  border-radius: 14px;
-  padding: 1.25rem 1rem;
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   border: 1px solid #f0f0f0;
   text-align: center;
   color: #444;
-  font-weight: 600;
+  font-weight: 700;
+  font-size: 0.9rem;
 `;
 
 const ExampleGrid = styled.div`
@@ -400,9 +433,13 @@ const ExampleButton = styled.a`
 const BusCard = styled.div`
   background: white;
   border-radius: 16px;
-  padding: 1.25rem 1.2rem;
+  padding: 1.5rem 1.2rem;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
   border: 1px solid #f0f0f0;
+
+  @media (max-width: 768px) {
+    padding: 1.25rem 0.75rem;
+  }
 `;
 
 const BusCardTitle = styled.h4`
@@ -411,10 +448,22 @@ const BusCardTitle = styled.h4`
   font-weight: 800;
 `;
 
+const BusTableWrapper = styled.div`
+  @media (max-width: 768px) {
+    overflow-x: hidden;
+    width: 100%;
+  }
+`;
+
 const BusTable = styled.table`
   width: 100%;
   border-collapse: collapse;
   font-size: 0.9rem;
+  table-layout: fixed;
+
+  @media (max-width: 768px) {
+    font-size: 0.85rem;
+  }
 
   th {
     text-align: left;
@@ -422,12 +471,14 @@ const BusTable = styled.table`
     color: #555;
     font-weight: 700;
     border-bottom: 1px solid #ececec;
+    word-break: break-word;
   }
 
   td {
     padding: 0.5rem 0.4rem;
     border-bottom: 1px solid #f2f2f2;
     color: #333;
+    word-break: break-word;
   }
 `;
 
@@ -442,17 +493,18 @@ const BusOptionsList = styled.ul`
 const StepGrid = styled.div`
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1.25rem;
+  gap: 1rem;
 
   @media (min-width: 768px) {
     grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
   }
 `;
 
 const StepCard = styled.div`
   background: white;
   border-radius: 16px;
-  padding: 1.5rem 1.25rem;
+  padding: 1.25rem;
   text-align: center;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
   border: 1px solid #f0f0f0;
@@ -462,12 +514,13 @@ const StepTitle = styled.div`
   font-weight: 800;
   color: #e10073;
   margin-bottom: 0.5rem;
+  font-size: 1.1rem;
 `;
 
 const StepText = styled.p`
   margin: 0;
   color: #555;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   line-height: 1.5;
 `;
 
@@ -543,7 +596,18 @@ export default function SponsoringV2Page() {
             >
               Jetzt Kontakt aufnehmen
             </HeroCTA>
-            <HeroCTA href="#pakete">Pakete ansehen</HeroCTA>
+            <HeroCTA
+              href="#pakete"
+              onClick={(e) => {
+                e.preventDefault();
+                const el = document.getElementById("pakete");
+                if (el) {
+                  el.scrollIntoView({ behavior: "smooth", block: "start" });
+                }
+              }}
+            >
+              Pakete ansehen
+            </HeroCTA>
           </HeroCTAGroup>
         </HeroContent>
       </Hero>
@@ -735,57 +799,82 @@ export default function SponsoringV2Page() {
             >
               Verfügbare Werbeflächen
             </BusCardTitle>
-            <BusTable>
-              <thead>
-                <tr>
-                  <th>Fläche</th>
-                  <th>Größe (ca.)</th>
-                  <th>Preis/Jahr</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Motorhaube</td>
-                  <td>120 x 40 cm</td>
-                  <td>900 €</td>
-                </tr>
-                <tr>
-                  <td>Heckfläche groß</td>
-                  <td>100 x 80 cm</td>
-                  <td>1.200 €</td>
-                </tr>
-                <tr>
-                  <td>Seitenfläche groß (links)</td>
-                  <td>200 x 80 cm</td>
-                  <td>900 €</td>
-                </tr>
-                <tr>
-                  <td>Seitenfläche groß (rechts)</td>
-                  <td>200 x 80 cm</td>
-                  <td>900 €</td>
-                </tr>
-                <tr>
-                  <td>Seitentür links</td>
-                  <td>80 x 60 cm</td>
-                  <td>700 €</td>
-                </tr>
-                <tr>
-                  <td>Seitentür rechts</td>
-                  <td>80 x 60 cm</td>
-                  <td>700 €</td>
-                </tr>
-                <tr>
-                  <td>Fensterstreifen (umlaufend)</td>
-                  <td>15 cm Höhe</td>
-                  <td>500 €</td>
-                </tr>
-                <tr>
-                  <td>Heckstreifen</td>
-                  <td>100 x 20 cm</td>
-                  <td>400 €</td>
-                </tr>
-              </tbody>
-            </BusTable>
+            <BusTableWrapper>
+              <BusTable>
+                <thead>
+                  <tr>
+                    <th>Fläche</th>
+                    <th>Größe (ca.)</th>
+                    <th>Preis/Jahr</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Motorhaube</td>
+                    <td>100 x 65 cm</td>
+                    <td>
+                      <strong>1.000 €</strong>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Heckfläche gesamt (Doppeltür)</td>
+                    <td>180 x 170 cm</td>
+                    <td>
+                      <strong>2.000 €</strong>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Heckfläche pro Tür</td>
+                    <td>80 x 160 cm</td>
+                    <td>
+                      je <strong>1.000 €</strong>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Seitenfläche groß (links, unter Fenstern)</td>
+                    <td>350 x 70 cm</td>
+                    <td>
+                      <strong>1.500 €</strong>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Seitenfläche groß (rechts, unter Fenstern)</td>
+                    <td>350 x 70 cm</td>
+                    <td>
+                      <strong>1.500 €</strong>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Schiebetür</td>
+                    <td>130 x 150 cm</td>
+                    <td>
+                      <strong>1.200 €</strong>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Fensterstreifen (umlaufend)</td>
+                    <td>15-20 cm Höhe</td>
+                    <td>
+                      <strong>800 €</strong>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Heckstreifen</td>
+                    <td>170 x 20 cm</td>
+                    <td>
+                      <strong>600 €</strong>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Dachfläche (optional)</td>
+                    <td>200 x 150 cm</td>
+                    <td>
+                      <strong>1.000 €</strong>
+                    </td>
+                  </tr>
+                </tbody>
+              </BusTable>
+            </BusTableWrapper>
 
             <div
               style={{

@@ -5,19 +5,27 @@ export type SponsoringTableProps = {
   packages: typeof sponsoringPakete;
 };
 
-const TableContainer = styled.div`
+const Container = styled.div`
   width: 100%;
-  overflow-x: auto;
+  margin: 2rem 0;
+`;
+
+/* Desktop-Tabelle */
+const TableContainer = styled.div`
+  display: block;
   background: #fff;
   border-radius: 16px;
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
-  margin: 2rem 0;
+  overflow: hidden;
+
+  @media (max-width: 768px) {
+    display: none; /* Verstecke Tabelle auf Mobile */
+  }
 `;
 
 const Table = styled.table`
   width: 100%;
   border-collapse: collapse;
-  min-width: 800px;
 `;
 
 const Th = styled.th<{ isVergeben?: boolean }>`
@@ -26,9 +34,7 @@ const Th = styled.th<{ isVergeben?: boolean }>`
   padding: 1.5rem 1rem;
   text-align: center;
   font-weight: 700;
-  font-size: clamp(1rem, 2.5vw, 1.2rem);
   border: 1px solid #dee2e6;
-  position: relative;
 
   &:first-child {
     background: #f8f9fa;
@@ -45,8 +51,7 @@ const Td = styled.td<{ isVergeben?: boolean; isHighlight?: boolean }>`
   border: 1px solid #dee2e6;
   background: ${(props) => (props.isVergeben ? "#f8f9fa" : "#fff")};
   color: ${(props) => (props.isVergeben ? "#999" : "#222")};
-  font-size: clamp(0.9rem, 2vw, 1rem);
-  line-height: 1.4;
+  font-size: 0.95rem;
 
   &:first-child {
     text-align: left;
@@ -64,46 +69,14 @@ const Td = styled.td<{ isVergeben?: boolean; isHighlight?: boolean }>`
   `}
 `;
 
-const StatusBadge = styled.span<{ status: string }>`
-  display: inline-block;
-  padding: 0.3rem 0.8rem;
-  border-radius: 20px;
-  font-size: 0.85rem;
-  font-weight: 600;
-  background: ${({ status }) =>
-    status === "verfügbar"
-      ? "#d4edda"
-      : status === "vergeben"
-      ? "#f8d7da"
-      : "#fff3cd"};
-  color: ${({ status }) =>
-    status === "verfügbar"
-      ? "#155724"
-      : status === "vergeben"
-      ? "#721c24"
-      : "#856404"};
-`;
-
 const PriceCell = styled.td<{ isVergeben?: boolean }>`
   padding: 1rem;
   text-align: center;
   border: 1px solid #dee2e6;
   background: ${(props) => (props.isVergeben ? "#f8f9fa" : "#fff")};
-  font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+  font-size: 1.2rem;
   font-weight: 700;
-
-  &:first-child {
-    text-align: left;
-    font-weight: 600;
-    background: #f8f9fa;
-    color: #222;
-  }
-
-  ${(props) =>
-    !props.isVergeben &&
-    `
-    color: #e10073;
-  `}
+  color: #e10073;
 
   ${(props) =>
     props.isVergeben &&
@@ -113,264 +86,185 @@ const PriceCell = styled.td<{ isVergeben?: boolean }>`
   `}
 `;
 
+/* Mobile Card Layout */
+const MobileCards = styled.div`
+  display: none;
+  flex-direction: column;
+  gap: 1.5rem;
+
+  @media (max-width: 768px) {
+    display: flex;
+  }
+`;
+
+const MobileCard = styled.div<{ isVergeben?: boolean }>`
+  background: #fff;
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border: 2px solid ${(props) => (props.isVergeben ? "#eee" : "#f0f0f0")};
+  opacity: ${(props) => (props.isVergeben ? 0.8 : 1)};
+`;
+
+const MobileCardTitle = styled.h4`
+  color: #e10073;
+  font-size: 1.3rem;
+  margin: 0 0 0.5rem 0;
+  font-weight: 800;
+`;
+
+const MobileCardPrice = styled.div`
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #333;
+`;
+
+const MobileRow = styled.div`
+  display: flex;
+  justify-content: space-between;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #f0f0f0;
+  font-size: 0.9rem;
+
+  &:last-of-type {
+    border-bottom: none;
+  }
+
+  span:first-child {
+    font-weight: 600;
+    color: #666;
+  }
+
+  span:last-child {
+    text-align: right;
+    color: #222;
+  }
+`;
+
 const CTAButton = styled.a<{ isVergeben?: boolean }>`
   display: inline-block;
   background: ${(props) => (props.isVergeben ? "#ccc" : "#e10073")};
   color: #fff;
   font-weight: 600;
   font-size: 0.9rem;
-  padding: 0.75rem 1.5rem;
-  border-radius: 20px;
+  padding: 0.8rem 1.5rem;
+  border-radius: 25px;
   text-decoration: none;
-  transition: all 0.2s ease;
+  text-align: center;
+  width: 100%;
+  margin-top: 1.5rem;
+  box-sizing: border-box;
   pointer-events: ${(props) => (props.isVergeben ? "none" : "auto")};
-  border: ${(props) =>
-    props.isVergeben ? "2px solid #ccc" : "2px solid #e10073"};
-
-  &:hover {
-    background: ${(props) => (props.isVergeben ? "#ccc" : "#b8005a")};
-    border-color: ${(props) => (props.isVergeben ? "#ccc" : "#b8005a")};
-    transform: ${(props) => (props.isVergeben ? "none" : "translateY(-1px)")};
-    box-shadow: ${(props) =>
-      props.isVergeben ? "none" : "0 3px 8px rgba(225, 0, 115, 0.3)"};
-  }
-
-  &:focus {
-    outline: 3px solid
-      ${(props) => (props.isVergeben ? "#ccc" : "rgba(225, 0, 115, 0.5)")};
-    outline-offset: 2px;
-  }
-`;
-
-const PackageIcon = styled.span`
-  font-size: 1.5rem;
-  margin-right: 0.5rem;
-`;
-
-const PackageTitle = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-  font-size: clamp(1rem, 2.5vw, 1.2rem);
 `;
 
 export const EMAIL_KONTAKT = "sponsoring@sckw.de";
 
 export default function SponsoringTable({ packages }: SponsoringTableProps) {
-  // Status-Typ für Farbe bestimmen
-  const getStatusType = (status: string) => {
-    if (status.toLowerCase().includes("verfügbar")) return "verfügbar";
-    if (status.toLowerCase().includes("vergeben")) return "vergeben";
-    return "neutral";
-  };
-
-  // Icon extrahieren
-  const getPackageIcon = (title: string) => {
-    const match = title.match(
-      /^(\p{Emoji_Presentation}|\p{Extended_Pictographic}|[\u2600-\u27BF])\s*/u
-    );
-    return match ? match[0] : "";
-  };
-
-  // Mailto-Link generieren
   const generateMailto = (packageTitle: string) => {
-    const cleanTitle = packageTitle
-      .replace(
-        /^(\p{Emoji_Presentation}|\p{Extended_Pictographic}|[\u2600-\u27BF])\s*/u,
-        ""
-      )
-      .trim();
-    const subject = encodeURIComponent(
-      `Interesse am Sponsoring-Paket "${cleanTitle}"`
-    );
-    const body = encodeURIComponent(
-      `Hallo liebes SCKW-Team,\n\n` +
-        `ich interessiere mich sehr für das Sponsoring-Paket "${cleanTitle}" und würde gerne mehr darüber erfahren.\n` +
-        `Bitte senden Sie mir weitere Informationen und eine persönliche Kontaktaufnahme zu.\n\n` +
-        `Mein Name: \n` +
-        `Firma (optional): \n` +
-        `Telefon (optional): \n\n` +
-        `Ich freue mich auf Ihre Rückmeldung!\n\nHerzliche Grüße\n`
-    );
-    return `mailto:${EMAIL_KONTAKT}?subject=${subject}&body=${body}`;
-  };
-
-  // Verfügbare Slots berechnen
-  const getAvailableSlots = (pkg: (typeof sponsoringPakete)[0]) => {
-    const availableSlots = pkg.maxSponsors - (pkg.sponsors?.length || 0);
-    const isFullyBooked = availableSlots === 0;
-    return { availableSlots, isFullyBooked };
+    const cleanTitle = packageTitle.replace(/[^\w\s]/gi, "").trim();
+    const subject = encodeURIComponent(`Interesse am Paket "${cleanTitle}"`);
+    return `mailto:${EMAIL_KONTAKT}?subject=${subject}`;
   };
 
   const getSocialMediaLabel = (pkg: (typeof sponsoringPakete)[0]) => {
     const benefit = pkg.benefits.find((b) => {
       const normalized = b.toLowerCase();
-      return (
-        normalized.includes("social media") || normalized.includes("instagram")
-      );
+      return normalized.includes("social media") || normalized.includes("instagram");
     });
     if (!benefit) return "-";
     const normalized = benefit.toLowerCase();
-    
-    // Neue Abstufungen
     if (normalized.includes("premium") || normalized.includes("allen")) return "ÜBERALL";
     if (normalized.includes("sehr präsent")) return "Sehr präsent";
     if (normalized.includes("regelmässig") || normalized.includes("regelmäßig")) return "Regelmäßig";
-    
-    // Fallback alte Logik
-    if (normalized.includes("prominent")) return "Prominent";
-    if (normalized.includes("basis")) return "Basis";
-    if (normalized.includes("post/monat")) return "Post/Monat";
-    if (normalized.includes("2x") && normalized.includes("pro spiel"))
-      return "2x/Spiel";
-    if (normalized.includes("1x") && normalized.includes("pro spiel"))
-      return "1x/Spiel";
-    if (normalized.includes("erwähnung")) return "Erwähnung";
     return "Standard";
   };
 
   return (
-    <TableContainer>
-      <Table>
-        <thead>
-          <tr>
-            <Th>Paket</Th>
-            {packages.map((pkg, index) => {
-              const { isFullyBooked } = getAvailableSlots(pkg);
-              const statusType = getStatusType(pkg.status);
-              const isVergeben = statusType === "vergeben" || isFullyBooked;
-
-              return (
-                <Th key={index} isVergeben={isVergeben}>
-                  <PackageTitle>
-                    <PackageIcon>{getPackageIcon(pkg.title)}</PackageIcon>
-                    {pkg.title
-                      .replace(
-                        /^(\p{Emoji_Presentation}|\p{Extended_Pictographic}|[\u2600-\u27BF])\s*/u,
-                        ""
-                      )
-                      .trim()}
-                  </PackageTitle>
+    <Container>
+      {/* Desktop View */}
+      <TableContainer>
+        <Table>
+          <thead>
+            <tr>
+              <Th>Paket</Th>
+              {packages.map((pkg, i) => (
+                <Th key={i} isVergeben={pkg.status.includes("Vergeben")}>
+                  {pkg.title}
                 </Th>
-              );
-            })}
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <Td>Preis</Td>
-            {packages.map((pkg, index) => {
-              const { isFullyBooked } = getAvailableSlots(pkg);
-              const statusType = getStatusType(pkg.status);
-              const isVergeben = statusType === "vergeben" || isFullyBooked;
-
-              return (
-                <PriceCell key={index} isVergeben={isVergeben}>
-                  {isVergeben ? "Vergeben" : pkg.price}
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <Td>Preis</Td>
+              {packages.map((pkg, i) => (
+                <PriceCell key={i} isVergeben={pkg.status.includes("Vergeben")}>
+                  {pkg.price}
                 </PriceCell>
-              );
-            })}
-          </tr>
-          <tr>
-            <Td>Status</Td>
-            {packages.map((pkg, index) => {
-              const { isFullyBooked } = getAvailableSlots(pkg);
-              const statusType = getStatusType(pkg.status);
-              const finalStatus = isFullyBooked ? "vergeben" : statusType;
-
-              return (
-                <Td key={index}>
-                  <StatusBadge status={finalStatus}>
-                    {finalStatus === "vergeben"
-                      ? "✅ Vergeben"
-                      : "🟩 Verfügbar"}
-                  </StatusBadge>
-                </Td>
-              );
-            })}
-          </tr>
-          <tr>
-            <Td>Trikot</Td>
-            {packages.map((pkg, index) => {
-              const trikotBenefit = pkg.benefits.find((b) =>
-                b.includes("Trikot")
-              );
-              return (
-                <Td key={index} isHighlight={!!trikotBenefit}>
-                  {trikotBenefit
-                    ? trikotBenefit.replace("Trikot", "").trim()
-                    : "-"}
-                </Td>
-              );
-            })}
-          </tr>
-          <tr>
-            <Td>Banner</Td>
-            {packages.map((pkg, index) => {
-              const bannerBenefit = pkg.benefits.find((b) =>
-                b.includes("Banner")
-              );
-              return <Td key={index}>{bannerBenefit ? bannerBenefit : "-"}</Td>;
-            })}
-          </tr>
-          <tr>
-            <Td>Stadionmagazin</Td>
-            {packages.map((pkg, index) => {
-              const magazinBenefit = pkg.benefits.find((b) =>
-                b.includes("Stadionmagazin")
-              );
-              return (
-                <Td key={index}>
-                  {magazinBenefit
-                    ? magazinBenefit.replace("im Stadionmagazin", "").trim()
-                    : "-"}
-                </Td>
-              );
-            })}
-          </tr>
-          <tr>
-            <Td>Social Media</Td>
-            {packages.map((pkg, index) => {
-              const socialLabel = getSocialMediaLabel(pkg);
-              const isHighlight = socialLabel === "ÜBERALL" || socialLabel === "Sehr präsent";
-              return (
-                <Td key={index} isHighlight={isHighlight}>
-                  {socialLabel === "-" ? "-" : socialLabel === "ÜBERALL" ? "⭐ ÜBERALL" : `✅ ${socialLabel}`}
-                </Td>
-              );
-            })}
-          </tr>
-          <tr>
-            <Td>Website</Td>
-            {packages.map((pkg, index) => {
-              const websiteBenefit = pkg.benefits.find(
-                (b) => b.includes("Website") || b.includes("Startseite")
-              );
-              return <Td key={index}>{websiteBenefit ? "✅ Ja" : "-"}</Td>;
-            })}
-          </tr>
-          <tr>
-            <Td>Kontakt</Td>
-            {packages.map((pkg, index) => {
-              const { isFullyBooked } = getAvailableSlots(pkg);
-              const statusType = getStatusType(pkg.status);
-              const isVergeben = statusType === "vergeben" || isFullyBooked;
-
-              return (
-                <Td key={index}>
-                  <CTAButton
-                    href={isVergeben ? undefined : generateMailto(pkg.title)}
-                    isVergeben={isVergeben}
+              ))}
+            </tr>
+            <tr>
+              <Td>Trikot/Banner</Td>
+              {packages.map((pkg, i) => {
+                const benefit = pkg.benefits.find(b => b.includes("Trikot") || b.includes("Banner"));
+                return <Td key={i}>{benefit ? "✅ Ja" : "-"}</Td>;
+              })}
+            </tr>
+            <tr>
+              <Td>Social Media</Td>
+              {packages.map((pkg, i) => {
+                const label = getSocialMediaLabel(pkg);
+                return <Td key={i} isHighlight={label === "ÜBERALL"}>{label === "-" ? "-" : `✅ ${label}`}</Td>;
+              })}
+            </tr>
+            <tr>
+              <Td>Aktion</Td>
+              {packages.map((pkg, i) => (
+                <Td key={i}>
+                  <CTAButton 
+                    href={pkg.status.includes("Vergeben") ? undefined : generateMailto(pkg.title)}
+                    isVergeben={pkg.status.includes("Vergeben")}
                   >
-                    {isVergeben ? "Vergeben" : "Anfragen"}
+                    {pkg.status.includes("Vergeben") ? "Vergeben" : "Anfragen"}
                   </CTAButton>
                 </Td>
-              );
-            })}
-          </tr>
-        </tbody>
-      </Table>
-    </TableContainer>
+              ))}
+            </tr>
+          </tbody>
+        </Table>
+      </TableContainer>
+
+      {/* Mobile View */}
+      <MobileCards>
+        {packages.map((pkg, i) => {
+          const isVergeben = pkg.status.includes("Vergeben");
+          return (
+            <MobileCard key={i} isVergeben={isVergeben}>
+              <MobileCardTitle>{pkg.title}</MobileCardTitle>
+              <MobileCardPrice>{pkg.price}</MobileCardPrice>
+              <MobileRow>
+                <span>Status</span>
+                <span>{isVergeben ? "🟥 Vergeben" : "🟩 Verfügbar"}</span>
+              </MobileRow>
+              <MobileRow>
+                <span>Social Media</span>
+                <span>{getSocialMediaLabel(pkg)}</span>
+              </MobileRow>
+              <MobileRow>
+                <span>Vorteile</span>
+                <span>{pkg.benefits.length} Leistungen</span>
+              </MobileRow>
+              <CTAButton 
+                href={isVergeben ? undefined : generateMailto(pkg.title)}
+                isVergeben={isVergeben}
+              >
+                {isVergeben ? "Bereits vergeben" : "Jetzt anfragen"}
+              </CTAButton>
+            </MobileCard>
+          );
+        })}
+      </MobileCards>
+    </Container>
   );
 }

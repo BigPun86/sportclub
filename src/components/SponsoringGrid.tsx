@@ -14,6 +14,7 @@ const GridContainer = styled.div`
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
     gap: 1.5rem;
+    margin: 1.5rem 0;
   }
 `;
 
@@ -126,6 +127,10 @@ const CTAButton = styled.a<{ isVergeben?: boolean }>`
   margin-top: auto;
   border: ${(props) =>
     props.isVergeben ? "2px solid #ccc" : "2px solid #e10073"};
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   &:hover {
     background: ${(props) => (props.isVergeben ? "#ccc" : "#b8005a")};
@@ -139,6 +144,12 @@ const CTAButton = styled.a<{ isVergeben?: boolean }>`
     outline: 3px solid
       ${(props) => (props.isVergeben ? "#ccc" : "rgba(225, 0, 115, 0.5)")};
     outline-offset: 2px;
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
+    font-size: 0.95rem;
+    padding: 1rem 1.5rem;
   }
 `;
 

@@ -40,26 +40,33 @@ const BarsContainer = styled.div`
 
 const BarRow = styled.div`
   display: grid;
-  grid-template-columns: 140px 1fr 100px;
-  gap: 1rem;
+  grid-template-columns: 120px 1fr 60px; /* Kompakter für Mobile */
+  gap: 0.75rem;
   align-items: center;
+  min-width: 0;
 
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-    gap: 0.75rem;
+  @media (min-width: 768px) {
+    grid-template-columns: 140px 1fr 100px;
+    gap: 1rem;
+  }
+
+  @media (max-width: 400px) {
+    grid-template-columns: 80px 1fr 50px; /* Extrem kompakt für iPhone SE */
+    font-size: 0.8rem;
   }
 `;
 
 const BarImage = styled.img`
-  width: 140px;
-  height: 90px;
+  width: 100%;
+  height: 60px; /* Kleiner auf Mobile */
   object-fit: cover;
-  border-radius: 12px;
+  border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 
-  @media (max-width: 768px) {
-    width: 100%;
-    height: 120px;
+  @media (min-width: 768px) {
+    width: 140px;
+    height: 90px;
+    border-radius: 12px;
   }
 `;
 
@@ -68,6 +75,7 @@ const BarContent = styled.div`
   flex-direction: column;
   gap: 0.5rem;
   flex: 1;
+  min-width: 0;
 `;
 
 const BarLabel = styled.div`
@@ -115,10 +123,15 @@ const BarValue = styled.div`
   color: #e10073;
   text-align: right;
   white-space: nowrap;
+  min-width: 0;
 
   @media (max-width: 768px) {
-    text-align: center;
-    font-size: 1.5rem;
+    text-align: right;
+    font-size: 1.1rem;
+  }
+
+  @media (max-width: 400px) {
+    font-size: 1rem;
   }
 `;
 
