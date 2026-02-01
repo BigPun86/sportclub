@@ -1,7 +1,8 @@
 [
   {
     "title": "🏆 Hauptsponsor",
-    "price": "15.000 €/Jahr",
+    "price": "Individuell",
+    "tier": "premium",
     "status": "🟥 Vergeben",
     "maxSponsors": 1,
     "sponsors": [
@@ -52,7 +53,8 @@
   },
   {
     "title": "🏟 Stadionpartner",
-    "price": "12.000 €/Jahr",
+    "price": "Individuell",
+    "tier": "premium",
     "status": "🟩 Verfügbar",
     "maxSponsors": 1,
     "sponsors": [],
@@ -95,7 +97,8 @@
   },
   {
     "title": "🥈 Co-Sponsor",
-    "price": "9.500 €/Jahr",
+    "price": "Individuell",
+    "tier": "premium",
     "status": "🟨 1 von 2 verfügbar",
     "maxSponsors": 2,
     "sponsors": [],
@@ -131,7 +134,8 @@
   },
   {
     "title": "🥈 SILBER",
-    "price": "5.000 €/Jahr",
+    "price": "Individuell",
+    "tier": "lokal",
     "status": "🟩 Verfügbar",
     "maxSponsors": 5,
     "sponsors": [
@@ -182,7 +186,8 @@
   },
   {
     "title": "🤝 Community-Partner",
-    "price": "2.000 €/Jahr",
+    "price": "Individuell",
+    "tier": "lokal",
     "status": "🟩 Verfügbar",
     "maxSponsors": 10,
     "sponsors": [
@@ -230,7 +235,8 @@
   },
   {
     "title": "🏗️ Platz-Renovierung Spende",
-    "price": "Ab 100 € (Spende)",
+    "price": "Spende ab 100 €",
+    "tier": "spende",
     "status": "🟩 Spenden willkommen",
     "maxSponsors": 999,
     "sponsors": [],
@@ -266,7 +272,8 @@
   },
   {
     "title": "🟧 Bandenwerbung",
-    "price": "800 €/Jahr",
+    "price": "Individuell",
+    "tier": "lokal",
     "status": "🟩 Verfügbar",
     "maxSponsors": 30,
     "sponsors": [],
@@ -297,7 +304,8 @@
   },
   {
     "title": "⚽ Ballspende",
-    "price": "150 €/pro Spiel",
+    "price": "Auf Anfrage",
+    "tier": "starter",
     "status": "🟩 Verfügbar",
     "maxSponsors": 10,
     "sponsors": [],
@@ -327,7 +335,8 @@
   },
   {
     "title": "⚽ Ballspende 5er Pack",
-    "price": "500 €/5 Spiele",
+    "price": "Auf Anfrage",
+    "tier": "starter",
     "status": "🟩 Verfügbar",
     "maxSponsors": 5,
     "sponsors": [],
@@ -359,7 +368,8 @@
   },
   {
     "title": "🎯 Prämien-Modell STARTER",
-    "price": "Pro Leistung",
+    "price": "Erfolgsbasiert",
+    "tier": "praemien",
     "status": "🟩 Verfügbar",
     "maxSponsors": 20,
     "sponsors": [],
@@ -396,7 +406,8 @@
   },
   {
     "title": "🏆 Prämien-Modell PREMIUM",
-    "price": "Pro Leistung",
+    "price": "Erfolgsbasiert",
+    "tier": "praemien",
     "status": "🟩 Verfügbar",
     "maxSponsors": 5,
     "sponsors": [],
@@ -435,6 +446,7 @@
   {
     "title": "💰 Prämien-Kombi",
     "price": "Individuell",
+    "tier": "praemien",
     "status": "🟩 Verfügbar",
     "maxSponsors": 10,
     "sponsors": [],

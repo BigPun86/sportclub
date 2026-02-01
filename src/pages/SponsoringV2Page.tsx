@@ -7,7 +7,7 @@ import InstagramChart from "../components/InstagramChart";
 import PackageComparison from "../components/PackageComparison";
 import PraemienTable from "../components/PraemienTable";
 import SpielerpatenschaftenTable from "../components/SpielerpatenschaftenTable";
-import BandensponsorsGrid from "../components/BandensponsorsGrid";
+import CurrentSponsors from "../components/CurrentSponsors";
 import { ContactSection } from "../components/ContactSection";
 import Footer from "../components/Footer";
 
@@ -531,14 +531,14 @@ const heroKpis = [
   { value: "500-800k", label: "Saisonreichweite" },
 ];
 
-const premiumPackages = sponsoringPakete.filter((pkg) =>
-  ["15.000 €/Jahr", "12.000 €/Jahr", "9.500 €/Jahr"].includes(pkg.price)
+const premiumPackages = sponsoringPakete.filter(
+  (pkg) => (pkg as { tier?: string }).tier === "premium"
 );
-const localPackages = sponsoringPakete.filter((pkg) =>
-  ["5.000 €/Jahr", "2.000 €/Jahr", "800 €/Jahr"].includes(pkg.price)
+const localPackages = sponsoringPakete.filter(
+  (pkg) => (pkg as { tier?: string }).tier === "lokal"
 );
-const starterPackages = sponsoringPakete.filter((pkg) =>
-  ["150 €/pro Spiel", "500 €/5 Spiele"].includes(pkg.price)
+const starterPackages = sponsoringPakete.filter(
+  (pkg) => (pkg as { tier?: string }).tier === "starter"
 );
 
 export default function SponsoringV2Page() {
@@ -665,13 +665,26 @@ export default function SponsoringV2Page() {
         </Container>
       </SectionAlt>
 
-      <Section id="pakete">
+      <Section>
+        <Container>
+          <SectionHeader>
+            <SectionTitle>Diese Unternehmen sind bereits Partner</SectionTitle>
+            <SectionSubtitle>
+              Starke Marken vertrauen auf unsere Reichweite. Werden Sie Teil
+              dieser Erfolgsgeschichte.
+            </SectionSubtitle>
+          </SectionHeader>
+          <CurrentSponsors />
+        </Container>
+      </Section>
+
+      <SectionAlt id="pakete">
         <Container>
           <SectionHeader>
             <SectionTitle>Finden Sie Ihr perfektes Paket</SectionTitle>
             <SectionSubtitle>
               Von Premium-Partnerschaften bis Starter-Optionen - klare
-              Leistungen, faire Preise, sofort anfragbar.
+              Leistungen, individuell auf Ihr Unternehmen zugeschnitten.
             </SectionSubtitle>
           </SectionHeader>
 
@@ -703,9 +716,9 @@ export default function SponsoringV2Page() {
             <SponsoringGrid packages={starterPackages} />
           </PackageGroup>
         </Container>
-      </Section>
+      </SectionAlt>
 
-      <SectionAlt id="reichweite">
+      <Section id="reichweite">
         <Container>
           <SectionHeader>
             <SectionTitle>So viele Menschen erreichen Sie</SectionTitle>
@@ -739,13 +752,13 @@ export default function SponsoringV2Page() {
             <strong>mehr Sichtkontakte ohne Mehrkosten</strong>.
           </HighlightBox>
         </Container>
-      </SectionAlt>
+      </Section>
 
-      <Section>
+      <SectionAlt>
         <Container>
           <InstagramChart />
         </Container>
-      </Section>
+      </SectionAlt>
 
       <Section>
         <Container>
@@ -968,22 +981,6 @@ export default function SponsoringV2Page() {
         </Container>
       </Section>
 
-      <SectionAlt>
-        <Container>
-          <SectionHeader>
-            <SectionTitle>Diese Unternehmen vertrauen uns bereits</SectionTitle>
-            <SectionSubtitle>
-              Starke Partner am Spielfeldrand - werden Sie Teil dieser
-              Erfolgsgeschichte!
-            </SectionSubtitle>
-          </SectionHeader>
-          <BandensponsorsGrid />
-          <Note>
-            Noch <strong>verfügbare Plätze</strong> für Bandenwerbung. Sichern
-            Sie sich jetzt Ihre Werbefläche am Spielfeldrand!
-          </Note>
-        </Container>
-      </SectionAlt>
 
       <Section>
         <Container>

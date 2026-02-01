@@ -65,14 +65,14 @@ const TabNote = styled.p`
 
 type TabKey = "premium" | "lokal" | "starter";
 
-const premiumPackages = sponsoringPakete.filter((pkg) =>
-  ["15.000 €/Jahr", "12.000 €/Jahr", "9.500 €/Jahr"].includes(pkg.price)
+const premiumPackages = sponsoringPakete.filter(
+  (pkg) => (pkg as { tier?: string }).tier === "premium"
 );
-const lokalPackages = sponsoringPakete.filter((pkg) =>
-  ["5.000 €/Jahr", "2.000 €/Jahr", "800 €/Jahr"].includes(pkg.price)
+const lokalPackages = sponsoringPakete.filter(
+  (pkg) => (pkg as { tier?: string }).tier === "lokal"
 );
-const starterPackages = sponsoringPakete.filter((pkg) =>
-  ["150 €/pro Spiel", "500 €/5 Spiele"].includes(pkg.price)
+const starterPackages = sponsoringPakete.filter(
+  (pkg) => (pkg as { tier?: string }).tier === "starter"
 );
 
 export default function PackageComparison() {
