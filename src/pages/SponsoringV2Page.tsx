@@ -2,6 +2,14 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { getHeroImage } from "../utils/imageLoader";
 import sponsoringPakete from "../data/sponsoringPakete.json";
+import {
+  kpis,
+  busFlaechenPremium,
+  busFlaechenStandard,
+  busZusatzoptionen,
+  busNote,
+  kontakt,
+} from "../data/sponsoringData";
 import SponsoringGrid from "../components/SponsoringGrid";
 import InstagramChart from "../components/InstagramChart";
 import PackageComparison from "../components/PackageComparison";
@@ -524,12 +532,8 @@ const StepText = styled.p`
   line-height: 1.5;
 `;
 
-const heroKpis = [
-  { value: "250.000", label: "Reichweite / 90 Tage" },
-  { value: "32.000", label: "Reichweite / 30 Tage" },
-  { value: "50-80k", label: "Monat im Spielbetrieb" },
-  { value: "500-800k", label: "Saisonreichweite" },
-];
+// KPIs aus zentralem Datenmodul
+const heroKpis = kpis;
 
 const premiumPackages = sponsoringPakete.filter(
   (pkg) => (pkg as { tier?: string }).tier === "premium"
@@ -822,69 +826,15 @@ export default function SponsoringV2Page() {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>Motorhaube</td>
-                    <td>100 x 65 cm</td>
-                    <td>
-                      <strong>1.000 €</strong>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Heckfläche gesamt (Doppeltür)</td>
-                    <td>180 x 170 cm</td>
-                    <td>
-                      <strong>2.000 €</strong>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Heckfläche pro Tür</td>
-                    <td>80 x 160 cm</td>
-                    <td>
-                      je <strong>1.000 €</strong>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Seitenfläche groß (links, unter Fenstern)</td>
-                    <td>350 x 70 cm</td>
-                    <td>
-                      <strong>1.500 €</strong>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Seitenfläche groß (rechts, unter Fenstern)</td>
-                    <td>350 x 70 cm</td>
-                    <td>
-                      <strong>1.500 €</strong>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Schiebetür</td>
-                    <td>130 x 150 cm</td>
-                    <td>
-                      <strong>1.200 €</strong>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Fensterstreifen (umlaufend)</td>
-                    <td>15-20 cm Höhe</td>
-                    <td>
-                      <strong>800 €</strong>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Heckstreifen</td>
-                    <td>170 x 20 cm</td>
-                    <td>
-                      <strong>600 €</strong>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Dachfläche (optional)</td>
-                    <td>200 x 150 cm</td>
-                    <td>
-                      <strong>1.000 €</strong>
-                    </td>
-                  </tr>
+                  {[...busFlaechenPremium, ...busFlaechenStandard].map((f) => (
+                    <tr key={f.position}>
+                      <td>{f.position}</td>
+                      <td>{f.groesse}</td>
+                      <td>
+                        <strong>{f.preis}</strong>
+                      </td>
+                    </tr>
+                  ))}
                 </tbody>
               </BusTable>
             </BusTableWrapper>
@@ -902,20 +852,14 @@ export default function SponsoringV2Page() {
                 Zusatzoptionen
               </BusCardTitle>
               <BusOptionsList>
-                <li>Mehrjahresrabatt: 10% (2 Jahre), 15% (3 Jahre)</li>
-                <li>
-                  Kombi-Paket Online + Bus: +150 € (Logo & Link auf Website)
-                </li>
-                <li>Design & Folierung: optionaler Kostenbeitrag (50-100 €)</li>
-                <li>Social-Media-Add-on: +200 € für 1 dedizierten Post/Jahr</li>
+                {busZusatzoptionen.map((opt, i) => (
+                  <li key={i}>{opt}</li>
+                ))}
               </BusOptionsList>
             </div>
           </BusCard>
 
-          <Note>
-            Alle Flächen sind ca.-Angaben und werden bei Vertragsabschluss exakt
-            vermessen. Kombinationen möglich!
-          </Note>
+          <Note>{busNote}</Note>
         </Container>
       </SectionAlt>
 
@@ -1025,14 +969,13 @@ export default function SponsoringV2Page() {
           {
             icon: "📧",
             title: "E-Mail",
-            content: "sponsoring@sckw.de",
+            content: kontakt.email,
             isEmail: true,
           },
           {
             icon: "📍",
             title: "Adresse",
-            content:
-              "SC Konstanz-Wollmatingen e.V.\nSchleyerweg 5\nD-78467 Konstanz",
+            content: kontakt.vollAdresse,
           },
         ]}
       />

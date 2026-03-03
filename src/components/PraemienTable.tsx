@@ -1,4 +1,9 @@
 import styled from "styled-components";
+import {
+  praemienRows,
+  praemienExpectedCosts,
+  praemienNote,
+} from "../data/sponsoringData";
 
 const TableContainer = styled.div`
   background: white;
@@ -146,12 +151,8 @@ const Note = styled.p`
 `;
 
 export default function PraemienTable() {
-  const praemien = [
-    { label: "Pro Tor", starter: "100 €", premium: "200 €", kombi: "Fix + 150 €" },
-    { label: "Pro Punkt", starter: "150 €", premium: "250 €", kombi: "Fix + 200 €" },
-    { label: "Pro Zu-Null", starter: "300 €", premium: "500 €", kombi: "Fix + 400 €" },
-    { label: "Pro Sieg", starter: "-", premium: "800 €", kombi: "Fix + 600 €" },
-  ];
+  // Daten aus zentralem Modul
+  const praemien = praemienRows;
 
   return (
     <TableContainer>
@@ -182,9 +183,9 @@ export default function PraemienTable() {
             ))}
             <tr>
               <td>Erwartete Kosten</td>
-              <td>~5.000 €</td>
-              <td>~12.000 €</td>
-              <td>~9.000 €</td>
+              <td>{praemienExpectedCosts.starter}</td>
+              <td>{praemienExpectedCosts.premium}</td>
+              <td>{praemienExpectedCosts.kombi}</td>
             </tr>
           </tbody>
         </Table>
@@ -205,9 +206,7 @@ export default function PraemienTable() {
         ))}
       </MobileCards>
 
-      <Note>
-        Hochrechnung basierend auf Ø 50 Tore, 45 Punkte, 15 Siege pro Saison.
-      </Note>
+      <Note>{praemienNote}</Note>
     </TableContainer>
   );
 }

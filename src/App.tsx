@@ -7,6 +7,7 @@ import {
 import Navigation from "./components/Navigation";
 import SponsoringPage from "./pages/SponsoringPage";
 import SponsoringV2Page from "./pages/SponsoringV2Page";
+import SponsoringHandoffPage from "./pages/SponsoringHandoffPage";
 import JobsPage from "./pages/JobsPage";
 import RenovierungPage from "./pages/RenovierungPage";
 import "./App.css";
@@ -17,11 +18,10 @@ const ENABLE_RENOVIERUNG = false;
 export default function App() {
   return (
     <Router>
-      <Navigation />
       <Routes>
         {/* Canonical Sponsoring (V2) */}
-        <Route path="/" element={<Navigate to="/sponsoring" replace />} />
-        <Route path="/sponsoring" element={<SponsoringV2Page />} />
+        <Route path="/" element={<><Navigation /><Navigate to="/sponsoring" replace /></>} />
+        <Route path="/sponsoring" element={<><Navigation /><SponsoringV2Page /></>} />
 
         {/* Backwards compatibility */}
         <Route
@@ -30,11 +30,14 @@ export default function App() {
         />
 
         {/* Legacy / Archiv (V1) */}
-        <Route path="/sponsoring-v1" element={<SponsoringPage />} />
+        <Route path="/sponsoring-v1" element={<><Navigation /><SponsoringPage /></>} />
 
-        <Route path="/jobs" element={<JobsPage />} />
+        {/* Handoff - versteckte Route ohne Navigation */}
+        <Route path="/sponsoring-handoff" element={<SponsoringHandoffPage />} />
+
+        <Route path="/jobs" element={<><Navigation /><JobsPage /></>} />
         {ENABLE_RENOVIERUNG && (
-          <Route path="/renovierung" element={<RenovierungPage />} />
+          <Route path="/renovierung" element={<><Navigation /><RenovierungPage /></>} />
         )}
       </Routes>
     </Router>
