@@ -370,33 +370,50 @@ function PageCover() {
   return (
     <A4>
       <div style={{
-        background: "linear-gradient(140deg, #1a365d 0%, #2d5a87 45%, #c41e3a 100%)",
+        backgroundImage: "url(/cover-bg.png)",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
         height: "100%", minHeight: "297mm",
         display: "flex", flexDirection: "column",
-        alignItems: "center", justifyContent: "center",
+        alignItems: "center", justifyContent: "flex-end",
         padding: "20mm", textAlign: "center", color: "#fff",
         position: "relative",
       }}>
-        <LogoImg src="/logo.svg" alt="SCKW" style={{ height: "55mm", marginBottom: "14mm" }} />
-        <h1 style={{ fontSize: "40pt", fontWeight: 900, margin: "0 0 6mm", letterSpacing: "-0.03em" }}>
-          SPONSORING
-        </h1>
-        <p style={{ fontSize: "15pt", fontWeight: 400, opacity: 0.95, maxWidth: "140mm", lineHeight: 1.5, margin: "0 0 18mm" }}>
-          Werden Sie Teil unserer Erfolgsgeschichte.<br />
-          Sichtbarkeit, die wirkt.
-        </p>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "5mm" }}>
-          {kpis.slice(0, 2).map(k => (
-            <div key={k.label} style={{
-              background: "rgba(255,255,255,0.14)", borderRadius: "4mm",
-              padding: "5mm 10mm", backdropFilter: "blur(10px)",
-            }}>
-              <div style={{ fontSize: "24pt", fontWeight: 900 }}>{k.value}</div>
-              <div style={{ fontSize: "7pt", textTransform: "uppercase", letterSpacing: "0.06em", opacity: 0.9 }}>{k.label}</div>
-            </div>
-          ))}
+        <div style={{
+          display: "flex", flexDirection: "column",
+          alignItems: "center", marginBottom: "30mm",
+        }}>
+          <h1 style={{
+            fontSize: "40pt", fontWeight: 900, margin: "0 0 6mm",
+            letterSpacing: "-0.03em",
+            textShadow: "0 2px 12px rgba(0,0,0,0.4)",
+          }}>
+            SPONSORING
+          </h1>
+          <p style={{
+            fontSize: "15pt", fontWeight: 400, opacity: 0.95,
+            maxWidth: "140mm", lineHeight: 1.5, margin: "0 0 12mm",
+            textShadow: "0 1px 8px rgba(0,0,0,0.3)",
+          }}>
+            Werden Sie Teil unserer Erfolgsgeschichte.<br />
+            Sichtbarkeit, die wirkt.
+          </p>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "5mm" }}>
+            {kpis.slice(0, 2).map(k => (
+              <div key={k.label} style={{
+                background: "rgba(0,0,0,0.35)", borderRadius: "4mm",
+                padding: "5mm 10mm", backdropFilter: "blur(12px)",
+                border: "1px solid rgba(255,255,255,0.15)",
+              }}>
+                <div style={{ fontSize: "24pt", fontWeight: 900 }}>{k.value}</div>
+                <div style={{ fontSize: "7pt", textTransform: "uppercase", letterSpacing: "0.06em", opacity: 0.9 }}>{k.label}</div>
+              </div>
+            ))}
+          </div>
         </div>
-        <div style={{ position: "absolute", bottom: "12mm", fontSize: "9pt", opacity: 0.7 }}>
+        <div style={{ position: "absolute", bottom: "12mm", fontSize: "9pt", opacity: 0.8,
+          textShadow: "0 1px 4px rgba(0,0,0,0.5)",
+        }}>
           Saison 2025/26 · partner.sckw.de
         </div>
       </div>
