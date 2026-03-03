@@ -10,7 +10,6 @@
 import { useState } from "react";
 import { Navigate, useSearchParams } from "react-router-dom";
 import styled, { createGlobalStyle } from "styled-components";
-import sponsoringPakete from "../data/sponsoringPakete.json";
 import { getHeroImage } from "../utils/imageLoader";
 import {
   kpis,
@@ -272,6 +271,23 @@ const Price = styled.div<{ $hidden?: boolean }>`
   font-size: 10.5pt;
   color: #333;
   strong { font-size: 14pt; color: #1a365d; margin-left: 2mm; }
+`;
+
+const LeadField = styled.div`margin-bottom: 4mm;`;
+
+const LeadLabel = styled.label`
+  display: block;
+  font-size: 9pt;
+  font-weight: 700;
+  color: #1a365d;
+  margin-bottom: 1.5mm;
+`;
+
+const LeadInput = styled.div<{ $lines?: number }>`
+  border: 1px solid #d1d5db;
+  border-radius: 2mm;
+  min-height: ${p => (p.$lines || 1) * 8}mm;
+  background: #fafafa;
 `;
 
 const Disclaimer = styled.div`
