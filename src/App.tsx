@@ -39,6 +39,9 @@ export default function App() {
         {ENABLE_RENOVIERUNG && (
           <Route path="/renovierung" element={<><Navigation /><RenovierungPage /></>} />
         )}
+
+        {/* Catch-all: unbekannte Routen zur Startseite */}
+        <Route path="*" element={<Navigate to="/sponsoring" replace />} />
       </Routes>
     </Router>
   );
