@@ -532,6 +532,122 @@ const StepText = styled.p`
   line-height: 1.5;
 `;
 
+const Club500Section = styled.section`
+  padding: 4rem 0;
+  scroll-margin-top: 90px;
+  background: linear-gradient(135deg, #fff6fa 0%, #ffeef5 50%, #fff0f7 100%);
+  overflow-x: hidden;
+`;
+
+const Club500Title = styled.h2`
+  font-size: clamp(1.8rem, 5vw, 2.8rem);
+  color: #e10073;
+  font-weight: 900;
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.02em;
+`;
+
+const Club500Subtitle = styled.p`
+  font-size: clamp(0.95rem, 2.5vw, 1.15rem);
+  color: #666;
+  max-width: 720px;
+  margin: 0 auto;
+  line-height: 1.6;
+  padding: 0 1rem;
+`;
+
+const Club500Content = styled.div`
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  max-width: 960px;
+  margin: 0 auto;
+
+  @media (min-width: 768px) {
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 2.5rem;
+    align-items: start;
+  }
+`;
+
+const Club500Left = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+`;
+
+const Club500Right = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+`;
+
+const Club500GoalBox = styled.div`
+  background: linear-gradient(135deg, #e10073, #ff6b9d);
+  border-radius: 20px;
+  padding: 1.75rem 1.5rem;
+  text-align: center;
+  color: white;
+  box-shadow: 0 8px 32px rgba(225, 0, 115, 0.25);
+`;
+
+const Club500BenefitsList = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+`;
+
+const Club500Benefit = styled.div`
+  background: white;
+  border-radius: 12px;
+  padding: 0.85rem 1rem;
+  font-size: 0.95rem;
+  color: #444;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  border: 1px solid #f2c2d9;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  line-height: 1.4;
+
+  &::before {
+    content: '\\2713';
+    color: #e10073;
+    font-weight: 800;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+`;
+
+const Club500BankCard = styled.div`
+  background: white;
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+  border: 2px solid #e10073;
+  text-align: center;
+`;
+
+const Club500DownloadBtn = styled.a`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #e10073, #ff6b9d);
+  color: white;
+  font-weight: 800;
+  font-size: 1rem;
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 20px rgba(225, 0, 115, 0.3);
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(225, 0, 115, 0.4);
+  }
+`;
+
 // KPIs aus zentralem Datenmodul
 const heroKpis = kpis;
 
@@ -925,6 +1041,64 @@ export default function SponsoringV2Page() {
         </Container>
       </Section>
 
+
+      <Club500Section id="500club">
+        <Container>
+          <SectionHeader>
+            <Club500Title>500 €Club</Club500Title>
+            <Club500Subtitle>
+              Gemeinsam den Fußball beim SC Konstanz-Wollmatingen stärken - werden Sie
+              Mitglied und fördern Sie unseren Jugend- und Amateurfußball.
+            </Club500Subtitle>
+          </SectionHeader>
+
+          <Club500Content>
+            <Club500Left>
+              <Club500GoalBox>
+                <div style={{ fontSize: "0.85rem", opacity: 0.9, fontWeight: 600, marginBottom: "0.5rem", textTransform: "uppercase", letterSpacing: "0.05em" }}>
+                  Mitgliedschaft
+                </div>
+                <div style={{ fontSize: "clamp(1.8rem, 5vw, 2.4rem)", fontWeight: 900, lineHeight: 1.1 }}>
+                  Ab 125€ / Quartal
+                </div>
+                <div style={{ fontSize: "1rem", opacity: 0.9, marginTop: "0.25rem" }}>
+                  oder 250€ halbjährlich · 500€ jährlich
+                </div>
+              </Club500GoalBox>
+
+              <Club500BenefitsList>
+                <Club500Benefit>Offizielle <strong>Spendenbescheinigung</strong> (gemeinnütziger Verein)</Club500Benefit>
+                <Club500Benefit>Ihr <strong>Name oder Firmenname</strong> wird veröffentlicht</Club500Benefit>
+                <Club500Benefit>Direkte Förderung von <strong>Jugend- & Amateurfußball</strong></Club500Benefit>
+              </Club500BenefitsList>
+            </Club500Left>
+
+            <Club500Right>
+              <Club500BankCard>
+                <div style={{ fontSize: "0.8rem", color: "#e10073", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: "0.75rem" }}>
+                  Spendenkonto
+                </div>
+                <div style={{ fontWeight: 800, color: "#222", fontSize: "1.05rem", marginBottom: "0.5rem" }}>
+                  SC Konstanz-Wollmatingen e.V.
+                </div>
+                <div style={{ color: "#444", lineHeight: 1.7, fontSize: "0.95rem" }}>
+                  IBAN: <strong>DE84 6905 0001 0000 0929 99</strong><br />
+                  Sparkasse Bodensee<br />
+                  <span style={{ fontSize: "0.85rem", color: "#888" }}>
+                    Schleyerweg 5 · 78467 Konstanz
+                  </span>
+                </div>
+              </Club500BankCard>
+
+              <Club500DownloadBtn
+                href="/sponsoring-handoff?preset=club500&view=preview"
+              >
+                500 €Club Anmeldung
+              </Club500DownloadBtn>
+            </Club500Right>
+          </Club500Content>
+        </Container>
+      </Club500Section>
 
       <Section>
         <Container>

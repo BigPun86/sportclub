@@ -370,46 +370,60 @@ function PageCover() {
   return (
     <A4>
       <div style={{
-        backgroundImage: "url(/cover-bg.png)",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
+        background: "linear-gradient(150deg, #0a1628 0%, #0e2240 15%, #1a3a6a 35%, #2d5a87 50%, #6b1d4a 65%, #a81e45 80%, #c41e3a 90%, #e10073 100%)",
         height: "100%", minHeight: "297mm",
         display: "flex", flexDirection: "column",
-        alignItems: "center", justifyContent: "flex-end",
-        padding: "20mm", textAlign: "center", color: "#fff",
-        position: "relative",
+        alignItems: "center", justifyContent: "center",
+        textAlign: "center", color: "#fff",
+        position: "relative", overflow: "hidden",
       }}>
         <div style={{
-          display: "flex", flexDirection: "column",
-          alignItems: "center", marginBottom: "30mm",
+          position: "absolute", top: "-60mm", right: "-50mm",
+          width: "200mm", height: "200mm", borderRadius: "50%",
+          background: "radial-gradient(circle, rgba(74,144,226,0.12) 0%, transparent 70%)",
+        }} />
+        <div style={{
+          position: "absolute", bottom: "-40mm", left: "-40mm",
+          width: "180mm", height: "180mm", borderRadius: "50%",
+          background: "radial-gradient(circle, rgba(196,30,58,0.10) 0%, transparent 70%)",
+        }} />
+        <div style={{
+          position: "absolute", top: "40mm", left: "-20mm",
+          width: "140mm", height: "140mm", borderRadius: "50%",
+          background: "radial-gradient(circle, rgba(255,255,255,0.03) 0%, transparent 60%)",
+        }} />
+        <img src="/sckw-logo-500club.png" alt="SC Konstanz-Wollmatingen" style={{
+          height: "70mm", objectFit: "contain", position: "relative", zIndex: 1,
+          filter: "drop-shadow(0 3mm 10mm rgba(0,0,0,0.35))",
+        }} />
+        <h1 style={{
+          fontSize: "40pt", fontWeight: 900, margin: "8mm 0 6mm",
+          letterSpacing: "-0.03em",
+          position: "relative", zIndex: 1,
+          textShadow: "0 2px 12px rgba(0,0,0,0.4)",
         }}>
-          <h1 style={{
-            fontSize: "40pt", fontWeight: 900, margin: "0 0 6mm",
-            letterSpacing: "-0.03em",
-            textShadow: "0 2px 12px rgba(0,0,0,0.4)",
-          }}>
-            SPONSORING
-          </h1>
-          <p style={{
-            fontSize: "15pt", fontWeight: 400, opacity: 0.95,
-            maxWidth: "140mm", lineHeight: 1.5, margin: "0 0 12mm",
-            textShadow: "0 1px 8px rgba(0,0,0,0.3)",
-          }}>
-            Werden Sie Teil unserer Erfolgsgeschichte.<br />
-            Sichtbarkeit, die wirkt.
-          </p>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "5mm" }}>
-            {kpis.slice(0, 2).map(k => (
-              <div key={k.label} style={{
-                background: "rgba(0,0,0,0.35)", borderRadius: "4mm",
-                padding: "5mm 10mm", backdropFilter: "blur(12px)",
-                border: "1px solid rgba(255,255,255,0.15)",
-              }}>
-                <div style={{ fontSize: "24pt", fontWeight: 900 }}>{k.value}</div>
-                <div style={{ fontSize: "7pt", textTransform: "uppercase", letterSpacing: "0.06em", opacity: 0.9 }}>{k.label}</div>
-              </div>
-            ))}
-          </div>
+          SPONSORING
+        </h1>
+        <p style={{
+          fontSize: "15pt", fontWeight: 400, opacity: 0.95,
+          maxWidth: "140mm", lineHeight: 1.5, margin: "0 0 12mm",
+          position: "relative", zIndex: 1,
+          textShadow: "0 1px 8px rgba(0,0,0,0.3)",
+        }}>
+          Werden Sie Teil unserer Erfolgsgeschichte.<br />
+          Sichtbarkeit, die wirkt.
+        </p>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "5mm", position: "relative", zIndex: 1 }}>
+          {kpis.slice(0, 2).map(k => (
+            <div key={k.label} style={{
+              background: "rgba(0,0,0,0.35)", borderRadius: "4mm",
+              padding: "5mm 10mm", backdropFilter: "blur(12px)",
+              border: "1px solid rgba(255,255,255,0.15)",
+            }}>
+              <div style={{ fontSize: "24pt", fontWeight: 900 }}>{k.value}</div>
+              <div style={{ fontSize: "7pt", textTransform: "uppercase", letterSpacing: "0.06em", opacity: 0.9 }}>{k.label}</div>
+            </div>
+          ))}
         </div>
         <div style={{ position: "absolute", bottom: "12mm", fontSize: "9pt", opacity: 0.8,
           textShadow: "0 1px 4px rgba(0,0,0,0.5)",
@@ -899,6 +913,215 @@ function PagePraemien({ showPrices }: PageProps) {
 }
 
 // ============================================================================
+// PAGE 13 – 500 €Club (Premium-Pitch)
+// ============================================================================
+
+const heroJubelClub = getHeroImage("herren/herren_jubel_500club");
+
+function Page500EuroClub() {
+  return (
+    <A4>
+      {/* Jubel-Foto */}
+      {heroJubelClub && (
+        <img src={heroJubelClub} alt="Mannschaft feiert" style={{
+          width: "100%", height: "65mm", objectFit: "cover", display: "block",
+        }} />
+      )}
+
+      <div style={{ padding: "8mm 18mm 10mm", position: "relative" }}>
+        <Subtitle style={{ fontSize: "11pt", margin: "0 0 4mm", fontStyle: "normal", lineHeight: 1.6, color: "#333" }}>
+          Die Aussage, dass Amateurfußball ohne Gönner und Sponsoren kaum noch finanzierbar ist,
+          trifft die aktuelle Realität vieler Vereine. Ob Trikots, Trainingsmaterial, Platzpflege
+          oder Schiedsrichterkosten – die laufenden Ausgaben können oft nicht mehr allein durch
+          Mitgliedsbeiträge gedeckt werden.
+        </Subtitle>
+
+        <P style={{ fontSize: "10.5pt", margin: "0 0 5mm", lineHeight: 1.6 }}>
+          <strong>Helfen Sie uns mit dem Beitritt in den 500 €Club.</strong> Unterstützen Sie
+          unseren Verein und fördern Sie direkt den Jugend‑ und Amateurfußball, Trainingsmaterial,
+          Infrastruktur und die Entwicklung unserer Mannschaften.
+        </P>
+
+        <H2>Ihre Vorteile</H2>
+        <Checks>
+          <Check>Offizielle <strong>Spendenbescheinigung</strong> (gemeinnütziger Verein)</Check>
+          <Check>Veröffentlichung Ihres <strong>Namens oder Firmennamens</strong> als Unterstützer</Check>
+          <Check>Direkte Förderung des Jugend- und Amateurfußballs in unserer Region</Check>
+        </Checks>
+
+        <H2>Zahlungsoptionen</H2>
+        <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "10.5pt", margin: "2mm 0" }}>
+          <thead>
+            <tr>
+              <th style={{ borderBottom: "2px solid #1a365d", color: "#1a365d", padding: "2mm 0", textAlign: "left", fontWeight: 800, fontSize: "9pt" }}>
+                Zahlungsweise
+              </th>
+              <th style={{ borderBottom: "2px solid #1a365d", color: "#1a365d", padding: "2mm 0", textAlign: "right", fontWeight: 800, fontSize: "9pt" }}>
+                Beitrag
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {[
+              { label: "Vierteljährlich", betrag: "125 €" },
+              { label: "Halbjährlich", betrag: "250 €" },
+              { label: "Jährlich", betrag: "500 €" },
+            ].map(row => (
+              <tr key={row.label}>
+                <td style={{ padding: "2.5mm 0", borderBottom: "1px solid #e5e7eb", color: "#444" }}>{row.label}</td>
+                <td style={{ padding: "2.5mm 0", borderBottom: "1px solid #e5e7eb", fontWeight: 800, color: "#1a365d", textAlign: "right" }}>{row.betrag}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        <P style={{ fontSize: "9pt", color: "#888", margin: "1mm 0 4mm" }}>
+          Auch Mehrjahres-Vorauszahlung möglich: 1.000 € (2 Jahre) oder 1.500 € (3 Jahre).
+        </P>
+
+        <H2>Spendenkonto</H2>
+        <P style={{ fontSize: "10.5pt", margin: "0 0 0", lineHeight: 1.7 }}>
+          <strong>Sport Club Konstanz‑Wollmatingen e.V.</strong><br />
+          IBAN: <strong>DE84 6905 0001 0000 0929 99</strong> · Sparkasse Bodensee<br />
+          Schleyerweg 5 · 78467 Konstanz
+        </P>
+
+        <div style={{ marginTop: "6mm", textAlign: "center", borderTop: "1px solid #e5e7eb", paddingTop: "5mm" }}>
+          <P style={{ margin: 0, fontSize: "11pt", fontWeight: 800, fontStyle: "italic", color: "#1a365d", lineHeight: 1.4 }}>
+            Gehen Sie den gemeinsamen Weg mit uns<br />
+            in eine erfolgreiche Zukunft!
+          </P>
+          <P style={{ margin: "2mm 0 0", fontSize: "9pt", color: "#666" }}>
+            Adel Grimm · Sportlicher Leiter<br />
+            Tel. +49 152 3384 2436 · grimm@sckw.de
+          </P>
+        </div>
+
+        <BrochureFooter />
+      </div>
+    </A4>
+  );
+}
+
+// ============================================================================
+// PAGE 14 – 500 €Club Anmeldeformular
+// ============================================================================
+
+function Page500EuroClubAnmeldung() {
+  return (
+    <A4>
+      <Waves />
+      <Inner>
+        <LogoWrap><LogoImg src="/logo.svg" /></LogoWrap>
+        <Title style={{ color: "#1a365d", fontSize: "22pt" }}>BEITRITTSERKLÄRUNG 500 €CLUB</Title>
+        <Subtitle style={{ margin: "0 0 4mm" }}>
+          Bitte ausfüllen und an den Verein übergeben oder per E-Mail an {kontakt.email} senden.
+        </Subtitle>
+
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "3mm" }}>
+          <LeadField><LeadLabel>Vorname:</LeadLabel><LeadInput $lines={1} /></LeadField>
+          <LeadField><LeadLabel>Nachname:</LeadLabel><LeadInput $lines={1} /></LeadField>
+        </div>
+
+        <LeadField><LeadLabel>Firma (optional):</LeadLabel><LeadInput $lines={1} /></LeadField>
+
+        <LeadField><LeadLabel>Straße, Hausnummer:</LeadLabel><LeadInput $lines={1} /></LeadField>
+
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 2fr", gap: "3mm" }}>
+          <LeadField><LeadLabel>PLZ:</LeadLabel><LeadInput $lines={1} /></LeadField>
+          <LeadField><LeadLabel>Ort:</LeadLabel><LeadInput $lines={1} /></LeadField>
+        </div>
+
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "3mm" }}>
+          <LeadField><LeadLabel>Geb.-Datum:</LeadLabel><LeadInput $lines={1} /></LeadField>
+          <LeadField><LeadLabel>Telefon:</LeadLabel><LeadInput $lines={1} /></LeadField>
+          <LeadField><LeadLabel>E-Mail:</LeadLabel><LeadInput $lines={1} /></LeadField>
+        </div>
+
+        <H2 style={{ marginTop: "4mm" }}>Zahlungsweise</H2>
+        <P style={{ fontSize: "9pt", color: "#555", margin: "0 0 2mm" }}>Bitte ankreuzen:</P>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "2mm" }}>
+          {[
+            "125 € vierteljährlich",
+            "250 € halbjährlich",
+            "500 € jährlich",
+          ].map(opt => (
+            <div key={opt} style={{
+              border: "1px solid #d1d5db", borderRadius: "2mm", padding: "2.5mm 3mm",
+              textAlign: "center", background: "#fafafa",
+            }}>
+              <LeadLabel style={{ marginBottom: 0, fontSize: "9pt" }}>☐ {opt}</LeadLabel>
+            </div>
+          ))}
+        </div>
+        <P style={{ fontSize: "8pt", color: "#888", margin: "1mm 0 0" }}>
+          Auch Mehrjahres-Vorauszahlung möglich: ☐ 1.000 € (2 Jahre) · ☐ 1.500 € (3 Jahre)
+        </P>
+
+        <H2 style={{ marginTop: "4mm" }}>Wie möchten Sie gewürdigt werden?</H2>
+        <P style={{ fontSize: "9pt", color: "#555", margin: "0 0 2mm" }}>Mehrfachauswahl möglich:</P>
+        <div style={{ display: "grid", gridTemplateColumns: "1fr", gap: "1.5mm" }}>
+          {[
+            "Danke-Post auf Instagram (\"Danke [Name], dass du Mitglied im 500 €Club bist!\")",
+            "Nennung auf der Spendentafel (Vereinsgelände / Website)",
+            "Ich möchte anonym bleiben",
+          ].map(opt => (
+            <div key={opt} style={{
+              border: "1px solid #d1d5db", borderRadius: "2mm", padding: "2mm 3mm",
+              background: "#fafafa", fontSize: "9pt",
+            }}>
+              <LeadLabel style={{ marginBottom: 0, fontSize: "9pt" }}>☐ {opt}</LeadLabel>
+            </div>
+          ))}
+        </div>
+
+        <LeadField style={{ marginTop: "2mm" }}>
+          <LeadLabel>Name/Firma für Veröffentlichung (falls abweichend):</LeadLabel>
+          <LeadInput $lines={1} />
+        </LeadField>
+
+        <div style={{
+          marginTop: "3mm", background: "#f8fafc", borderRadius: "2mm",
+          padding: "2.5mm 3mm", fontSize: "7.5pt", color: "#666", lineHeight: 1.5,
+        }}>
+          Hiermit erkläre ich meinen Beitritt zum SC Konstanz‑Wollmatingen e.V. 500 €Club.
+          Die Mitgliedschaft besteht für 1 Jahr und kann beiderseitig verlängert werden.
+          Der Betrag ist innerhalb 14 Tagen nach Beitrittsdatum auf das unten stehende Konto zu überweisen.
+          Das Mitglied erklärt sich damit einverstanden, dass im Zusammenhang mit der Mitgliedschaft
+          Foto- und Filmaufnahmen und die dazugehörigen Daten für Werbezwecke in den Medien verwendet werden dürfen.
+          Für Ihre Spende wird Ihnen auf Wunsch eine Spendenquittung ausgestellt.
+        </div>
+
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "3mm", marginTop: "4mm" }}>
+          <LeadField>
+            <LeadLabel>Konstanz, den _______________</LeadLabel>
+            <div style={{ borderBottom: "1px solid #333", minHeight: "10mm", marginTop: "2mm" }} />
+            <div style={{ fontSize: "7pt", color: "#999", marginTop: "1mm" }}>Datum</div>
+          </LeadField>
+          <LeadField>
+            <LeadLabel>Unterschrift:</LeadLabel>
+            <div style={{ borderBottom: "1px solid #333", minHeight: "10mm", marginTop: "2mm" }} />
+          </LeadField>
+        </div>
+
+        <div style={{
+          marginTop: "3mm", fontSize: "8pt", color: "#555", lineHeight: 1.5,
+          borderTop: "1px solid #e5e7eb", paddingTop: "2mm",
+        }}>
+          <strong>Spendenkonto:</strong> SC Konstanz‑Wollmatingen e.V. · IBAN: DE84 6905 0001 0000 0929 99 · Sparkasse Bodensee<br />
+          <strong>Kontakt:</strong> {kontakt.email} · Tel. +49 152 3384 2436 · Schleyerweg 5 · 78467 Konstanz
+        </div>
+
+        <Footer style={{ marginTop: "auto" }}>
+          <FooterCol><strong>SC Konstanz-Wollmatingen e.V.</strong></FooterCol>
+          <FooterCol $center>500 €Club</FooterCol>
+          <FooterCol $right>partner.sckw.de</FooterCol>
+        </Footer>
+      </Inner>
+    </A4>
+  );
+}
+
+// ============================================================================
 // HELPER PAGE A – So geht's weiter + Kontakt
 // ============================================================================
 
@@ -1016,7 +1239,7 @@ function PageLeadSheet() {
 interface PageDef {
   id: string;
   label: string;
-  group: "broschüre" | "helfer";
+  group: "broschüre" | "community" | "helfer";
   needsPrices?: boolean;
   render: (showPrices: boolean) => React.ReactNode;
 }
@@ -1032,6 +1255,8 @@ const ALL_PAGES: PageDef[] = [
   { id: "spieltag", label: "Spieltag-Sponsoring", group: "broschüre", needsPrices: true, render: (p) => <PageSpieltag showPrices={p} /> },
   { id: "bus", label: "Buswerbung", group: "broschüre", needsPrices: true, render: (p) => <PageBuswerbung showPrices={p} /> },
   { id: "praemien", label: "Prämienmodell", group: "broschüre", needsPrices: true, render: (p) => <PagePraemien showPrices={p} /> },
+  { id: "club500", label: "500 €Club", group: "community", render: () => <Page500EuroClub /> },
+  { id: "club500form", label: "500 €Club Anmeldung", group: "community", render: () => <Page500EuroClubAnmeldung /> },
   { id: "steps", label: "So geht's weiter", group: "helfer", render: () => <PageNextSteps /> },
   { id: "lead", label: "Gesprächsnotiz", group: "helfer", render: () => <PageLeadSheet /> },
 ];
@@ -1164,11 +1389,21 @@ const SelectedCount = styled.span`
 
 export default function SponsoringHandoffPage() {
   const hasAccess = useAccessGuard();
+  const [searchParams] = useSearchParams();
+
+  const presetParam = searchParams.get("preset");
+  const viewParam = searchParams.get("view");
+
+  const getInitialSelection = (): Set<string> => {
+    if (presetParam === "club500") return new Set(["club500", "club500form"]);
+    return new Set(ALL_PAGES.filter(p => p.group === "broschüre").map(p => p.id));
+  };
+
   const [showPrices, setShowPrices] = useState(true);
-  const [selected, setSelected] = useState<Set<string>>(
-    () => new Set(ALL_PAGES.filter(p => p.group === "broschüre").map(p => p.id))
+  const [selected, setSelected] = useState<Set<string>>(getInitialSelection);
+  const [mode, setMode] = useState<"dashboard" | "preview">(
+    viewParam === "preview" ? "preview" : "dashboard"
   );
-  const [mode, setMode] = useState<"dashboard" | "preview">("dashboard");
 
   if (!hasAccess) return <Navigate to="/" replace />;
 
@@ -1187,9 +1422,11 @@ export default function SponsoringHandoffPage() {
   const selectHelfer = () => setSelected(new Set(ALL_PAGES.map(p => p.id)));
   const selectStarter = () => setSelected(new Set(["cover", "why", "spieltag", "banden"]));
   const selectPremium = () => setSelected(new Set(["cover", "why", "haupt", "co", "silber"]));
+  const select500Club = () => setSelected(new Set(["club500", "club500form"]));
 
   const selectedPages = ALL_PAGES.filter(p => selected.has(p.id));
   const broschuerePages = ALL_PAGES.filter(p => p.group === "broschüre");
+  const communityPages = ALL_PAGES.filter(p => p.group === "community");
   const helferPages = ALL_PAGES.filter(p => p.group === "helfer");
 
   if (mode === "preview") {
@@ -1256,12 +1493,27 @@ export default function SponsoringHandoffPage() {
           <Preset onClick={selectHelfer}>Komplett-Kit (+ Helfer)</Preset>
           <Preset onClick={selectPremium}>Nur Premium-Pakete</Preset>
           <Preset onClick={selectStarter}>Starter-Paket</Preset>
+          <Preset onClick={select500Club}>500 €Club</Preset>
           <Preset onClick={selectNone}>Keine</Preset>
         </PresetRow>
 
         <GroupLabel>Broschüre</GroupLabel>
         <PageGrid>
           {broschuerePages.map(page => (
+            <PageCheckbox key={page.id} $checked={selected.has(page.id)}>
+              <input
+                type="checkbox"
+                checked={selected.has(page.id)}
+                onChange={() => togglePage(page.id)}
+              />
+              {page.label}
+            </PageCheckbox>
+          ))}
+        </PageGrid>
+
+        <GroupLabel>Community / 500 €Club</GroupLabel>
+        <PageGrid>
+          {communityPages.map(page => (
             <PageCheckbox key={page.id} $checked={selected.has(page.id)}>
               <input
                 type="checkbox"
