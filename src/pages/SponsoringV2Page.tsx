@@ -912,20 +912,16 @@ export default function SponsoringV2Page() {
           </SectionHeader>
 
           <BusCard style={{ maxWidth: 900, margin: "0 auto 2rem" }}>
-            <div
+            <img
+              src="/vereinsbus.png"
+              alt="Vereinsbus SC Konstanz-Wollmatingen mit Werbeflächen"
               style={{
-                background: "#f8f9fa",
+                width: "100%",
                 borderRadius: 12,
-                padding: "2rem",
                 marginBottom: "1.5rem",
-                textAlign: "center",
+                display: "block",
               }}
-            >
-              <div style={{ fontSize: "3rem", marginBottom: "1rem" }}>🚌</div>
-              <div style={{ color: "#999", fontSize: "0.95rem" }}>
-                Foto des Vereinsbusses folgt in Kürze
-              </div>
-            </div>
+            />
 
             <BusCardTitle
               style={{ textAlign: "center", marginBottom: "1.5rem" }}

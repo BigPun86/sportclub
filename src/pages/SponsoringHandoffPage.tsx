@@ -797,6 +797,10 @@ function PageBuswerbung({ showPrices }: PageProps) {
           Auswärtsspielen unterwegs – mobile Werbung für Ihr Unternehmen.
         </Subtitle>
 
+        <img src="/vereinsbus.png" alt="Vereinsbus SC Konstanz-Wollmatingen"
+          style={{ width: "100%", borderRadius: "3mm", margin: "3mm 0 4mm", display: "block" }}
+        />
+
         <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "10pt", margin: "4mm 0" }}>
           <thead>
             <tr>
