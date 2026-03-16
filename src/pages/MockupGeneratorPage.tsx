@@ -1,4 +1,4 @@
-import { useState, useRef, useCallback, useEffect } from "react";
+import { useState, useRef, useCallback } from "react";
 import styled from "styled-components";
 import { mockupTemplates, type MockupZone } from "../data/mockupTemplates";
 
@@ -9,6 +9,7 @@ import { mockupTemplates, type MockupZone } from "../data/mockupTemplates";
 interface ZoneLogo {
   zoneId: string;
   dataUrl: string;
+  scale: number;
 }
 
 // ---------------------------------------------------------------------------
@@ -86,18 +87,13 @@ const CanvasArea = styled.div`
   min-width: 0;
 `;
 
-const ZoomWrapper = styled.div`
+const ImageContainer = styled.div`
+  position: relative;
+  width: 100%;
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
   background: #111;
-  cursor: grab;
-  &:active { cursor: grabbing; }
-`;
-
-const ImageContainer = styled.div`
-  position: relative;
-  transform-origin: 0 0;
 `;
 
 const TemplateImage = styled.img`
@@ -105,39 +101,6 @@ const TemplateImage = styled.img`
   display: block;
   user-select: none;
   -webkit-user-drag: none;
-`;
-
-const ZoomControls = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.6rem;
-  margin-top: 0.75rem;
-`;
-
-const ZoomBtn = styled.button`
-  width: 36px;
-  height: 36px;
-  border-radius: 8px;
-  border: 1px solid #d1d5db;
-  background: #fff;
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: #1a365d;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.15s;
-  &:hover { background: #f3f4f6; }
-`;
-
-const ZoomLabel = styled.span`
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: #666;
-  min-width: 48px;
-  text-align: center;
 `;
 
 const ZoneOverlay = styled.div<{ $active: boolean; $hasLogo: boolean }>`
@@ -163,7 +126,7 @@ const ZoneOverlay = styled.div<{ $active: boolean; $hasLogo: boolean }>`
   }
 `;
 
-const ZoneLabel = styled.span`
+const ZoneLabelText = styled.span`
   color: #fff;
   font-size: 0.7rem;
   font-weight: 700;
@@ -178,11 +141,10 @@ const ZoneLabel = styled.span`
   }
 `;
 
-const LogoInZone = styled.img`
-  width: 100%;
-  height: 100%;
+const LogoInZone = styled.img<{ $scale: number }>`
+  max-width: ${(p) => p.$scale * 100}%;
+  max-height: ${(p) => p.$scale * 100}%;
   object-fit: contain;
-  padding: 4%;
 `;
 
 const Sidebar = styled.div`
@@ -281,6 +243,27 @@ const Hint = styled.div`
   margin-top: 0.25rem;
 `;
 
+const ScaleRow = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+`;
+
+const ScaleLabel = styled.span`
+  font-size: 0.8rem;
+  color: #666;
+  white-space: nowrap;
+  min-width: 38px;
+  text-align: right;
+`;
+
+const ScaleSlider = styled.input`
+  flex: 1;
+  accent-color: #3b82f6;
+  cursor: pointer;
+`;
+
 const ResetAllBtn = styled.button`
   width: 100%;
   padding: 0.6rem;
@@ -304,79 +287,16 @@ const ResetAllBtn = styled.button`
 // Component
 // ---------------------------------------------------------------------------
 
-const MIN_ZOOM = 1;
-const MAX_ZOOM = 4;
-const ZOOM_STEP = 0.25;
-
 export default function MockupGeneratorPage() {
   const [templateId, setTemplateId] = useState(mockupTemplates[0].id);
   const [activeZone, setActiveZone] = useState<string | null>(null);
   const [logos, setLogos] = useState<ZoneLogo[]>([]);
   const fileInputRefs = useRef<Record<string, HTMLInputElement | null>>({});
 
-  const [zoom, setZoom] = useState(1);
-  const [pan, setPan] = useState({ x: 0, y: 0 });
-  const isPanning = useRef(false);
-  const panStart = useRef({ x: 0, y: 0 });
-  const panOffset = useRef({ x: 0, y: 0 });
-  const wrapperRef = useRef<HTMLDivElement>(null);
-
   const template = mockupTemplates.find((t) => t.id === templateId) ?? mockupTemplates[0];
 
-  const clampPan = useCallback((x: number, y: number, z: number) => {
-    if (z <= 1) return { x: 0, y: 0 };
-    const wrapper = wrapperRef.current;
-    if (!wrapper) return { x, y };
-    const ww = wrapper.clientWidth;
-    const wh = wrapper.clientHeight;
-    const maxX = (ww * z - ww) / z;
-    const maxY = (wh * z - wh) / z;
-    return {
-      x: Math.max(-maxX, Math.min(0, x)),
-      y: Math.max(-maxY, Math.min(0, y)),
-    };
-  }, []);
-
-  const handleWheel = useCallback((e: React.WheelEvent) => {
-    e.preventDefault();
-    setZoom((prev) => {
-      const next = Math.max(MIN_ZOOM, Math.min(MAX_ZOOM, prev - e.deltaY * 0.002));
-      setPan((p) => clampPan(p.x, p.y, next));
-      return next;
-    });
-  }, [clampPan]);
-
-  const handlePointerDown = useCallback((e: React.PointerEvent) => {
-    if (e.button !== 0) return;
-    const target = e.target as HTMLElement;
-    if (target.closest("[data-zone]")) return;
-    isPanning.current = true;
-    panStart.current = { x: e.clientX, y: e.clientY };
-    panOffset.current = { ...pan };
-    (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId);
-  }, [pan]);
-
-  const handlePointerMove = useCallback((e: React.PointerEvent) => {
-    if (!isPanning.current) return;
-    const dx = (e.clientX - panStart.current.x) / zoom;
-    const dy = (e.clientY - panStart.current.y) / zoom;
-    setPan(clampPan(panOffset.current.x + dx, panOffset.current.y + dy, zoom));
-  }, [zoom, clampPan]);
-
-  const handlePointerUp = useCallback(() => {
-    isPanning.current = false;
-  }, []);
-
-  useEffect(() => {
-    const wrapper = wrapperRef.current;
-    if (!wrapper) return;
-    const prevent = (e: WheelEvent) => e.preventDefault();
-    wrapper.addEventListener("wheel", prevent, { passive: false });
-    return () => wrapper.removeEventListener("wheel", prevent);
-  }, []);
-
-  const getLogoForZone = (zoneId: string) =>
-    logos.find((l) => l.zoneId === zoneId)?.dataUrl;
+  const getLogoEntry = (zoneId: string) =>
+    logos.find((l) => l.zoneId === zoneId);
 
   const handleFileChange = useCallback(
     (zoneId: string, file: File | undefined) => {
@@ -386,13 +306,19 @@ export default function MockupGeneratorPage() {
         const dataUrl = e.target?.result as string;
         setLogos((prev) => [
           ...prev.filter((l) => l.zoneId !== zoneId),
-          { zoneId, dataUrl },
+          { zoneId, dataUrl, scale: 1 },
         ]);
       };
       reader.readAsDataURL(file);
     },
     [],
   );
+
+  const setLogoScale = useCallback((zoneId: string, scale: number) => {
+    setLogos((prev) =>
+      prev.map((l) => (l.zoneId === zoneId ? { ...l, scale } : l)),
+    );
+  }, []);
 
   const removeLogo = useCallback((zoneId: string) => {
     setLogos((prev) => prev.filter((l) => l.zoneId !== zoneId));
@@ -401,14 +327,12 @@ export default function MockupGeneratorPage() {
   const resetAll = useCallback(() => {
     setLogos([]);
     setActiveZone(null);
-    setZoom(1);
-    setPan({ x: 0, y: 0 });
   }, []);
 
   const handleZoneClick = (zone: MockupZone) => {
     setActiveZone(zone.id);
-    const logo = getLogoForZone(zone.id);
-    if (!logo) {
+    const entry = getLogoEntry(zone.id);
+    if (!entry) {
       fileInputRefs.current[zone.id]?.click();
     }
   };
@@ -443,86 +367,56 @@ export default function MockupGeneratorPage() {
 
         <Layout>
           <CanvasArea>
-            <ZoomWrapper
-              ref={wrapperRef}
-              onWheel={handleWheel}
-              onPointerDown={handlePointerDown}
-              onPointerMove={handlePointerMove}
-              onPointerUp={handlePointerUp}
-              onPointerLeave={handlePointerUp}
-            >
-              <ImageContainer
-                style={{
-                  transform: `scale(${zoom}) translate(${pan.x}px, ${pan.y}px)`,
-                }}
-              >
-                <TemplateImage
-                  src={template.image}
-                  alt={template.label}
-                  draggable={false}
-                />
-                {template.zones.map((zone) => {
-                  const logo = getLogoForZone(zone.id);
-                  return (
-                    <ZoneOverlay
-                      key={zone.id}
-                      data-zone="true"
-                      $active={activeZone === zone.id}
-                      $hasLogo={!!logo}
-                      style={{
-                        left: `${zone.x}%`,
-                        top: `${zone.y}%`,
-                        width: `${zone.width}%`,
-                        height: `${zone.height}%`,
-                      }}
-                      onClick={() => handleZoneClick(zone)}
-                      onDragOver={(e) => {
-                        e.preventDefault();
-                        setActiveZone(zone.id);
-                      }}
-                      onDrop={(e) => {
-                        e.preventDefault();
-                        const file = e.dataTransfer.files?.[0];
-                        handleFileChange(zone.id, file);
-                      }}
-                    >
-                      {logo ? (
-                        <LogoInZone src={logo} alt="Logo" draggable={false} />
-                      ) : (
-                        <ZoneLabel>{zone.label}</ZoneLabel>
-                      )}
-                    </ZoneOverlay>
-                  );
-                })}
-              </ImageContainer>
-            </ZoomWrapper>
-            <ZoomControls>
-              <ZoomBtn onClick={() => {
-                setZoom((z) => {
-                  const next = Math.max(MIN_ZOOM, z - ZOOM_STEP);
-                  setPan((p) => clampPan(p.x, p.y, next));
-                  return next;
-                });
-              }}>-</ZoomBtn>
-              <ZoomLabel>{Math.round(zoom * 100)}%</ZoomLabel>
-              <ZoomBtn onClick={() => {
-                setZoom((z) => {
-                  const next = Math.min(MAX_ZOOM, z + ZOOM_STEP);
-                  return next;
-                });
-              }}>+</ZoomBtn>
-              {zoom !== 1 && (
-                <ZoomBtn onClick={() => { setZoom(1); setPan({ x: 0, y: 0 }); }}
-                  style={{ fontSize: "0.75rem", width: "auto", padding: "0 8px" }}
-                >Reset</ZoomBtn>
-              )}
-            </ZoomControls>
+            <ImageContainer>
+              <TemplateImage
+                src={template.image}
+                alt={template.label}
+                draggable={false}
+              />
+              {template.zones.map((zone) => {
+                const entry = getLogoEntry(zone.id);
+                return (
+                  <ZoneOverlay
+                    key={zone.id}
+                    $active={activeZone === zone.id}
+                    $hasLogo={!!entry}
+                    style={{
+                      left: `${zone.x}%`,
+                      top: `${zone.y}%`,
+                      width: `${zone.width}%`,
+                      height: `${zone.height}%`,
+                    }}
+                    onClick={() => handleZoneClick(zone)}
+                    onDragOver={(e) => {
+                      e.preventDefault();
+                      setActiveZone(zone.id);
+                    }}
+                    onDrop={(e) => {
+                      e.preventDefault();
+                      const file = e.dataTransfer.files?.[0];
+                      handleFileChange(zone.id, file);
+                    }}
+                  >
+                    {entry ? (
+                      <LogoInZone
+                        src={entry.dataUrl}
+                        alt="Logo"
+                        draggable={false}
+                        $scale={entry.scale}
+                      />
+                    ) : (
+                      <ZoneLabelText>{zone.label}</ZoneLabelText>
+                    )}
+                  </ZoneOverlay>
+                );
+              })}
+            </ImageContainer>
           </CanvasArea>
 
           <Sidebar>
             <SidebarTitle>Werbeflächen</SidebarTitle>
             {template.zones.map((zone) => {
-              const logo = getLogoForZone(zone.id);
+              const entry = getLogoEntry(zone.id);
               return (
                 <ZoneCard
                   key={zone.id}
@@ -532,7 +426,7 @@ export default function MockupGeneratorPage() {
                   <ZoneCardLabel>{zone.label}</ZoneCardLabel>
                   <ZoneCardActions>
                     <UploadBtn htmlFor={`file-${zone.id}`}>
-                      {logo ? "Ändern" : "Logo hochladen"}
+                      {entry ? "Ändern" : "Logo hochladen"}
                     </UploadBtn>
                     <HiddenInput
                       id={`file-${zone.id}`}
@@ -545,7 +439,7 @@ export default function MockupGeneratorPage() {
                         handleFileChange(zone.id, e.target.files?.[0])
                       }
                     />
-                    {logo && (
+                    {entry && (
                       <RemoveBtn
                         onClick={(e) => {
                           e.stopPropagation();
@@ -555,9 +449,26 @@ export default function MockupGeneratorPage() {
                         Entfernen
                       </RemoveBtn>
                     )}
-                    {logo && <LogoPreview src={logo} alt="Vorschau" />}
+                    {entry && <LogoPreview src={entry.dataUrl} alt="Vorschau" />}
                   </ZoneCardActions>
-                  {!logo && (
+                  {entry && (
+                    <ScaleRow>
+                      <ScaleLabel>{Math.round(entry.scale * 100)}%</ScaleLabel>
+                      <ScaleSlider
+                        type="range"
+                        min="0.3"
+                        max="2"
+                        step="0.05"
+                        value={entry.scale}
+                        onClick={(e) => e.stopPropagation()}
+                        onChange={(e) => {
+                          e.stopPropagation();
+                          setLogoScale(zone.id, parseFloat(e.target.value));
+                        }}
+                      />
+                    </ScaleRow>
+                  )}
+                  {!entry && (
                     <Hint>Klicken oder Bild hierher ziehen</Hint>
                   )}
                 </ZoneCard>
