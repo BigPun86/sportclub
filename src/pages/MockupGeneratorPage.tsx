@@ -106,23 +106,21 @@ const TemplateImage = styled.img`
 const ZoneOverlay = styled.div<{ $active: boolean; $hasLogo: boolean }>`
   position: absolute;
   border: 2px dashed
-    ${(p) => (p.$active ? "#3b82f6" : p.$hasLogo ? "rgba(59,130,246,0.5)" : "rgba(255,255,255,0.6)")};
+    ${(p) => (p.$active ? "#3b82f6" : p.$hasLogo ? "transparent" : "rgba(255,255,255,0.4)")};
   background: ${(p) =>
     p.$active
-      ? "rgba(59,130,246,0.15)"
-      : p.$hasLogo
-        ? "transparent"
-        : "rgba(255,255,255,0.05)"};
+      ? "rgba(59,130,246,0.1)"
+      : "transparent"};
   cursor: pointer;
   transition: all 0.2s;
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
+  overflow: visible;
 
   &:hover {
     border-color: #3b82f6;
-    background: ${(p) => (p.$hasLogo ? "rgba(59,130,246,0.08)" : "rgba(59,130,246,0.12)")};
+    background: ${(p) => (p.$hasLogo ? "transparent" : "rgba(59,130,246,0.08)")};
   }
 `;
 
@@ -142,9 +140,10 @@ const ZoneLabelText = styled.span`
 `;
 
 const LogoInZone = styled.img<{ $scale: number }>`
-  max-width: ${(p) => p.$scale * 100}%;
-  max-height: ${(p) => p.$scale * 100}%;
+  width: ${(p) => p.$scale * 100}%;
+  height: auto;
   object-fit: contain;
+  pointer-events: none;
 `;
 
 const Sidebar = styled.div`
@@ -457,7 +456,7 @@ export default function MockupGeneratorPage() {
                       <ScaleSlider
                         type="range"
                         min="0.3"
-                        max="2"
+                        max="3"
                         step="0.05"
                         value={entry.scale}
                         onClick={(e) => e.stopPropagation()}

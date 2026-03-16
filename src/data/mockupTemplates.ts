@@ -18,7 +18,7 @@ export const mockupTemplates: MockupTemplate[] = [
   {
     id: "vereinsbus",
     label: "Vereinsbus",
-    image: "/vereinsbus-voll.png",
+    image: "/sckw-bud-exclusive-platzhalter.png",
     zones: [
       {
         id: "seite-gross-oben",
