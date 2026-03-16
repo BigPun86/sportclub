@@ -11,6 +11,8 @@ interface ZoneLogo {
   zoneId: string;
   dataUrl: string;
   scale: number;
+  offsetX: number;
+  offsetY: number;
 }
 
 // ---------------------------------------------------------------------------
@@ -120,11 +122,12 @@ const ZoneOverlay = styled.div<{ $active: boolean; $hasLogo: boolean }>`
   }
 `;
 
-const LogoInZone = styled.img<{ $scale: number }>`
+const LogoInZone = styled.img<{ $scale: number; $offsetX: number; $offsetY: number }>`
   width: ${(p) => p.$scale * 100}%;
   height: auto;
   object-fit: contain;
   pointer-events: none;
+  transform: translate(${(p) => p.$offsetX}%, ${(p) => p.$offsetY}%);
 `;
 
 const Sidebar = styled.div`
@@ -311,7 +314,7 @@ export default function MockupGeneratorPage() {
         const dataUrl = e.target?.result as string;
         setLogos((prev) => [
           ...prev.filter((l) => l.zoneId !== zoneId),
-          { zoneId, dataUrl, scale: 1 },
+          { zoneId, dataUrl, scale: 1, offsetX: 0, offsetY: 0 },
         ]);
       };
       reader.readAsDataURL(file);
@@ -322,6 +325,12 @@ export default function MockupGeneratorPage() {
   const setLogoScale = useCallback((zoneId: string, scale: number) => {
     setLogos((prev) =>
       prev.map((l) => (l.zoneId === zoneId ? { ...l, scale } : l)),
+    );
+  }, []);
+
+  const setLogoOffset = useCallback((zoneId: string, offsetX: number, offsetY: number) => {
+    setLogos((prev) =>
+      prev.map((l) => (l.zoneId === zoneId ? { ...l, offsetX, offsetY } : l)),
     );
   }, []);
 
@@ -425,6 +434,8 @@ export default function MockupGeneratorPage() {
                         alt="Logo"
                         draggable={false}
                         $scale={entry.scale}
+                        $offsetX={entry.offsetX}
+                        $offsetY={entry.offsetY}
                       />
                     )}
                   </ZoneOverlay>
@@ -472,21 +483,53 @@ export default function MockupGeneratorPage() {
                     {entry && <LogoPreview src={entry.dataUrl} alt="Vorschau" />}
                   </ZoneCardActions>
                   {entry && (
-                    <ScaleRow>
-                      <ScaleLabel>{Math.round(entry.scale * 100)}%</ScaleLabel>
-                      <ScaleSlider
-                        type="range"
-                        min="0.3"
-                        max="3"
-                        step="0.05"
-                        value={entry.scale}
-                        onClick={(e) => e.stopPropagation()}
-                        onChange={(e) => {
-                          e.stopPropagation();
-                          setLogoScale(zone.id, parseFloat(e.target.value));
-                        }}
-                      />
-                    </ScaleRow>
+                    <>
+                      <ScaleRow>
+                        <ScaleLabel>{Math.round(entry.scale * 100)}%</ScaleLabel>
+                        <ScaleSlider
+                          type="range"
+                          min="0.3"
+                          max="3"
+                          step="0.05"
+                          value={entry.scale}
+                          onClick={(e) => e.stopPropagation()}
+                          onChange={(e) => {
+                            e.stopPropagation();
+                            setLogoScale(zone.id, parseFloat(e.target.value));
+                          }}
+                        />
+                      </ScaleRow>
+                      <ScaleRow>
+                        <ScaleLabel>X</ScaleLabel>
+                        <ScaleSlider
+                          type="range"
+                          min="-100"
+                          max="100"
+                          step="1"
+                          value={entry.offsetX}
+                          onClick={(e) => e.stopPropagation()}
+                          onChange={(e) => {
+                            e.stopPropagation();
+                            setLogoOffset(zone.id, parseFloat(e.target.value), entry.offsetY);
+                          }}
+                        />
+                      </ScaleRow>
+                      <ScaleRow>
+                        <ScaleLabel>Y</ScaleLabel>
+                        <ScaleSlider
+                          type="range"
+                          min="-100"
+                          max="100"
+                          step="1"
+                          value={entry.offsetY}
+                          onClick={(e) => e.stopPropagation()}
+                          onChange={(e) => {
+                            e.stopPropagation();
+                            setLogoOffset(zone.id, entry.offsetX, parseFloat(e.target.value));
+                          }}
+                        />
+                      </ScaleRow>
+                    </>
                   )}
                   {!entry && (
                     <Hint>Klicken oder Bild hierher ziehen</Hint>
