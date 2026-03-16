@@ -10,6 +10,7 @@ import SponsoringV2Page from "./pages/SponsoringV2Page";
 import SponsoringHandoffPage from "./pages/SponsoringHandoffPage";
 import JobsPage from "./pages/JobsPage";
 import RenovierungPage from "./pages/RenovierungPage";
+import MockupGeneratorPage from "./pages/MockupGeneratorPage";
 import "./App.css";
 
 // Feature Flags
@@ -35,6 +36,7 @@ export default function App() {
         {/* Handoff - versteckte Route ohne Navigation */}
         <Route path="/sponsoring-handoff" element={<SponsoringHandoffPage />} />
 
+        <Route path="/mockup-generator" element={<><Navigation /><MockupGeneratorPage /></>} />
         <Route path="/jobs" element={<><Navigation /><JobsPage /></>} />
         {ENABLE_RENOVIERUNG && (
           <Route path="/renovierung" element={<><Navigation /><RenovierungPage /></>} />
