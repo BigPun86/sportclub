@@ -1,5 +1,6 @@
 import { useState, useRef, useCallback } from "react";
 import styled from "styled-components";
+import { toPng } from "html-to-image";
 import { mockupTemplates, type MockupZone } from "../data/mockupTemplates";
 
 // ---------------------------------------------------------------------------
@@ -105,12 +106,8 @@ const TemplateImage = styled.img`
 
 const ZoneOverlay = styled.div<{ $active: boolean; $hasLogo: boolean }>`
   position: absolute;
-  border: 2px dashed
-    ${(p) => (p.$active ? "#3b82f6" : p.$hasLogo ? "transparent" : "rgba(255,255,255,0.4)")};
-  background: ${(p) =>
-    p.$active
-      ? "rgba(59,130,246,0.1)"
-      : "transparent"};
+  border: none;
+  background: transparent;
   cursor: pointer;
   transition: all 0.2s;
   display: flex;
@@ -119,23 +116,7 @@ const ZoneOverlay = styled.div<{ $active: boolean; $hasLogo: boolean }>`
   overflow: visible;
 
   &:hover {
-    border-color: #3b82f6;
     background: ${(p) => (p.$hasLogo ? "transparent" : "rgba(59,130,246,0.08)")};
-  }
-`;
-
-const ZoneLabelText = styled.span`
-  color: #fff;
-  font-size: 0.7rem;
-  font-weight: 700;
-  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
-  pointer-events: none;
-  text-align: center;
-  padding: 4px;
-  line-height: 1.2;
-
-  @media (min-width: 768px) {
-    font-size: 0.8rem;
   }
 `;
 
@@ -282,6 +263,29 @@ const ResetAllBtn = styled.button`
   }
 `;
 
+const DownloadBtn = styled.button`
+  width: 100%;
+  padding: 0.7rem;
+  margin-top: 0.5rem;
+  background: #1a365d;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &:hover {
+    background: #2d5a87;
+  }
+
+  &:disabled {
+    background: #9ca3af;
+    cursor: not-allowed;
+  }
+`;
+
 // ---------------------------------------------------------------------------
 // Component
 // ---------------------------------------------------------------------------
@@ -290,7 +294,9 @@ export default function MockupGeneratorPage() {
   const [templateId, setTemplateId] = useState(mockupTemplates[0].id);
   const [activeZone, setActiveZone] = useState<string | null>(null);
   const [logos, setLogos] = useState<ZoneLogo[]>([]);
+  const [downloading, setDownloading] = useState(false);
   const fileInputRefs = useRef<Record<string, HTMLInputElement | null>>({});
+  const imageContainerRef = useRef<HTMLDivElement>(null);
 
   const template = mockupTemplates.find((t) => t.id === templateId) ?? mockupTemplates[0];
 
@@ -327,6 +333,23 @@ export default function MockupGeneratorPage() {
     setLogos([]);
     setActiveZone(null);
   }, []);
+
+  const handleDownload = useCallback(async () => {
+    if (!imageContainerRef.current) return;
+    setDownloading(true);
+    try {
+      const dataUrl = await toPng(imageContainerRef.current, {
+        pixelRatio: 2,
+        cacheBust: true,
+      });
+      const link = document.createElement("a");
+      link.download = `${template.label}-mockup.png`;
+      link.href = dataUrl;
+      link.click();
+    } finally {
+      setDownloading(false);
+    }
+  }, [template.label]);
 
   const handleZoneClick = (zone: MockupZone) => {
     setActiveZone(zone.id);
@@ -366,7 +389,7 @@ export default function MockupGeneratorPage() {
 
         <Layout>
           <CanvasArea>
-            <ImageContainer>
+            <ImageContainer ref={imageContainerRef}>
               <TemplateImage
                 src={template.image}
                 alt={template.label}
@@ -396,15 +419,13 @@ export default function MockupGeneratorPage() {
                       handleFileChange(zone.id, file);
                     }}
                   >
-                    {entry ? (
+                    {entry && (
                       <LogoInZone
                         src={entry.dataUrl}
                         alt="Logo"
                         draggable={false}
                         $scale={entry.scale}
                       />
-                    ) : (
-                      <ZoneLabelText>{zone.label}</ZoneLabelText>
                     )}
                   </ZoneOverlay>
                 );
@@ -474,7 +495,12 @@ export default function MockupGeneratorPage() {
               );
             })}
             {logos.length > 0 && (
-              <ResetAllBtn onClick={resetAll}>Alle Logos entfernen</ResetAllBtn>
+              <>
+                <DownloadBtn onClick={handleDownload} disabled={downloading}>
+                  {downloading ? "Wird erstellt..." : "Bild herunterladen"}
+                </DownloadBtn>
+                <ResetAllBtn onClick={resetAll}>Alle Logos entfernen</ResetAllBtn>
+              </>
             )}
           </Sidebar>
         </Layout>
