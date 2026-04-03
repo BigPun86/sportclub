@@ -11,6 +11,7 @@ import SponsoringHandoffPage from "./pages/SponsoringHandoffPage";
 import JobsPage from "./pages/JobsPage";
 import RenovierungPage from "./pages/RenovierungPage";
 import MockupGeneratorPage from "./pages/MockupGeneratorPage";
+import Club500Page from "./pages/Club500Page";
 import "./App.css";
 
 // Feature Flags
@@ -35,6 +36,9 @@ export default function App() {
 
         {/* Handoff - versteckte Route ohne Navigation */}
         <Route path="/sponsoring-handoff" element={<SponsoringHandoffPage />} />
+
+        {/* Club 500 Spendenseite */}
+        <Route path="/sponsoring/500er" element={<><Navigation /><Club500Page /></>} />
 
         <Route path="/mockup-generator" element={<><Navigation /><MockupGeneratorPage /></>} />
         <Route path="/jobs" element={<><Navigation /><JobsPage /></>} />

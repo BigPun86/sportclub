@@ -60,6 +60,7 @@ export default function Footer() {
           <LinkA href="mailto:sponsoring@sckw.de">sponsoring@sckw.de</LinkA>
         </div>
         <FooterLinks aria-label="Rechtliches">
+          <LinkR to="/sponsoring/500er">500er Club</LinkR>
           <LinkR to="/sponsoring-v1">Sponsoring-Archiv</LinkR>
           <LinkA
             href="https://www.sckw.de/datenschutz"
