@@ -1,26 +1,16 @@
 import { useEffect, useState } from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+import { Link } from "react-router-dom";
 import { getHeroImage } from "../utils/imageLoader";
-import sponsoringPakete from "../data/sponsoringPakete.json";
-import {
-  kpis,
-  busFlaechenPremium,
-  busFlaechenStandard,
-  busZusatzoptionen,
-  busNote,
-  kontakt,
-} from "../data/sponsoringData";
-import SponsoringGrid from "../components/SponsoringGrid";
-import InstagramChart from "../components/InstagramChart";
-import PackageComparison from "../components/PackageComparison";
-import PraemienTable from "../components/PraemienTable";
-import SpielerpatenschaftenTable from "../components/SpielerpatenschaftenTable";
+import { kpis, kontakt, aufstiegsBanner } from "../data/sponsoringData";
 import CurrentSponsors from "../components/CurrentSponsors";
 import { ContactSection } from "../components/ContactSection";
 import Footer from "../components/Footer";
 
+const EMAIL_KONTAKT = "sponsoring@sckw.de";
+
 const Container = styled.div`
-  max-width: 1200px;
+  max-width: 1100px;
   margin: 0 auto;
   padding: 0 1rem;
 
@@ -31,8 +21,7 @@ const Container = styled.div`
 
 const Section = styled.section`
   padding: 3rem 0;
-  scroll-margin-top: 90px;
-  overflow-x: hidden; /* Verhindert, dass Inhalte die Seite verbreitern */
+  overflow-x: hidden;
 
   @media (min-width: 768px) {
     padding: 5rem 0;
@@ -41,7 +30,6 @@ const Section = styled.section`
 
 const SectionAlt = styled(Section)`
   background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
-  overflow-x: hidden; /* Verhindert, dass Inhalte die Seite verbreitern */
 `;
 
 const SectionHeader = styled.div`
@@ -70,6 +58,8 @@ const SectionSubtitle = styled.p`
   padding: 0 1rem;
 `;
 
+// -- Hero --
+
 const Hero = styled.section`
   background: #0b0b0d;
   min-height: 85vh;
@@ -79,7 +69,6 @@ const Hero = styled.section`
   position: relative;
   padding: 4rem 0 3rem 0;
   overflow: hidden;
-  scroll-margin-top: 90px;
 `;
 
 const HeroSlide = styled.div<{ $bg: string; $active: boolean }>`
@@ -229,312 +218,256 @@ const HeroCTA = styled.a<{ $primary?: boolean }>`
   }
 `;
 
-const KPIGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
-  width: 100%;
+// -- Aufstiegs-Banner --
+
+const pulse = keyframes`
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+`;
+
+const PromoBanner = styled.div`
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  padding: 1rem 1.5rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+`;
+
+const BannerInner = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
   max-width: 900px;
   margin: 0 auto;
-
-  @media (min-width: 768px) {
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1.25rem;
-  }
 `;
 
-const KPICard = styled.div`
-  background: white;
-  border-radius: 16px;
-  padding: 1.25rem 0.75rem;
-  text-align: center;
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.06);
-  border: 1px solid #f0f0f0;
+const BannerPulse = styled.span`
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #22c55e;
+  animation: ${pulse} 2s ease-in-out infinite;
+  flex-shrink: 0;
 `;
 
-const KPIValue = styled.div`
-  font-size: clamp(1.2rem, 4.5vw, 1.9rem);
-  font-weight: 900;
-  color: #e10073;
-  margin-bottom: 0.4rem;
-`;
-
-const KPILabel = styled.div`
-  font-size: 0.7rem;
-  color: #666;
-  text-transform: uppercase;
+const BannerText = styled.span`
+  color: white;
+  font-size: clamp(0.85rem, 2.5vw, 1rem);
   font-weight: 700;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.02em;
 
-  @media (min-width: 768px) {
-    font-size: 0.8rem;
+  strong {
+    color: #fbbf24;
   }
 `;
 
-const HighlightBox = styled.div`
-  background: #fff6fa;
-  border: 1px solid #f2c2d9;
-  border-radius: 16px;
-  padding: 1.25rem;
-  margin: 2rem auto 0;
-  max-width: 900px;
-  text-align: center;
-  color: #444;
-  line-height: 1.6;
-  font-size: 0.95rem;
-`;
+// -- Angebot: Kategorie-Karten --
 
-const ValueGrid = styled.div`
+const OfferGrid = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   gap: 1.5rem;
 
   @media (min-width: 768px) {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
   }
 `;
 
-const ValueCard = styled.div`
+const OfferCard = styled.div`
   background: white;
   border-radius: 20px;
-  overflow: hidden;
-  text-align: center;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
-  border: 2px solid transparent;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  padding: 2rem 1.5rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+  border: 1px solid #f0f0f0;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
 
   &:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 12px 40px rgba(225, 0, 115, 0.15);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
   }
 `;
 
-const ValueImage = styled.img`
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-  display: block;
-
-  @media (min-width: 768px) {
-    height: 200px;
-  }
+const OfferIcon = styled.div`
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
 `;
 
-const ValueContent = styled.div`
-  padding: 1.5rem 1.25rem 2rem;
-`;
-
-const ValueTitle = styled.h3`
-  font-size: clamp(1.1rem, 2.8vw, 1.4rem);
-  color: #e10073;
+const OfferTitle = styled.h3`
+  font-size: 1.3rem;
   font-weight: 800;
-  margin-bottom: 0.75rem;
-`;
-
-const ValueText = styled.p`
-  font-size: 0.95rem;
-  color: #555;
-  line-height: 1.6;
-`;
-
-const PackageGroup = styled.div`
-  margin-top: 2.5rem;
-`;
-
-const GroupTitle = styled.h3`
-  font-size: clamp(1.2rem, 3.5vw, 1.6rem);
   color: #222;
-  font-weight: 800;
-  margin-bottom: 1.25rem;
-  text-align: left;
-  padding-left: 0.5rem;
-  border-left: 4px solid #e10073;
-`;
-
-const Note = styled.p`
-  font-size: 0.9rem;
-  color: #666;
-  max-width: 860px;
-  margin: 1rem auto 0 auto;
-  line-height: 1.6;
-  text-align: center;
-  padding: 0 1rem;
-`;
-
-const PillGrid = styled.div`
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 0.75rem;
-  max-width: 900px;
-  margin: 0 auto;
-
-  @media (min-width: 768px) {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
-  }
-`;
-
-const Pill = styled.div`
-  background: white;
-  border-radius: 12px;
-  padding: 1rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  border: 1px solid #f0f0f0;
-  text-align: center;
-  color: #444;
-  font-weight: 700;
-  font-size: 0.9rem;
-`;
-
-const ExampleGrid = styled.div`
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.5rem;
-
-  @media (min-width: 768px) {
-    grid-template-columns: repeat(3, 1fr);
-  }
-`;
-
-const ExampleCard = styled.div`
-  background: white;
-  border-radius: 18px;
-  overflow: hidden;
-  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.08);
-  border: 1px solid #f0f0f0;
-`;
-
-const ExampleImage = styled.img`
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-`;
-
-const ExampleBody = styled.div`
-  padding: 1.25rem 1rem 1.5rem;
-`;
-
-const ExampleTitle = styled.h4`
   margin: 0 0 0.5rem 0;
-  color: #e10073;
-  font-weight: 800;
 `;
 
-const ExampleText = styled.p`
-  margin: 0 0 1rem 0;
-  color: #555;
-  line-height: 1.5;
+const OfferDesc = styled.p`
   font-size: 0.95rem;
+  color: #666;
+  line-height: 1.6;
+  margin: 0 0 1.25rem 0;
+  flex: 1;
 `;
 
-const ExampleButton = styled.a`
-  display: inline-block;
-  background: linear-gradient(135deg, #e10073, #ff6b9d);
+const OfferBullets = styled.ul`
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem 0;
+`;
+
+const OfferBullet = styled.li`
+  padding: 0.35rem 0;
+  font-size: 0.9rem;
+  color: #444;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  &::before {
+    content: "\\2713";
+    color: #e10073;
+    font-weight: 800;
+    flex-shrink: 0;
+  }
+`;
+
+const OfferActions = styled.div`
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  margin-top: auto;
+  flex-wrap: wrap;
+`;
+
+const OfferCTA = styled.a`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #e10073;
   color: white;
   font-weight: 700;
-  font-size: 0.85rem;
-  padding: 0.6rem 1.3rem;
-  border-radius: 20px;
+  font-size: 0.9rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 50px;
   text-decoration: none;
-`;
+  transition: all 0.2s ease;
 
-const BusCard = styled.div`
-  background: white;
-  border-radius: 16px;
-  padding: 1.5rem 1.2rem;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
-  border: 1px solid #f0f0f0;
-
-  @media (max-width: 768px) {
-    padding: 1.25rem 0.75rem;
+  &:hover {
+    background: #b8005a;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(225, 0, 115, 0.3);
   }
 `;
 
-const BusCardTitle = styled.h4`
-  margin: 0 0 0.75rem 0;
+const OfferDetailLink = styled(Link)`
+  font-size: 0.85rem;
+  font-weight: 600;
   color: #e10073;
-  font-weight: 800;
-`;
+  text-decoration: none;
 
-const BusTableWrapper = styled.div`
-  @media (max-width: 768px) {
-    overflow-x: hidden;
-    width: 100%;
+  &:hover {
+    text-decoration: underline;
   }
 `;
 
-const BusTable = styled.table`
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.9rem;
-  table-layout: fixed;
+// -- Reichweiten-Karte --
 
-  @media (max-width: 768px) {
-    font-size: 0.85rem;
-  }
-
-  th {
-    text-align: left;
-    padding: 0.5rem 0.4rem;
-    color: #555;
-    font-weight: 700;
-    border-bottom: 1px solid #ececec;
-    word-break: break-word;
-  }
-
-  td {
-    padding: 0.5rem 0.4rem;
-    border-bottom: 1px solid #f2f2f2;
-    color: #333;
-    word-break: break-word;
-  }
+const MapSection = styled.div`
+  margin-top: 3rem;
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+  border: 1px solid #f0f0f0;
 `;
 
-const BusOptionsList = styled.ul`
-  margin: 0;
-  padding-left: 1.2rem;
-  color: #444;
-  line-height: 1.6;
-  font-size: 0.9rem;
-`;
-
-const StepGrid = styled.div`
+const MapGrid = styled.div`
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1rem;
 
   @media (min-width: 768px) {
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1.25rem;
+    grid-template-columns: 1fr 1fr;
   }
 `;
 
-const StepCard = styled.div`
-  background: white;
-  border-radius: 16px;
-  padding: 1.25rem;
-  text-align: center;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
-  border: 1px solid #f0f0f0;
+const MapImageContainer = styled.div`
+  position: relative;
+  min-height: 280px;
+  overflow: hidden;
+
+  @media (min-width: 768px) {
+    min-height: 360px;
+  }
 `;
 
-const StepTitle = styled.div`
+const MapImage = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+`;
+
+const MapBadge = styled.div`
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background: rgba(225, 0, 115, 0.9);
+  backdrop-filter: blur(8px);
+  color: white;
+  font-size: 0.75rem;
   font-weight: 800;
-  color: #e10073;
-  margin-bottom: 0.5rem;
-  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
 `;
 
-const StepText = styled.p`
-  margin: 0;
-  color: #555;
-  font-size: 0.9rem;
-  line-height: 1.5;
+const MapContent = styled.div`
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  @media (min-width: 768px) {
+    padding: 2.5rem 2rem;
+  }
 `;
+
+const MapTitle = styled.h3`
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #222;
+  margin: 0 0 0.75rem 0;
+`;
+
+const MapText = styled.p`
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.6;
+  margin: 0 0 1.25rem 0;
+`;
+
+const MapHighlight = styled.div`
+  background: #fff6fa;
+  border: 1px solid #f2c2d9;
+  border-radius: 12px;
+  padding: 1rem;
+  font-size: 0.9rem;
+  color: #444;
+  line-height: 1.5;
+
+  strong {
+    color: #e10073;
+  }
+`;
+
+// -- Club 500 --
 
 const Club500Section = styled.section`
   padding: 4rem 0;
-  scroll-margin-top: 90px;
   background: linear-gradient(135deg, #fff6fa 0%, #ffeef5 50%, #fff0f7 100%);
   overflow-x: hidden;
 `;
@@ -556,91 +489,45 @@ const Club500Subtitle = styled.p`
   padding: 0 1rem;
 `;
 
-const Club500Content = styled.div`
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 2rem;
-  max-width: 960px;
-  margin: 0 auto;
-
-  @media (min-width: 768px) {
-    grid-template-columns: 1.2fr 0.8fr;
-    gap: 2.5rem;
-    align-items: start;
-  }
-`;
-
-const Club500Left = styled.div`
+const Club500Highlights = styled.div`
   display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
 `;
 
-const Club500Right = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-`;
-
-const Club500GoalBox = styled.div`
-  background: linear-gradient(135deg, #e10073, #ff6b9d);
-  border-radius: 20px;
-  padding: 1.75rem 1.5rem;
-  text-align: center;
-  color: white;
-  box-shadow: 0 8px 32px rgba(225, 0, 115, 0.25);
-`;
-
-const Club500BenefitsList = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-`;
-
-const Club500Benefit = styled.div`
+const Club500Chip = styled.div`
   background: white;
-  border-radius: 12px;
-  padding: 0.85rem 1rem;
-  font-size: 0.95rem;
+  border-radius: 50px;
+  padding: 0.6rem 1.25rem;
+  font-size: 0.9rem;
   color: #444;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
   border: 1px solid #f2c2d9;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  line-height: 1.4;
+  font-weight: 600;
 
   &::before {
-    content: '\\2713';
+    content: "\\2713  ";
     color: #e10073;
     font-weight: 800;
-    font-size: 1.1rem;
-    flex-shrink: 0;
   }
 `;
 
-const Club500BankCard = styled.div`
-  background: white;
-  border-radius: 16px;
-  padding: 1.5rem;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
-  border: 2px solid #e10073;
-  text-align: center;
-`;
-
-const Club500DownloadBtn = styled.a`
-  display: flex;
+const Club500CTA = styled(Link)`
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
+  gap: 0.5rem;
   background: linear-gradient(135deg, #e10073, #ff6b9d);
   color: white;
   font-weight: 800;
-  font-size: 1rem;
-  padding: 1rem 2rem;
+  font-size: 1.05rem;
+  padding: 1rem 2.5rem;
   border-radius: 50px;
   text-decoration: none;
   transition: all 0.3s ease;
   box-shadow: 0 6px 20px rgba(225, 0, 115, 0.3);
+  margin-top: 2rem;
 
   &:hover {
     transform: translateY(-2px);
@@ -648,18 +535,60 @@ const Club500DownloadBtn = styled.a`
   }
 `;
 
-// KPIs aus zentralem Datenmodul
+// -- Data --
+
 const heroKpis = kpis;
 
-const premiumPackages = sponsoringPakete.filter(
-  (pkg) => (pkg as { tier?: string }).tier === "premium"
-);
-const localPackages = sponsoringPakete.filter(
-  (pkg) => (pkg as { tier?: string }).tier === "lokal"
-);
-const starterPackages = sponsoringPakete.filter(
-  (pkg) => (pkg as { tier?: string }).tier === "starter"
-);
+const offerCategories = [
+  {
+    icon: "🏆",
+    title: "Premium-Partnerschaften",
+    hash: "premium",
+    desc: "Maximale Sichtbarkeit als Hauptsponsor, Stadionpartner oder Co-Sponsor. Trikot, Banner, Stadionmagazin und Social Media in einem Paket.",
+    bullets: [
+      "Trikot- oder Bannerplatzierung",
+      "Seite im Stadionmagazin (15 Ausgaben/Saison)",
+      "Social Media: bis zu 60 Posts + 100 Stories/Saison",
+      "Logo prominent auf der Website",
+    ],
+  },
+  {
+    icon: "🚌",
+    title: "Buswerbung",
+    hash: "bus",
+    desc: "Ihr Logo fährt ständig durch Konstanz und die Region. Der Vereinsbus ist für alle Mannschaften im Einsatz – Herren, Damen, Jugend – und an fast jedem Wochenende unterwegs.",
+    bullets: [
+      "Im Einsatz für 5+ Mannschaften (Herren, Damen, Jugend)",
+      "Sichtbar in 15+ Städten der Liga",
+      "Großflächen, Seitenflächen oder Heckwerbung",
+      "Mehrjahresrabatt & Kombi mit Online-Präsenz",
+    ],
+  },
+  {
+    icon: "📍",
+    title: "Lokale Präsenz",
+    hash: "lokal",
+    desc: "Bandenwerbung, Community-Partnerschaften und Events. Perfekt für lokale Unternehmen, die im Stadion und bei Veranstaltungen sichtbar sein wollen.",
+    bullets: [
+      "Banden am Spielfeldrand",
+      "Regelmäßige Social-Media-Posts & Stories",
+      "Gemeinsame Events mit dem Team",
+      "Logo auf der Website",
+    ],
+  },
+  {
+    icon: "⚽",
+    title: "Einstieg & Spieltag",
+    hash: "starter",
+    desc: "Ballspenden, Prämien-Modelle und Spielerpatenschaften. Idealer Einstieg ins Sponsoring mit direkter Spieltagspräsenz.",
+    bullets: [
+      "Ballspende mit Stadiondurchsage",
+      "Erfolgsbasierte Prämien-Modelle",
+      "Spielerpatenschaften (diskret)",
+      "Instagram-Stories am Spieltag",
+    ],
+  },
+];
 
 export default function SponsoringV2Page() {
   const heroImages = [
@@ -678,8 +607,21 @@ export default function SponsoringV2Page() {
     return () => clearInterval(id);
   }, [heroImages.length]);
 
+  const scrollTo = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
+  const generateMailto = (category: string) => {
+    const subject = encodeURIComponent(`Interesse an Sponsoring: ${category}`);
+    const body = encodeURIComponent(
+      `Hallo liebes SCKW-Team,\n\nich interessiere mich für den Bereich "${category}" und würde gerne mehr erfahren.\n\nBitte senden Sie mir weitere Informationen.\n\nMein Name: \nFirma (optional): \nTelefon (optional): \n\nHerzliche Grüße\n`
+    );
+    return `mailto:${EMAIL_KONTAKT}?subject=${subject}&body=${body}`;
+  };
+
   return (
     <>
+      {/* Hero */}
       <Hero>
         {heroImages.map((src, i) => (
           <HeroSlide key={i} $bg={src} $active={i === heroIndex} />
@@ -691,7 +633,7 @@ export default function SponsoringV2Page() {
             In der Winterpause erzielen wir bereits{" "}
             <strong>250.000 Reichweite in 90 Tagen</strong>. Mit Spielbetrieb
             steigt die Sichtbarkeit konservativ auf{" "}
-            <strong>500.000-800.000 Kontakte pro Saison</strong> - ohne
+            <strong>500.000–800.000 Kontakte pro Saison</strong> – ohne
             Mehrkosten für unsere Partner.
           </HeroSubtitle>
           <HeroStats>
@@ -703,92 +645,34 @@ export default function SponsoringV2Page() {
             ))}
           </HeroStats>
           <HeroCTAGroup>
-            <HeroCTA
-              href="#kontakt"
-              $primary
-              onClick={(e) => {
-                e.preventDefault();
-                const el = document.getElementById("kontakt");
-                if (el) {
-                  el.scrollIntoView({ behavior: "smooth", block: "start" });
-                }
-              }}
-            >
+            <HeroCTA href="#kontakt" $primary onClick={(e) => { e.preventDefault(); scrollTo("kontakt"); }}>
               Jetzt Kontakt aufnehmen
             </HeroCTA>
-            <HeroCTA
-              href="#pakete"
-              onClick={(e) => {
-                e.preventDefault();
-                const el = document.getElementById("pakete");
-                if (el) {
-                  el.scrollIntoView({ behavior: "smooth", block: "start" });
-                }
-              }}
-            >
-              Pakete ansehen
+            <HeroCTA href="#angebot" onClick={(e) => { e.preventDefault(); scrollTo("angebot"); }}>
+              Angebot ansehen
             </HeroCTA>
           </HeroCTAGroup>
         </HeroContent>
       </Hero>
 
-      <SectionAlt>
-        <Container>
-          <SectionHeader>
-            <SectionTitle>Warum sich Sponsoring bei uns lohnt</SectionTitle>
-            <SectionSubtitle>
-              Wiederholte Sichtkontakte, regionale Nähe und messbare Wirkung -
-              genau das, was Ihr Marketing erfolgreich macht.
-            </SectionSubtitle>
-          </SectionHeader>
-          <ValueGrid>
-            <ValueCard>
-              <ValueImage
-                src="https://images.pexels.com/photos/3621104/pexels-photo-3621104.jpeg?auto=compress&cs=tinysrgb&w=600"
-                alt="Fans jubeln im Stadion"
-              />
-              <ValueContent>
-                <ValueTitle>Sichtbarkeit, die bleibt</ValueTitle>
-                <ValueText>
-                  Jeder Spieltag, jeder Post, jede Story - Ihre Marke wird
-                  wiederholt gesehen. Das schafft Vertrauen und Wiedererkennung.
-                </ValueText>
-              </ValueContent>
-            </ValueCard>
-            <ValueCard>
-              <ValueImage
-                src="https://images.pexels.com/photos/3935702/pexels-photo-3935702.jpeg?auto=compress&cs=tinysrgb&w=600"
-                alt="Konstanz und Bodensee"
-              />
-              <ValueContent>
-                <ValueTitle>Ihre Kunden sind hier</ValueTitle>
-                <ValueText>
-                  Erreichen Sie Menschen aus Konstanz und der Region - genau
-                  dort, wo Ihre potenziellen Kunden leben und arbeiten.
-                </ValueText>
-              </ValueContent>
-            </ValueCard>
-            <ValueCard>
-              <ValueImage
-                src="https://images.pexels.com/photos/267350/pexels-photo-267350.jpeg?auto=compress&cs=tinysrgb&w=600"
-                alt="Social Media und Stadion"
-              />
-              <ValueContent>
-                <ValueTitle>Doppelte Wirkung</ValueTitle>
-                <ValueText>
-                  Ihre Marke wird sowohl im Stadion als auch online gesehen -
-                  doppelte Reichweite zum Paketpreis.
-                </ValueText>
-              </ValueContent>
-            </ValueCard>
-          </ValueGrid>
-        </Container>
-      </SectionAlt>
+      {/* Aufstiegs-Banner */}
+      {aufstiegsBanner.active && (
+        <PromoBanner>
+          <BannerInner>
+            <BannerPulse />
+            <BannerText>
+              {aufstiegsBanner.text} <strong>{aufstiegsBanner.highlight}</strong> {aufstiegsBanner.suffix}
+            </BannerText>
+            <BannerPulse />
+          </BannerInner>
+        </PromoBanner>
+      )}
 
+      {/* Partner (Social Proof) */}
       <Section>
         <Container>
           <SectionHeader>
-            <SectionTitle>Diese Unternehmen sind bereits Partner</SectionTitle>
+            <SectionTitle>Unsere Partner</SectionTitle>
             <SectionSubtitle>
               Starke Marken vertrauen auf unsere Reichweite. Werden Sie Teil
               dieser Erfolgsgeschichte.
@@ -798,357 +682,98 @@ export default function SponsoringV2Page() {
         </Container>
       </Section>
 
-      <SectionAlt id="pakete">
+      {/* Angebot */}
+      <SectionAlt id="angebot">
         <Container>
           <SectionHeader>
-            <SectionTitle>Finden Sie Ihr perfektes Paket</SectionTitle>
+            <SectionTitle>Sponsoring-Möglichkeiten</SectionTitle>
             <SectionSubtitle>
-              Von Premium-Partnerschaften bis Starter-Optionen - klare
-              Leistungen, individuell auf Ihr Unternehmen zugeschnitten.
+              Vier Wege, Ihre Marke beim SC Konstanz-Wollmatingen zu platzieren.
+              Alle Details besprechen wir persönlich.
             </SectionSubtitle>
           </SectionHeader>
 
-          <PackageGroup>
-            <GroupTitle>Premium-Partnerschaften</GroupTitle>
-            <SponsoringGrid packages={premiumPackages} />
-          </PackageGroup>
-
-          <PackageGroup>
-            <GroupTitle>Pakete im Vergleich</GroupTitle>
-            <PackageComparison />
-          </PackageGroup>
-
-          <PraemienTable />
-
-          <SpielerpatenschaftenTable />
-
-          <PackageGroup>
-            <GroupTitle>Lokale Werbemöglichkeiten</GroupTitle>
-            <SponsoringGrid packages={localPackages} />
-            <Note>
-              Bandenwerbung kann mit Social-Add-on kombiniert werden (Post oder
-              Story-Erwähnung). Details gerne im kurzen Erstgespräch.
-            </Note>
-          </PackageGroup>
-
-          <PackageGroup>
-            <GroupTitle>Starter & Spieltag</GroupTitle>
-            <SponsoringGrid packages={starterPackages} />
-          </PackageGroup>
-        </Container>
-      </SectionAlt>
-
-      <Section id="reichweite">
-        <Container>
-          <SectionHeader>
-            <SectionTitle>So viele Menschen erreichen Sie</SectionTitle>
-            <SectionSubtitle>
-              Selbst in der Winterpause erzielen wir starke Reichweiten. Mit
-              Saisonstart multipliziert sich Ihre Sichtbarkeit - messbar und
-              verlässlich.
-            </SectionSubtitle>
-          </SectionHeader>
-          <KPIGrid>
-            <KPICard>
-              <KPIValue>32.000</KPIValue>
-              <KPILabel>Reichweite / 30 Tage</KPILabel>
-            </KPICard>
-            <KPICard>
-              <KPIValue>250.000</KPIValue>
-              <KPILabel>Reichweite / 90 Tage</KPILabel>
-            </KPICard>
-            <KPICard>
-              <KPIValue>50-80k</KPIValue>
-              <KPILabel>Pro Monat in Saison</KPILabel>
-            </KPICard>
-            <KPICard>
-              <KPIValue>500-800k</KPIValue>
-              <KPILabel>Saisonreichweite (konservativ)</KPILabel>
-            </KPICard>
-          </KPIGrid>
-          <HighlightBox>
-            Diese Werte stammen aus der Winterpause - mit Saisonstart steigt die
-            Reichweite automatisch. Für Sponsoren bedeutet das:{" "}
-            <strong>mehr Sichtkontakte ohne Mehrkosten</strong>.
-          </HighlightBox>
-        </Container>
-      </Section>
-
-      <SectionAlt>
-        <Container>
-          <InstagramChart />
-        </Container>
-      </SectionAlt>
-
-      <Section>
-        <Container>
-          <SectionHeader>
-            <SectionTitle>Was Sie auf Social Media bekommen</SectionTitle>
-            <SectionSubtitle>
-              Konkrete Posts, Stories und Erwähnungen - je Paket klar definiert
-              und planbar.
-            </SectionSubtitle>
-          </SectionHeader>
-          <PillGrid>
-            <Pill>📱 Feed-Posts mit Ihrem Logo</Pill>
-            <Pill>📸 Stories & Erwähnungen</Pill>
-            <Pill>🔗 Verlinkungen zu Ihrer Website</Pill>
-          </PillGrid>
-          <Note>
-            Jedes Paket enthält fixe Social-Media-Leistungen (Anzahl, Format,
-            Frequenz). So wissen Sie genau, was Sie bekommen.
-          </Note>
-        </Container>
-      </Section>
-
-      <SectionAlt id="buswerbung">
-        <Container>
-          <SectionHeader>
-            <SectionTitle>Mobile Werbung auf unserem Vereinsbus</SectionTitle>
-            <SectionSubtitle>
-              Ihr Logo fährt durch Konstanz und die Region - bei jeder Fahrt zu
-              Heim- und Auswärtsspielen.
-            </SectionSubtitle>
-          </SectionHeader>
-
-          <BusCard style={{ maxWidth: 900, margin: "0 auto 2rem" }}>
-            <img
-              src="/vereinsbus.png"
-              alt="Vereinsbus SC Konstanz-Wollmatingen mit Werbeflächen"
-              style={{
-                width: "100%",
-                borderRadius: 12,
-                marginBottom: "1.5rem",
-                display: "block",
-              }}
-            />
-
-            <BusCardTitle
-              style={{ textAlign: "center", marginBottom: "1.5rem" }}
-            >
-              Verfügbare Werbeflächen
-            </BusCardTitle>
-            <BusTableWrapper>
-              <BusTable>
-                <thead>
-                  <tr>
-                    <th>Fläche</th>
-                    <th>Größe (ca.)</th>
-                    <th>Preis/Jahr</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {[...busFlaechenPremium, ...busFlaechenStandard].map((f) => (
-                    <tr key={f.position}>
-                      <td>{f.position}</td>
-                      <td>{f.groesse}</td>
-                      <td>
-                        <strong>{f.preis}</strong>
-                      </td>
-                    </tr>
+          <OfferGrid>
+            {offerCategories.map((cat) => (
+              <OfferCard key={cat.title}>
+                <OfferIcon>{cat.icon}</OfferIcon>
+                <OfferTitle>{cat.title}</OfferTitle>
+                <OfferDesc>{cat.desc}</OfferDesc>
+                <OfferBullets>
+                  {cat.bullets.map((b) => (
+                    <OfferBullet key={b}>{b}</OfferBullet>
                   ))}
-                </tbody>
-              </BusTable>
-            </BusTableWrapper>
+                </OfferBullets>
+                <OfferActions>
+                  <OfferCTA href={generateMailto(cat.title)}>
+                    Jetzt anfragen
+                  </OfferCTA>
+                  <OfferDetailLink to={`/sponsoring/pakete#${cat.hash}`}>
+                    Details ansehen →
+                  </OfferDetailLink>
+                </OfferActions>
+              </OfferCard>
+            ))}
+          </OfferGrid>
 
-            <div
-              style={{
-                marginTop: "1.5rem",
-                paddingTop: "1.5rem",
-                borderTop: "1px solid #f0f0f0",
-              }}
-            >
-              <BusCardTitle
-                style={{ fontSize: "1.1rem", marginBottom: "0.75rem" }}
-              >
-                Zusatzoptionen
-              </BusCardTitle>
-              <BusOptionsList>
-                {busZusatzoptionen.map((opt, i) => (
-                  <li key={i}>{opt}</li>
-                ))}
-              </BusOptionsList>
-            </div>
-          </BusCard>
-
-          <Note>{busNote}</Note>
+          {/* Reichweiten-Karte */}
+          <MapSection>
+            <MapGrid>
+              <MapImageContainer>
+                <MapImage src="/verbandsliga-karte.jpg" alt="Verbandsliga Südbaden – Spielorte und Reichweite" />
+                <MapBadge>Saison 26/27</MapBadge>
+              </MapImageContainer>
+              <MapContent>
+                <MapTitle>Ihre Reichweite wächst mit</MapTitle>
+                <MapText>
+                  Ob Buswerbung, Trikot oder Bande – Ihre Marke wird in der gesamten Region
+                  sichtbar. Mit dem voraussichtlichen Aufstieg in die Verbandsliga spielen wir
+                  in 15+ Städten zwischen Freiburg und Konstanz.
+                </MapText>
+                <MapHighlight>
+                  <strong>Was das für Sie bedeutet:</strong> Mehr Gegner, größere Städte,
+                  mehr Medienaufmerksamkeit – Ihre Investition wächst automatisch
+                  mit, ohne Mehrkosten.
+                </MapHighlight>
+              </MapContent>
+            </MapGrid>
+          </MapSection>
         </Container>
       </SectionAlt>
 
-      <Section>
+      {/* CLUB 500 */}
+      <Club500Section>
         <Container>
           <SectionHeader>
-            <SectionTitle>Ihre Marke in Aktion</SectionTitle>
-            <SectionSubtitle>
-              So wird Ihre Werbung bei uns präsentiert - vom Stadionmagazin bis
-              zur Bandenwerbung.
-            </SectionSubtitle>
-          </SectionHeader>
-          <ExampleGrid>
-            <ExampleCard>
-              <ExampleImage src="/pdf-preview.png" alt="Stadionmagazin Cover" />
-              <ExampleBody>
-                <ExampleTitle>Stadionmagazin</ExampleTitle>
-                <ExampleText>
-                  Print + Digital: Anzeigen im Stadionheft, online geteilt auf
-                  unseren Kanälen.
-                </ExampleText>
-                <ExampleButton
-                  href="/StadionMagazin.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  PDF öffnen
-                </ExampleButton>
-              </ExampleBody>
-            </ExampleCard>
-
-            <ExampleCard>
-              <ExampleImage
-                src={getHeroImage("herren/herren_1")}
-                alt="Bandenwerbung Beispiel"
-              />
-              <ExampleBody>
-                <ExampleTitle>Bandenwerbung</ExampleTitle>
-                <ExampleText>
-                  Starke Sichtbarkeit am Spielfeldrand - bei jedem Heimspiel.
-                </ExampleText>
-              </ExampleBody>
-            </ExampleCard>
-
-            <ExampleCard>
-              <ExampleImage src="/ballspende.png" alt="Ballspende Beispiel" />
-              <ExampleBody>
-                <ExampleTitle>Ballspende</ExampleTitle>
-                <ExampleText>
-                  Ballspende mit Spieltagsnennung - idealer Einstieg ins
-                  Sponsoring.
-                </ExampleText>
-                <ExampleButton
-                  href="/ballspende.png"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Beispiel öffnen
-                </ExampleButton>
-              </ExampleBody>
-            </ExampleCard>
-          </ExampleGrid>
-        </Container>
-      </Section>
-
-
-      <Club500Section id="500club">
-        <Container>
-          <SectionHeader>
-            <Club500Title>500 €Club</Club500Title>
+            <Club500Title>CLUB 500</Club500Title>
             <Club500Subtitle>
-              Gemeinsam den Fußball beim SC Konstanz-Wollmatingen stärken - werden Sie
-              Mitglied und fördern Sie unseren Jugend- und Amateurfußball.
+              Gemeinsam den Fußball beim SC Konstanz-Wollmatingen stärken –
+              werden Sie Mitglied und fördern Sie unseren Jugend- und Amateurfußball.
             </Club500Subtitle>
           </SectionHeader>
-
-          <Club500Content>
-            <Club500Left>
-              <Club500GoalBox>
-                <div style={{ fontSize: "0.85rem", opacity: 0.9, fontWeight: 600, marginBottom: "0.5rem", textTransform: "uppercase", letterSpacing: "0.05em" }}>
-                  Mitgliedschaft
-                </div>
-                <div style={{ fontSize: "clamp(1.8rem, 5vw, 2.4rem)", fontWeight: 900, lineHeight: 1.1 }}>
-                  Ab 125€ / Quartal
-                </div>
-                <div style={{ fontSize: "1rem", opacity: 0.9, marginTop: "0.25rem" }}>
-                  oder 250€ halbjährlich · 500€ jährlich
-                </div>
-              </Club500GoalBox>
-
-              <Club500BenefitsList>
-                <Club500Benefit>Offizielle <strong>Spendenbescheinigung</strong> (gemeinnütziger Verein)</Club500Benefit>
-                <Club500Benefit>Ihr <strong>Name oder Firmenname</strong> wird veröffentlicht</Club500Benefit>
-                <Club500Benefit>Direkte Förderung von <strong>Jugend- & Amateurfußball</strong></Club500Benefit>
-              </Club500BenefitsList>
-            </Club500Left>
-
-            <Club500Right>
-              <Club500BankCard>
-                <div style={{ fontSize: "0.8rem", color: "#e10073", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: "0.75rem" }}>
-                  Spendenkonto
-                </div>
-                <div style={{ fontWeight: 800, color: "#222", fontSize: "1.05rem", marginBottom: "0.5rem" }}>
-                  SC Konstanz-Wollmatingen e.V.
-                </div>
-                <div style={{ color: "#444", lineHeight: 1.7, fontSize: "0.95rem" }}>
-                  IBAN: <strong>DE84 6905 0001 0000 0929 99</strong><br />
-                  Sparkasse Bodensee<br />
-                  <span style={{ fontSize: "0.85rem", color: "#888" }}>
-                    Schleyerweg 5 · 78467 Konstanz
-                  </span>
-                </div>
-              </Club500BankCard>
-
-              <Club500DownloadBtn
-                href="/sponsoring-handoff?preset=club500&view=preview"
-              >
-                500 €Club Anmeldung
-              </Club500DownloadBtn>
-            </Club500Right>
-          </Club500Content>
+          <Club500Highlights>
+            <Club500Chip>Spendenbescheinigung</Club500Chip>
+            <Club500Chip>Name auf der Spendentafel</Club500Chip>
+            <Club500Chip>Jugend- & Amateurfußball</Club500Chip>
+          </Club500Highlights>
+          <SectionHeader>
+            <Club500CTA to="/sponsoring/club-500">
+              Jetzt Mitglied werden &rarr;
+            </Club500CTA>
+          </SectionHeader>
         </Container>
       </Club500Section>
 
-      <Section>
-        <Container>
-          <SectionHeader>
-            <SectionTitle>In 4 Schritten zum Sponsoring-Start</SectionTitle>
-            <SectionSubtitle>
-              Schnell, unkompliziert und transparent - so werden Sie unser
-              Partner.
-            </SectionSubtitle>
-          </SectionHeader>
-          <StepGrid>
-            <StepCard>
-              <StepTitle>1. Kontakt</StepTitle>
-              <StepText>
-                Kurz anfragen, wir melden uns innerhalb von 24h.
-              </StepText>
-            </StepCard>
-            <StepCard>
-              <StepTitle>2. Bedarf</StepTitle>
-              <StepText>
-                Wir klären Ziele, Budget und passende Leistungen.
-              </StepText>
-            </StepCard>
-            <StepCard>
-              <StepTitle>3. Angebot</StepTitle>
-              <StepText>Fixe Leistungen, klare KPIs, sofort nutzbar.</StepText>
-            </StepCard>
-            <StepCard>
-              <StepTitle>4. Umsetzung</StepTitle>
-              <StepText>
-                Design, Abstimmung, Launch - wir übernehmen das.
-              </StepText>
-            </StepCard>
-          </StepGrid>
-        </Container>
-      </Section>
-
+      {/* Kontakt */}
       <ContactSection
         headline="Kontakt aufnehmen"
-        description="Kurze Anfrage genügt - wir erstellen ein passendes Paket mit klaren KPI-Leistungen."
+        description="Kurze Anfrage genügt – wir erstellen ein passendes Angebot mit klaren Leistungen."
         contactInfos={[
-          {
-            icon: "📧",
-            title: "E-Mail",
-            content: kontakt.email,
-            isEmail: true,
-          },
-          {
-            icon: "📍",
-            title: "Adresse",
-            content: kontakt.vollAdresse,
-          },
+          { icon: "📧", title: "E-Mail", content: kontakt.email, isEmail: true },
+          { icon: "📍", title: "Adresse", content: kontakt.vollAdresse },
         ]}
       />
+
       <Footer />
     </>
   );

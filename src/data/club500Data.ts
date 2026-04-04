@@ -11,7 +11,6 @@ export interface MembershipOption {
 }
 
 export const club500Config = {
-  title: "CLUB 500 – JEDE SPENDE ZÄHLT",
   subtitle:
     "Veränderung beginnt mit dem Engagement jedes Einzelnen. Spenden helfen, einen echten Unterschied zu machen. Gemeinsam erreichen wir mehr.",
 
@@ -26,7 +25,7 @@ export const club500Config = {
       value: 500,
       label: "500 €",
       duration: "1 Jahr",
-      description: "Mitglied im 500 €Club",
+      description: "Mitglied im CLUB 500",
     },
     {
       value: 1000,
@@ -50,9 +49,9 @@ export const club500Config = {
   },
 
   benefits: [
-    "Offizielle Spendenbescheinigung (gemeinnütziger Verein)",
-    "Veröffentlichung Ihres Namens oder Firmennamens als Unterstützer",
-    "Unterstützung des lokalen Sports und der Jugend",
+    { icon: "📄", text: "Offizielle <strong>Spendenbescheinigung</strong> (gemeinnütziger Verein)" },
+    { icon: "🏅", text: "Veröffentlichung Ihres <strong>Namens oder Firmennamens</strong> als Unterstützer" },
+    { icon: "⚽", text: "Direkte Förderung des <strong>lokalen Sports</strong> und der Jugend" },
   ],
 
   spendentafel: {
@@ -79,7 +78,7 @@ export const club500Config = {
 
   paypalCtaLabel: "Mit PayPal spenden",
   bankCtaLabel: "Per Überweisung",
-  verwendungszweck: "500 Euro Club",
+  verwendungszweck: "CLUB 500",
 
   paypalMeUrl: "https://www.paypal.me/sckw2012",
 

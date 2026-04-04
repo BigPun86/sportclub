@@ -157,20 +157,17 @@ export default function Navigation() {
         <NavLinks id="mobile-nav" $open={isMenuOpen}>
           <NavLink
             to="/sponsoring"
-            $active={
-              location.pathname === "/sponsoring" ||
-              location.pathname === "/sponsoring-v2"
-            }
+            $active={location.pathname === "/sponsoring"}
             onClick={() => setIsMenuOpen(false)}
           >
             🤝 Sponsoring
           </NavLink>
           <NavLink
-            to="/jobs"
-            $active={location.pathname === "/jobs"}
+            to="/sponsoring/club-500"
+            $active={location.pathname === "/sponsoring/club-500"}
             onClick={() => setIsMenuOpen(false)}
           >
-            💼 Jobbörse
+            ⚽ CLUB 500
           </NavLink>
           {ENABLE_RENOVIERUNG && (
             <NavLink

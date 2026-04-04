@@ -917,7 +917,7 @@ function PagePraemien({ showPrices }: PageProps) {
 }
 
 // ============================================================================
-// PAGE 13 – 500 €Club (Premium-Pitch)
+// PAGE 13 – CLUB 500 (Premium-Pitch)
 // ============================================================================
 
 const heroJubelClub = getHeroImage("herren/herren_jubel_500club");
@@ -941,7 +941,7 @@ function Page500EuroClub() {
         </Subtitle>
 
         <P style={{ fontSize: "10.5pt", margin: "0 0 5mm", lineHeight: 1.6 }}>
-          <strong>Helfen Sie uns mit dem Beitritt in den 500 €Club.</strong> Unterstützen Sie
+          <strong>Helfen Sie uns mit dem Beitritt in den CLUB 500.</strong> Unterstützen Sie
           unseren Verein und fördern Sie direkt den Jugend‑ und Amateurfußball, Trainingsmaterial,
           Infrastruktur und die Entwicklung unserer Mannschaften.
         </P>
@@ -1007,7 +1007,7 @@ function Page500EuroClub() {
 }
 
 // ============================================================================
-// PAGE 14 – 500 €Club Anmeldeformular
+// PAGE 14 – CLUB 500 Anmeldeformular
 // ============================================================================
 
 function Page500EuroClubAnmeldung() {
@@ -1016,7 +1016,7 @@ function Page500EuroClubAnmeldung() {
       <Waves />
       <Inner>
         <LogoWrap><LogoImg src="/logo.svg" /></LogoWrap>
-        <Title style={{ color: "#1a365d", fontSize: "22pt" }}>BEITRITTSERKLÄRUNG 500 €CLUB</Title>
+        <Title style={{ color: "#1a365d", fontSize: "22pt" }}>BEITRITTSERKLÄRUNG CLUB 500</Title>
         <Subtitle style={{ margin: "0 0 4mm" }}>
           Bitte ausfüllen und an den Verein übergeben oder per E-Mail an {kontakt.email} senden.
         </Subtitle>
@@ -1065,7 +1065,7 @@ function Page500EuroClubAnmeldung() {
         <P style={{ fontSize: "9pt", color: "#555", margin: "0 0 2mm" }}>Mehrfachauswahl möglich:</P>
         <div style={{ display: "grid", gridTemplateColumns: "1fr", gap: "1.5mm" }}>
           {[
-            "Danke-Post auf Instagram (\"Danke [Name], dass du Mitglied im 500 €Club bist!\")",
+            "Danke-Post auf Instagram (\"Danke [Name], dass du Mitglied im CLUB 500 bist!\")",
             "Nennung auf der Spendentafel (Vereinsgelände / Website)",
             "Ich möchte anonym bleiben",
           ].map(opt => (
@@ -1087,7 +1087,7 @@ function Page500EuroClubAnmeldung() {
           marginTop: "3mm", background: "#f8fafc", borderRadius: "2mm",
           padding: "2.5mm 3mm", fontSize: "7.5pt", color: "#666", lineHeight: 1.5,
         }}>
-          Hiermit erkläre ich meinen Beitritt zum SC Konstanz‑Wollmatingen e.V. 500 €Club.
+          Hiermit erkläre ich meinen Beitritt zum SC Konstanz‑Wollmatingen e.V. CLUB 500.
           Die Mitgliedschaft besteht für 1 Jahr und kann beiderseitig verlängert werden.
           Der Betrag ist innerhalb 14 Tagen nach Beitrittsdatum auf das unten stehende Konto zu überweisen.
           Das Mitglied erklärt sich damit einverstanden, dass im Zusammenhang mit der Mitgliedschaft
@@ -1117,7 +1117,7 @@ function Page500EuroClubAnmeldung() {
 
         <Footer style={{ marginTop: "auto" }}>
           <FooterCol><strong>SC Konstanz-Wollmatingen e.V.</strong></FooterCol>
-          <FooterCol $center>500 €Club</FooterCol>
+          <FooterCol $center>CLUB 500</FooterCol>
           <FooterCol $right>partner.sckw.de</FooterCol>
         </Footer>
       </Inner>
@@ -1259,8 +1259,8 @@ const ALL_PAGES: PageDef[] = [
   { id: "spieltag", label: "Spieltag-Sponsoring", group: "broschüre", needsPrices: true, render: (p) => <PageSpieltag showPrices={p} /> },
   { id: "bus", label: "Buswerbung", group: "broschüre", needsPrices: true, render: (p) => <PageBuswerbung showPrices={p} /> },
   { id: "praemien", label: "Prämienmodell", group: "broschüre", needsPrices: true, render: (p) => <PagePraemien showPrices={p} /> },
-  { id: "club500", label: "500 €Club", group: "community", render: () => <Page500EuroClub /> },
-  { id: "club500form", label: "500 €Club Anmeldung", group: "community", render: () => <Page500EuroClubAnmeldung /> },
+  { id: "club500", label: "CLUB 500", group: "community", render: () => <Page500EuroClub /> },
+  { id: "club500form", label: "CLUB 500 Anmeldung", group: "community", render: () => <Page500EuroClubAnmeldung /> },
   { id: "steps", label: "So geht's weiter", group: "helfer", render: () => <PageNextSteps /> },
   { id: "lead", label: "Gesprächsnotiz", group: "helfer", render: () => <PageLeadSheet /> },
 ];
@@ -1497,7 +1497,7 @@ export default function SponsoringHandoffPage() {
           <Preset onClick={selectHelfer}>Komplett-Kit (+ Helfer)</Preset>
           <Preset onClick={selectPremium}>Nur Premium-Pakete</Preset>
           <Preset onClick={selectStarter}>Starter-Paket</Preset>
-          <Preset onClick={select500Club}>500 €Club</Preset>
+          <Preset onClick={select500Club}>CLUB 500</Preset>
           <Preset onClick={selectNone}>Keine</Preset>
         </PresetRow>
 
@@ -1515,7 +1515,7 @@ export default function SponsoringHandoffPage() {
           ))}
         </PageGrid>
 
-        <GroupLabel>Community / 500 €Club</GroupLabel>
+        <GroupLabel>Community / CLUB 500</GroupLabel>
         <PageGrid>
           {communityPages.map(page => (
             <PageCheckbox key={page.id} $checked={selected.has(page.id)}>

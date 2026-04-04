@@ -114,10 +114,6 @@ const Container = styled.div`
   }
 `;
 
-const FormContainer = styled.div`
-  max-width: 640px;
-  margin: 0 auto;
-`;
 
 const Section = styled.section`
   padding: 3rem 0;
@@ -718,31 +714,16 @@ export default function Club500Page() {
         <Container>
           <SectionTitle>Ihre Vorteile</SectionTitle>
           <SectionSubtitle>
-            Als Mitglied im 500 €Club unterstützen Sie direkt den Jugend- und
+            Als Mitglied im CLUB 500 unterstützen Sie direkt den Jugend- und
             Amateurfußball in Konstanz.
           </SectionSubtitle>
           <BenefitGrid>
-            <BenefitCard>
-              <BenefitIcon>📄</BenefitIcon>
-              <BenefitText>
-                Offizielle <strong>Spendenbescheinigung</strong> (gemeinnütziger
-                Verein)
-              </BenefitText>
-            </BenefitCard>
-            <BenefitCard>
-              <BenefitIcon>🏅</BenefitIcon>
-              <BenefitText>
-                Veröffentlichung Ihres <strong>Namens oder Firmennamens</strong>{" "}
-                als Unterstützer
-              </BenefitText>
-            </BenefitCard>
-            <BenefitCard>
-              <BenefitIcon>⚽</BenefitIcon>
-              <BenefitText>
-                Direkte Förderung des <strong>lokalen Sports</strong> und der
-                Jugend
-              </BenefitText>
-            </BenefitCard>
+            {cfg.benefits.map((b, i) => (
+              <BenefitCard key={i}>
+                <BenefitIcon>{b.icon}</BenefitIcon>
+                <BenefitText dangerouslySetInnerHTML={{ __html: b.text }} />
+              </BenefitCard>
+            ))}
           </BenefitGrid>
         </Container>
       </Section>
@@ -752,7 +733,7 @@ export default function Club500Page() {
         <Container>
           <SectionTitle>Mitglied werden</SectionTitle>
           <SectionSubtitle>
-            Wählen Sie Ihre Unterstützung und werden Sie Teil des 500 €Club.
+            Wählen Sie Ihre Unterstützung und werden Sie Teil des CLUB 500.
           </SectionSubtitle>
 
           {/* Membership options */}

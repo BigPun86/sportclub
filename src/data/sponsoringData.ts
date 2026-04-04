@@ -4,6 +4,17 @@
  */
 
 // ============================================================================
+// Aufstiegs-Banner (einfach hier anpassen)
+// ============================================================================
+
+export const aufstiegsBanner = {
+  active: true,
+  text: "Auf Aufstiegskurs:",
+  highlight: "7 Punkte Vorsprung",
+  suffix: "– ab Saison 26/27 voraussichtlich Verbandsliga Südbaden",
+};
+
+// ============================================================================
 // KPIs / Reichweite
 // ============================================================================
 
@@ -93,33 +104,6 @@ export const kontakt = {
     ort: "Konstanz",
   },
   vollAdresse: "SC Konstanz-Wollmatingen e.V.\nSchleyerweg 5\nD-78467 Konstanz",
-};
-
-// ============================================================================
-// Paket-Kategorisierung (für Handoff)
-// ============================================================================
-
-export const paketKategorien = {
-  premium: {
-    title: "Premium-Partnerschaften",
-    description: "Exklusive Sponsoring-Möglichkeiten für Großunternehmen",
-    tiers: ["premium"],
-  },
-  lokal: {
-    title: "Lokale Werbemöglichkeiten",
-    description: "Sichtbarkeit bei Heimspielen und lokale Präsenz",
-    tiers: ["lokal"],
-  },
-  starter: {
-    title: "Starter & Spieltag",
-    description: "Einfacher Einstieg ins Sponsoring",
-    tiers: ["starter"],
-  },
-  praemien: {
-    title: "Erfolgsbasiertes Sponsoring",
-    description: "Sie zahlen nur bei sportlichem Erfolg",
-    tiers: ["praemien"],
-  },
 };
 
 // ============================================================================

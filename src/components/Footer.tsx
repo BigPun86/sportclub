@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 
 const FooterBar = styled.footer`
   width: 100%;
@@ -14,15 +13,6 @@ const FooterBar = styled.footer`
 `;
 
 const LinkA = styled.a`
-  color: #e10073;
-  text-decoration: none;
-  font-weight: 500;
-  &:hover {
-    text-decoration: underline;
-  }
-`;
-
-const LinkR = styled(Link)`
   color: #e10073;
   text-decoration: none;
   font-weight: 500;
@@ -60,8 +50,6 @@ export default function Footer() {
           <LinkA href="mailto:sponsoring@sckw.de">sponsoring@sckw.de</LinkA>
         </div>
         <FooterLinks aria-label="Rechtliches">
-          <LinkR to="/sponsoring/500er">500er Club</LinkR>
-          <LinkR to="/sponsoring-v1">Sponsoring-Archiv</LinkR>
           <LinkA
             href="https://www.sckw.de/datenschutz"
             target="_blank"
