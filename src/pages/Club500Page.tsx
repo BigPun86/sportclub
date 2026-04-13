@@ -679,8 +679,11 @@ export default function Club500Page() {
   const verwendungszweck = useMemo(() => {
     const parts = [cfg.verwendungszweck];
     if (selectedDuration) parts.push(selectedDuration);
-    if (onTafel && tafelName.trim()) parts.push(`Tafel: ${tafelName.trim()}`);
-    if (!onTafel) parts.push("Anonym");
+    if (onTafel) {
+      parts.push(tafelName.trim() ? `Tafel: Ja (${tafelName.trim()})` : "Tafel: Ja");
+    } else {
+      parts.push("Tafel: Nein");
+    }
     if (wantBescheinigung) {
       const namePart = [bForm.vorname, bForm.nachname].filter(Boolean).join(" ");
       const addrPart = [bForm.strasse, bForm.plz, bForm.ort].filter(Boolean).join(", ");
