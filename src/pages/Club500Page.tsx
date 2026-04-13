@@ -510,6 +510,17 @@ const CTAAmount = styled.span`
   margin-top: 0.15rem;
 `;
 
+const PaypalHinweis = styled.div`
+  margin-top: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: #fff8e1;
+  border: 1px solid #ffe082;
+  border-radius: 8px;
+  font-size: 0.82rem;
+  color: #6d4c00;
+  line-height: 1.5;
+`;
+
 // -- Modal --
 
 const ModalBackdrop = styled.div`
@@ -670,8 +681,14 @@ export default function Club500Page() {
     if (selectedDuration) parts.push(selectedDuration);
     if (onTafel && tafelName.trim()) parts.push(`Tafel: ${tafelName.trim()}`);
     if (!onTafel) parts.push("Anonym");
+    if (wantBescheinigung) {
+      const namePart = [bForm.vorname, bForm.nachname].filter(Boolean).join(" ");
+      const addrPart = [bForm.strasse, bForm.plz, bForm.ort].filter(Boolean).join(", ");
+      const beschParts = [namePart, addrPart].filter(Boolean).join(", ");
+      if (beschParts) parts.push(`Besch: ${beschParts}`);
+    }
     return parts.join(" | ");
-  }, [cfg.verwendungszweck, selectedDuration, onTafel, tafelName]);
+  }, [cfg.verwendungszweck, selectedDuration, onTafel, tafelName, wantBescheinigung, bForm]);
 
   const paypalHref = useMemo(() => {
     if (baseAmount <= 0) return "#";
@@ -848,6 +865,9 @@ export default function Club500Page() {
               <CTAAmount>{formatEuro(baseAmount)} €</CTAAmount>
             </BankCTA>
           </CTARow>
+          {wantBescheinigung && (
+            <PaypalHinweis>{cfg.paypalHinweis}</PaypalHinweis>
+          )}
 
         </Container>
       </SectionAlt>

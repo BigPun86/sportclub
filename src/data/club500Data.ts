@@ -77,6 +77,8 @@ export const club500Config = {
   },
 
   paypalCtaLabel: "Mit PayPal spenden",
+  paypalHinweis:
+    "Bitte geben Sie bei PayPal im Mitteilungsfeld Ihren vollständigen Namen und Ihre Adresse an, damit wir Ihnen eine Spendenbescheinigung ausstellen können.",
   bankCtaLabel: "Per Überweisung",
   verwendungszweck: "CLUB 500",
 
