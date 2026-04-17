@@ -658,7 +658,7 @@ export default function Club500Page() {
   const [onTafel, setOnTafel] = useState(true);
   const [tafelName, setTafelName] = useState("");
 
-  const [wantBescheinigung, setWantBescheinigung] = useState(true);
+  const [wantBescheinigung, setWantBescheinigung] = useState(false);
   const [bForm, setBForm] = useState({ vorname: "", nachname: "", email: "", strasse: "", plz: "", ort: "" });
 
   const [showQrModal, setShowQrModal] = useState(false);
@@ -839,19 +839,25 @@ export default function Club500Page() {
 
             <MiniForm $visible={wantBescheinigung}>
               <FormRow>
-                <Input type="text" placeholder={cfg.bescheinigung.fields.vorname}
+                <Input type="text" name="bescheinigung-vorname" autoComplete="given-name"
+                  placeholder={cfg.bescheinigung.fields.vorname}
                   value={bForm.vorname} onChange={(e) => updateBForm("vorname", e.target.value)} />
-                <Input type="text" placeholder={cfg.bescheinigung.fields.nachname}
+                <Input type="text" name="bescheinigung-nachname" autoComplete="family-name"
+                  placeholder={cfg.bescheinigung.fields.nachname}
                   value={bForm.nachname} onChange={(e) => updateBForm("nachname", e.target.value)} />
               </FormRow>
-              <Input type="email" placeholder={cfg.bescheinigung.fields.email}
+              <Input type="email" name="bescheinigung-email" autoComplete="email"
+                placeholder={cfg.bescheinigung.fields.email}
                 value={bForm.email} onChange={(e) => updateBForm("email", e.target.value)} />
-              <Input type="text" placeholder={cfg.bescheinigung.fields.strasse}
+              <Input type="text" name="bescheinigung-strasse" autoComplete="street-address"
+                placeholder={cfg.bescheinigung.fields.strasse}
                 value={bForm.strasse} onChange={(e) => updateBForm("strasse", e.target.value)} />
               <FormRow>
-                <Input type="text" placeholder={cfg.bescheinigung.fields.plz}
+                <Input type="text" name="bescheinigung-plz" autoComplete="postal-code"
+                  placeholder={cfg.bescheinigung.fields.plz}
                   value={bForm.plz} onChange={(e) => updateBForm("plz", e.target.value)} />
-                <Input type="text" placeholder={cfg.bescheinigung.fields.ort}
+                <Input type="text" name="bescheinigung-ort" autoComplete="address-level2"
+                  placeholder={cfg.bescheinigung.fields.ort}
                   value={bForm.ort} onChange={(e) => updateBForm("ort", e.target.value)} />
               </FormRow>
             </MiniForm>
