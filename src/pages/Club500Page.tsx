@@ -356,29 +356,6 @@ const ToggleGroup = styled.div`
   margin-bottom: 1.5rem;
 `;
 
-const RadioRow = styled.div`
-  display: flex;
-  gap: 0.5rem;
-  margin-bottom: 0.5rem;
-`;
-
-const ToggleBtn = styled.button<{ $active: boolean }>`
-  flex: 1;
-  padding: 0.65rem 0.5rem;
-  border-radius: 8px;
-  border: 1.5px solid ${({ $active }) => ($active ? "#e10073" : "#e5e7eb")};
-  background: ${({ $active }) => ($active ? "#fff0f6" : "#fff")};
-  color: ${({ $active }) => ($active ? "#e10073" : "#555")};
-  font-weight: 700;
-  font-size: 0.85rem;
-  cursor: pointer;
-  transition: all 0.2s;
-
-  &:hover {
-    border-color: #e10073;
-  }
-`;
-
 const ToggleSublabel = styled.div`
   font-size: 0.78rem;
   color: #999;
@@ -655,7 +632,6 @@ export default function Club500Page() {
   const [customValue, setCustomValue] = useState("");
   const [customDuration, setCustomDuration] = useState("1 Jahr");
 
-  const [onTafel, setOnTafel] = useState(true);
   const [tafelName, setTafelName] = useState("");
 
   const [wantBescheinigung, setWantBescheinigung] = useState(false);
@@ -679,11 +655,7 @@ export default function Club500Page() {
   const verwendungszweck = useMemo(() => {
     const parts = [cfg.verwendungszweck];
     if (selectedDuration) parts.push(selectedDuration);
-    if (onTafel) {
-      parts.push(tafelName.trim() ? `Tafel: Ja (${tafelName.trim()})` : "Tafel: Ja");
-    } else {
-      parts.push("Tafel: Nein");
-    }
+    if (tafelName.trim()) parts.push(`Tafel: ${tafelName.trim()}`);
     if (wantBescheinigung) {
       const namePart = [bForm.vorname, bForm.nachname].filter(Boolean).join(" ");
       const addrPart = [bForm.strasse, bForm.plz, bForm.ort].filter(Boolean).join(", ");
@@ -691,7 +663,7 @@ export default function Club500Page() {
       if (beschParts) parts.push(`Besch: ${beschParts}`);
     }
     return parts.join(" | ");
-  }, [cfg.verwendungszweck, selectedDuration, onTafel, tafelName, wantBescheinigung, bForm]);
+  }, [cfg.verwendungszweck, selectedDuration, tafelName, wantBescheinigung, bForm]);
 
   const paypalHref = useMemo(() => {
     if (baseAmount <= 0) return "#";
@@ -806,26 +778,14 @@ export default function Club500Page() {
 
           {/* Spendentafel */}
           <ToggleGroup>
-            <FieldLabel>Veröffentlichung</FieldLabel>
-            <RadioRow>
-              <ToggleBtn $active={onTafel} onClick={() => setOnTafel(true)} type="button">
-                {cfg.spendentafel.label}
-              </ToggleBtn>
-              <ToggleBtn $active={!onTafel} onClick={() => setOnTafel(false)} type="button">
-                {cfg.spendentafel.anonymLabel}
-              </ToggleBtn>
-            </RadioRow>
-            {onTafel && (
-              <>
-                <ToggleSublabel>{cfg.spendentafel.sublabel}</ToggleSublabel>
-                <Input
-                  type="text"
-                  placeholder={cfg.spendentafel.nameFieldPlaceholder}
-                  value={tafelName}
-                  onChange={(e) => setTafelName(e.target.value)}
-                />
-              </>
-            )}
+            <FieldLabel>{cfg.spendentafel.label}</FieldLabel>
+            <ToggleSublabel>{cfg.spendentafel.sublabel}</ToggleSublabel>
+            <Input
+              type="text"
+              placeholder={cfg.spendentafel.nameFieldPlaceholder}
+              value={tafelName}
+              onChange={(e) => setTafelName(e.target.value)}
+            />
           </ToggleGroup>
 
           {/* Bescheinigung */}

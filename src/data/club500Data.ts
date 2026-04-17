@@ -55,12 +55,10 @@ export const club500Config = {
   ],
 
   spendentafel: {
-    label: "Auf die Spendentafel",
+    label: "Spendentafel (optional)",
     sublabel:
-      "Ihr Name/Firma wird auf unserer Website & am Vereinsgelände veröffentlicht.",
-    anonymLabel: "Anonym spenden",
-    nameFieldPlaceholder:
-      "Name/Firma für Veröffentlichung (optional, falls abweichend)",
+      "Tragen Sie hier Ihren Namen oder Firmennamen ein, wenn Sie auf unserer Spendentafel (Website & Vereinsgelände) veröffentlicht werden möchten. Lassen Sie das Feld leer, wenn Sie anonym spenden möchten.",
+    nameFieldPlaceholder: "Name/Firma für die Spendentafel (leer = anonym)",
   },
 
   bescheinigung: {
