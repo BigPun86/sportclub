@@ -12,7 +12,6 @@ import SponsoringV2Page from "./pages/SponsoringV2Page";
 import SponsoringHandoffPage from "./pages/SponsoringHandoffPage";
 import MockupGeneratorPage from "./pages/MockupGeneratorPage";
 import Club500Page from "./pages/Club500Page";
-import PaketePage from "./pages/PaketePage";
 import "./App.css";
 
 function ScrollToTop() {
