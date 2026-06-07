@@ -28,17 +28,60 @@ export default function App() {
     <Router>
       <ScrollToTop />
       <Routes>
-        <Route path="/" element={<><Navigation /><Navigate to="/sponsoring" replace /></>} />
-        <Route path="/sponsoring" element={<><Navigation /><SponsoringV2Page /></>} />
+        <Route
+          path="/"
+          element={
+            <>
+              <Navigation />
+              <Navigate to="/sponsoring" replace />
+            </>
+          }
+        />
+        <Route
+          path="/sponsoring"
+          element={
+            <>
+              <Navigation />
+              <SponsoringV2Page />
+            </>
+          }
+        />
 
         <Route path="/sponsoring-handoff" element={<SponsoringHandoffPage />} />
 
-        <Route path="/sponsoring/club-500" element={<><Navigation /><Club500Page /></>} />
-        <Route path="/sponsoring/pakete" element={<><Navigation /><PaketePage /></>} />
+        <Route
+          path="/sponsoring/club-500"
+          element={
+            <>
+              <Navigation />
+              <Club500Page />
+            </>
+          }
+        />
+        <Route
+          path="/sponsoring/pakete"
+          element={<Navigate to="/sponsoring#angebot" replace />}
+        />
 
-        <Route path="/mockup-generator" element={<><Navigation /><MockupGeneratorPage /></>} />
+        <Route
+          path="/mockup-generator"
+          element={
+            <>
+              <Navigation />
+              <MockupGeneratorPage />
+            </>
+          }
+        />
 
-        <Route path="/renovierung" element={<><Navigation /><RenovierungPage /></>} />
+        <Route
+          path="/renovierung"
+          element={
+            <>
+              <Navigation />
+              <RenovierungPage />
+            </>
+          }
+        />
 
         <Route path="*" element={<Navigate to="/sponsoring" replace />} />
       </Routes>

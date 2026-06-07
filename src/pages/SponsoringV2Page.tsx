@@ -2,7 +2,18 @@ import { useEffect, useState } from "react";
 import styled, { keyframes } from "styled-components";
 import { Link } from "react-router-dom";
 import { getHeroImage } from "../utils/imageLoader";
-import { kpis, kontakt, aufstiegsBanner } from "../data/sponsoringData";
+import {
+  kpis as fallbackKpis,
+  kontakt,
+  aufstiegsBanner,
+  exklusivPakete,
+  werbeflaechenALaCarte,
+  busFlaechenPremium,
+  busFlaechenStandard,
+  busZusatzoptionen,
+  spieltagAngebote,
+  type KPI,
+} from "../data/sponsoringData";
 import CurrentSponsors from "../components/CurrentSponsors";
 import { ContactSection } from "../components/ContactSection";
 import Footer from "../components/Footer";
@@ -263,97 +274,129 @@ const BannerText = styled.span`
   }
 `;
 
-// -- Angebot: Kategorie-Karten --
+// -- Exklusiv-Pakete --
 
-const OfferGrid = styled.div`
+const PaketGrid = styled.div`
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1.5rem;
+  gap: 1.25rem;
 
   @media (min-width: 768px) {
     grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
+    gap: 1.5rem;
   }
 `;
 
-const OfferCard = styled.div`
+const PaketCard = styled.div<{ $vergeben?: boolean }>`
   background: white;
-  border-radius: 20px;
-  padding: 2rem 1.5rem;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
-  border: 1px solid #f0f0f0;
+  border-radius: 16px;
+  padding: 1.75rem 1.5rem;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.06);
+  border: 2px solid ${({ $vergeben }) => ($vergeben ? "#e5e7eb" : "#e10073")};
   display: flex;
   flex-direction: column;
   transition: all 0.3s ease;
+  opacity: ${({ $vergeben }) => ($vergeben ? 0.85 : 1)};
 
   &:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 32px rgba(0, 0, 0, 0.1);
   }
 `;
 
-const OfferIcon = styled.div`
-  font-size: 2.5rem;
+const PaketHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
   margin-bottom: 1rem;
+  gap: 0.75rem;
+  flex-wrap: wrap;
 `;
 
-const OfferTitle = styled.h3`
-  font-size: 1.3rem;
+const PaketName = styled.h3`
+  font-size: 1.2rem;
   font-weight: 800;
   color: #222;
-  margin: 0 0 0.5rem 0;
+  margin: 0;
 `;
 
-const OfferDesc = styled.p`
-  font-size: 0.95rem;
-  color: #666;
-  line-height: 1.6;
-  margin: 0 0 1.25rem 0;
+const PaketPreis = styled.div`
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #e10073;
+  white-space: nowrap;
+`;
+
+const PaketTopFeature = styled.div`
+  background: linear-gradient(135deg, #e10073, #ff6b9d);
+  color: white;
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 0.35rem 0.9rem;
+  border-radius: 20px;
+  display: inline-block;
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.02em;
+`;
+
+const PaketLeistungen = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.3rem 1rem;
+  font-size: 0.85rem;
+  color: #555;
+  margin-bottom: 1rem;
   flex: 1;
 `;
 
-const OfferBullets = styled.ul`
-  list-style: none;
-  padding: 0;
-  margin: 0 0 1.5rem 0;
-`;
-
-const OfferBullet = styled.li`
-  padding: 0.35rem 0;
-  font-size: 0.9rem;
-  color: #444;
+const PaketLeistung = styled.div`
   display: flex;
-  align-items: center;
-  gap: 0.5rem;
+  gap: 0.4rem;
+  align-items: baseline;
+  padding: 0.2rem 0;
 
   &::before {
     content: "\\2713";
     color: #e10073;
-    font-weight: 800;
+    font-weight: 700;
     flex-shrink: 0;
+    font-size: 0.75rem;
   }
 `;
 
-const OfferActions = styled.div`
-  display: flex;
-  gap: 0.75rem;
-  align-items: center;
-  margin-top: auto;
-  flex-wrap: wrap;
+const PaketShared = styled.div`
+  font-size: 0.8rem;
+  color: #888;
+  border-top: 1px solid #f0f0f0;
+  padding-top: 0.75rem;
+  margin-bottom: 1rem;
+  line-height: 1.5;
 `;
 
-const OfferCTA = styled.a`
+const StatusBadge = styled.span<{ $vergeben?: boolean }>`
+  display: inline-block;
+  padding: 0.3rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  background: ${({ $vergeben }) => ($vergeben ? "#fee2e2" : "#d1fae5")};
+  color: ${({ $vergeben }) => ($vergeben ? "#991b1b" : "#065f46")};
+`;
+
+const PaketCTA = styled.a<{ $vergeben?: boolean }>`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: #e10073;
-  color: white;
+  background: ${({ $vergeben }) => ($vergeben ? "#e5e7eb" : "#e10073")};
+  color: ${({ $vergeben }) => ($vergeben ? "#6b7280" : "white")};
   font-weight: 700;
   font-size: 0.9rem;
-  padding: 0.75rem 1.5rem;
+  padding: 0.7rem 1.5rem;
   border-radius: 50px;
   text-decoration: none;
   transition: all 0.2s ease;
+  pointer-events: ${({ $vergeben }) => ($vergeben ? "none" : "auto")};
+  margin-top: auto;
 
   &:hover {
     background: #b8005a;
@@ -362,15 +405,131 @@ const OfferCTA = styled.a`
   }
 `;
 
-const OfferDetailLink = styled(Link)`
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: #e10073;
-  text-decoration: none;
+const SponsorInfo = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  background: #f9fafb;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  flex: 1;
+`;
 
-  &:hover {
-    text-decoration: underline;
+const SponsorLogo = styled.img`
+  max-width: 80px;
+  max-height: 50px;
+  object-fit: contain;
+`;
+
+const SponsorName = styled.div`
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #333;
+`;
+
+// -- Werbeflächen-Tabelle --
+
+const PriceTable = styled.table`
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+
+  th {
+    text-align: left;
+    padding: 0.75rem 0.75rem;
+    font-weight: 700;
+    color: white;
+    background: #e10073;
+
+    &:first-child {
+      border-radius: 10px 0 0 0;
+    }
+    &:last-child {
+      border-radius: 0 10px 0 0;
+    }
   }
+
+  td {
+    padding: 0.65rem 0.75rem;
+    border-bottom: 1px solid #f0f0f0;
+    color: #333;
+  }
+
+  tr:nth-child(even) td {
+    background: #fafafa;
+  }
+  tr:last-child td {
+    border-bottom: none;
+  }
+`;
+
+const TableCard = styled.div`
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.06);
+  border: 1px solid #f0f0f0;
+`;
+
+const TableTitle = styled.h3`
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #222;
+  margin: 0 0 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+`;
+
+const SlotsTag = styled.span`
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #065f46;
+  background: #d1fae5;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+`;
+
+// -- Spieltag & Medien --
+
+const MiniCard = styled.div`
+  background: white;
+  border-radius: 14px;
+  padding: 1.25rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+  border: 1px solid #f0f0f0;
+  display: flex;
+  flex-direction: column;
+`;
+
+const MiniCardName = styled.h4`
+  font-size: 1rem;
+  font-weight: 800;
+  color: #222;
+  margin: 0 0 0.25rem;
+`;
+
+const MiniCardPreis = styled.div`
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #e10073;
+  margin-bottom: 0.5rem;
+`;
+
+const MiniCardDesc = styled.p`
+  font-size: 0.85rem;
+  color: #666;
+  line-height: 1.5;
+  margin: 0;
+  flex: 1;
+`;
+
+const MiniCardHint = styled.div`
+  font-size: 0.8rem;
+  color: #888;
+  margin-top: 0.5rem;
+  font-style: italic;
 `;
 
 // -- Reichweiten-Karte --
@@ -537,60 +696,18 @@ const Club500CTA = styled(Link)`
 
 // -- Data --
 
-const heroKpis = kpis;
-
-const offerCategories = [
-  {
-    icon: "🏆",
-    title: "Premium-Partnerschaften",
-    hash: "premium",
-    desc: "Maximale Sichtbarkeit als Hauptsponsor, Stadionpartner oder Co-Sponsor. Trikot, Banner, Stadionmagazin und Social Media in einem Paket.",
-    bullets: [
-      "Trikot- oder Bannerplatzierung",
-      "Seite im Stadionmagazin (15 Ausgaben/Saison)",
-      "Social Media: bis zu 60 Posts + 100 Stories/Saison",
-      "Logo prominent auf der Website",
-    ],
-  },
-  {
-    icon: "🚌",
-    title: "Buswerbung",
-    hash: "bus",
-    desc: "Ihr Logo fährt ständig durch Konstanz und die Region. Der Vereinsbus ist für alle Mannschaften im Einsatz – Herren, Damen, Jugend – und an fast jedem Wochenende unterwegs.",
-    bullets: [
-      "Im Einsatz für 5+ Mannschaften (Herren, Damen, Jugend)",
-      "Sichtbar in 15+ Städten der Liga",
-      "Großflächen, Seitenflächen oder Heckwerbung",
-      "Mehrjahresrabatt & Kombi mit Online-Präsenz",
-    ],
-  },
-  {
-    icon: "📍",
-    title: "Lokale Präsenz",
-    hash: "lokal",
-    desc: "Bandenwerbung, Community-Partnerschaften und Events. Perfekt für lokale Unternehmen, die im Stadion und bei Veranstaltungen sichtbar sein wollen.",
-    bullets: [
-      "Banden am Spielfeldrand",
-      "Regelmäßige Social-Media-Posts & Stories",
-      "Gemeinsame Events mit dem Team",
-      "Logo auf der Website",
-    ],
-  },
-  {
-    icon: "⚽",
-    title: "Einstieg & Spieltag",
-    hash: "starter",
-    desc: "Ballspenden, Prämien-Modelle und Spielerpatenschaften. Idealer Einstieg ins Sponsoring mit direkter Spieltagspräsenz.",
-    bullets: [
-      "Ballspende mit Stadiondurchsage",
-      "Erfolgsbasierte Prämien-Modelle",
-      "Spielerpatenschaften (diskret)",
-      "Instagram-Stories am Spieltag",
-    ],
-  },
-];
-
 export default function SponsoringV2Page() {
+  const [liveKpis, setLiveKpis] = useState<KPI[]>(fallbackKpis);
+
+  useEffect(() => {
+    fetch("/social-stats.json")
+      .then((r) => (r.ok ? r.json() : Promise.reject()))
+      .then((data) => {
+        if (data?.kpis?.length) setLiveKpis(data.kpis);
+      })
+      .catch(() => {});
+  }, []);
+
   const heroImages = [
     getHeroImage("herren/herren_6"),
     getHeroImage("herren/herren_16"),
@@ -608,13 +725,15 @@ export default function SponsoringV2Page() {
   }, [heroImages.length]);
 
   const scrollTo = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+    document
+      .getElementById(id)
+      ?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
   const generateMailto = (category: string) => {
     const subject = encodeURIComponent(`Interesse an Sponsoring: ${category}`);
     const body = encodeURIComponent(
-      `Hallo liebes SCKW-Team,\n\nich interessiere mich für den Bereich "${category}" und würde gerne mehr erfahren.\n\nBitte senden Sie mir weitere Informationen.\n\nMein Name: \nFirma (optional): \nTelefon (optional): \n\nHerzliche Grüße\n`
+      `Hallo liebes SCKW-Team,\n\nich interessiere mich für den Bereich "${category}" und würde gerne mehr erfahren.\n\nBitte senden Sie mir weitere Informationen.\n\nMein Name: \nFirma (optional): \nTelefon (optional): \n\nHerzliche Grüße\n`,
     );
     return `mailto:${EMAIL_KONTAKT}?subject=${subject}&body=${body}`;
   };
@@ -630,14 +749,13 @@ export default function SponsoringV2Page() {
         <HeroContent>
           <HeroTitle>Sponsoring, das messbar wirkt</HeroTitle>
           <HeroSubtitle>
-            In der Winterpause erzielen wir bereits{" "}
-            <strong>250.000 Reichweite in 90 Tagen</strong>. Mit Spielbetrieb
-            steigt die Sichtbarkeit konservativ auf{" "}
-            <strong>500.000–800.000 Kontakte pro Saison</strong> – ohne
-            Mehrkosten für unsere Partner.
+            <strong>1,3 Millionen Social-Media-Views</strong> in dieser Saison –
+            100 % organisch, ohne Werbebudget. Aktuell erreichen wir{" "}
+            <strong>310.000 Views pro Monat</strong> und Ihre Marke ist in jedem
+            Spielbericht dabei.
           </HeroSubtitle>
           <HeroStats>
-            {heroKpis.map((kpi) => (
+            {liveKpis.map((kpi) => (
               <StatItem key={kpi.label}>
                 <StatNumber>{kpi.value}</StatNumber>
                 <StatLabel>{kpi.label}</StatLabel>
@@ -645,10 +763,23 @@ export default function SponsoringV2Page() {
             ))}
           </HeroStats>
           <HeroCTAGroup>
-            <HeroCTA href="#kontakt" $primary onClick={(e) => { e.preventDefault(); scrollTo("kontakt"); }}>
+            <HeroCTA
+              href="#kontakt"
+              $primary
+              onClick={(e) => {
+                e.preventDefault();
+                scrollTo("kontakt");
+              }}
+            >
               Jetzt Kontakt aufnehmen
             </HeroCTA>
-            <HeroCTA href="#angebot" onClick={(e) => { e.preventDefault(); scrollTo("angebot"); }}>
+            <HeroCTA
+              href="#angebot"
+              onClick={(e) => {
+                e.preventDefault();
+                scrollTo("angebot");
+              }}
+            >
               Angebot ansehen
             </HeroCTA>
           </HeroCTAGroup>
@@ -661,7 +792,9 @@ export default function SponsoringV2Page() {
           <BannerInner>
             <BannerPulse />
             <BannerText>
-              {aufstiegsBanner.text} <strong>{aufstiegsBanner.highlight}</strong> {aufstiegsBanner.suffix}
+              {aufstiegsBanner.text}{" "}
+              <strong>{aufstiegsBanner.highlight}</strong>{" "}
+              {aufstiegsBanner.suffix}
             </BannerText>
             <BannerPulse />
           </BannerInner>
@@ -682,64 +815,251 @@ export default function SponsoringV2Page() {
         </Container>
       </Section>
 
-      {/* Angebot */}
+      {/* Exklusiv-Partnerschaften */}
       <SectionAlt id="angebot">
         <Container>
           <SectionHeader>
-            <SectionTitle>Sponsoring-Möglichkeiten</SectionTitle>
+            <SectionTitle>Exklusiv-Partnerschaften</SectionTitle>
             <SectionSubtitle>
-              Vier Wege, Ihre Marke beim SC Konstanz-Wollmatingen zu platzieren.
-              Alle Details besprechen wir persönlich.
+              Vier einzigartige Pakete – jeweils nur 1× verfügbar. Alle Partner
+              erscheinen in jedem Spielvor- und Nachbericht.
             </SectionSubtitle>
           </SectionHeader>
 
-          <OfferGrid>
-            {offerCategories.map((cat) => (
-              <OfferCard key={cat.title}>
-                <OfferIcon>{cat.icon}</OfferIcon>
-                <OfferTitle>{cat.title}</OfferTitle>
-                <OfferDesc>{cat.desc}</OfferDesc>
-                <OfferBullets>
-                  {cat.bullets.map((b) => (
-                    <OfferBullet key={b}>{b}</OfferBullet>
-                  ))}
-                </OfferBullets>
-                <OfferActions>
-                  <OfferCTA href={generateMailto(cat.title)}>
-                    Jetzt anfragen
-                  </OfferCTA>
-                  <OfferDetailLink to={`/sponsoring/pakete#${cat.hash}`}>
-                    Details ansehen →
-                  </OfferDetailLink>
-                </OfferActions>
-              </OfferCard>
-            ))}
-          </OfferGrid>
+          <PaketGrid>
+            {exklusivPakete.map((pkg) => (
+              <PaketCard key={pkg.id} $vergeben={pkg.vergeben}>
+                <PaketHeader>
+                  <div>
+                    <PaketName>{pkg.name}</PaketName>
+                    <PaketPreis>{pkg.preis} / Saison</PaketPreis>
+                  </div>
+                  <StatusBadge $vergeben={pkg.vergeben}>
+                    {pkg.vergeben ? "Vergeben" : "Verfügbar"}
+                  </StatusBadge>
+                </PaketHeader>
 
-          {/* Reichweiten-Karte */}
+                <PaketTopFeature>{pkg.topFeature}</PaketTopFeature>
+
+                {pkg.vergeben && pkg.sponsorLogo ? (
+                  <SponsorInfo>
+                    <SponsorLogo
+                      src={pkg.sponsorLogo}
+                      alt={pkg.sponsorName || ""}
+                    />
+                    <SponsorName>{pkg.sponsorName}</SponsorName>
+                  </SponsorInfo>
+                ) : (
+                  <PaketLeistungen>
+                    {pkg.trikot !== "–" && (
+                      <PaketLeistung>Trikot: {pkg.trikot}</PaketLeistung>
+                    )}
+                    {pkg.id === "stadionname" && (
+                      <PaketLeistung>Stadion trägt Ihren Namen</PaketLeistung>
+                    )}
+                    <PaketLeistung>Bande: {pkg.bande}</PaketLeistung>
+                    <PaketLeistung>Banner: {pkg.banner}</PaketLeistung>
+                    <PaketLeistung>Magazin: {pkg.magazin}</PaketLeistung>
+                    <PaketLeistung>
+                      {pkg.saisonkarten} Saisonkarten
+                    </PaketLeistung>
+                  </PaketLeistungen>
+                )}
+
+                <PaketShared>
+                  Logo in allen Spielberichten · Stadionansage · Logo Website
+                </PaketShared>
+
+                <PaketCTA
+                  href={pkg.vergeben ? undefined : generateMailto(pkg.name)}
+                  $vergeben={pkg.vergeben}
+                >
+                  {pkg.vergeben ? "Vergeben" : "Jetzt anfragen"}
+                </PaketCTA>
+              </PaketCard>
+            ))}
+          </PaketGrid>
+        </Container>
+      </SectionAlt>
+
+      {/* Werbeflächen */}
+      <Section id="werbeflaechen">
+        <Container>
+          <SectionHeader>
+            <SectionTitle>Werbeflächen</SectionTitle>
+            <SectionSubtitle>
+              Banden, Banner und Buswerbung – à la carte buchbar, klare Preise.
+            </SectionSubtitle>
+          </SectionHeader>
+
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "1fr",
+              gap: "2rem",
+              maxWidth: 900,
+              margin: "0 auto",
+            }}
+          >
+            {/* Banden & Banner */}
+            <TableCard>
+              <div style={{ padding: "1.25rem 1.25rem 0" }}>
+                <TableTitle>Banden & Banner</TableTitle>
+              </div>
+              <div style={{ overflowX: "auto" }}>
+                <PriceTable>
+                  <thead>
+                    <tr>
+                      <th>Typ</th>
+                      <th>Grösse</th>
+                      <th>Preis / Saison</th>
+                      <th>Verfügbar</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {werbeflaechenALaCarte.map((f) => (
+                      <tr key={f.name}>
+                        <td style={{ fontWeight: 600 }}>{f.name}</td>
+                        <td>{f.groesse}</td>
+                        <td style={{ fontWeight: 700, color: "#e10073" }}>
+                          {f.preis}
+                        </td>
+                        <td>
+                          <SlotsTag>{f.slots} Plätze</SlotsTag>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </PriceTable>
+              </div>
+            </TableCard>
+
+            {/* Buswerbung */}
+            <TableCard>
+              <div style={{ padding: "1.25rem 1.25rem 0" }}>
+                <TableTitle>Buswerbung</TableTitle>
+                <p
+                  style={{
+                    fontSize: "0.9rem",
+                    color: "#666",
+                    margin: "0 0 0.75rem",
+                    lineHeight: 1.5,
+                  }}
+                >
+                  Jede Woche unterwegs in Konstanz, im Landkreis und bei
+                  Auswärtsspielen.
+                </p>
+              </div>
+              <img
+                src="/vereinsbus.png"
+                alt="Vereinsbus SCKW"
+                style={{ width: "100%", display: "block" }}
+              />
+              <div style={{ overflowX: "auto" }}>
+                <PriceTable>
+                  <thead>
+                    <tr>
+                      <th>Fläche</th>
+                      <th>Grösse</th>
+                      <th>Preis / Jahr</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {[...busFlaechenPremium, ...busFlaechenStandard].map(
+                      (f) => (
+                        <tr key={f.position}>
+                          <td style={{ fontWeight: 600 }}>{f.position}</td>
+                          <td>{f.groesse}</td>
+                          <td style={{ fontWeight: 700, color: "#e10073" }}>
+                            {f.preis}
+                          </td>
+                        </tr>
+                      ),
+                    )}
+                  </tbody>
+                </PriceTable>
+              </div>
+              <div style={{ padding: "0.75rem 1.25rem 1.25rem" }}>
+                <ul
+                  style={{
+                    margin: 0,
+                    paddingLeft: "1.2rem",
+                    fontSize: "0.85rem",
+                    color: "#666",
+                    lineHeight: 1.6,
+                  }}
+                >
+                  {busZusatzoptionen.map((opt, i) => (
+                    <li key={i}>{opt}</li>
+                  ))}
+                </ul>
+              </div>
+            </TableCard>
+          </div>
+        </Container>
+      </Section>
+
+      {/* Spieltag & Medien */}
+      <SectionAlt id="spieltag">
+        <Container>
+          <SectionHeader>
+            <SectionTitle>Spieltag & Medien</SectionTitle>
+            <SectionSubtitle>
+              Einstieg ins Sponsoring ab 150 € – perfekt zum Ausprobieren.
+            </SectionSubtitle>
+          </SectionHeader>
+
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+              gap: "1.25rem",
+              maxWidth: 900,
+              margin: "0 auto",
+            }}
+          >
+            {spieltagAngebote.map((a) => (
+              <MiniCard key={a.name}>
+                <MiniCardName>{a.name}</MiniCardName>
+                <MiniCardPreis>{a.preis}</MiniCardPreis>
+                <MiniCardDesc>{a.beschreibung}</MiniCardDesc>
+                {a.hinweis && <MiniCardHint>{a.hinweis}</MiniCardHint>}
+              </MiniCard>
+            ))}
+          </div>
+        </Container>
+      </SectionAlt>
+
+      {/* Reichweiten-Karte */}
+      <Section>
+        <Container>
           <MapSection>
             <MapGrid>
               <MapImageContainer>
-                <MapImage src="/verbandsliga-karte.jpg" alt="Verbandsliga Südbaden – Spielorte und Reichweite" />
+                <MapImage
+                  src="/verbandsliga-karte.jpg"
+                  alt="Verbandsliga Südbaden – Spielorte und Reichweite"
+                />
                 <MapBadge>Saison 26/27</MapBadge>
               </MapImageContainer>
               <MapContent>
                 <MapTitle>Ihre Reichweite wächst mit</MapTitle>
                 <MapText>
-                  Ob Buswerbung, Trikot oder Bande – Ihre Marke wird in der gesamten Region
-                  sichtbar. Mit dem voraussichtlichen Aufstieg in die Verbandsliga spielen wir
-                  in 15+ Städten zwischen Freiburg und Konstanz.
+                  Ob Buswerbung, Trikot oder Bande – Ihre Marke wird in der
+                  gesamten Region sichtbar. Als frischer Meister und Aufsteiger
+                  spielen wir ab Saison 26/27 Verbandsliga – in 15+ Städten
+                  zwischen Freiburg und Konstanz.
                 </MapText>
                 <MapHighlight>
-                  <strong>Was das für Sie bedeutet:</strong> Mehr Gegner, größere Städte,
-                  mehr Medienaufmerksamkeit – Ihre Investition wächst automatisch
-                  mit, ohne Mehrkosten.
+                  <strong>Was das für Sie bedeutet:</strong> Mehr Gegner,
+                  größere Städte, mehr Medienaufmerksamkeit – Ihre Investition
+                  wächst automatisch mit, ohne Mehrkosten.
                 </MapHighlight>
               </MapContent>
             </MapGrid>
           </MapSection>
         </Container>
-      </SectionAlt>
+      </Section>
 
       {/* CLUB 500 */}
       <Club500Section>
@@ -748,7 +1068,8 @@ export default function SponsoringV2Page() {
             <Club500Title>CLUB 500</Club500Title>
             <Club500Subtitle>
               Gemeinsam den Fußball beim SC Konstanz-Wollmatingen stärken –
-              werden Sie Mitglied und fördern Sie unseren Jugend- und Amateurfußball.
+              werden Sie Mitglied und fördern Sie unseren Jugend- und
+              Amateurfußball.
             </Club500Subtitle>
           </SectionHeader>
           <Club500Highlights>
@@ -769,7 +1090,12 @@ export default function SponsoringV2Page() {
         headline="Kontakt aufnehmen"
         description="Kurze Anfrage genügt – wir erstellen ein passendes Angebot mit klaren Leistungen."
         contactInfos={[
-          { icon: "📧", title: "E-Mail", content: kontakt.email, isEmail: true },
+          {
+            icon: "📧",
+            title: "E-Mail",
+            content: kontakt.email,
+            isEmail: true,
+          },
           { icon: "📍", title: "Adresse", content: kontakt.vollAdresse },
         ]}
       />

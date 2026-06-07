@@ -1,0 +1,59 @@
+name: Social-Media-Statistiken aktualisieren
+
+on:
+  schedule:
+    - cron: "30 6 * * *" # Täglich um 08:30 MESZ (06:30 UTC)
+  workflow_dispatch: # Manuell auslösbar
+
+env:
+  TZ: Europe/Berlin
+
+jobs:
+  fetch-stats:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Fetch Social Stats from Meta API
+        env:
+          META_ACCESS_TOKEN: ${{ secrets.META_ACCESS_TOKEN }}
+          INSTAGRAM_ACCOUNT_ID: ${{ secrets.INSTAGRAM_ACCOUNT_ID }}
+          FACEBOOK_PAGE_ID: ${{ secrets.FACEBOOK_PAGE_ID }}
+        run: node scripts/fetch-social-stats.mjs
+
+      - name: Check for changes
+        id: git-check
+        run: |
+          if git diff --quiet HEAD -- public/social-stats.json; then
+            echo "changes=false" >> $GITHUB_OUTPUT
+          else
+            echo "changes=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Commit and push changes
+        if: steps.git-check.outputs.changes == 'true'
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add public/social-stats.json
+          git commit -m "stats: Social-Media-Zahlen aktualisiert ($(date '+%Y-%m-%d'))"
+          git push
+
+      - name: Summary
+        run: |
+          echo "## Social-Media-Statistiken" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          if [ -f public/social-stats.json ]; then
+            echo '```json' >> $GITHUB_STEP_SUMMARY
+            cat public/social-stats.json | python3 -c "import sys,json; d=json.load(sys.stdin); print(json.dumps(d.get('kpis',[]), indent=2, ensure_ascii=False))" >> $GITHUB_STEP_SUMMARY
+            echo '```' >> $GITHUB_STEP_SUMMARY
+          fi

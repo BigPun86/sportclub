@@ -1,0 +1,45 @@
+{
+  "fetchedAt": "2026-06-07T14:34:00.000Z",
+  "instagram": {
+    "username": "sckw_1930",
+    "followers": 0,
+    "posts": 0,
+    "days_28": { "views": 229554, "reach": 21400 },
+    "days_90": { "views": 0, "reach": 0 },
+    "days_365": { "views": 1072945, "reach": 50500 }
+  },
+  "facebook": {
+    "name": "SC Konstanz-Wollmatingen",
+    "followers": 0,
+    "days_28": { "views": 80738 },
+    "days_90": { "views": 0 },
+    "days_365": { "views": 203365 }
+  },
+  "combined": {
+    "days_28": { "views": 310292 },
+    "days_90": { "views": 0 },
+    "days_365": { "views": 1276310 }
+  },
+  "kpis": [
+    {
+      "value": "1,3 Mio.",
+      "label": "Social-Media-Views / Saison",
+      "description": "IG 1,07 Mio. + FB 203K kombiniert (letzte 12 Monate)"
+    },
+    {
+      "value": "310.000",
+      "label": "Views / Monat aktuell",
+      "description": "IG 230K + FB 81K kombiniert (letzte 28 Tage)"
+    },
+    {
+      "value": "21.400",
+      "label": "Personen erreicht / Monat",
+      "description": "Instagram Reach (letzte 28 Tage)"
+    },
+    {
+      "value": "60.000+",
+      "label": "Website-Aufrufe / Jahr",
+      "description": "23.800 Sessions, Ø 2:19 Min. Verweildauer"
+    }
+  ]
+}

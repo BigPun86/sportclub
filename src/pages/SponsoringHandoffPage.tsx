@@ -78,7 +78,9 @@ const Toolbar = styled.div`
   align-items: center;
   justify-content: space-between;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-  @media print { display: none !important; }
+  @media print {
+    display: none !important;
+  }
 `;
 
 const ToolbarTitle = styled.h1`
@@ -96,14 +98,14 @@ const ToolbarActions = styled.div`
 `;
 
 const Btn = styled.button<{ $primary?: boolean; $active?: boolean }>`
-  background: ${p =>
+  background: ${(p) =>
     p.$primary
       ? "#fff"
       : p.$active
         ? "rgba(255,255,255,0.35)"
         : "rgba(255,255,255,0.12)"};
-  color: ${p => (p.$primary ? "#1a365d" : "#fff")};
-  border: 2px solid ${p => (p.$primary ? "#fff" : "rgba(255,255,255,0.25)")};
+  color: ${(p) => (p.$primary ? "#1a365d" : "#fff")};
+  border: 2px solid ${(p) => (p.$primary ? "#fff" : "rgba(255,255,255,0.25)")};
   padding: 0.5rem 1.1rem;
   border-radius: 25px;
   font-weight: 700;
@@ -111,7 +113,10 @@ const Btn = styled.button<{ $primary?: boolean; $active?: boolean }>`
   cursor: pointer;
   transition: all 0.15s;
   white-space: nowrap;
-  &:hover { opacity: 0.9; transform: translateY(-1px); }
+  &:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+  }
 `;
 
 const Hint = styled.div`
@@ -121,14 +126,19 @@ const Hint = styled.div`
   font-size: 0.85rem;
   color: #92400e;
   line-height: 1.5;
-  @media print { display: none !important; }
+  @media print {
+    display: none !important;
+  }
 `;
 
 const Pages = styled.div`
   padding: 2rem;
   background: #e5e7eb;
   min-height: 100vh;
-  @media print { padding: 0; background: none; }
+  @media print {
+    padding: 0;
+    background: none;
+  }
 `;
 
 // ============================================================================
@@ -155,7 +165,10 @@ const A4 = styled.section`
     break-after: page;
   }
   &:last-child {
-    @media print { page-break-after: auto; break-after: auto; }
+    @media print {
+      page-break-after: auto;
+      break-after: auto;
+    }
   }
 `;
 
@@ -171,25 +184,33 @@ const Waves = styled.div`
   z-index: 0;
 
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     width: 650px;
     height: 650px;
     border-radius: 50%;
     bottom: -320px;
     left: -160px;
-    background: radial-gradient(circle, rgba(74, 144, 226, 0.10) 0%, transparent 70%);
+    background: radial-gradient(
+      circle,
+      rgba(74, 144, 226, 0.1) 0%,
+      transparent 70%
+    );
   }
 
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     width: 550px;
     height: 550px;
     border-radius: 50%;
     bottom: -200px;
     right: -120px;
-    background: radial-gradient(circle, rgba(196, 30, 58, 0.08) 0%, transparent 70%);
+    background: radial-gradient(
+      circle,
+      rgba(196, 30, 58, 0.08) 0%,
+      transparent 70%
+    );
   }
 `;
 
@@ -206,8 +227,13 @@ const Inner = styled.div`
 // Reusable elements
 // ============================================================================
 
-const LogoWrap = styled.div`text-align: center; margin-bottom: 6mm;`;
-const LogoImg = styled.img`height: 20mm;`;
+const LogoWrap = styled.div`
+  text-align: center;
+  margin-bottom: 6mm;
+`;
+const LogoImg = styled.img`
+  height: 20mm;
+`;
 
 const Title = styled.h1`
   font-size: 28pt;
@@ -252,7 +278,7 @@ const Check = styled.li`
   position: relative;
   list-style: none;
   &::before {
-    content: '\\2713';
+    content: "\\2713";
     position: absolute;
     left: 0;
     color: #1a365d;
@@ -260,20 +286,29 @@ const Check = styled.li`
   }
 `;
 
-const Checks = styled.ul`padding: 0; margin: 3mm 0;`;
+const Checks = styled.ul`
+  padding: 0;
+  margin: 3mm 0;
+`;
 
 const Price = styled.div<{ $hidden?: boolean }>`
-  display: ${p => (p.$hidden ? "none" : "block")};
+  display: ${(p) => (p.$hidden ? "none" : "block")};
   background: #f8fafc;
   border-left: 4px solid #1a365d;
   padding: 3.5mm 5mm;
   margin: 5mm 0;
   font-size: 10.5pt;
   color: #333;
-  strong { font-size: 14pt; color: #1a365d; margin-left: 2mm; }
+  strong {
+    font-size: 14pt;
+    color: #1a365d;
+    margin-left: 2mm;
+  }
 `;
 
-const LeadField = styled.div`margin-bottom: 4mm;`;
+const LeadField = styled.div`
+  margin-bottom: 4mm;
+`;
 
 const LeadLabel = styled.label`
   display: block;
@@ -286,7 +321,7 @@ const LeadLabel = styled.label`
 const LeadInput = styled.div<{ $lines?: number }>`
   border: 1px solid #d1d5db;
   border-radius: 2mm;
-  min-height: ${p => (p.$lines || 1) * 8}mm;
+  min-height: ${(p) => (p.$lines || 1) * 8}mm;
   background: #fafafa;
 `;
 
@@ -310,7 +345,7 @@ const Footer = styled.div`
 `;
 
 const FooterCol = styled.div<{ $right?: boolean; $center?: boolean }>`
-  text-align: ${p => (p.$right ? "right" : p.$center ? "center" : "left")};
+  text-align: ${(p) => (p.$right ? "right" : p.$center ? "center" : "left")};
 `;
 
 // ============================================================================
@@ -320,7 +355,8 @@ const FooterCol = styled.div<{ $right?: boolean; $center?: boolean }>`
 function BrochureDisclaimer() {
   return (
     <Disclaimer>
-      Die Preise verstehen sich excl. MwSt. und ohne Druckvorlagen.<br />
+      Die Preise verstehen sich excl. MwSt. und ohne Druckvorlagen.
+      <br />
       Die Druckvorlagen werden von den Inserenten zur Verfügung gestellt.
     </Disclaimer>
   );
@@ -330,17 +366,21 @@ function BrochureFooter() {
   return (
     <Footer>
       <FooterCol>
-        <strong>SC Konstanz-Wollmatingen e.V.</strong><br />
+        <strong>SC Konstanz-Wollmatingen e.V.</strong>
+        <br />
         Schleyerweg 5<br />
         78467 Konstanz
       </FooterCol>
       <FooterCol $center>
-        {kontakt.email}<br />
+        {kontakt.email}
+        <br />
         partner.sckw.de
       </FooterCol>
       <FooterCol $right>
-        Sparkasse Bodensee<br />
-        IBAN: DE12 6905 0001 0000 0228 06<br />
+        Sparkasse Bodensee
+        <br />
+        IBAN: DE12 6905 0001 0000 0228 06
+        <br />
         BIC: SOLADES1KNZ
       </FooterCol>
     </Footer>
@@ -369,65 +409,142 @@ const Photo = styled.img`
 function PageCover() {
   return (
     <A4>
-      <div style={{
-        background: "linear-gradient(150deg, #0a1628 0%, #0e2240 15%, #1a3a6a 35%, #2d5a87 50%, #6b1d4a 65%, #a81e45 80%, #c41e3a 90%, #e10073 100%)",
-        height: "100%", minHeight: "297mm",
-        display: "flex", flexDirection: "column",
-        alignItems: "center", justifyContent: "center",
-        textAlign: "center", color: "#fff",
-        position: "relative", overflow: "hidden",
-      }}>
-        <div style={{
-          position: "absolute", top: "-60mm", right: "-50mm",
-          width: "200mm", height: "200mm", borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(74,144,226,0.12) 0%, transparent 70%)",
-        }} />
-        <div style={{
-          position: "absolute", bottom: "-40mm", left: "-40mm",
-          width: "180mm", height: "180mm", borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(196,30,58,0.10) 0%, transparent 70%)",
-        }} />
-        <div style={{
-          position: "absolute", top: "40mm", left: "-20mm",
-          width: "140mm", height: "140mm", borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(255,255,255,0.03) 0%, transparent 60%)",
-        }} />
-        <img src="/sckw-logo-500club.png" alt="SC Konstanz-Wollmatingen" style={{
-          height: "70mm", objectFit: "contain", position: "relative", zIndex: 1,
-          filter: "drop-shadow(0 3mm 10mm rgba(0,0,0,0.35))",
-        }} />
-        <h1 style={{
-          fontSize: "40pt", fontWeight: 900, margin: "8mm 0 6mm",
-          letterSpacing: "-0.03em",
-          position: "relative", zIndex: 1,
-          textShadow: "0 2px 12px rgba(0,0,0,0.4)",
-        }}>
+      <div
+        style={{
+          background:
+            "linear-gradient(150deg, #0a1628 0%, #0e2240 15%, #1a3a6a 35%, #2d5a87 50%, #6b1d4a 65%, #a81e45 80%, #c41e3a 90%, #e10073 100%)",
+          height: "100%",
+          minHeight: "297mm",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          textAlign: "center",
+          color: "#fff",
+          position: "relative",
+          overflow: "hidden",
+        }}
+      >
+        <div
+          style={{
+            position: "absolute",
+            top: "-60mm",
+            right: "-50mm",
+            width: "200mm",
+            height: "200mm",
+            borderRadius: "50%",
+            background:
+              "radial-gradient(circle, rgba(74,144,226,0.12) 0%, transparent 70%)",
+          }}
+        />
+        <div
+          style={{
+            position: "absolute",
+            bottom: "-40mm",
+            left: "-40mm",
+            width: "180mm",
+            height: "180mm",
+            borderRadius: "50%",
+            background:
+              "radial-gradient(circle, rgba(196,30,58,0.10) 0%, transparent 70%)",
+          }}
+        />
+        <div
+          style={{
+            position: "absolute",
+            top: "40mm",
+            left: "-20mm",
+            width: "140mm",
+            height: "140mm",
+            borderRadius: "50%",
+            background:
+              "radial-gradient(circle, rgba(255,255,255,0.03) 0%, transparent 60%)",
+          }}
+        />
+        <img
+          src="/sckw-logo-500club.png"
+          alt="SC Konstanz-Wollmatingen"
+          style={{
+            height: "70mm",
+            objectFit: "contain",
+            position: "relative",
+            zIndex: 1,
+            filter: "drop-shadow(0 3mm 10mm rgba(0,0,0,0.35))",
+          }}
+        />
+        <h1
+          style={{
+            fontSize: "40pt",
+            fontWeight: 900,
+            margin: "8mm 0 6mm",
+            letterSpacing: "-0.03em",
+            position: "relative",
+            zIndex: 1,
+            textShadow: "0 2px 12px rgba(0,0,0,0.4)",
+          }}
+        >
           SPONSORING
         </h1>
-        <p style={{
-          fontSize: "15pt", fontWeight: 400, opacity: 0.95,
-          maxWidth: "140mm", lineHeight: 1.5, margin: "0 0 12mm",
-          position: "relative", zIndex: 1,
-          textShadow: "0 1px 8px rgba(0,0,0,0.3)",
-        }}>
-          Werden Sie Teil unserer Erfolgsgeschichte.<br />
+        <p
+          style={{
+            fontSize: "15pt",
+            fontWeight: 400,
+            opacity: 0.95,
+            maxWidth: "140mm",
+            lineHeight: 1.5,
+            margin: "0 0 12mm",
+            position: "relative",
+            zIndex: 1,
+            textShadow: "0 1px 8px rgba(0,0,0,0.3)",
+          }}
+        >
+          Werden Sie Teil unserer Erfolgsgeschichte.
+          <br />
           Sichtbarkeit, die wirkt.
         </p>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "5mm", position: "relative", zIndex: 1 }}>
-          {kpis.slice(0, 2).map(k => (
-            <div key={k.label} style={{
-              background: "rgba(0,0,0,0.35)", borderRadius: "4mm",
-              padding: "5mm 10mm", backdropFilter: "blur(12px)",
-              border: "1px solid rgba(255,255,255,0.15)",
-            }}>
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(2, 1fr)",
+            gap: "5mm",
+            position: "relative",
+            zIndex: 1,
+          }}
+        >
+          {kpis.slice(0, 2).map((k) => (
+            <div
+              key={k.label}
+              style={{
+                background: "rgba(0,0,0,0.35)",
+                borderRadius: "4mm",
+                padding: "5mm 10mm",
+                backdropFilter: "blur(12px)",
+                border: "1px solid rgba(255,255,255,0.15)",
+              }}
+            >
               <div style={{ fontSize: "24pt", fontWeight: 900 }}>{k.value}</div>
-              <div style={{ fontSize: "7pt", textTransform: "uppercase", letterSpacing: "0.06em", opacity: 0.9 }}>{k.label}</div>
+              <div
+                style={{
+                  fontSize: "7pt",
+                  textTransform: "uppercase",
+                  letterSpacing: "0.06em",
+                  opacity: 0.9,
+                }}
+              >
+                {k.label}
+              </div>
             </div>
           ))}
         </div>
-        <div style={{ position: "absolute", bottom: "12mm", fontSize: "9pt", opacity: 0.8,
-          textShadow: "0 1px 4px rgba(0,0,0,0.5)",
-        }}>
+        <div
+          style={{
+            position: "absolute",
+            bottom: "12mm",
+            fontSize: "9pt",
+            opacity: 0.8,
+            textShadow: "0 1px 4px rgba(0,0,0,0.5)",
+          }}
+        >
           Saison 2025/26 · partner.sckw.de
         </div>
       </div>
@@ -444,46 +561,103 @@ function PageWhySCKW() {
     <A4>
       <Waves />
       <Inner>
-        <LogoWrap><LogoImg src="/logo.svg" /></LogoWrap>
+        <LogoWrap>
+          <LogoImg src="/logo.svg" />
+        </LogoWrap>
         <Title>WARUM SCKW?</Title>
-        <Subtitle>Ihre Investition in lokale Sichtbarkeit – messbar, nachhaltig, emotional.</Subtitle>
+        <Subtitle>
+          Ihre Investition in lokale Sichtbarkeit – messbar, nachhaltig,
+          emotional.
+        </Subtitle>
 
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "3mm", margin: "4mm 0" }}>
-          {kpis.map(k => (
-            <div key={k.label} style={{
-              background: "linear-gradient(135deg, #1a365d, #2d5a87)",
-              borderRadius: "3mm", padding: "4mm 3mm", textAlign: "center", color: "#fff",
-            }}>
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(4, 1fr)",
+            gap: "3mm",
+            margin: "4mm 0",
+          }}
+        >
+          {kpis.map((k) => (
+            <div
+              key={k.label}
+              style={{
+                background: "linear-gradient(135deg, #1a365d, #2d5a87)",
+                borderRadius: "3mm",
+                padding: "4mm 3mm",
+                textAlign: "center",
+                color: "#fff",
+              }}
+            >
               <div style={{ fontSize: "16pt", fontWeight: 900 }}>{k.value}</div>
-              <div style={{ fontSize: "6.5pt", textTransform: "uppercase", opacity: 0.9 }}>{k.label}</div>
+              <div
+                style={{
+                  fontSize: "6.5pt",
+                  textTransform: "uppercase",
+                  opacity: 0.9,
+                }}
+              >
+                {k.label}
+              </div>
             </div>
           ))}
         </div>
 
         <H2>Was Sie bei uns erreichen</H2>
         <Checks>
-          <Check>Wiederholte Sichtkontakte bei Ihrer Zielgruppe in Konstanz & Region</Check>
-          <Check>Emotionale Bindung durch Sport – Ihre Marke wird Teil des Erlebnisses</Check>
-          <Check>Doppelte Reichweite: Live im Stadion + Digital auf Social Media</Check>
-          <Check>Messbare Ergebnisse: Wir liefern Reichweiten-Reports auf Wunsch</Check>
+          <Check>
+            Wiederholte Sichtkontakte bei Ihrer Zielgruppe in Konstanz & Region
+          </Check>
+          <Check>
+            Emotionale Bindung durch Sport – Ihre Marke wird Teil des
+            Erlebnisses
+          </Check>
+          <Check>
+            Doppelte Reichweite: Live im Stadion + Digital auf Social Media
+          </Check>
+          <Check>
+            Messbare Ergebnisse: Wir liefern Reichweiten-Reports auf Wunsch
+          </Check>
         </Checks>
 
         <H2>Der Verein auf einen Blick</H2>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "4mm" }}>
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr",
+            gap: "4mm",
+          }}
+        >
           <div>
-            <P><strong>Gegründet:</strong> 1912</P>
-            <P><strong>Mitglieder:</strong> 500+</P>
-            <P><strong>Mannschaften:</strong> Herren, Damen, Jugend</P>
+            <P>
+              <strong>Gegründet:</strong> 1912
+            </P>
+            <P>
+              <strong>Mitglieder:</strong> 500+
+            </P>
+            <P>
+              <strong>Mannschaften:</strong> Herren, Damen, Jugend
+            </P>
           </div>
           <div>
-            <P><strong>Heimspiele:</strong> 15+ pro Saison</P>
-            <P><strong>Zuschauer:</strong> Ø 200 pro Spiel</P>
-            <P><strong>Instagram:</strong> 2.500+ Follower</P>
+            <P>
+              <strong>Heimspiele:</strong> 15+ pro Saison
+            </P>
+            <P>
+              <strong>Zuschauer:</strong> Ø 200 pro Spiel
+            </P>
+            <P>
+              <strong>Instagram:</strong> 2.500+ Follower
+            </P>
           </div>
         </div>
 
         {heroTeam && (
-          <Photo src={heroTeam} alt="Team" style={{ height: "55mm", marginTop: "4mm" }} />
+          <Photo
+            src={heroTeam}
+            alt="Team"
+            style={{ height: "55mm", marginTop: "4mm" }}
+          />
         )}
 
         <BrochureFooter />
@@ -501,7 +675,9 @@ function PageHauptsponsor({ showPrices }: PageProps) {
     <A4>
       <Waves />
       <Inner>
-        <LogoWrap><LogoImg src="/logo.svg" /></LogoWrap>
+        <LogoWrap>
+          <LogoImg src="/logo.svg" />
+        </LogoWrap>
         <Title>HAUPTSPONSOR</Title>
         <Subtitle>
           Der Hauptsponsor ist automatisch Mitglied im Business Club und erhält
@@ -511,12 +687,16 @@ function PageHauptsponsor({ showPrices }: PageProps) {
         <Checks>
           <Check>Trikotwerbung auf der Brust</Check>
           <Check>Business Club Mitgliedschaft</Check>
-          <Check>5 Meter Bandenwerbung (Herstellkosten übernimmt der Verein)</Check>
+          <Check>
+            5 Meter Bandenwerbung (Herstellkosten übernimmt der Verein)
+          </Check>
           <Check>1/1 seitiges Inserat im SC Magazin</Check>
           <Check>10 Saisonkarten</Check>
           <Check>Werbeauftritte nach Absprache</Check>
           <Check>Nennung (Logo) auf dem Briefpapier des SCKW</Check>
-          <Check>Lautsprecherdurchsage während dem Spiel und in der Halbzeit</Check>
+          <Check>
+            Lautsprecherdurchsage während dem Spiel und in der Halbzeit
+          </Check>
           <Check>Logo / Namenszug auf den Fahrzeugen</Check>
           <Check>Logo / Link auf der Vereinshomepage</Check>
           <Check>weitere Möglichkeiten nach Absprache</Check>
@@ -542,7 +722,9 @@ function PageCoSponsor({ showPrices }: PageProps) {
     <A4>
       <Waves />
       <Inner>
-        <LogoWrap><LogoImg src="/logo.svg" /></LogoWrap>
+        <LogoWrap>
+          <LogoImg src="/logo.svg" />
+        </LogoWrap>
         <Title>CO-SPONSOR</Title>
         <Subtitle>
           Der Co-Sponsor ist automatisch Mitglied im Business Club und erhält
@@ -552,12 +734,17 @@ function PageCoSponsor({ showPrices }: PageProps) {
         <Checks>
           <Check>Werbung auf den Trainingsanzügen</Check>
           <Check>Business Club Mitgliedschaft</Check>
-          <Check>5 Meter Bandenwerbung (Herstellkosten und die Montage trägt der Verein)</Check>
+          <Check>
+            5 Meter Bandenwerbung (Herstellkosten und die Montage trägt der
+            Verein)
+          </Check>
           <Check>1/2 seitiges Inserat im SC Magazin</Check>
           <Check>5 Saisonkarten</Check>
           <Check>Werbeauftritte nach Absprache</Check>
           <Check>Nennung (Logo) auf dem Briefpapier des SCKW</Check>
-          <Check>Lautsprecherdurchsage während dem Spiel und in der Halbzeit</Check>
+          <Check>
+            Lautsprecherdurchsage während dem Spiel und in der Halbzeit
+          </Check>
           <Check>Logo / Namenszug auf den Fahrzeugen</Check>
           <Check>Logo / Link auf der Vereinshomepage</Check>
           <Check>weitere Möglichkeiten nach Absprache</Check>
@@ -583,15 +770,20 @@ function PageSilberCommunity({ showPrices }: PageProps) {
     <A4>
       <Waves />
       <Inner>
-        <LogoWrap><LogoImg src="/logo.svg" /></LogoWrap>
+        <LogoWrap>
+          <LogoImg src="/logo.svg" />
+        </LogoWrap>
         <Title>SILBER-PARTNER</Title>
         <Subtitle>
-          Lokale Sichtbarkeit mit starkem Preis-Leistungs-Verhältnis – ideal für mittelständische Unternehmen in der Region.
+          Lokale Sichtbarkeit mit starkem Preis-Leistungs-Verhältnis – ideal für
+          mittelständische Unternehmen in der Region.
         </Subtitle>
 
         <Checks>
           <Check>1 Bande (5×2 m) am Gelände</Check>
-          <Check>Social Media: 12 dedizierte Posts/Jahr + 18 Stories/Jahr</Check>
+          <Check>
+            Social Media: 12 dedizierte Posts/Jahr + 18 Stories/Jahr
+          </Check>
           <Check>Werbeplane am Gelände</Check>
           <Check>Vereinsplakate + Eventsichtbarkeit</Check>
           <Check>Website: Logo auf Startseite</Check>
@@ -603,14 +795,21 @@ function PageSilberCommunity({ showPrices }: PageProps) {
 
         <H2 style={{ marginTop: "8mm" }}>COMMUNITY-PARTNER</H2>
         <Subtitle>
-          Perfekter Einstieg für lokale Betriebe – Gastronomie, Handwerk, Einzelhandel.
+          Perfekter Einstieg für lokale Betriebe – Gastronomie, Handwerk,
+          Einzelhandel.
         </Subtitle>
 
         <Checks>
           <Check>1 Bande (3×1 m, 6 Monate sichtbar)</Check>
           <Check>Website: Logo auf der Startseite</Check>
-          <Check>Social Media: 1 Willkommens-Post + 3 weitere Posts/Jahr + 8 Stories/Jahr</Check>
-          <Check>Optional: Gemeinsame Events (z.B. CL-Abende) mit dem Team in Ihrer Gastronomie</Check>
+          <Check>
+            Social Media: 1 Willkommens-Post + 3 weitere Posts/Jahr + 8
+            Stories/Jahr
+          </Check>
+          <Check>
+            Optional: Gemeinsame Events (z.B. CL-Abende) mit dem Team in Ihrer
+            Gastronomie
+          </Check>
         </Checks>
 
         <Price $hidden={!showPrices}>
@@ -633,18 +832,25 @@ function PageBandenwerbung({ showPrices }: PageProps) {
     <A4>
       <Waves />
       <Inner>
-        <LogoWrap><LogoImg src="/logo.svg" /></LogoWrap>
+        <LogoWrap>
+          <LogoImg src="/logo.svg" />
+        </LogoWrap>
         <Title>BANDENWERBUNG</Title>
         <Subtitle>Fürstenberg-Sportplatz des SC Konstanz-Wollmatingen</Subtitle>
 
         <Checks>
-          <Check>Montage, Gestaltung & Druck übernimmt der Verein auf Wunsch</Check>
+          <Check>
+            Montage, Gestaltung & Druck übernimmt der Verein auf Wunsch
+          </Check>
         </Checks>
 
         <P>
-          <strong>Platzierung:</strong><br />
-          Gemäss Besprechung und Belegungsplan.<br />
-          Die Banden sind unterteilt in einer Größe von 100 x 90 cm.<br />
+          <strong>Platzierung:</strong>
+          <br />
+          Gemäss Besprechung und Belegungsplan.
+          <br />
+          Die Banden sind unterteilt in einer Größe von 100 x 90 cm.
+          <br />
           <strong>Mindestabnahmemenge: 2 Meter</strong>
         </P>
 
@@ -653,7 +859,11 @@ function PageBandenwerbung({ showPrices }: PageProps) {
         </Price>
 
         {heroBanden && (
-          <Photo src={heroBanden} alt="Banden" style={{ height: "60mm", marginTop: "4mm" }} />
+          <Photo
+            src={heroBanden}
+            alt="Banden"
+            style={{ height: "60mm", marginTop: "4mm" }}
+          />
         )}
 
         <BrochureDisclaimer />
@@ -672,7 +882,9 @@ function PageMagazin({ showPrices }: PageProps) {
     <A4>
       <Waves />
       <Inner>
-        <LogoWrap><LogoImg src="/logo.svg" /></LogoWrap>
+        <LogoWrap>
+          <LogoImg src="/logo.svg" />
+        </LogoWrap>
         <Title>WERBUNG IM „HEIMSPIEL"</Title>
         <Subtitle>Stadionmagazin des SC Konstanz-Wollmatingen</Subtitle>
 
@@ -686,19 +898,54 @@ function PageMagazin({ showPrices }: PageProps) {
         </Checks>
 
         {showPrices && (
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "4mm", margin: "8mm 0" }}>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(3, 1fr)",
+              gap: "4mm",
+              margin: "8mm 0",
+            }}
+          >
             {[
-              { size: "1 SEITE", price: "1.000€", dim: "DIN A4 (297 × 210 mm)" },
-              { size: "1/2 SEITE", price: "500€", dim: "DIN A5 (148 × 210 mm)" },
-              { size: "1/4 SEITE", price: "250€", dim: "DIN A6 (105 × 148 mm)" },
-            ].map(m => (
-              <div key={m.size} style={{
-                border: "2px solid #1a365d", borderRadius: "3mm", padding: "5mm",
-                textAlign: "center",
-              }}>
-                <div style={{ fontSize: "14pt", fontWeight: 800 }}>{m.size}</div>
+              {
+                size: "1 SEITE",
+                price: "1.000€",
+                dim: "DIN A4 (297 × 210 mm)",
+              },
+              {
+                size: "1/2 SEITE",
+                price: "500€",
+                dim: "DIN A5 (148 × 210 mm)",
+              },
+              {
+                size: "1/4 SEITE",
+                price: "250€",
+                dim: "DIN A6 (105 × 148 mm)",
+              },
+            ].map((m) => (
+              <div
+                key={m.size}
+                style={{
+                  border: "2px solid #1a365d",
+                  borderRadius: "3mm",
+                  padding: "5mm",
+                  textAlign: "center",
+                }}
+              >
+                <div style={{ fontSize: "14pt", fontWeight: 800 }}>
+                  {m.size}
+                </div>
                 <div style={{ fontSize: "9pt", color: "#666" }}>FARBE</div>
-                <div style={{ fontSize: "18pt", fontWeight: 900, color: "#1a365d", margin: "2mm 0" }}>{m.price}</div>
+                <div
+                  style={{
+                    fontSize: "18pt",
+                    fontWeight: 900,
+                    color: "#1a365d",
+                    margin: "2mm 0",
+                  }}
+                >
+                  {m.price}
+                </div>
               </div>
             ))}
           </div>
@@ -706,9 +953,12 @@ function PageMagazin({ showPrices }: PageProps) {
 
         {showPrices && (
           <div style={{ fontSize: "10pt", lineHeight: 1.7 }}>
-            <strong>Maße</strong><br />
-            1 Seite = DIN A4 (297 x 210 mm)<br />
-            1/2 Seite = DIN A5 (148 x 210 mm)<br />
+            <strong>Maße</strong>
+            <br />
+            1 Seite = DIN A4 (297 x 210 mm)
+            <br />
+            1/2 Seite = DIN A5 (148 x 210 mm)
+            <br />
             1/4 Seite = DIN A6 (105 x 148 mm)
           </div>
         )}
@@ -729,11 +979,14 @@ function PageSpieltag({ showPrices }: PageProps) {
     <A4>
       <Waves />
       <Inner>
-        <LogoWrap><LogoImg src="/logo.svg" /></LogoWrap>
+        <LogoWrap>
+          <LogoImg src="/logo.svg" />
+        </LogoWrap>
         <Title>SPIELTAG-SPONSORING</Title>
         <Subtitle>
-          Das Zielpublikum sind die ZuschauerInnen bei den Heimspielen der
-          1. Mannschaft. Perfekter Einstieg ins Sponsoring – ab einem einzelnen Spiel möglich.
+          Das Zielpublikum sind die ZuschauerInnen bei den Heimspielen der 1.
+          Mannschaft. Perfekter Einstieg ins Sponsoring – ab einem einzelnen
+          Spiel möglich.
         </Subtitle>
 
         <H2>Ballspende</H2>
@@ -749,14 +1002,16 @@ function PageSpieltag({ showPrices }: PageProps) {
           <Check>Logo/Name auf Website + Erwähnung im SC Magazin</Check>
         </Checks>
         <Price $hidden={!showPrices}>
-          Beitrag: <strong>150€ pro Spiel</strong> · 5er-Pack: <strong>500€</strong> (statt 750€)
+          Beitrag: <strong>150€ pro Spiel</strong> · 5er-Pack:{" "}
+          <strong>500€</strong> (statt 750€)
         </Price>
 
         <H2>Spielpräsentator</H2>
         <P style={{ fontStyle: "italic" }}>
           Die Mannschaftsaufstellung und alle Auswechslungen werden im Namen
-          Ihres Unternehmens präsentiert – 15-20 Nennungen pro Spiel.
-          Exklusiv: nur ein Präsentator pro Spiel. Preis variiert je nach Spiel (z.B. Derby).
+          Ihres Unternehmens präsentiert – 15-20 Nennungen pro Spiel. Exklusiv:
+          nur ein Präsentator pro Spiel. Preis variiert je nach Spiel (z.B.
+          Derby).
         </P>
         <Checks>
           <Check>Alle Aufstellungen + Auswechslungen im Firmennamen</Check>
@@ -768,9 +1023,20 @@ function PageSpieltag({ showPrices }: PageProps) {
         </Price>
 
         {heroAction && (
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "3mm", marginTop: "3mm" }}>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "1fr 1fr",
+              gap: "3mm",
+              marginTop: "3mm",
+            }}
+          >
             <Photo src={heroAction} alt="Action" style={{ height: "48mm" }} />
-            <Photo src={heroJubel || heroAction} alt="Jubel" style={{ height: "48mm" }} />
+            <Photo
+              src={heroJubel || heroAction}
+              alt="Jubel"
+              style={{ height: "48mm" }}
+            />
           </div>
         )}
 
@@ -790,34 +1056,105 @@ function PageBuswerbung({ showPrices }: PageProps) {
     <A4>
       <Waves />
       <Inner>
-        <LogoWrap><LogoImg src="/logo.svg" /></LogoWrap>
+        <LogoWrap>
+          <LogoImg src="/logo.svg" />
+        </LogoWrap>
         <Title>BUSWERBUNG</Title>
         <Subtitle>
           Unser Vereinsbus ist jede Woche in Konstanz, im Landkreis und bei
           Auswärtsspielen unterwegs – mobile Werbung für Ihr Unternehmen.
         </Subtitle>
 
-        <img src="/vereinsbus.png" alt="Vereinsbus SC Konstanz-Wollmatingen"
-          style={{ width: "100%", borderRadius: "3mm", margin: "3mm 0 4mm", display: "block" }}
+        <img
+          src="/vereinsbus.png"
+          alt="Vereinsbus SC Konstanz-Wollmatingen"
+          style={{
+            width: "100%",
+            borderRadius: "3mm",
+            margin: "3mm 0 4mm",
+            display: "block",
+          }}
         />
 
-        <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "10pt", margin: "4mm 0" }}>
+        <table
+          style={{
+            width: "100%",
+            borderCollapse: "collapse",
+            fontSize: "10pt",
+            margin: "4mm 0",
+          }}
+        >
           <thead>
             <tr>
-              <th style={{ background: "#1a365d", color: "#fff", padding: "2.5mm 3mm", textAlign: "left", fontWeight: 700 }}>Fläche</th>
-              <th style={{ background: "#1a365d", color: "#fff", padding: "2.5mm 3mm", textAlign: "left", fontWeight: 700 }}>Größe (ca.)</th>
+              <th
+                style={{
+                  background: "#1a365d",
+                  color: "#fff",
+                  padding: "2.5mm 3mm",
+                  textAlign: "left",
+                  fontWeight: 700,
+                }}
+              >
+                Fläche
+              </th>
+              <th
+                style={{
+                  background: "#1a365d",
+                  color: "#fff",
+                  padding: "2.5mm 3mm",
+                  textAlign: "left",
+                  fontWeight: 700,
+                }}
+              >
+                Größe (ca.)
+              </th>
               {showPrices && (
-                <th style={{ background: "#1a365d", color: "#fff", padding: "2.5mm 3mm", textAlign: "left", fontWeight: 700 }}>Preis/Jahr</th>
+                <th
+                  style={{
+                    background: "#1a365d",
+                    color: "#fff",
+                    padding: "2.5mm 3mm",
+                    textAlign: "left",
+                    fontWeight: 700,
+                  }}
+                >
+                  Preis/Jahr
+                </th>
               )}
             </tr>
           </thead>
           <tbody>
             {[...busFlaechenPremium, ...busFlaechenStandard].map((f, i) => (
-              <tr key={f.position} style={{ background: i % 2 === 1 ? "#f8fafc" : "transparent" }}>
-                <td style={{ padding: "2mm 3mm", borderBottom: "1px solid #e5e7eb" }}>{f.position}</td>
-                <td style={{ padding: "2mm 3mm", borderBottom: "1px solid #e5e7eb" }}>{f.groesse}</td>
+              <tr
+                key={f.position}
+                style={{ background: i % 2 === 1 ? "#f8fafc" : "transparent" }}
+              >
+                <td
+                  style={{
+                    padding: "2mm 3mm",
+                    borderBottom: "1px solid #e5e7eb",
+                  }}
+                >
+                  {f.position}
+                </td>
+                <td
+                  style={{
+                    padding: "2mm 3mm",
+                    borderBottom: "1px solid #e5e7eb",
+                  }}
+                >
+                  {f.groesse}
+                </td>
                 {showPrices && (
-                  <td style={{ padding: "2mm 3mm", borderBottom: "1px solid #e5e7eb", fontWeight: 700 }}>{f.preis}</td>
+                  <td
+                    style={{
+                      padding: "2mm 3mm",
+                      borderBottom: "1px solid #e5e7eb",
+                      fontWeight: 700,
+                    }}
+                  >
+                    {f.preis}
+                  </td>
                 )}
               </tr>
             ))}
@@ -847,7 +1184,9 @@ function PagePraemien({ showPrices }: PageProps) {
     <A4>
       <Waves />
       <Inner>
-        <LogoWrap><LogoImg src="/logo.svg" /></LogoWrap>
+        <LogoWrap>
+          <LogoImg src="/logo.svg" />
+        </LogoWrap>
         <Title>PRÄMIEN-MODELL</Title>
         <Subtitle>
           Erfolgsbasiertes Sponsoring – Sie zahlen nur bei sportlichem Erfolg.
@@ -855,29 +1194,114 @@ function PagePraemien({ showPrices }: PageProps) {
         </Subtitle>
 
         {showPrices && (
-          <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "10pt", margin: "4mm 0" }}>
+          <table
+            style={{
+              width: "100%",
+              borderCollapse: "collapse",
+              fontSize: "10pt",
+              margin: "4mm 0",
+            }}
+          >
             <thead>
               <tr>
-                <th style={{ background: "#1a365d", color: "#fff", padding: "2.5mm 3mm", textAlign: "left" }}>Leistung</th>
-                <th style={{ background: "#1a365d", color: "#fff", padding: "2.5mm 3mm", textAlign: "left" }}>Starter</th>
-                <th style={{ background: "#1a365d", color: "#fff", padding: "2.5mm 3mm", textAlign: "left" }}>Premium</th>
-                <th style={{ background: "#1a365d", color: "#fff", padding: "2.5mm 3mm", textAlign: "left" }}>Kombi</th>
+                <th
+                  style={{
+                    background: "#1a365d",
+                    color: "#fff",
+                    padding: "2.5mm 3mm",
+                    textAlign: "left",
+                  }}
+                >
+                  Leistung
+                </th>
+                <th
+                  style={{
+                    background: "#1a365d",
+                    color: "#fff",
+                    padding: "2.5mm 3mm",
+                    textAlign: "left",
+                  }}
+                >
+                  Starter
+                </th>
+                <th
+                  style={{
+                    background: "#1a365d",
+                    color: "#fff",
+                    padding: "2.5mm 3mm",
+                    textAlign: "left",
+                  }}
+                >
+                  Premium
+                </th>
+                <th
+                  style={{
+                    background: "#1a365d",
+                    color: "#fff",
+                    padding: "2.5mm 3mm",
+                    textAlign: "left",
+                  }}
+                >
+                  Kombi
+                </th>
               </tr>
             </thead>
             <tbody>
               {praemienRows.map((r, i) => (
-                <tr key={r.label} style={{ background: i % 2 === 1 ? "#f8fafc" : "transparent" }}>
-                  <td style={{ padding: "2mm 3mm", borderBottom: "1px solid #e5e7eb", fontWeight: 600 }}>{r.label}</td>
-                  <td style={{ padding: "2mm 3mm", borderBottom: "1px solid #e5e7eb" }}>{r.starter}</td>
-                  <td style={{ padding: "2mm 3mm", borderBottom: "1px solid #e5e7eb" }}>{r.premium}</td>
-                  <td style={{ padding: "2mm 3mm", borderBottom: "1px solid #e5e7eb" }}>{r.kombi}</td>
+                <tr
+                  key={r.label}
+                  style={{
+                    background: i % 2 === 1 ? "#f8fafc" : "transparent",
+                  }}
+                >
+                  <td
+                    style={{
+                      padding: "2mm 3mm",
+                      borderBottom: "1px solid #e5e7eb",
+                      fontWeight: 600,
+                    }}
+                  >
+                    {r.label}
+                  </td>
+                  <td
+                    style={{
+                      padding: "2mm 3mm",
+                      borderBottom: "1px solid #e5e7eb",
+                    }}
+                  >
+                    {r.starter}
+                  </td>
+                  <td
+                    style={{
+                      padding: "2mm 3mm",
+                      borderBottom: "1px solid #e5e7eb",
+                    }}
+                  >
+                    {r.premium}
+                  </td>
+                  <td
+                    style={{
+                      padding: "2mm 3mm",
+                      borderBottom: "1px solid #e5e7eb",
+                    }}
+                  >
+                    {r.kombi}
+                  </td>
                 </tr>
               ))}
               <tr style={{ background: "#f0f9ff" }}>
-                <td style={{ padding: "2mm 3mm", fontWeight: 700 }}>Ø Kosten/Saison</td>
-                <td style={{ padding: "2mm 3mm", fontWeight: 700 }}>{praemienExpectedCosts.starter}</td>
-                <td style={{ padding: "2mm 3mm", fontWeight: 700 }}>{praemienExpectedCosts.premium}</td>
-                <td style={{ padding: "2mm 3mm", fontWeight: 700 }}>{praemienExpectedCosts.kombi}</td>
+                <td style={{ padding: "2mm 3mm", fontWeight: 700 }}>
+                  Ø Kosten/Saison
+                </td>
+                <td style={{ padding: "2mm 3mm", fontWeight: 700 }}>
+                  {praemienExpectedCosts.starter}
+                </td>
+                <td style={{ padding: "2mm 3mm", fontWeight: 700 }}>
+                  {praemienExpectedCosts.premium}
+                </td>
+                <td style={{ padding: "2mm 3mm", fontWeight: 700 }}>
+                  {praemienExpectedCosts.kombi}
+                </td>
               </tr>
             </tbody>
           </table>
@@ -886,22 +1310,37 @@ function PagePraemien({ showPrices }: PageProps) {
         <H2>So funktioniert's</H2>
         <Checks>
           <Check>Sie wählen ein Modell (Starter, Premium oder Kombi)</Check>
-          <Check>Bei sportlichem Erfolg (Tor, Sieg, Zu-Null) wird die vereinbarte Prämie fällig</Check>
+          <Check>
+            Bei sportlichem Erfolg (Tor, Sieg, Zu-Null) wird die vereinbarte
+            Prämie fällig
+          </Check>
           <Check>Stadionansage + Social Media Erwähnung bei jedem Erfolg</Check>
-          <Check>Niedrig-Risiko: Keine Erfolge = keine Kosten (Starter/Premium)</Check>
+          <Check>
+            Niedrig-Risiko: Keine Erfolge = keine Kosten (Starter/Premium)
+          </Check>
         </Checks>
 
         <H2>Inkludierte Leistungen</H2>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "4mm" }}>
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr",
+            gap: "4mm",
+          }}
+        >
           <div>
-            <P><strong>Starter:</strong></P>
+            <P>
+              <strong>Starter:</strong>
+            </P>
             <Checks>
               <Check>Stadionansage bei Erfolg</Check>
               <Check>Logo auf Website</Check>
             </Checks>
           </div>
           <div>
-            <P><strong>Premium:</strong></P>
+            <P>
+              <strong>Premium:</strong>
+            </P>
             <Checks>
               <Check>+ Social Media Post bei Erfolg</Check>
               <Check>+ 1 Bande (3×1m) inklusive</Check>
@@ -927,40 +1366,90 @@ function Page500EuroClub() {
     <A4>
       {/* Jubel-Foto */}
       {heroJubelClub && (
-        <img src={heroJubelClub} alt="Mannschaft feiert" style={{
-          width: "100%", height: "65mm", objectFit: "cover", display: "block",
-        }} />
+        <img
+          src={heroJubelClub}
+          alt="Mannschaft feiert"
+          style={{
+            width: "100%",
+            height: "65mm",
+            objectFit: "cover",
+            display: "block",
+          }}
+        />
       )}
 
       <div style={{ padding: "8mm 18mm 10mm", position: "relative" }}>
-        <Subtitle style={{ fontSize: "11pt", margin: "0 0 4mm", fontStyle: "normal", lineHeight: 1.6, color: "#333" }}>
-          Die Aussage, dass Amateurfußball ohne Gönner und Sponsoren kaum noch finanzierbar ist,
-          trifft die aktuelle Realität vieler Vereine. Ob Trikots, Trainingsmaterial, Platzpflege
-          oder Schiedsrichterkosten – die laufenden Ausgaben können oft nicht mehr allein durch
+        <Subtitle
+          style={{
+            fontSize: "11pt",
+            margin: "0 0 4mm",
+            fontStyle: "normal",
+            lineHeight: 1.6,
+            color: "#333",
+          }}
+        >
+          Die Aussage, dass Amateurfußball ohne Gönner und Sponsoren kaum noch
+          finanzierbar ist, trifft die aktuelle Realität vieler Vereine. Ob
+          Trikots, Trainingsmaterial, Platzpflege oder Schiedsrichterkosten –
+          die laufenden Ausgaben können oft nicht mehr allein durch
           Mitgliedsbeiträge gedeckt werden.
         </Subtitle>
 
         <P style={{ fontSize: "10.5pt", margin: "0 0 5mm", lineHeight: 1.6 }}>
-          <strong>Helfen Sie uns mit dem Beitritt in den CLUB 500.</strong> Unterstützen Sie
-          unseren Verein und fördern Sie direkt den Jugend‑ und Amateurfußball, Trainingsmaterial,
-          Infrastruktur und die Entwicklung unserer Mannschaften.
+          <strong>Helfen Sie uns mit dem Beitritt in den CLUB 500.</strong>{" "}
+          Unterstützen Sie unseren Verein und fördern Sie direkt den Jugend‑ und
+          Amateurfußball, Trainingsmaterial, Infrastruktur und die Entwicklung
+          unserer Mannschaften.
         </P>
 
         <H2>Ihre Vorteile</H2>
         <Checks>
-          <Check>Offizielle <strong>Spendenbescheinigung</strong> (gemeinnütziger Verein)</Check>
-          <Check>Veröffentlichung Ihres <strong>Namens oder Firmennamens</strong> als Unterstützer</Check>
-          <Check>Direkte Förderung des Jugend- und Amateurfußballs in unserer Region</Check>
+          <Check>
+            Offizielle <strong>Spendenbescheinigung</strong> (gemeinnütziger
+            Verein)
+          </Check>
+          <Check>
+            Veröffentlichung Ihres <strong>Namens oder Firmennamens</strong> als
+            Unterstützer
+          </Check>
+          <Check>
+            Direkte Förderung des Jugend- und Amateurfußballs in unserer Region
+          </Check>
         </Checks>
 
         <H2>Zahlungsoptionen</H2>
-        <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "10.5pt", margin: "2mm 0" }}>
+        <table
+          style={{
+            width: "100%",
+            borderCollapse: "collapse",
+            fontSize: "10.5pt",
+            margin: "2mm 0",
+          }}
+        >
           <thead>
             <tr>
-              <th style={{ borderBottom: "2px solid #1a365d", color: "#1a365d", padding: "2mm 0", textAlign: "left", fontWeight: 800, fontSize: "9pt" }}>
+              <th
+                style={{
+                  borderBottom: "2px solid #1a365d",
+                  color: "#1a365d",
+                  padding: "2mm 0",
+                  textAlign: "left",
+                  fontWeight: 800,
+                  fontSize: "9pt",
+                }}
+              >
                 Zahlungsweise
               </th>
-              <th style={{ borderBottom: "2px solid #1a365d", color: "#1a365d", padding: "2mm 0", textAlign: "right", fontWeight: 800, fontSize: "9pt" }}>
+              <th
+                style={{
+                  borderBottom: "2px solid #1a365d",
+                  color: "#1a365d",
+                  padding: "2mm 0",
+                  textAlign: "right",
+                  fontWeight: 800,
+                  fontSize: "9pt",
+                }}
+              >
                 Beitrag
               </th>
             </tr>
@@ -970,32 +1459,72 @@ function Page500EuroClub() {
               { label: "Vierteljährlich", betrag: "125 €" },
               { label: "Halbjährlich", betrag: "250 €" },
               { label: "Jährlich", betrag: "500 €" },
-            ].map(row => (
+            ].map((row) => (
               <tr key={row.label}>
-                <td style={{ padding: "2.5mm 0", borderBottom: "1px solid #e5e7eb", color: "#444" }}>{row.label}</td>
-                <td style={{ padding: "2.5mm 0", borderBottom: "1px solid #e5e7eb", fontWeight: 800, color: "#1a365d", textAlign: "right" }}>{row.betrag}</td>
+                <td
+                  style={{
+                    padding: "2.5mm 0",
+                    borderBottom: "1px solid #e5e7eb",
+                    color: "#444",
+                  }}
+                >
+                  {row.label}
+                </td>
+                <td
+                  style={{
+                    padding: "2.5mm 0",
+                    borderBottom: "1px solid #e5e7eb",
+                    fontWeight: 800,
+                    color: "#1a365d",
+                    textAlign: "right",
+                  }}
+                >
+                  {row.betrag}
+                </td>
               </tr>
             ))}
           </tbody>
         </table>
         <P style={{ fontSize: "9pt", color: "#888", margin: "1mm 0 4mm" }}>
-          Auch Mehrjahres-Vorauszahlung möglich: 1.000 € (2 Jahre) oder 1.500 € (3 Jahre).
+          Auch Mehrjahres-Vorauszahlung möglich: 1.000 € (2 Jahre) oder 1.500 €
+          (3 Jahre).
         </P>
 
         <H2>Spendenkonto</H2>
         <P style={{ fontSize: "10.5pt", margin: "0 0 0", lineHeight: 1.7 }}>
-          <strong>Sport Club Konstanz‑Wollmatingen e.V.</strong><br />
-          IBAN: <strong>DE84 6905 0001 0000 0929 99</strong> · Sparkasse Bodensee<br />
+          <strong>Sport Club Konstanz‑Wollmatingen e.V.</strong>
+          <br />
+          IBAN: <strong>DE84 6905 0001 0000 0929 99</strong> · Sparkasse
+          Bodensee
+          <br />
           Schleyerweg 5 · 78467 Konstanz
         </P>
 
-        <div style={{ marginTop: "6mm", textAlign: "center", borderTop: "1px solid #e5e7eb", paddingTop: "5mm" }}>
-          <P style={{ margin: 0, fontSize: "11pt", fontWeight: 800, fontStyle: "italic", color: "#1a365d", lineHeight: 1.4 }}>
-            Gehen Sie den gemeinsamen Weg mit uns<br />
+        <div
+          style={{
+            marginTop: "6mm",
+            textAlign: "center",
+            borderTop: "1px solid #e5e7eb",
+            paddingTop: "5mm",
+          }}
+        >
+          <P
+            style={{
+              margin: 0,
+              fontSize: "11pt",
+              fontWeight: 800,
+              fontStyle: "italic",
+              color: "#1a365d",
+              lineHeight: 1.4,
+            }}
+          >
+            Gehen Sie den gemeinsamen Weg mit uns
+            <br />
             in eine erfolgreiche Zukunft!
           </P>
           <P style={{ margin: "2mm 0 0", fontSize: "9pt", color: "#666" }}>
-            Adel Grimm · Sportlicher Leiter<br />
+            Adel Grimm · Sportlicher Leiter
+            <br />
             Tel. +49 152 3384 2436 · grimm@sckw.de
           </P>
         </div>
@@ -1015,108 +1544,230 @@ function Page500EuroClubAnmeldung() {
     <A4>
       <Waves />
       <Inner>
-        <LogoWrap><LogoImg src="/logo.svg" /></LogoWrap>
-        <Title style={{ color: "#1a365d", fontSize: "22pt" }}>BEITRITTSERKLÄRUNG CLUB 500</Title>
+        <LogoWrap>
+          <LogoImg src="/logo.svg" />
+        </LogoWrap>
+        <Title style={{ color: "#1a365d", fontSize: "22pt" }}>
+          BEITRITTSERKLÄRUNG CLUB 500
+        </Title>
         <Subtitle style={{ margin: "0 0 4mm" }}>
-          Bitte ausfüllen und an den Verein übergeben oder per E-Mail an {kontakt.email} senden.
+          Bitte ausfüllen und an den Verein übergeben oder per E-Mail an{" "}
+          {kontakt.email} senden.
         </Subtitle>
 
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "3mm" }}>
-          <LeadField><LeadLabel>Vorname:</LeadLabel><LeadInput $lines={1} /></LeadField>
-          <LeadField><LeadLabel>Nachname:</LeadLabel><LeadInput $lines={1} /></LeadField>
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr",
+            gap: "3mm",
+          }}
+        >
+          <LeadField>
+            <LeadLabel>Vorname:</LeadLabel>
+            <LeadInput $lines={1} />
+          </LeadField>
+          <LeadField>
+            <LeadLabel>Nachname:</LeadLabel>
+            <LeadInput $lines={1} />
+          </LeadField>
         </div>
 
-        <LeadField><LeadLabel>Firma (optional):</LeadLabel><LeadInput $lines={1} /></LeadField>
+        <LeadField>
+          <LeadLabel>Firma (optional):</LeadLabel>
+          <LeadInput $lines={1} />
+        </LeadField>
 
-        <LeadField><LeadLabel>Straße, Hausnummer:</LeadLabel><LeadInput $lines={1} /></LeadField>
+        <LeadField>
+          <LeadLabel>Straße, Hausnummer:</LeadLabel>
+          <LeadInput $lines={1} />
+        </LeadField>
 
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 2fr", gap: "3mm" }}>
-          <LeadField><LeadLabel>PLZ:</LeadLabel><LeadInput $lines={1} /></LeadField>
-          <LeadField><LeadLabel>Ort:</LeadLabel><LeadInput $lines={1} /></LeadField>
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "1fr 2fr",
+            gap: "3mm",
+          }}
+        >
+          <LeadField>
+            <LeadLabel>PLZ:</LeadLabel>
+            <LeadInput $lines={1} />
+          </LeadField>
+          <LeadField>
+            <LeadLabel>Ort:</LeadLabel>
+            <LeadInput $lines={1} />
+          </LeadField>
         </div>
 
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "3mm" }}>
-          <LeadField><LeadLabel>Geb.-Datum:</LeadLabel><LeadInput $lines={1} /></LeadField>
-          <LeadField><LeadLabel>Telefon:</LeadLabel><LeadInput $lines={1} /></LeadField>
-          <LeadField><LeadLabel>E-Mail:</LeadLabel><LeadInput $lines={1} /></LeadField>
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr 1fr",
+            gap: "3mm",
+          }}
+        >
+          <LeadField>
+            <LeadLabel>Geb.-Datum:</LeadLabel>
+            <LeadInput $lines={1} />
+          </LeadField>
+          <LeadField>
+            <LeadLabel>Telefon:</LeadLabel>
+            <LeadInput $lines={1} />
+          </LeadField>
+          <LeadField>
+            <LeadLabel>E-Mail:</LeadLabel>
+            <LeadInput $lines={1} />
+          </LeadField>
         </div>
 
         <H2 style={{ marginTop: "4mm" }}>Zahlungsweise</H2>
-        <P style={{ fontSize: "9pt", color: "#555", margin: "0 0 2mm" }}>Bitte ankreuzen:</P>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "2mm" }}>
+        <P style={{ fontSize: "9pt", color: "#555", margin: "0 0 2mm" }}>
+          Bitte ankreuzen:
+        </P>
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(3, 1fr)",
+            gap: "2mm",
+          }}
+        >
           {[
             "125 € vierteljährlich",
             "250 € halbjährlich",
             "500 € jährlich",
-          ].map(opt => (
-            <div key={opt} style={{
-              border: "1px solid #d1d5db", borderRadius: "2mm", padding: "2.5mm 3mm",
-              textAlign: "center", background: "#fafafa",
-            }}>
-              <LeadLabel style={{ marginBottom: 0, fontSize: "9pt" }}>☐ {opt}</LeadLabel>
+          ].map((opt) => (
+            <div
+              key={opt}
+              style={{
+                border: "1px solid #d1d5db",
+                borderRadius: "2mm",
+                padding: "2.5mm 3mm",
+                textAlign: "center",
+                background: "#fafafa",
+              }}
+            >
+              <LeadLabel style={{ marginBottom: 0, fontSize: "9pt" }}>
+                ☐ {opt}
+              </LeadLabel>
             </div>
           ))}
         </div>
         <P style={{ fontSize: "8pt", color: "#888", margin: "1mm 0 0" }}>
-          Auch Mehrjahres-Vorauszahlung möglich: ☐ 1.000 € (2 Jahre) · ☐ 1.500 € (3 Jahre)
+          Auch Mehrjahres-Vorauszahlung möglich: ☐ 1.000 € (2 Jahre) · ☐ 1.500 €
+          (3 Jahre)
         </P>
 
         <H2 style={{ marginTop: "4mm" }}>Wie möchten Sie gewürdigt werden?</H2>
-        <P style={{ fontSize: "9pt", color: "#555", margin: "0 0 2mm" }}>Mehrfachauswahl möglich:</P>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr", gap: "1.5mm" }}>
+        <P style={{ fontSize: "9pt", color: "#555", margin: "0 0 2mm" }}>
+          Mehrfachauswahl möglich:
+        </P>
+        <div
+          style={{ display: "grid", gridTemplateColumns: "1fr", gap: "1.5mm" }}
+        >
           {[
-            "Danke-Post auf Instagram (\"Danke [Name], dass du Mitglied im CLUB 500 bist!\")",
+            'Danke-Post auf Instagram ("Danke [Name], dass du Mitglied im CLUB 500 bist!")',
             "Nennung auf der Spendentafel (Vereinsgelände / Website)",
             "Ich möchte anonym bleiben",
-          ].map(opt => (
-            <div key={opt} style={{
-              border: "1px solid #d1d5db", borderRadius: "2mm", padding: "2mm 3mm",
-              background: "#fafafa", fontSize: "9pt",
-            }}>
-              <LeadLabel style={{ marginBottom: 0, fontSize: "9pt" }}>☐ {opt}</LeadLabel>
+          ].map((opt) => (
+            <div
+              key={opt}
+              style={{
+                border: "1px solid #d1d5db",
+                borderRadius: "2mm",
+                padding: "2mm 3mm",
+                background: "#fafafa",
+                fontSize: "9pt",
+              }}
+            >
+              <LeadLabel style={{ marginBottom: 0, fontSize: "9pt" }}>
+                ☐ {opt}
+              </LeadLabel>
             </div>
           ))}
         </div>
 
         <LeadField style={{ marginTop: "2mm" }}>
-          <LeadLabel>Name/Firma für Veröffentlichung (falls abweichend):</LeadLabel>
+          <LeadLabel>
+            Name/Firma für Veröffentlichung (falls abweichend):
+          </LeadLabel>
           <LeadInput $lines={1} />
         </LeadField>
 
-        <div style={{
-          marginTop: "3mm", background: "#f8fafc", borderRadius: "2mm",
-          padding: "2.5mm 3mm", fontSize: "7.5pt", color: "#666", lineHeight: 1.5,
-        }}>
-          Hiermit erkläre ich meinen Beitritt zum SC Konstanz‑Wollmatingen e.V. CLUB 500.
-          Die Mitgliedschaft besteht für 1 Jahr und kann beiderseitig verlängert werden.
-          Der Betrag ist innerhalb 14 Tagen nach Beitrittsdatum auf das unten stehende Konto zu überweisen.
-          Das Mitglied erklärt sich damit einverstanden, dass im Zusammenhang mit der Mitgliedschaft
-          Foto- und Filmaufnahmen und die dazugehörigen Daten für Werbezwecke in den Medien verwendet werden dürfen.
-          Für Ihre Spende wird Ihnen auf Wunsch eine Spendenquittung ausgestellt.
+        <div
+          style={{
+            marginTop: "3mm",
+            background: "#f8fafc",
+            borderRadius: "2mm",
+            padding: "2.5mm 3mm",
+            fontSize: "7.5pt",
+            color: "#666",
+            lineHeight: 1.5,
+          }}
+        >
+          Hiermit erkläre ich meinen Beitritt zum SC Konstanz‑Wollmatingen e.V.
+          CLUB 500. Die Mitgliedschaft besteht für 1 Jahr und kann beiderseitig
+          verlängert werden. Der Betrag ist innerhalb 14 Tagen nach
+          Beitrittsdatum auf das unten stehende Konto zu überweisen. Das
+          Mitglied erklärt sich damit einverstanden, dass im Zusammenhang mit
+          der Mitgliedschaft Foto- und Filmaufnahmen und die dazugehörigen Daten
+          für Werbezwecke in den Medien verwendet werden dürfen. Für Ihre Spende
+          wird Ihnen auf Wunsch eine Spendenquittung ausgestellt.
         </div>
 
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "3mm", marginTop: "4mm" }}>
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr",
+            gap: "3mm",
+            marginTop: "4mm",
+          }}
+        >
           <LeadField>
             <LeadLabel>Konstanz, den _______________</LeadLabel>
-            <div style={{ borderBottom: "1px solid #333", minHeight: "10mm", marginTop: "2mm" }} />
-            <div style={{ fontSize: "7pt", color: "#999", marginTop: "1mm" }}>Datum</div>
+            <div
+              style={{
+                borderBottom: "1px solid #333",
+                minHeight: "10mm",
+                marginTop: "2mm",
+              }}
+            />
+            <div style={{ fontSize: "7pt", color: "#999", marginTop: "1mm" }}>
+              Datum
+            </div>
           </LeadField>
           <LeadField>
             <LeadLabel>Unterschrift:</LeadLabel>
-            <div style={{ borderBottom: "1px solid #333", minHeight: "10mm", marginTop: "2mm" }} />
+            <div
+              style={{
+                borderBottom: "1px solid #333",
+                minHeight: "10mm",
+                marginTop: "2mm",
+              }}
+            />
           </LeadField>
         </div>
 
-        <div style={{
-          marginTop: "3mm", fontSize: "8pt", color: "#555", lineHeight: 1.5,
-          borderTop: "1px solid #e5e7eb", paddingTop: "2mm",
-        }}>
-          <strong>Spendenkonto:</strong> SC Konstanz‑Wollmatingen e.V. · IBAN: DE84 6905 0001 0000 0929 99 · Sparkasse Bodensee<br />
-          <strong>Kontakt:</strong> {kontakt.email} · Tel. +49 152 3384 2436 · Schleyerweg 5 · 78467 Konstanz
+        <div
+          style={{
+            marginTop: "3mm",
+            fontSize: "8pt",
+            color: "#555",
+            lineHeight: 1.5,
+            borderTop: "1px solid #e5e7eb",
+            paddingTop: "2mm",
+          }}
+        >
+          <strong>Spendenkonto:</strong> SC Konstanz‑Wollmatingen e.V. · IBAN:
+          DE84 6905 0001 0000 0929 99 · Sparkasse Bodensee
+          <br />
+          <strong>Kontakt:</strong> {kontakt.email} · Tel. +49 152 3384 2436 ·
+          Schleyerweg 5 · 78467 Konstanz
         </div>
 
         <Footer style={{ marginTop: "auto" }}>
-          <FooterCol><strong>SC Konstanz-Wollmatingen e.V.</strong></FooterCol>
+          <FooterCol>
+            <strong>SC Konstanz-Wollmatingen e.V.</strong>
+          </FooterCol>
           <FooterCol $center>CLUB 500</FooterCol>
           <FooterCol $right>partner.sckw.de</FooterCol>
         </Footer>
@@ -1134,53 +1785,126 @@ function PageNextSteps() {
     <A4>
       <Waves />
       <Inner>
-        <LogoWrap><LogoImg src="/logo.svg" /></LogoWrap>
+        <LogoWrap>
+          <LogoImg src="/logo.svg" />
+        </LogoWrap>
         <Title style={{ color: "#1a365d" }}>SO GEHT'S WEITER</Title>
         <Subtitle>In 4 einfachen Schritten zum Sponsoring-Start.</Subtitle>
 
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "4mm", margin: "4mm 0" }}>
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(2, 1fr)",
+            gap: "4mm",
+            margin: "4mm 0",
+          }}
+        >
           {[
-            { n: "1", t: "KONTAKT", d: "Kurzes Gespräch oder E-Mail. Wir melden uns innerhalb von 24h." },
-            { n: "2", t: "BEDARF", d: "Wir klären gemeinsam Ziele, Budget und passende Leistungen." },
-            { n: "3", t: "ANGEBOT", d: "Sie erhalten ein individuelles Angebot mit klaren Leistungen." },
-            { n: "4", t: "START", d: "Nach Zusage: Design, Abstimmung, Launch!" },
-          ].map(s => (
-            <div key={s.n} style={{ background: "#f8fafc", borderRadius: "3mm", padding: "4mm", borderLeft: "4px solid #1a365d" }}>
-              <div style={{ fontSize: "22pt", fontWeight: 900, color: "#1a365d" }}>{s.n}</div>
-              <div style={{ fontSize: "11pt", fontWeight: 800, marginBottom: "1mm" }}>{s.t}</div>
+            {
+              n: "1",
+              t: "KONTAKT",
+              d: "Kurzes Gespräch oder E-Mail. Wir melden uns innerhalb von 24h.",
+            },
+            {
+              n: "2",
+              t: "BEDARF",
+              d: "Wir klären gemeinsam Ziele, Budget und passende Leistungen.",
+            },
+            {
+              n: "3",
+              t: "ANGEBOT",
+              d: "Sie erhalten ein individuelles Angebot mit klaren Leistungen.",
+            },
+            {
+              n: "4",
+              t: "START",
+              d: "Nach Zusage: Design, Abstimmung, Launch!",
+            },
+          ].map((s) => (
+            <div
+              key={s.n}
+              style={{
+                background: "#f8fafc",
+                borderRadius: "3mm",
+                padding: "4mm",
+                borderLeft: "4px solid #1a365d",
+              }}
+            >
+              <div
+                style={{ fontSize: "22pt", fontWeight: 900, color: "#1a365d" }}
+              >
+                {s.n}
+              </div>
+              <div
+                style={{
+                  fontSize: "11pt",
+                  fontWeight: 800,
+                  marginBottom: "1mm",
+                }}
+              >
+                {s.t}
+              </div>
               <P style={{ margin: 0, fontSize: "9pt" }}>{s.d}</P>
             </div>
           ))}
         </div>
 
         <H2>Kontakt</H2>
-        <div style={{
-          background: "linear-gradient(135deg, #1a365d, #2d5a87)",
-          borderRadius: "3mm", padding: "5mm", color: "#fff",
-          display: "grid", gridTemplateColumns: "1fr 1fr", gap: "4mm",
-        }}>
+        <div
+          style={{
+            background: "linear-gradient(135deg, #1a365d, #2d5a87)",
+            borderRadius: "3mm",
+            padding: "5mm",
+            color: "#fff",
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr",
+            gap: "4mm",
+          }}
+        >
           <div>
             <div style={{ fontSize: "8pt", opacity: 0.7 }}>E-Mail</div>
-            <div style={{ fontSize: "13pt", fontWeight: 700 }}>{kontakt.email}</div>
+            <div style={{ fontSize: "13pt", fontWeight: 700 }}>
+              {kontakt.email}
+            </div>
           </div>
           <div>
             <div style={{ fontSize: "8pt", opacity: 0.7 }}>Website</div>
-            <div style={{ fontSize: "13pt", fontWeight: 700 }}>partner.sckw.de</div>
+            <div style={{ fontSize: "13pt", fontWeight: 700 }}>
+              partner.sckw.de
+            </div>
           </div>
           <div style={{ gridColumn: "1 / -1" }}>
             <div style={{ fontSize: "8pt", opacity: 0.7 }}>Adresse</div>
             <div style={{ fontSize: "11pt" }}>
-              {kontakt.adresse.name} · {kontakt.adresse.strasse} · {kontakt.adresse.plz} {kontakt.adresse.ort}
+              {kontakt.adresse.name} · {kontakt.adresse.strasse} ·{" "}
+              {kontakt.adresse.plz} {kontakt.adresse.ort}
             </div>
           </div>
         </div>
 
         <H2>Gesprächsleitfaden</H2>
-        <div style={{ background: "#eff6ff", border: "2px dashed #3b82f6", borderRadius: "3mm", padding: "4mm" }}>
-          <P style={{ fontSize: "9pt", color: "#1e3a5f", margin: "0 0 1.5mm" }}>→ "In der Winterpause erreichen wir bereits 250.000 Kontakte – mit Spielbetrieb steigt das auf 500-800k."</P>
-          <P style={{ fontSize: "9pt", color: "#1e3a5f", margin: "0 0 1.5mm" }}>→ "Ihr Logo erscheint nicht nur im Stadion, sondern auch in unseren Social Media Posts."</P>
-          <P style={{ fontSize: "9pt", color: "#1e3a5f", margin: "0 0 1.5mm" }}>→ "Probieren Sie uns für 150€ aus – wenn es passt, upgraden wir."</P>
-          <P style={{ fontSize: "9pt", color: "#1e3a5f", margin: "0 0 1.5mm" }}>→ "Wann startet Ihre nächste Kampagne? Wir können sofort loslegen."</P>
+        <div
+          style={{
+            background: "#eff6ff",
+            border: "2px dashed #3b82f6",
+            borderRadius: "3mm",
+            padding: "4mm",
+          }}
+        >
+          <P style={{ fontSize: "9pt", color: "#1e3a5f", margin: "0 0 1.5mm" }}>
+            → "1,4 Mio. Social-Media-Views in dieser Saison – 100 % organisch,
+            aktuell 394.000 Views/Monat."
+          </P>
+          <P style={{ fontSize: "9pt", color: "#1e3a5f", margin: "0 0 1.5mm" }}>
+            → "Ihr Logo erscheint nicht nur im Stadion, sondern auch in unseren
+            Social Media Posts."
+          </P>
+          <P style={{ fontSize: "9pt", color: "#1e3a5f", margin: "0 0 1.5mm" }}>
+            → "Probieren Sie uns für 150€ aus – wenn es passt, upgraden wir."
+          </P>
+          <P style={{ fontSize: "9pt", color: "#1e3a5f", margin: "0 0 1.5mm" }}>
+            → "Wann startet Ihre nächste Kampagne? Wir können sofort loslegen."
+          </P>
         </div>
 
         <BrochureFooter />
@@ -1198,36 +1922,79 @@ function PageLeadSheet() {
     <A4>
       <Waves />
       <Inner>
-        <LogoWrap><LogoImg src="/logo.svg" /></LogoWrap>
+        <LogoWrap>
+          <LogoImg src="/logo.svg" />
+        </LogoWrap>
         <Title style={{ color: "#1a365d" }}>GESPRÄCHSNOTIZ</Title>
-        <Subtitle>Interne Dokumentation – nach dem Gespräch ausfüllen und an {kontakt.email} senden.</Subtitle>
+        <Subtitle>
+          Interne Dokumentation – nach dem Gespräch ausfüllen und an{" "}
+          {kontakt.email} senden.
+        </Subtitle>
 
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "3mm" }}>
-          <LeadField><LeadLabel>Datum:</LeadLabel><LeadInput $lines={1} /></LeadField>
-          <LeadField><LeadLabel>Gesprächsführer (Helfer):</LeadLabel><LeadInput $lines={1} /></LeadField>
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr",
+            gap: "3mm",
+          }}
+        >
+          <LeadField>
+            <LeadLabel>Datum:</LeadLabel>
+            <LeadInput $lines={1} />
+          </LeadField>
+          <LeadField>
+            <LeadLabel>Gesprächsführer (Helfer):</LeadLabel>
+            <LeadInput $lines={1} />
+          </LeadField>
         </div>
 
         {leadSheetFields.map((f, i) => (
-          <LeadField key={i}><LeadLabel>{f.label}:</LeadLabel><LeadInput $lines={f.lines} /></LeadField>
+          <LeadField key={i}>
+            <LeadLabel>{f.label}:</LeadLabel>
+            <LeadInput $lines={f.lines} />
+          </LeadField>
         ))}
 
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "3mm", marginTop: "3mm" }}>
-          {["Hot Lead", "Warm Lead", "Später kontaktieren"].map(l => (
-            <div key={l} style={{ border: "1px solid #d1d5db", borderRadius: "2mm", padding: "2.5mm" }}>
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr 1fr",
+            gap: "3mm",
+            marginTop: "3mm",
+          }}
+        >
+          {["Hot Lead", "Warm Lead", "Später kontaktieren"].map((l) => (
+            <div
+              key={l}
+              style={{
+                border: "1px solid #d1d5db",
+                borderRadius: "2mm",
+                padding: "2.5mm",
+              }}
+            >
               <LeadLabel style={{ marginBottom: 0 }}>☐ {l}</LeadLabel>
             </div>
           ))}
         </div>
 
-        <div style={{ marginTop: "4mm", background: "#f0f9ff", borderRadius: "2mm", padding: "3mm" }}>
+        <div
+          style={{
+            marginTop: "4mm",
+            background: "#f0f9ff",
+            borderRadius: "2mm",
+            padding: "3mm",
+          }}
+        >
           <P style={{ margin: 0, fontSize: "8pt" }}>
-            <strong>Schnellreferenz:</strong> {kontakt.email} · partner.sckw.de ·{" "}
-            {kontakt.vollAdresse.replace(/\n/g, " · ")}
+            <strong>Schnellreferenz:</strong> {kontakt.email} · partner.sckw.de
+            · {kontakt.vollAdresse.replace(/\n/g, " · ")}
           </P>
         </div>
 
         <Footer style={{ marginTop: "auto" }}>
-          <FooterCol><strong>Internes Dokument</strong></FooterCol>
+          <FooterCol>
+            <strong>Internes Dokument</strong>
+          </FooterCol>
           <FooterCol $center />
           <FooterCol $right>SC Konstanz-Wollmatingen e.V.</FooterCol>
         </Footer>
@@ -1249,20 +2016,98 @@ interface PageDef {
 }
 
 const ALL_PAGES: PageDef[] = [
-  { id: "cover", label: "Titelseite", group: "broschüre", render: () => <PageCover /> },
-  { id: "why", label: "Warum SCKW?", group: "broschüre", render: () => <PageWhySCKW /> },
-  { id: "haupt", label: "Hauptsponsor", group: "broschüre", needsPrices: true, render: (p) => <PageHauptsponsor showPrices={p} /> },
-  { id: "co", label: "Co-Sponsor", group: "broschüre", needsPrices: true, render: (p) => <PageCoSponsor showPrices={p} /> },
-  { id: "silber", label: "Silber + Community", group: "broschüre", needsPrices: true, render: (p) => <PageSilberCommunity showPrices={p} /> },
-  { id: "banden", label: "Bandenwerbung", group: "broschüre", needsPrices: true, render: (p) => <PageBandenwerbung showPrices={p} /> },
-  { id: "magazin", label: "Stadionmagazin", group: "broschüre", needsPrices: true, render: (p) => <PageMagazin showPrices={p} /> },
-  { id: "spieltag", label: "Spieltag-Sponsoring", group: "broschüre", needsPrices: true, render: (p) => <PageSpieltag showPrices={p} /> },
-  { id: "bus", label: "Buswerbung", group: "broschüre", needsPrices: true, render: (p) => <PageBuswerbung showPrices={p} /> },
-  { id: "praemien", label: "Prämienmodell", group: "broschüre", needsPrices: true, render: (p) => <PagePraemien showPrices={p} /> },
-  { id: "club500", label: "CLUB 500", group: "community", render: () => <Page500EuroClub /> },
-  { id: "club500form", label: "CLUB 500 Anmeldung", group: "community", render: () => <Page500EuroClubAnmeldung /> },
-  { id: "steps", label: "So geht's weiter", group: "helfer", render: () => <PageNextSteps /> },
-  { id: "lead", label: "Gesprächsnotiz", group: "helfer", render: () => <PageLeadSheet /> },
+  {
+    id: "cover",
+    label: "Titelseite",
+    group: "broschüre",
+    render: () => <PageCover />,
+  },
+  {
+    id: "why",
+    label: "Warum SCKW?",
+    group: "broschüre",
+    render: () => <PageWhySCKW />,
+  },
+  {
+    id: "haupt",
+    label: "Hauptsponsor",
+    group: "broschüre",
+    needsPrices: true,
+    render: (p) => <PageHauptsponsor showPrices={p} />,
+  },
+  {
+    id: "co",
+    label: "Co-Sponsor",
+    group: "broschüre",
+    needsPrices: true,
+    render: (p) => <PageCoSponsor showPrices={p} />,
+  },
+  {
+    id: "silber",
+    label: "Silber + Community",
+    group: "broschüre",
+    needsPrices: true,
+    render: (p) => <PageSilberCommunity showPrices={p} />,
+  },
+  {
+    id: "banden",
+    label: "Bandenwerbung",
+    group: "broschüre",
+    needsPrices: true,
+    render: (p) => <PageBandenwerbung showPrices={p} />,
+  },
+  {
+    id: "magazin",
+    label: "Stadionmagazin",
+    group: "broschüre",
+    needsPrices: true,
+    render: (p) => <PageMagazin showPrices={p} />,
+  },
+  {
+    id: "spieltag",
+    label: "Spieltag-Sponsoring",
+    group: "broschüre",
+    needsPrices: true,
+    render: (p) => <PageSpieltag showPrices={p} />,
+  },
+  {
+    id: "bus",
+    label: "Buswerbung",
+    group: "broschüre",
+    needsPrices: true,
+    render: (p) => <PageBuswerbung showPrices={p} />,
+  },
+  {
+    id: "praemien",
+    label: "Prämienmodell",
+    group: "broschüre",
+    needsPrices: true,
+    render: (p) => <PagePraemien showPrices={p} />,
+  },
+  {
+    id: "club500",
+    label: "CLUB 500",
+    group: "community",
+    render: () => <Page500EuroClub />,
+  },
+  {
+    id: "club500form",
+    label: "CLUB 500 Anmeldung",
+    group: "community",
+    render: () => <Page500EuroClubAnmeldung />,
+  },
+  {
+    id: "steps",
+    label: "So geht's weiter",
+    group: "helfer",
+    render: () => <PageNextSteps />,
+  },
+  {
+    id: "lead",
+    label: "Gesprächsnotiz",
+    group: "helfer",
+    render: () => <PageLeadSheet />,
+  },
 ];
 
 // ============================================================================
@@ -1273,7 +2118,9 @@ const Dashboard = styled.div`
   max-width: 1000px;
   margin: 0 auto;
   padding: 2rem 1.5rem;
-  @media print { display: none !important; }
+  @media print {
+    display: none !important;
+  }
 `;
 
 const DashTitle = styled.h2`
@@ -1299,16 +2146,18 @@ const OptionsRow = styled.div`
 `;
 
 const Toggle = styled.button<{ $on?: boolean }>`
-  background: ${p => (p.$on ? "#1a365d" : "#f1f5f9")};
-  color: ${p => (p.$on ? "#fff" : "#475569")};
-  border: 2px solid ${p => (p.$on ? "#1a365d" : "#cbd5e1")};
+  background: ${(p) => (p.$on ? "#1a365d" : "#f1f5f9")};
+  color: ${(p) => (p.$on ? "#fff" : "#475569")};
+  border: 2px solid ${(p) => (p.$on ? "#1a365d" : "#cbd5e1")};
   padding: 0.5rem 1rem;
   border-radius: 8px;
   font-weight: 700;
   font-size: 0.85rem;
   cursor: pointer;
   transition: all 0.15s;
-  &:hover { opacity: 0.85; }
+  &:hover {
+    opacity: 0.85;
+  }
 `;
 
 const GroupLabel = styled.h3`
@@ -1333,17 +2182,24 @@ const PageCheckbox = styled.label<{ $checked?: boolean }>`
   gap: 0.5rem;
   padding: 0.6rem 0.75rem;
   border-radius: 8px;
-  border: 2px solid ${p => (p.$checked ? "#1a365d" : "#e2e8f0")};
-  background: ${p => (p.$checked ? "#f0f4ff" : "#fff")};
+  border: 2px solid ${(p) => (p.$checked ? "#1a365d" : "#e2e8f0")};
+  background: ${(p) => (p.$checked ? "#f0f4ff" : "#fff")};
   cursor: pointer;
   font-size: 0.85rem;
   font-weight: 600;
-  color: ${p => (p.$checked ? "#1a365d" : "#64748b")};
+  color: ${(p) => (p.$checked ? "#1a365d" : "#64748b")};
   transition: all 0.15s;
   user-select: none;
-  &:hover { border-color: #94a3b8; }
+  &:hover {
+    border-color: #94a3b8;
+  }
 
-  input { accent-color: #1a365d; width: 16px; height: 16px; cursor: pointer; }
+  input {
+    accent-color: #1a365d;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+  }
 `;
 
 const PresetRow = styled.div`
@@ -1363,7 +2219,9 @@ const Preset = styled.button`
   color: #475569;
   cursor: pointer;
   transition: all 0.15s;
-  &:hover { background: #e2e8f0; }
+  &:hover {
+    background: #e2e8f0;
+  }
 `;
 
 const PrintBtn = styled.button`
@@ -1377,8 +2235,16 @@ const PrintBtn = styled.button`
   cursor: pointer;
   transition: all 0.2s;
   margin-top: 1.5rem;
-  &:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(26, 54, 93, 0.3); }
-  &:disabled { opacity: 0.4; cursor: not-allowed; transform: none; box-shadow: none; }
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(26, 54, 93, 0.3);
+  }
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+  }
 `;
 
 const SelectedCount = styled.span`
@@ -1400,19 +2266,21 @@ export default function SponsoringHandoffPage() {
 
   const getInitialSelection = (): Set<string> => {
     if (presetParam === "club500") return new Set(["club500", "club500form"]);
-    return new Set(ALL_PAGES.filter(p => p.group === "broschüre").map(p => p.id));
+    return new Set(
+      ALL_PAGES.filter((p) => p.group === "broschüre").map((p) => p.id),
+    );
   };
 
   const [showPrices, setShowPrices] = useState(true);
   const [selected, setSelected] = useState<Set<string>>(getInitialSelection);
   const [mode, setMode] = useState<"dashboard" | "preview">(
-    viewParam === "preview" ? "preview" : "dashboard"
+    viewParam === "preview" ? "preview" : "dashboard",
   );
 
   if (!hasAccess) return <Navigate to="/" replace />;
 
   const togglePage = (id: string) => {
-    setSelected(prev => {
+    setSelected((prev) => {
       const next = new Set(prev);
       if (next.has(id)) next.delete(id);
       else next.add(id);
@@ -1420,18 +2288,25 @@ export default function SponsoringHandoffPage() {
     });
   };
 
-  const selectAll = () => setSelected(new Set(ALL_PAGES.map(p => p.id)));
+  const selectAll = () => setSelected(new Set(ALL_PAGES.map((p) => p.id)));
   const selectNone = () => setSelected(new Set());
-  const selectBroschüre = () => setSelected(new Set(ALL_PAGES.filter(p => p.group === "broschüre").map(p => p.id)));
-  const selectHelfer = () => setSelected(new Set(ALL_PAGES.map(p => p.id)));
-  const selectStarter = () => setSelected(new Set(["cover", "why", "spieltag", "banden"]));
-  const selectPremium = () => setSelected(new Set(["cover", "why", "haupt", "co", "silber"]));
+  const selectBroschüre = () =>
+    setSelected(
+      new Set(
+        ALL_PAGES.filter((p) => p.group === "broschüre").map((p) => p.id),
+      ),
+    );
+  const selectHelfer = () => setSelected(new Set(ALL_PAGES.map((p) => p.id)));
+  const selectStarter = () =>
+    setSelected(new Set(["cover", "why", "spieltag", "banden"]));
+  const selectPremium = () =>
+    setSelected(new Set(["cover", "why", "haupt", "co", "silber"]));
   const select500Club = () => setSelected(new Set(["club500", "club500form"]));
 
-  const selectedPages = ALL_PAGES.filter(p => selected.has(p.id));
-  const broschuerePages = ALL_PAGES.filter(p => p.group === "broschüre");
-  const communityPages = ALL_PAGES.filter(p => p.group === "community");
-  const helferPages = ALL_PAGES.filter(p => p.group === "helfer");
+  const selectedPages = ALL_PAGES.filter((p) => selected.has(p.id));
+  const broschuerePages = ALL_PAGES.filter((p) => p.group === "broschüre");
+  const communityPages = ALL_PAGES.filter((p) => p.group === "community");
+  const helferPages = ALL_PAGES.filter((p) => p.group === "helfer");
 
   if (mode === "preview") {
     return (
@@ -1440,23 +2315,23 @@ export default function SponsoringHandoffPage() {
         <Toolbar>
           <ToolbarTitle>Vorschau · {selectedPages.length} Seiten</ToolbarTitle>
           <ToolbarActions>
-            <Btn $active={showPrices} onClick={() => setShowPrices(v => !v)}>
+            <Btn $active={showPrices} onClick={() => setShowPrices((v) => !v)}>
               {showPrices ? "Preise ✓" : "Preise ✗"}
             </Btn>
-            <Btn onClick={() => setMode("dashboard")}>
-              Zurück
-            </Btn>
+            <Btn onClick={() => setMode("dashboard")}>Zurück</Btn>
             <Btn $primary onClick={() => window.print()}>
               Drucken / PDF
             </Btn>
           </ToolbarActions>
         </Toolbar>
         <Hint>
-          <strong>PDF erstellen:</strong> "Drucken / PDF" klicken, "Als PDF speichern" wählen.
-          <strong> Hintergrundgrafiken aktivieren</strong>. Format: A4, Ränder: Keine.
+          <strong>PDF erstellen:</strong> "Drucken / PDF" klicken, "Als PDF
+          speichern" wählen.
+          <strong> Hintergrundgrafiken aktivieren</strong>. Format: A4, Ränder:
+          Keine.
         </Hint>
         <Pages>
-          {selectedPages.map(page => (
+          {selectedPages.map((page) => (
             <div key={page.id}>{page.render(showPrices)}</div>
           ))}
         </Pages>
@@ -1469,7 +2344,9 @@ export default function SponsoringHandoffPage() {
       <Toolbar>
         <ToolbarTitle>Sponsoring-Kit · SCKW</ToolbarTitle>
         <ToolbarActions>
-          <Btn onClick={() => navigator.clipboard.writeText(window.location.href)}>
+          <Btn
+            onClick={() => navigator.clipboard.writeText(window.location.href)}
+          >
             Link kopieren
           </Btn>
         </ToolbarActions>
@@ -1478,12 +2355,13 @@ export default function SponsoringHandoffPage() {
       <Dashboard>
         <DashTitle>Sponsoring-Kit zusammenstellen</DashTitle>
         <DashSubtitle>
-          Wählen Sie die Seiten, die Sie drucken oder als PDF exportieren möchten.
-          Perfekt für individuelle Gespräche – stellen Sie das passende Paket zusammen.
+          Wählen Sie die Seiten, die Sie drucken oder als PDF exportieren
+          möchten. Perfekt für individuelle Gespräche – stellen Sie das passende
+          Paket zusammen.
         </DashSubtitle>
 
         <OptionsRow>
-          <Toggle $on={showPrices} onClick={() => setShowPrices(v => !v)}>
+          <Toggle $on={showPrices} onClick={() => setShowPrices((v) => !v)}>
             {showPrices ? "Preise anzeigen ✓" : "Preise ausgeblendet ✗"}
           </Toggle>
           <SelectedCount>
@@ -1503,7 +2381,7 @@ export default function SponsoringHandoffPage() {
 
         <GroupLabel>Broschüre</GroupLabel>
         <PageGrid>
-          {broschuerePages.map(page => (
+          {broschuerePages.map((page) => (
             <PageCheckbox key={page.id} $checked={selected.has(page.id)}>
               <input
                 type="checkbox"
@@ -1517,7 +2395,7 @@ export default function SponsoringHandoffPage() {
 
         <GroupLabel>Community / CLUB 500</GroupLabel>
         <PageGrid>
-          {communityPages.map(page => (
+          {communityPages.map((page) => (
             <PageCheckbox key={page.id} $checked={selected.has(page.id)}>
               <input
                 type="checkbox"
@@ -1531,7 +2409,7 @@ export default function SponsoringHandoffPage() {
 
         <GroupLabel>Helfer-Anhang</GroupLabel>
         <PageGrid>
-          {helferPages.map(page => (
+          {helferPages.map((page) => (
             <PageCheckbox key={page.id} $checked={selected.has(page.id)}>
               <input
                 type="checkbox"
