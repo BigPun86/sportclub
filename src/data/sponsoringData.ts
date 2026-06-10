@@ -11,7 +11,7 @@ export const aufstiegsBanner = {
   active: true,
   text: "Meister & Aufsteiger!",
   highlight: "Verbandsliga Südbaden",
-  suffix: "– ab Saison 26/27 spielen wir eine Liga höher",
+  suffix: "Ab Saison 26/27 spielen wir eine Liga höher!",
 };
 
 // ============================================================================
@@ -28,12 +28,12 @@ export const kpis: KPI[] = [
   {
     value: "1,3 Mio.",
     label: "Social-Media-Views / Saison",
-    description: "IG 1,07 Mio. + FB 203K kombiniert (Jul 25 – Jun 26)",
+    description: "IG 1,07 Mio. + FB 203K kombiniert (Jul 25 - Jun 26)",
   },
   {
     value: "310.000",
     label: "Views / Monat aktuell",
-    description: "IG 230K + FB 81K kombiniert (28 Tage, Mai–Jun 26)",
+    description: "IG 230K + FB 81K kombiniert (28 Tage, Mai-Jun 26)",
   },
   {
     value: "21.400",
@@ -208,8 +208,8 @@ export const spieltagAngebote: SpieltagAngebot[] = [
   {
     name: "Magazin-Inserat",
     beschreibung:
-      "15 Ausgaben/Saison · ca. 100 Exemplare + 1.000–1.500 Online-Zugriffe",
-    preis: "250 – 1.000 €",
+      "15 Ausgaben/Saison · ca. 100 Exemplare + 1.000-1.500 Online-Zugriffe",
+    preis: "250 - 1.000 €",
     hinweis: "1/4 Seite 250 € · 1/2 Seite 500 € · 1 Seite 1.000 €",
   },
 ];

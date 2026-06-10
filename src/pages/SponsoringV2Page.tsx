@@ -532,6 +532,14 @@ const MiniCardHint = styled.div`
   font-style: italic;
 `;
 
+const NettoHinweis = styled.p`
+  text-align: center;
+  font-size: 0.8rem;
+  color: #999;
+  margin-top: 1.5rem;
+  margin-bottom: 0;
+`;
+
 // -- Reichweiten-Karte --
 
 const MapSection = styled.div`
@@ -749,7 +757,7 @@ export default function SponsoringV2Page() {
         <HeroContent>
           <HeroTitle>Sponsoring, das messbar wirkt</HeroTitle>
           <HeroSubtitle>
-            <strong>1,3 Millionen Social-Media-Views</strong> in dieser Saison –
+            <strong>1,3 Millionen Social-Media-Views</strong> in dieser Saison,
             100 % organisch, ohne Werbebudget. Aktuell erreichen wir{" "}
             <strong>310.000 Views pro Monat</strong> und Ihre Marke ist in jedem
             Spielbericht dabei.
@@ -821,7 +829,7 @@ export default function SponsoringV2Page() {
           <SectionHeader>
             <SectionTitle>Exklusiv-Partnerschaften</SectionTitle>
             <SectionSubtitle>
-              Vier einzigartige Pakete – jeweils nur 1× verfügbar. Alle Partner
+              Vier einzigartige Pakete, jeweils nur 1× verfügbar. Alle Partner
               erscheinen in jedem Spielvor- und Nachbericht.
             </SectionSubtitle>
           </SectionHeader>
@@ -879,6 +887,7 @@ export default function SponsoringV2Page() {
               </PaketCard>
             ))}
           </PaketGrid>
+          <NettoHinweis>Alle Preise verstehen sich zzgl. MwSt.</NettoHinweis>
         </Container>
       </SectionAlt>
 
@@ -888,7 +897,7 @@ export default function SponsoringV2Page() {
           <SectionHeader>
             <SectionTitle>Werbeflächen</SectionTitle>
             <SectionSubtitle>
-              Banden, Banner und Buswerbung – à la carte buchbar, klare Preise.
+              Banden, Banner und Buswerbung, einzeln buchbar zu festen Preisen.
             </SectionSubtitle>
           </SectionHeader>
 
@@ -996,6 +1005,7 @@ export default function SponsoringV2Page() {
               </div>
             </TableCard>
           </div>
+          <NettoHinweis>Alle Preise verstehen sich zzgl. MwSt.</NettoHinweis>
         </Container>
       </Section>
 
@@ -1005,7 +1015,7 @@ export default function SponsoringV2Page() {
           <SectionHeader>
             <SectionTitle>Spieltag & Medien</SectionTitle>
             <SectionSubtitle>
-              Einstieg ins Sponsoring ab 150 € – perfekt zum Ausprobieren.
+              Einstieg ins Sponsoring ab 150 € netto, perfekt zum Ausprobieren.
             </SectionSubtitle>
           </SectionHeader>
 
@@ -1038,21 +1048,21 @@ export default function SponsoringV2Page() {
               <MapImageContainer>
                 <MapImage
                   src="/verbandsliga-karte.jpg"
-                  alt="Verbandsliga Südbaden – Spielorte und Reichweite"
+                  alt="Verbandsliga Südbaden - Spielorte und Reichweite"
                 />
                 <MapBadge>Saison 26/27</MapBadge>
               </MapImageContainer>
               <MapContent>
                 <MapTitle>Ihre Reichweite wächst mit</MapTitle>
                 <MapText>
-                  Ob Buswerbung, Trikot oder Bande – Ihre Marke wird in der
+                  Ob Buswerbung, Trikot oder Bande: Ihre Marke wird in der
                   gesamten Region sichtbar. Als frischer Meister und Aufsteiger
-                  spielen wir ab Saison 26/27 Verbandsliga – in 15+ Städten
+                  spielen wir ab Saison 26/27 Verbandsliga, in über 15 Städten
                   zwischen Freiburg und Konstanz.
                 </MapText>
                 <MapHighlight>
                   <strong>Was das für Sie bedeutet:</strong> Mehr Gegner,
-                  größere Städte, mehr Medienaufmerksamkeit – Ihre Investition
+                  größere Städte, mehr Medienaufmerksamkeit. Ihre Investition
                   wächst automatisch mit, ohne Mehrkosten.
                 </MapHighlight>
               </MapContent>
@@ -1067,8 +1077,8 @@ export default function SponsoringV2Page() {
           <SectionHeader>
             <Club500Title>CLUB 500</Club500Title>
             <Club500Subtitle>
-              Gemeinsam den Fußball beim SC Konstanz-Wollmatingen stärken –
-              werden Sie Mitglied und fördern Sie unseren Jugend- und
+              Gemeinsam den Fußball beim SC Konstanz-Wollmatingen stärken.
+              Werden Sie Mitglied und fördern Sie unseren Jugend- und
               Amateurfußball.
             </Club500Subtitle>
           </SectionHeader>
@@ -1088,7 +1098,7 @@ export default function SponsoringV2Page() {
       {/* Kontakt */}
       <ContactSection
         headline="Kontakt aufnehmen"
-        description="Kurze Anfrage genügt – wir erstellen ein passendes Angebot mit klaren Leistungen."
+        description="Kurze Anfrage genügt, wir erstellen ein passendes Angebot mit klaren Leistungen."
         contactInfos={[
           {
             icon: "📧",
