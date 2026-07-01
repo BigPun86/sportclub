@@ -12,6 +12,7 @@ import SponsoringV2Page from "./pages/SponsoringV2Page";
 import SponsoringHandoffPage from "./pages/SponsoringHandoffPage";
 import MockupGeneratorPage from "./pages/MockupGeneratorPage";
 import Club500Page from "./pages/Club500Page";
+import SpielerPartnerPage from "./pages/SpielerPartnerPage";
 import "./App.css";
 
 function ScrollToTop() {
@@ -60,6 +61,15 @@ export default function App() {
         <Route
           path="/sponsoring/pakete"
           element={<Navigate to="/sponsoring#angebot" replace />}
+        />
+        <Route
+          path="/sponsoring/spielerpatenschaft"
+          element={
+            <>
+              <Navigation />
+              <SpielerPartnerPage />
+            </>
+          }
         />
 
         <Route
