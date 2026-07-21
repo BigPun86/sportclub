@@ -1,0 +1,279 @@
+<!--
+  SCKW Sponsoring-Carousel - eigenständige Version zum Einbetten in Wix.
+
+  Verwendung in Wix:
+    HTML einbetten -> Modus "HTML-Code" -> kompletten Inhalt dieser Datei einfügen.
+    iframe-Höhe im Editor setzen: Desktop ~360px, Mobil ~300px.
+
+  Stellschraube: das Array SLIDES unten (Reihenfolge, Text, Link, Badge, image).
+  Fotos liegen unter partner.sckw.de/widget-photos/ (aus public/widget-photos/,
+  einmal deployen). Text-Overlay hält die Schrift lesbar.
+  Keine Preise - Details liegen auf den verlinkten Zielseiten.
+-->
+<div class="sckw-widget">
+  <div class="sckw-stage" id="sckwStage" role="group" aria-roledescription="Karussell" aria-label="Sponsoring-Angebote des SC Konstanz-Wollmatingen">
+    <a class="sckw-card" id="sckwCard" target="_blank" rel="noopener noreferrer">
+      <div class="sckw-top">
+        <img class="sckw-logo" src="https://partner.sckw.de/logo-transparent.avif" alt="SC Konstanz-Wollmatingen" />
+        <span class="sckw-badge" id="sckwBadge" hidden></span>
+      </div>
+      <div class="sckw-content">
+        <span class="sckw-eyebrow" id="sckwEyebrow"></span>
+        <h2 class="sckw-title" id="sckwTitle"></h2>
+        <p class="sckw-subline" id="sckwSubline"></p>
+        <span class="sckw-cta" id="sckwCta"></span>
+      </div>
+    </a>
+    <div class="sckw-controls" id="sckwControls">
+      <button class="sckw-arrow" id="sckwPrev" type="button" aria-label="Vorheriges Angebot">‹</button>
+      <div class="sckw-dots" id="sckwDots"></div>
+      <button class="sckw-arrow" id="sckwNext" type="button" aria-label="Nächstes Angebot">›</button>
+    </div>
+  </div>
+</div>
+
+<style>
+  html, body { margin: 0; padding: 0; background: transparent; color-scheme: light; }
+
+  .sckw-widget {
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
+  }
+  .sckw-widget *, .sckw-widget *::before, .sckw-widget *::after { box-sizing: border-box; }
+
+  .sckw-stage { position: relative; width: 100%; max-width: 960px; }
+
+  .sckw-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: clamp(12px, 3vw, 20px);
+    min-height: clamp(230px, 34vw, 300px);
+    padding: clamp(18px, 3vw, 28px) clamp(18px, 3.5vw, 34px) clamp(44px, 6vw, 56px);
+    border-radius: clamp(16px, 2vw, 20px);
+    text-decoration: none;
+    color: #fff;
+    overflow: hidden;
+    isolation: isolate;
+    background-color: #0b0b0d;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.28);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  /* Dunkles Overlay über dem Foto - hält den Text lesbar (unten am stärksten) */
+  .sckw-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.92) 0%,
+      rgba(0, 0, 0, 0.55) 52%,
+      rgba(0, 0, 0, 0.38) 100%
+    );
+  }
+  .sckw-card:hover { transform: translateY(-3px); box-shadow: 0 22px 52px rgba(0, 0, 0, 0.36); }
+  .sckw-card:focus-visible { outline: 3px solid #fff; outline-offset: -3px; }
+
+  .sckw-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+  .sckw-logo { height: clamp(34px, 5vw, 44px); width: auto; filter: drop-shadow(0 2px 6px rgba(0,0,0,0.5)); }
+
+  .sckw-badge {
+    flex-shrink: 0;
+    font-size: 12px; font-weight: 800; letter-spacing: 0.03em; text-transform: uppercase;
+    padding: 6px 12px; border-radius: 999px; color: #fff;
+    background: #d9245f; box-shadow: 0 4px 14px rgba(217,36,95,0.45);
+  }
+  .sckw-badge[hidden] { display: none; }
+
+  .sckw-content { display: flex; flex-direction: column; gap: clamp(8px, 1.5vw, 12px); }
+
+  .sckw-eyebrow {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+    color: #fff; text-shadow: 0 1px 8px rgba(0,0,0,0.6);
+  }
+  .sckw-eyebrow::before { content: ""; width: 26px; height: 3px; border-radius: 3px; background: #d9245f; }
+
+  .sckw-title {
+    margin: 0;
+    font-size: clamp(1.5rem, 5vw, 2.4rem);
+    line-height: 1.08; font-weight: 900; letter-spacing: -0.02em; max-width: 18ch;
+    text-shadow: 0 2px 18px rgba(0,0,0,0.6);
+  }
+  .sckw-subline {
+    margin: 0;
+    font-size: clamp(14px, 2.2vw, 16px);
+    line-height: 1.45; color: rgba(255,255,255,0.95); max-width: 46ch;
+    text-shadow: 0 1px 10px rgba(0,0,0,0.6);
+  }
+
+  .sckw-cta {
+    margin-top: clamp(6px, 1.5vw, 10px);
+    align-self: flex-start;
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 15px; font-weight: 800;
+    padding: 12px 22px; border-radius: 999px;
+    background: #fff; color: #b81d51; box-shadow: 0 8px 22px rgba(0,0,0,0.3);
+  }
+  .sckw-cta span { transition: transform 0.2s ease; }
+  .sckw-card:hover .sckw-cta span { transform: translateX(4px); }
+
+  .sckw-controls {
+    position: absolute; bottom: 16px; left: 0; right: 0;
+    display: flex; align-items: center; justify-content: center; gap: 12px;
+  }
+  .sckw-arrow {
+    flex-shrink: 0; display: flex; align-items: center; justify-content: center;
+    width: 36px; height: 36px; padding: 0;
+    border: 1px solid rgba(255,255,255,0.55); border-radius: 50%;
+    cursor: pointer; font-size: 20px; line-height: 1; color: #fff;
+    background: rgba(255,255,255,0.18); backdrop-filter: blur(4px);
+    transition: background 0.15s ease;
+  }
+  .sckw-arrow:hover { background: rgba(255,255,255,0.32); }
+  .sckw-arrow:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+
+  .sckw-dots { display: flex; align-items: center; gap: 2px; }
+  .sckw-dot {
+    position: relative; height: 24px; padding: 0; border: none; background: transparent; cursor: pointer;
+    width: 24px;
+  }
+  .sckw-dot.is-active { width: 32px; }
+  .sckw-dot::before {
+    content: ""; position: absolute; top: 50%; left: 8px; right: 8px; transform: translateY(-50%);
+    height: 8px; border-radius: 999px; background: rgba(255,255,255,0.6);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.4); transition: background 0.25s ease;
+  }
+  .sckw-dot.is-active::before { left: 0; right: 0; background: rgba(255,255,255,0.95); }
+  .sckw-dot:focus-visible { outline: 2px solid #fff; outline-offset: 2px; border-radius: 6px; }
+
+  /* Auf schmalen Screens/Handys wird gewischt - Pfeile ausblenden */
+  @media (max-width: 520px) {
+    .sckw-arrow { display: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .sckw-card { transition: none; }
+  }
+</style>
+
+<script>
+  (function () {
+    var PARTNER = "https://partner.sckw.de";
+    var ROTATION_MS = 6000;
+
+    var PHOTOS = PARTNER + "/widget-photos/";
+    var SLIDES = [
+      { eyebrow: "SC Konstanz-Wollmatingen · Sponsoring", title: "1,3 Mio. Views pro Saison",
+        subline: "100% organisch - deine Marke bei jedem Spiel im Bild.",
+        href: "/sponsoring", image: PHOTOS + "herren_6.jpg", cta: "Partner werden" },
+      { eyebrow: "Exklusiv-Partnerschaften", title: "Werde das Gesicht des Vereins", badge: "Noch frei",
+        subline: "Stadionname, Trikot-Rücken oder -Ärmel - noch zu vergeben.",
+        href: "/sponsoring#angebot", image: PHOTOS + "herren_16.jpg", cta: "Details ansehen" },
+      { eyebrow: "Werbeflächen", title: "Dein Logo bei jedem Heimspiel",
+        subline: "Banden & Banner direkt am Spielfeldrand.",
+        href: "/sponsoring#werbeflaechen", image: PHOTOS + "herren_5.jpg", cta: "Flächen ansehen" },
+      { eyebrow: "Spieltag & Medien", title: "Schon mit kleinem Budget dabei", badge: "Einstieg",
+        subline: "Ballspende, Spielpräsentator oder Magazin-Inserat.",
+        href: "/sponsoring#spieltag", image: PHOTOS + "herren_14.jpg", cta: "Möglichkeiten ansehen" },
+      { eyebrow: "Club 500", title: "Gemeinsam stark - schon als Fan",
+        subline: "Werde Teil des Club 500 und unterstütze den Verein.",
+        href: "/sponsoring/club-500", image: PHOTOS + "herren_club500_1.png", cta: "Zum Club 500" },
+      { eyebrow: "Partner werden", title: "Lass uns über Sponsoring reden",
+        subline: "Individuelle Pakete jederzeit möglich - sponsoring@sckw.de.",
+        href: "/sponsoring", image: PHOTOS + "herren_16.jpg", cta: "Zur Sponsoring-Seite" }
+    ];
+
+    var card = document.getElementById("sckwCard");
+    var badge = document.getElementById("sckwBadge");
+    var eyebrow = document.getElementById("sckwEyebrow");
+    var title = document.getElementById("sckwTitle");
+    var subline = document.getElementById("sckwSubline");
+    var cta = document.getElementById("sckwCta");
+    var dotsWrap = document.getElementById("sckwDots");
+    var stage = document.getElementById("sckwStage");
+
+    var index = 0, timer = null;
+    var reduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    // Fotos vorladen (kein Flackern beim Slide-Wechsel)
+    SLIDES.forEach(function (s) { if (s.image) { var im = new Image(); im.src = s.image; } });
+
+    // Dots aufbauen
+    SLIDES.forEach(function (s, i) {
+      var d = document.createElement("button");
+      d.type = "button";
+      d.className = "sckw-dot";
+      d.setAttribute("aria-label", "Angebot " + (i + 1) + " von " + SLIDES.length);
+      d.addEventListener("click", function () { go(i); });
+      dotsWrap.appendChild(d);
+    });
+    var dots = dotsWrap.querySelectorAll(".sckw-dot");
+
+    function render() {
+      var s = SLIDES[index];
+      card.setAttribute("href", PARTNER + s.href);
+      card.setAttribute("aria-label", s.title + " - " + s.cta + " (öffnet in neuem Tab)");
+      card.style.backgroundImage = s.image ? "url('" + s.image + "')" : "none";
+      eyebrow.textContent = s.eyebrow;
+      title.textContent = s.title;
+      subline.textContent = s.subline;
+      cta.innerHTML = "";
+      cta.appendChild(document.createTextNode(s.cta + " "));
+      var arrow = document.createElement("span");
+      arrow.setAttribute("aria-hidden", "true");
+      arrow.textContent = "→";
+      cta.appendChild(arrow);
+      if (s.badge) { badge.textContent = s.badge; badge.hidden = false; }
+      else { badge.hidden = true; }
+      for (var i = 0; i < dots.length; i++) {
+        var active = i === index;
+        dots[i].classList.toggle("is-active", active);
+        if (active) dots[i].setAttribute("aria-current", "true");
+        else dots[i].removeAttribute("aria-current");
+      }
+    }
+
+    function go(n) {
+      index = ((n % SLIDES.length) + SLIDES.length) % SLIDES.length;
+      render();
+      restart();
+    }
+
+    function start() {
+      if (reduced || SLIDES.length <= 1) return;
+      timer = setInterval(function () { go(index + 1); }, ROTATION_MS);
+    }
+    function stop() { if (timer) { clearInterval(timer); timer = null; } }
+    function restart() { stop(); start(); }
+
+    document.getElementById("sckwPrev").addEventListener("click", function () { go(index - 1); });
+    document.getElementById("sckwNext").addEventListener("click", function () { go(index + 1); });
+
+    // Pause bei Hover + Fokus
+    stage.addEventListener("mouseenter", stop);
+    stage.addEventListener("mouseleave", start);
+    stage.addEventListener("focusin", stop);
+    stage.addEventListener("focusout", start);
+
+    // Swipe
+    var touchX = null;
+    stage.addEventListener("touchstart", function (e) { touchX = e.touches[0].clientX; }, { passive: true });
+    stage.addEventListener("touchend", function (e) {
+      if (touchX === null) return;
+      var dx = e.changedTouches[0].clientX - touchX;
+      if (Math.abs(dx) > 45) go(index + (dx < 0 ? 1 : -1));
+      touchX = null;
+    });
+
+    render();
+    start();
+  })();
+</script>
