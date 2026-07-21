@@ -13,20 +13,48 @@ import SponsoringHandoffPage from "./pages/SponsoringHandoffPage";
 import MockupGeneratorPage from "./pages/MockupGeneratorPage";
 import Club500Page from "./pages/Club500Page";
 import SpielerPartnerPage from "./pages/SpielerPartnerPage";
+import WidgetPage from "./pages/WidgetPage";
 import "./App.css";
 
-function ScrollToTop() {
-  const { pathname } = useLocation();
+function ScrollManager() {
+  const { pathname, hash } = useLocation();
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
+    if (!hash) {
+      window.scrollTo(0, 0);
+      return;
+    }
+    // Ziel-Element kann wegen nachladender Bilder verzögert erscheinen -
+    // kurz nachfassen, bis es da ist, dann dorthin scrollen.
+    const id = decodeURIComponent(hash.slice(1));
+    let tries = 0;
+    let retryTimer = 0;
+    let correctionTimer = 0;
+    const scrollToTarget = () => {
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ block: "start" });
+        // Falls Bilder oberhalb noch nachladen, einmal nachkorrigieren.
+        correctionTimer = window.setTimeout(
+          () => el.scrollIntoView({ block: "start" }),
+          400,
+        );
+      } else if (tries++ < 20) {
+        retryTimer = window.setTimeout(scrollToTarget, 100);
+      }
+    };
+    scrollToTarget();
+    return () => {
+      window.clearTimeout(retryTimer);
+      window.clearTimeout(correctionTimer);
+    };
+  }, [pathname, hash]);
   return null;
 }
 
 export default function App() {
   return (
     <Router>
-      <ScrollToTop />
+      <ScrollManager />
       <Routes>
         <Route
           path="/"
@@ -48,6 +76,8 @@ export default function App() {
         />
 
         <Route path="/sponsoring-handoff" element={<SponsoringHandoffPage />} />
+
+        <Route path="/widget" element={<WidgetPage />} />
 
         <Route
           path="/sponsoring/club-500"
