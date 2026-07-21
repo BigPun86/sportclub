@@ -3101,11 +3101,14 @@ Herzliche Grüße
     border-radius: 6px;
   }
 `,I_=ip`
-  html, body, #root {
+  :root,
+  html,
+  body,
+  #root {
     margin: 0;
     padding: 0;
     min-height: 0;
-    background: transparent;
+    background: transparent !important;
     text-align: left;
   }
 `,e4=y.div`
