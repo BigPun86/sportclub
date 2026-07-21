@@ -182,11 +182,23 @@ const Card = styled.a<{ $bg: string }>`
     outline-offset: -3px;
   }
 
+  /* Mobil: kein Foto, solider Vereins-Farbverlauf - maximal lesbar,
+     kompakt, damit es auch in einem niedrigen iframe komplett passt */
   @media (max-width: 480px) {
-    min-height: 300px;
-    padding: 20px 20px 48px;
+    min-height: 240px;
+    padding: 18px 18px 44px;
     border-radius: 16px;
-    gap: 14px;
+    gap: 10px;
+    background: linear-gradient(
+      135deg,
+      #16213e 0%,
+      #0b0b0d 55%,
+      ${theme.colors.primaryDark} 155%
+    );
+
+    &::before {
+      display: none;
+    }
   }
 `;
 
