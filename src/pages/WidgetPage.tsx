@@ -18,12 +18,15 @@ const WidgetGlobal = createGlobalStyle`
     padding: 0;
     min-height: 0;
     background: transparent !important;
+    /* Dark-Mode-Canvas verhindern - sonst malt der Browser eine schwarze
+       Fläche hinter den transparenten Body statt durchscheinen zu lassen */
+    color-scheme: light;
     text-align: left;
   }
 `;
 
 const Frame = styled.div`
-  padding: 16px;
+  padding: 0;
   display: flex;
   justify-content: center;
 `;
