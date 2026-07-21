@@ -3109,10 +3109,13 @@ Herzliche Grüße
     padding: 0;
     min-height: 0;
     background: transparent !important;
+    /* Dark-Mode-Canvas verhindern - sonst malt der Browser eine schwarze
+       Fläche hinter den transparenten Body statt durchscheinen zu lassen */
+    color-scheme: light;
     text-align: left;
   }
 `,e4=y.div`
-  padding: 16px;
+  padding: 0;
   display: flex;
   justify-content: center;
 `;function t4(){return r.jsxs(r.Fragment,{children:[r.jsx(I_,{}),r.jsx(e4,{children:r.jsx(G_,{})})]})}function n4(){const{pathname:a,hash:s}=on();return C.useEffect(()=>{if(!s){window.scrollTo(0,0);return}const u=decodeURIComponent(s.slice(1));let c=0,f=0,d=0;const v=()=>{const p=document.getElementById(u);p?(p.scrollIntoView({block:"start"}),d=window.setTimeout(()=>p.scrollIntoView({block:"start"}),400)):c++<20&&(f=window.setTimeout(v,100))};return v(),()=>{window.clearTimeout(f),window.clearTimeout(d)}},[a,s]),null}function a4(){return r.jsxs($2,{children:[r.jsx(n4,{}),r.jsxs(x2,{children:[r.jsx(ln,{path:"/",element:r.jsxs(r.Fragment,{children:[r.jsx(zl,{}),r.jsx(Rs,{to:"/sponsoring",replace:!0})]})}),r.jsx(ln,{path:"/sponsoring",element:r.jsxs(r.Fragment,{children:[r.jsx(zl,{}),r.jsx(yw,{})]})}),r.jsx(ln,{path:"/sponsoring-handoff",element:r.jsx(Zw,{})}),r.jsx(ln,{path:"/widget",element:r.jsx(t4,{})}),r.jsx(ln,{path:"/sponsoring/club-500",element:r.jsxs(r.Fragment,{children:[r.jsx(zl,{}),r.jsx(g_,{})]})}),r.jsx(ln,{path:"/sponsoring/pakete",element:r.jsx(Rs,{to:"/sponsoring#angebot",replace:!0})}),r.jsx(ln,{path:"/sponsoring/spielerpatenschaft",element:r.jsxs(r.Fragment,{children:[r.jsx(zl,{}),r.jsx(b_,{})]})}),r.jsx(ln,{path:"/mockup-generator",element:r.jsxs(r.Fragment,{children:[r.jsx(zl,{}),r.jsx(d6,{})]})}),r.jsx(ln,{path:"/renovierung",element:r.jsxs(r.Fragment,{children:[r.jsx(zl,{}),r.jsx(Y5,{})]})}),r.jsx(ln,{path:"*",element:r.jsx(Rs,{to:"/sponsoring",replace:!0})})]})]})}console.log("sckw sponsoring Website loaded");Ay.createRoot(document.getElementById("root")).render(r.jsx(C.StrictMode,{children:r.jsx(zv,{theme:eo,children:r.jsx(a4,{})})}));
