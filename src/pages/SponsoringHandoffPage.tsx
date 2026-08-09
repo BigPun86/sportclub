@@ -1757,7 +1757,7 @@ function Page500EuroClubAnmeldung() {
             paddingTop: "2mm",
           }}
         >
-          <strong>Spendenkonto:</strong> SC Konstanz‑Wollmatingen e.V. · IBAN:
+          <strong>Spendenkonto:</strong> Sport Club Konstanz‑Wollmatingen e.V. · IBAN:
           DE84 6905 0001 0000 0929 99 · Sparkasse Bodensee
           <br />
           <strong>Kontakt:</strong> {kontakt.email} · Tel. +49 152 3384 2436 ·

@@ -12,10 +12,10 @@ export interface MembershipOption {
 
 export const club500Config = {
   subtitle:
-    "Veränderung beginnt mit dem Engagement jedes Einzelnen. Spenden helfen, einen echten Unterschied zu machen. Gemeinsam erreichen wir mehr.",
+    "Nach der Meisterschaft in der Landesliga spielt unsere erste Mannschaft ab der Saison 2026/27 in der Verbandsliga. 100 Felder, 500 € pro Feld und Saison - jedes Feld steht für einen Förderer.",
 
   heroImage: "/sckw-logo-500club.png",
-  heroTitle: "CLUB 500",
+  heroTitle: "500er Club",
   heroSubtitle: "GEMEINSAM STARK",
 
   sectionTitle: "Unterstützungsmöglichkeiten",
@@ -25,7 +25,7 @@ export const club500Config = {
       value: 500,
       label: "500 €",
       duration: "1 Jahr",
-      description: "Mitglied im CLUB 500",
+      description: "Saison 2026/27",
     },
     {
       value: 1000,
@@ -49,9 +49,21 @@ export const club500Config = {
   },
 
   benefits: [
-    { icon: "📄", text: "Offizielle <strong>Spendenbescheinigung</strong> (gemeinnütziger Verein)" },
-    { icon: "🏅", text: "Veröffentlichung Ihres <strong>Namens oder Firmennamens</strong> als Unterstützer" },
-    { icon: "⚽", text: "Direkte Förderung des <strong>lokalen Sports</strong> und der Jugend" },
+    {
+      icon: "📄",
+      title: "Spendenbescheinigung",
+      text: "Der SC Konstanz-Wollmatingen ist als gemeinnützig anerkannt. Auf Wunsch erhalten Sie eine Zuwendungsbestätigung.",
+    },
+    {
+      icon: "🏅",
+      title: "Ihr Name auf der Tafel",
+      text: "Wenn Sie möchten. Wer lieber im Hintergrund bleibt, erscheint als „SCKW Gönner\".",
+    },
+    {
+      icon: "⚽",
+      title: "Direkte Förderung der Ersten",
+      text: "Auswärtsfahrten, Training, Material und Spielbetrieb in der Verbandsliga.",
+    },
   ],
 
   spendentafel: {
@@ -83,7 +95,7 @@ export const club500Config = {
   paypalMeUrl: "https://www.paypal.me/sckw2012",
 
   bankDetails: {
-    kontoinhaber: "SC Konstanz-Wollmatingen e.V.",
+    kontoinhaber: "Sport Club Konstanz-Wollmatingen e.V.",
     iban: "DE84 6905 0001 0000 0929 99",
     ibanClean: "DE84690500010000092999",
     bic: "SOLADES1KNZ",

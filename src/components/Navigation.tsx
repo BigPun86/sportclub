@@ -167,7 +167,7 @@ export default function Navigation() {
             $active={location.pathname === "/sponsoring/club-500"}
             onClick={() => setIsMenuOpen(false)}
           >
-            ⚽ CLUB 500
+            ⚽ 500er Club
           </NavLink>
           {ENABLE_RENOVIERUNG && (
             <NavLink

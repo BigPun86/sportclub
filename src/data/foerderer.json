@@ -1,0 +1,15 @@
+{
+  "stand": "2026-08-06",
+  "felderGesamt": 100,
+  "foerderer": [
+    { "feld": 1, "name": "Ulrike Dunand",                "anonym": false, "saisonBis": 2027 },
+    { "feld": 2, "name": "Dieter Graf",                  "anonym": false, "saisonBis": 2027 },
+    { "feld": 3, "name": "Bernd Reister",                "anonym": false, "saisonBis": 2027 },
+    { "feld": 4, "name": "Stefan Weber",                 "anonym": false, "saisonBis": 2027 },
+    { "feld": 5, "name": "Lutz Grüneberg",               "anonym": false, "saisonBis": 2027 },
+    { "feld": 6, "name": "Steffen Allert",               "anonym": false, "saisonBis": 2028 },
+    { "feld": 7, "name": "Fa. Müller Putz & Stuck GmbH", "anonym": false, "saisonBis": 2027 },
+    { "feld": 8, "name": null,                           "anonym": true,  "saisonBis": 2027 },
+    { "feld": 9, "name": null,                           "anonym": true,  "saisonBis": 2027 }
+  ]
+}

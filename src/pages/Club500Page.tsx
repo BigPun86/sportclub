@@ -4,6 +4,7 @@ import { QRCodeSVG } from "qrcode.react";
 import { getHeroImage } from "../utils/imageLoader";
 import { club500Config } from "../data/club500Data";
 import Footer from "../components/Footer";
+import Foerdertafel from "../components/Foerdertafel";
 
 // ---------------------------------------------------------------------------
 // Hero (same pattern as SponsoringV2Page)
@@ -170,6 +171,13 @@ const BenefitCard = styled.div`
 const BenefitIcon = styled.div`
   font-size: 1.8rem;
   margin-bottom: 0.5rem;
+`;
+
+const BenefitTitle = styled.h3`
+  font-size: 1rem;
+  color: #222;
+  font-weight: 800;
+  margin: 0 0 0.4rem;
 `;
 
 const BenefitText = styled.p`
@@ -686,17 +694,17 @@ export default function Club500Page() {
         ))}
         <HeroOverlay />
         <HeroContent>
-          <HeroLogo src={cfg.heroImage} alt="Club 500" />
+          <HeroLogo src={cfg.heroImage} alt="500er Club" />
           <HeroTitle>{cfg.heroTitle}</HeroTitle>
           <HeroSub>{cfg.subtitle}</HeroSub>
           <HeroCTA
-            href="#mitglied-werden"
+            href="#feld-sichern"
             onClick={(e) => {
               e.preventDefault();
-              document.getElementById("mitglied-werden")?.scrollIntoView({ behavior: "smooth" });
+              document.getElementById("feld-sichern")?.scrollIntoView({ behavior: "smooth" });
             }}
           >
-            Jetzt Mitglied werden
+            Feld sichern
           </HeroCTA>
         </HeroContent>
       </Hero>
@@ -704,28 +712,32 @@ export default function Club500Page() {
       {/* ===== Benefits ===== */}
       <Section>
         <Container>
-          <SectionTitle>Ihre Vorteile</SectionTitle>
+          <SectionTitle>Was Ihre Unterstützung bewirkt</SectionTitle>
           <SectionSubtitle>
-            Als Mitglied im CLUB 500 unterstützen Sie direkt den Jugend- und
-            Amateurfußball in Konstanz.
+            Mit einem Feld im 500er Club unterstützen Sie direkt unsere erste
+            Mannschaft in der Verbandsliga.
           </SectionSubtitle>
           <BenefitGrid>
             {cfg.benefits.map((b, i) => (
               <BenefitCard key={i}>
                 <BenefitIcon>{b.icon}</BenefitIcon>
-                <BenefitText dangerouslySetInnerHTML={{ __html: b.text }} />
+                <BenefitTitle>{b.title}</BenefitTitle>
+                <BenefitText>{b.text}</BenefitText>
               </BenefitCard>
             ))}
           </BenefitGrid>
         </Container>
       </Section>
 
+      {/* ===== Fördertafel ===== */}
+      <Foerdertafel />
+
       {/* ===== Form ===== */}
-      <SectionAlt id="mitglied-werden">
+      <SectionAlt id="feld-sichern">
         <Container>
-          <SectionTitle>Mitglied werden</SectionTitle>
+          <SectionTitle>Feld sichern</SectionTitle>
           <SectionSubtitle>
-            Wählen Sie Ihre Unterstützung und werden Sie Teil des CLUB 500.
+            Wählen Sie, für wie viele Saisons Sie ein Feld übernehmen möchten.
           </SectionSubtitle>
 
           {/* Membership options */}

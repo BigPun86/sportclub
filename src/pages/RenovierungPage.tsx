@@ -967,7 +967,7 @@ export default function RenovierungPage() {
             <BankDetails>
               <BankRow>
                 <BankLabel>Kontoinhaber:</BankLabel>
-                <BankValue>SC Konstanz-Wollmatingen</BankValue>
+                <BankValue>Sport Club Konstanz-Wollmatingen e.V.</BankValue>
               </BankRow>
               <BankRow>
                 <BankLabel>IBAN:</BankLabel>
