@@ -913,17 +913,12 @@ D-78467 Konstanz`},Z5=[{label:"Firma / Organisation",type:"text",lines:1},{label
   max-width: 180px;
   max-height: 100px;
   object-fit: contain;
-  margin-bottom: 0.75rem;
 
   @media (max-width: 768px) {
     max-width: 140px;
     max-height: 80px;
   }
 `,ej=v.div`
-  font-size: 1.1rem;
-  color: #333;
-  font-weight: 700;
-`,tj=v.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   gap: 1rem;
@@ -934,7 +929,7 @@ D-78467 Konstanz`},Z5=[{label:"Firma / Organisation",type:"text",lines:1},{label
     grid-template-columns: repeat(4, 1fr);
     gap: 1.25rem;
   }
-`,nj=v.a`
+`,tj=v.a`
   background: white;
   border-radius: 12px;
   padding: 1.25rem 1rem;
@@ -954,29 +949,23 @@ D-78467 Konstanz`},Z5=[{label:"Firma / Organisation",type:"text",lines:1},{label
     border-color: #e10073;
     box-shadow: 0 8px 24px rgba(225, 0, 115, 0.12);
   }
-`,aj=v.img`
+`,nj=v.img`
   max-width: 100%;
   max-height: 50px;
   object-fit: contain;
-  margin-bottom: 0.5rem;
-`,lj=v.div`
-  font-size: 0.75rem;
-  color: #555;
-  font-weight: 600;
-  line-height: 1.3;
-`,rj={hauptsponsor:{name:"Fuchsbau Immobilien",logo:"/sponsors/fuchsbau-logo.png",website:"https://immofuchsbau.com/"},partners:[{name:"Graf Hardenberg",logo:"/sponsors/grafhardenberg.png",website:"https://www.grafhardenberg.de/"},{name:"Stadtwerke Konstanz",logo:"/sponsors/Stadtwerke.avif",website:"https://www.stadtwerke-konstanz.de/"},{name:"Sparkasse Bodensee",logo:"/sponsors/sparkasse-bodensee.png",website:"https://www.sparkasse-bodensee.de/"},{name:"FUCHS",logo:"/sponsors/fuchs.png",website:"https://www.fuchs-haustechnik.de/"},{name:"Logan's Linde",logo:"/sponsors/logans-linde.png",website:"https://logans-wollmatingen.de/"},{name:"KARAKI Services",logo:"/sponsors/karaki-services.png",website:"https://karaki-services.de/"},{name:"Danlin Media",logo:"/sponsors/DANLIN.avif",website:"https://www.danlin-media.de/"},{name:"grenz|gänger tools",logo:"/sponsors/grenzgaenger-tools.png",website:"https://grenzgaenger-tools.de"}]};function ij(){const{hauptsponsor:a,partners:s}=rj;return r.jsxs(P5,{children:[r.jsx(F5,{children:r.jsxs(W5,{href:a.website,target:"_blank",rel:"noopener noreferrer",children:[r.jsx(J5,{children:"Hauptsponsor"}),r.jsx(I5,{src:a.logo,alt:a.name}),r.jsx(ej,{children:a.name})]})}),r.jsx(tj,{children:s.map((u,c)=>r.jsxs(nj,{href:u.website,target:"_blank",rel:"noopener noreferrer",children:[r.jsx(aj,{src:u.logo,alt:u.name}),r.jsx(lj,{children:u.name})]},c))})]})}const sj=v.div`
+`,aj={hauptsponsor:{name:"Fuchsbau Immobilien",logo:"/sponsors/fuchsbau-logo.png",website:"https://immofuchsbau.com/"},partners:[{name:"Graf Hardenberg",logo:"/sponsors/grafhardenberg.png",website:"https://www.grafhardenberg.de/"},{name:"Stadtwerke Konstanz",logo:"/sponsors/Stadtwerke.avif",website:"https://www.stadtwerke-konstanz.de/"},{name:"Sparkasse Bodensee",logo:"/sponsors/sparkasse-bodensee.png",website:"https://www.sparkasse-bodensee.de/"},{name:"FUCHS",logo:"/sponsors/fuchs.png",website:"https://www.fuchs-haustechnik.de/"},{name:"Logan's Linde",logo:"/sponsors/logans-linde.png",website:"https://logans-wollmatingen.de/"},{name:"KARAKI Services",logo:"/sponsors/karaki-services.png",website:"https://karaki-services.de/"},{name:"Danlin Media",logo:"/sponsors/DANLIN.avif",website:"https://www.danlin-media.de/"},{name:"grenz|gänger tools",logo:"/sponsors/grenzgaenger-tools.png",website:"https://grenzgaenger-tools.de"}]};function lj(){const{hauptsponsor:a,partners:s}=aj;return r.jsxs(P5,{children:[r.jsx(F5,{children:r.jsxs(W5,{href:a.website,target:"_blank",rel:"noopener noreferrer",children:[r.jsx(J5,{children:"Hauptsponsor"}),r.jsx(I5,{src:a.logo,alt:a.name})]})}),r.jsx(ej,{children:s.map((u,c)=>r.jsx(tj,{href:u.website,target:"_blank",rel:"noopener noreferrer",children:r.jsx(nj,{src:u.logo,alt:u.name})},c))})]})}const rj=v.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 1.25rem;
   margin: 1.5rem 0 1.25rem 0;
   width: 100%;
-`,oj=v.div`
+`,ij=v.div`
   background: #fff;
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
   padding: 1.25rem 1rem;
   text-align: center;
-`,cj=v.h4`
+`,sj=v.h4`
   font-size: 1.1rem;
   color: #e10073;
   font-weight: 700;
@@ -985,7 +974,7 @@ D-78467 Konstanz`},Z5=[{label:"Firma / Organisation",type:"text",lines:1},{label
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-`,uj=v.p`
+`,oj=v.p`
   font-size: 0.95rem;
   color: #222;
   line-height: 1.5;
@@ -1008,30 +997,30 @@ D-78467 Konstanz`},Z5=[{label:"Firma / Organisation",type:"text",lines:1},{label
       }
     }
   `}
-`;function fj({headline:a,description:s,contactInfos:u}){const c=f=>{f.preventDefault();const d=f.currentTarget,y=new FormData(d);if(String(y.get("website")||"").trim()!=="")return;const h=String(y.get("firstName")||"").trim(),g=String(y.get("lastName")||"").trim(),x=String(y.get("email")||"").trim(),S=String(y.get("phone")||"").trim(),w={};if(h||(w.firstName="Bitte Vornamen angeben"),g||(w.lastName="Bitte Nachnamen angeben"),/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(x)||(w.email="Bitte gültige E-Mail eingeben"),/^[+\d][\d\s\-/()]{5,}$/.test(S)||(w.phone="Bitte gültige Telefonnummer eingeben"),Object.keys(w).length>0){const R=Object.keys(w)[0],A=d.querySelector(`[name="${R}"]`);A&&A.focus(),alert(Object.values(w).join(`
-`));return}alert("Danke! Wir melden uns innerhalb von 24 Stunden."),d.reset()};return r.jsx(dj,{id:"kontakt",children:r.jsxs(hj,{children:[r.jsx(_j,{children:a}),r.jsx(Ej,{children:s}),r.jsx(sj,{children:u.map((f,d)=>r.jsxs(oj,{children:[r.jsxs(cj,{children:[f.icon," ",f.title]}),r.jsx(uj,{$isEmail:f.isEmail,children:f.isEmail?r.jsx("a",{href:`mailto:${f.content}`,children:f.content}):f.content})]},d))}),r.jsxs(mj,{children:[r.jsx(gj,{children:"Kontakt aufnehmen"}),r.jsx(pj,{children:"Kurzformular ausfüllen - wir melden uns innerhalb von 24 Stunden."}),r.jsxs(bj,{noValidate:!0,onSubmit:c,children:[r.jsxs(Ku,{children:[r.jsxs(Pr,{children:[r.jsx("label",{htmlFor:"firstName",children:"Vorname"}),r.jsx("input",{id:"firstName",name:"firstName",type:"text",autoComplete:"given-name",required:!0})]}),r.jsxs(Pr,{children:[r.jsx("label",{htmlFor:"lastName",children:"Nachname"}),r.jsx("input",{id:"lastName",name:"lastName",type:"text",autoComplete:"family-name",required:!0})]})]}),r.jsxs(Ku,{children:[r.jsxs(Pr,{children:[r.jsx("label",{htmlFor:"company",children:"Firma (optional)"}),r.jsx("input",{id:"company",name:"company",type:"text",autoComplete:"organization"})]}),r.jsxs(Pr,{children:[r.jsx("label",{htmlFor:"phone",children:"Telefon"}),r.jsx("input",{id:"phone",name:"phone",type:"tel",autoComplete:"tel",required:!0})]})]}),r.jsx(Ku,{children:r.jsxs(xj,{children:[r.jsx("label",{htmlFor:"email",children:"E-Mail"}),r.jsx("input",{id:"email",name:"email",type:"email",autoComplete:"email",required:!0})]})}),r.jsxs(yj,{"aria-hidden":"true",tabIndex:-1,children:[r.jsx("label",{htmlFor:"website",children:"Wenn Sie ein Mensch sind, lassen Sie dieses Feld leer"}),r.jsx("input",{id:"website",name:"website",type:"text",autoComplete:"off"})]}),r.jsxs(vj,{children:[r.jsx("input",{id:"consent",name:"consent",type:"checkbox",required:!0}),r.jsxs("label",{htmlFor:"consent",children:["Ich stimme der Verarbeitung meiner Daten gemäß"," ",r.jsx("a",{href:"/datenschutz",target:"_blank",rel:"noopener noreferrer",children:"Datenschutzhinweisen"})," ","zu."]})]}),r.jsxs(Sj,{children:[r.jsx(jj,{type:"submit",children:"Absenden"}),r.jsxs(wj,{children:["Alternativ:"," ",r.jsx("a",{href:"mailto:sponsoring@sckw.de",children:"sponsoring@sckw.de"})]})]})]})]})]})})}const dj=v.section`
+`;function cj({headline:a,description:s,contactInfos:u}){const c=f=>{f.preventDefault();const d=f.currentTarget,y=new FormData(d);if(String(y.get("website")||"").trim()!=="")return;const h=String(y.get("firstName")||"").trim(),g=String(y.get("lastName")||"").trim(),x=String(y.get("email")||"").trim(),S=String(y.get("phone")||"").trim(),w={};if(h||(w.firstName="Bitte Vornamen angeben"),g||(w.lastName="Bitte Nachnamen angeben"),/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(x)||(w.email="Bitte gültige E-Mail eingeben"),/^[+\d][\d\s\-/()]{5,}$/.test(S)||(w.phone="Bitte gültige Telefonnummer eingeben"),Object.keys(w).length>0){const R=Object.keys(w)[0],A=d.querySelector(`[name="${R}"]`);A&&A.focus(),alert(Object.values(w).join(`
+`));return}alert("Danke! Wir melden uns innerhalb von 24 Stunden."),d.reset()};return r.jsx(uj,{id:"kontakt",children:r.jsxs(fj,{children:[r.jsx(jj,{children:a}),r.jsx(wj,{children:s}),r.jsx(rj,{children:u.map((f,d)=>r.jsxs(ij,{children:[r.jsxs(sj,{children:[f.icon," ",f.title]}),r.jsx(oj,{$isEmail:f.isEmail,children:f.isEmail?r.jsx("a",{href:`mailto:${f.content}`,children:f.content}):f.content})]},d))}),r.jsxs(dj,{children:[r.jsx(hj,{children:"Kontakt aufnehmen"}),r.jsx(mj,{children:"Kurzformular ausfüllen - wir melden uns innerhalb von 24 Stunden."}),r.jsxs(gj,{noValidate:!0,onSubmit:c,children:[r.jsxs(Ku,{children:[r.jsxs(Pr,{children:[r.jsx("label",{htmlFor:"firstName",children:"Vorname"}),r.jsx("input",{id:"firstName",name:"firstName",type:"text",autoComplete:"given-name",required:!0})]}),r.jsxs(Pr,{children:[r.jsx("label",{htmlFor:"lastName",children:"Nachname"}),r.jsx("input",{id:"lastName",name:"lastName",type:"text",autoComplete:"family-name",required:!0})]})]}),r.jsxs(Ku,{children:[r.jsxs(Pr,{children:[r.jsx("label",{htmlFor:"company",children:"Firma (optional)"}),r.jsx("input",{id:"company",name:"company",type:"text",autoComplete:"organization"})]}),r.jsxs(Pr,{children:[r.jsx("label",{htmlFor:"phone",children:"Telefon"}),r.jsx("input",{id:"phone",name:"phone",type:"tel",autoComplete:"tel",required:!0})]})]}),r.jsx(Ku,{children:r.jsxs(pj,{children:[r.jsx("label",{htmlFor:"email",children:"E-Mail"}),r.jsx("input",{id:"email",name:"email",type:"email",autoComplete:"email",required:!0})]})}),r.jsxs(bj,{"aria-hidden":"true",tabIndex:-1,children:[r.jsx("label",{htmlFor:"website",children:"Wenn Sie ein Mensch sind, lassen Sie dieses Feld leer"}),r.jsx("input",{id:"website",name:"website",type:"text",autoComplete:"off"})]}),r.jsxs(xj,{children:[r.jsx("input",{id:"consent",name:"consent",type:"checkbox",required:!0}),r.jsxs("label",{htmlFor:"consent",children:["Ich stimme der Verarbeitung meiner Daten gemäß"," ",r.jsx("a",{href:"/datenschutz",target:"_blank",rel:"noopener noreferrer",children:"Datenschutzhinweisen"})," ","zu."]})]}),r.jsxs(yj,{children:[r.jsx(vj,{type:"submit",children:"Absenden"}),r.jsxs(Sj,{children:["Alternativ:"," ",r.jsx("a",{href:"mailto:sponsoring@sckw.de",children:"sponsoring@sckw.de"})]})]})]})]})]})})}const uj=v.section`
   background: #f7f7fa;
   border-radius: 10px;
   padding: 2.5rem 2rem;
   margin: 3rem 0 2rem 0;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.03);
-`,hj=v.div`
+`,fj=v.div`
   max-width: 1000px;
   margin: 0 auto;
-`,mj=v.div`
+`,dj=v.div`
   margin-top: 1.5rem;
   background: #ffffff;
   border-radius: 12px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
   padding: 1.25rem;
-`,gj=v.h4`
+`,hj=v.h4`
   margin: 0 0 0.5rem 0;
   font-size: 1.25rem;
   color: #e10073;
-`,pj=v.p`
+`,mj=v.p`
   margin: 0 0 1rem 0;
   color: #555;
-`,bj=v.form`
+`,gj=v.form`
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
@@ -1090,15 +1079,15 @@ D-78467 Konstanz`},Z5=[{label:"Firma / Organisation",type:"text",lines:1},{label
 `,Pr=v.div`
   display: flex;
   flex-direction: column;
-`,xj=v(Pr)`
+`,pj=v(Pr)`
   grid-column: 1 / -1;
-`,yj=v.div`
+`,bj=v.div`
   position: absolute;
   left: -5000px;
   width: 1px;
   height: 1px;
   overflow: hidden;
-`,vj=v.div`
+`,xj=v.div`
   display: flex;
   align-items: flex-start;
   gap: 0.5rem;
@@ -1112,12 +1101,12 @@ D-78467 Konstanz`},Z5=[{label:"Firma / Organisation",type:"text",lines:1},{label
   a {
     color: #e10073;
   }
-`,Sj=v.div`
+`,yj=v.div`
   display: flex;
   align-items: center;
   gap: 1rem;
   flex-wrap: wrap;
-`,jj=v.button`
+`,vj=v.button`
   background: linear-gradient(135deg, #e10073, #ff6b9d);
   color: #fff;
   border: none;
@@ -1132,7 +1121,7 @@ D-78467 Konstanz`},Z5=[{label:"Firma / Organisation",type:"text",lines:1},{label
     transform: translateY(-2px);
     box-shadow: 0 10px 24px rgba(225, 0, 115, 0.35);
   }
-`,wj=v.span`
+`,Sj=v.span`
   font-size: 0.9rem;
   color: #666;
 
@@ -1145,14 +1134,14 @@ D-78467 Konstanz`},Z5=[{label:"Firma / Organisation",type:"text",lines:1},{label
   a:hover {
     text-decoration: underline;
   }
-`,_j=v.h3`
+`,jj=v.h3`
   font-size: clamp(1.7rem, 2.5vw, 2.1rem);
   color: #e10073;
   font-weight: 800;
   margin-bottom: 1.5rem;
   text-align: center;
   width: 100%;
-`,Ej=v.p`
+`,wj=v.p`
   font-size: 1.13rem;
   color: #222;
   margin-bottom: 2.5rem;
@@ -1161,7 +1150,7 @@ D-78467 Konstanz`},Z5=[{label:"Firma / Organisation",type:"text",lines:1},{label
   max-width: 800px;
   margin-left: auto;
   margin-right: auto;
-`,zj="sponsoring@sckw.de",Tl=v.div`
+`,_j="sponsoring@sckw.de",Tl=v.div`
   max-width: 1100px;
   margin: 0 auto;
   padding: 0 1rem;
@@ -1198,7 +1187,7 @@ D-78467 Konstanz`},Z5=[{label:"Firma / Organisation",type:"text",lines:1},{label
   margin: 0 auto;
   line-height: 1.6;
   padding: 0 1rem;
-`,Cj=v.section`
+`,Ej=v.section`
   background: #0b0b0d;
   min-height: 85vh;
   display: flex;
@@ -1207,7 +1196,7 @@ D-78467 Konstanz`},Z5=[{label:"Firma / Organisation",type:"text",lines:1},{label
   position: relative;
   padding: 4rem 0 3rem 0;
   overflow: hidden;
-`,Aj=v.div`
+`,zj=v.div`
   position: absolute;
   inset: 0;
   background: url(${({$bg:a})=>a}) center/cover no-repeat;
@@ -1215,20 +1204,20 @@ D-78467 Konstanz`},Z5=[{label:"Firma / Organisation",type:"text",lines:1},{label
   transition: opacity 900ms ease;
   z-index: 1;
   filter: saturate(1.05) brightness(0.85);
-`,Tj=v.div`
+`,Cj=v.div`
   position: absolute;
   inset: 0;
   pointer-events: none;
   background: rgba(0, 0, 0, 0.5);
   z-index: 2;
   box-shadow: inset 0 0 150px rgba(0, 0, 0, 0.6);
-`,Rj=v.div`
+`,Aj=v.div`
   position: relative;
   z-index: 3;
   text-align: center;
   max-width: 900px;
   padding: 0 1.25rem;
-`,Mj=v.h1`
+`,Tj=v.h1`
   color: white;
   font-size: clamp(2rem, 8vw, 4.2rem);
   font-weight: 900;
@@ -1236,7 +1225,7 @@ D-78467 Konstanz`},Z5=[{label:"Firma / Organisation",type:"text",lines:1},{label
   text-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
   letter-spacing: -0.02em;
   line-height: 1.1;
-`,kj=v.p`
+`,Rj=v.p`
   color: white;
   font-size: clamp(1rem, 3.5vw, 1.4rem);
   font-weight: 500;
@@ -1247,7 +1236,7 @@ D-78467 Konstanz`},Z5=[{label:"Firma / Organisation",type:"text",lines:1},{label
   max-width: 650px;
   margin-left: auto;
   margin-right: auto;
-`,Dj=v.div`
+`,Mj=v.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 0.75rem;
@@ -1261,7 +1250,7 @@ D-78467 Konstanz`},Z5=[{label:"Firma / Organisation",type:"text",lines:1},{label
     margin-right: auto;
     grid-template-columns: repeat(4, 1fr);
   }
-`,Oj=v.div`
+`,kj=v.div`
   background: rgba(255, 255, 255, 0.12);
   backdrop-filter: blur(12px);
   border-radius: 16px;
@@ -1273,12 +1262,12 @@ D-78467 Konstanz`},Z5=[{label:"Firma / Organisation",type:"text",lines:1},{label
   &:hover {
     transform: translateY(-2px);
   }
-`,Bj=v.div`
+`,Dj=v.div`
   font-size: clamp(1.1rem, 4.5vw, 1.6rem);
   font-weight: 900;
   color: white;
   margin-bottom: 0.2rem;
-`,Nj=v.div`
+`,Oj=v.div`
   font-size: 0.65rem;
   color: rgba(255, 255, 255, 0.9);
   text-transform: uppercase;
@@ -1288,7 +1277,7 @@ D-78467 Konstanz`},Z5=[{label:"Firma / Organisation",type:"text",lines:1},{label
   @media (min-width: 768px) {
     font-size: 0.75rem;
   }
-`,Uj=v.div`
+`,Bj=v.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -1330,16 +1319,16 @@ D-78467 Konstanz`},Z5=[{label:"Firma / Organisation",type:"text",lines:1},{label
     background: ${({$primary:a})=>a?"#f8f9fa":"rgba(255, 255, 255, 0.1)"};
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   }
-`,Lj=zf`
+`,Nj=zf`
   0%, 100% { opacity: 1; }
   50% { opacity: 0.7; }
-`,Hj=v.div`
+`,Uj=v.div`
   background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
   padding: 1rem 1.5rem;
   text-align: center;
   position: relative;
   overflow: hidden;
-`,Gj=v.div`
+`,Lj=v.div`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1352,9 +1341,9 @@ D-78467 Konstanz`},Z5=[{label:"Firma / Organisation",type:"text",lines:1},{label
   height: 10px;
   border-radius: 50%;
   background: #22c55e;
-  animation: ${Lj} 2s ease-in-out infinite;
+  animation: ${Nj} 2s ease-in-out infinite;
   flex-shrink: 0;
-`,Yj=v.span`
+`,Hj=v.span`
   color: white;
   font-size: clamp(0.85rem, 2.5vw, 1rem);
   font-weight: 700;
@@ -1363,7 +1352,7 @@ D-78467 Konstanz`},Z5=[{label:"Firma / Organisation",type:"text",lines:1},{label
   strong {
     color: #fbbf24;
   }
-`,$j=v.div`
+`,Gj=v.div`
   display: grid;
   grid-template-columns: 1fr;
   gap: 1.25rem;
@@ -1372,7 +1361,7 @@ D-78467 Konstanz`},Z5=[{label:"Firma / Organisation",type:"text",lines:1},{label
     grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
   }
-`,Vj=v.div`
+`,Yj=v.div`
   background: white;
   border-radius: 16px;
   padding: 1.75rem 1.5rem;
@@ -1387,24 +1376,24 @@ D-78467 Konstanz`},Z5=[{label:"Firma / Organisation",type:"text",lines:1},{label
     transform: translateY(-3px);
     box-shadow: 0 10px 32px rgba(0, 0, 0, 0.1);
   }
-`,qj=v.div`
+`,$j=v.div`
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
   margin-bottom: 1rem;
   gap: 0.75rem;
   flex-wrap: wrap;
-`,Kj=v.h3`
+`,Vj=v.h3`
   font-size: 1.2rem;
   font-weight: 800;
   color: #222;
   margin: 0;
-`,Qj=v.div`
+`,qj=v.div`
   font-size: 1.1rem;
   font-weight: 800;
   color: #e10073;
   white-space: nowrap;
-`,Xj=v.div`
+`,Kj=v.div`
   background: linear-gradient(135deg, #e10073, #ff6b9d);
   color: white;
   font-size: 0.8rem;
@@ -1414,7 +1403,7 @@ D-78467 Konstanz`},Z5=[{label:"Firma / Organisation",type:"text",lines:1},{label
   display: inline-block;
   margin-bottom: 0.75rem;
   letter-spacing: 0.02em;
-`,Zj=v.div`
+`,Qj=v.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 0.3rem 1rem;
@@ -1435,14 +1424,14 @@ D-78467 Konstanz`},Z5=[{label:"Firma / Organisation",type:"text",lines:1},{label
     flex-shrink: 0;
     font-size: 0.75rem;
   }
-`,Pj=v.div`
+`,Xj=v.div`
   font-size: 0.8rem;
   color: #888;
   border-top: 1px solid #f0f0f0;
   padding-top: 0.75rem;
   margin-bottom: 1rem;
   line-height: 1.5;
-`,Fj=v.span`
+`,Zj=v.span`
   display: inline-block;
   padding: 0.3rem 0.75rem;
   border-radius: 20px;
@@ -1450,7 +1439,7 @@ D-78467 Konstanz`},Z5=[{label:"Firma / Organisation",type:"text",lines:1},{label
   font-weight: 700;
   background: ${({$vergeben:a})=>a?"#fee2e2":"#d1fae5"};
   color: ${({$vergeben:a})=>a?"#991b1b":"#065f46"};
-`,Wj=v.a`
+`,Pj=v.a`
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -1470,7 +1459,7 @@ D-78467 Konstanz`},Z5=[{label:"Firma / Organisation",type:"text",lines:1},{label
     transform: translateY(-1px);
     box-shadow: 0 4px 12px rgba(225, 0, 115, 0.3);
   }
-`,Jj=v.div`
+`,Fj=v.div`
   display: flex;
   align-items: center;
   gap: 0.75rem;
@@ -1479,11 +1468,11 @@ D-78467 Konstanz`},Z5=[{label:"Firma / Organisation",type:"text",lines:1},{label
   border-radius: 10px;
   margin-bottom: 1rem;
   flex: 1;
-`,Ij=v.img`
+`,Wj=v.img`
   max-width: 80px;
   max-height: 50px;
   object-fit: contain;
-`,ew=v.div`
+`,Jj=v.div`
   font-size: 0.9rem;
   font-weight: 700;
   color: #333;
@@ -1533,14 +1522,14 @@ D-78467 Konstanz`},Z5=[{label:"Firma / Organisation",type:"text",lines:1},{label
   display: flex;
   align-items: center;
   gap: 0.5rem;
-`,tw=v.span`
+`,Ij=v.span`
   font-size: 0.75rem;
   font-weight: 600;
   color: #065f46;
   background: #d1fae5;
   padding: 0.2rem 0.5rem;
   border-radius: 4px;
-`,nw=v.div`
+`,ew=v.div`
   background: white;
   border-radius: 14px;
   padding: 1.25rem;
@@ -1548,23 +1537,23 @@ D-78467 Konstanz`},Z5=[{label:"Firma / Organisation",type:"text",lines:1},{label
   border: 1px solid #f0f0f0;
   display: flex;
   flex-direction: column;
-`,aw=v.h4`
+`,tw=v.h4`
   font-size: 1rem;
   font-weight: 800;
   color: #222;
   margin: 0 0 0.25rem;
-`,lw=v.div`
+`,nw=v.div`
   font-size: 1.05rem;
   font-weight: 800;
   color: #e10073;
   margin-bottom: 0.5rem;
-`,rw=v.p`
+`,aw=v.p`
   font-size: 0.85rem;
   color: #666;
   line-height: 1.5;
   margin: 0;
   flex: 1;
-`,iw=v.div`
+`,lw=v.div`
   font-size: 0.8rem;
   color: #888;
   margin-top: 0.5rem;
@@ -1575,21 +1564,21 @@ D-78467 Konstanz`},Z5=[{label:"Firma / Organisation",type:"text",lines:1},{label
   color: #999;
   margin-top: 1.5rem;
   margin-bottom: 0;
-`,sw=v.div`
+`,rw=v.div`
   margin-top: 3rem;
   background: white;
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
   border: 1px solid #f0f0f0;
-`,ow=v.div`
+`,iw=v.div`
   display: grid;
   grid-template-columns: 1fr;
 
   @media (min-width: 768px) {
     grid-template-columns: 1fr 1fr;
   }
-`,cw=v.div`
+`,sw=v.div`
   position: relative;
   min-height: 280px;
   overflow: hidden;
@@ -1597,12 +1586,12 @@ D-78467 Konstanz`},Z5=[{label:"Firma / Organisation",type:"text",lines:1},{label
   @media (min-width: 768px) {
     min-height: 360px;
   }
-`,uw=v.img`
+`,ow=v.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
-`,fw=v.div`
+`,cw=v.div`
   position: absolute;
   top: 1rem;
   left: 1rem;
@@ -1615,7 +1604,7 @@ D-78467 Konstanz`},Z5=[{label:"Firma / Organisation",type:"text",lines:1},{label
   letter-spacing: 0.05em;
   padding: 0.4rem 0.8rem;
   border-radius: 6px;
-`,dw=v.div`
+`,uw=v.div`
   padding: 2rem 1.5rem;
   display: flex;
   flex-direction: column;
@@ -1624,17 +1613,17 @@ D-78467 Konstanz`},Z5=[{label:"Firma / Organisation",type:"text",lines:1},{label
   @media (min-width: 768px) {
     padding: 2.5rem 2rem;
   }
-`,hw=v.h3`
+`,fw=v.h3`
   font-size: 1.3rem;
   font-weight: 800;
   color: #222;
   margin: 0 0 0.75rem 0;
-`,mw=v.p`
+`,dw=v.p`
   font-size: 0.95rem;
   color: #555;
   line-height: 1.6;
   margin: 0 0 1.25rem 0;
-`,gw=v.div`
+`,hw=v.div`
   background: #fff6fa;
   border: 1px solid #f2c2d9;
   border-radius: 12px;
@@ -1646,24 +1635,24 @@ D-78467 Konstanz`},Z5=[{label:"Firma / Organisation",type:"text",lines:1},{label
   strong {
     color: #e10073;
   }
-`,pw=v.section`
+`,mw=v.section`
   padding: 4rem 0;
   background: linear-gradient(135deg, #fff6fa 0%, #ffeef5 50%, #fff0f7 100%);
   overflow-x: hidden;
-`,bw=v.h2`
+`,gw=v.h2`
   font-size: clamp(1.8rem, 5vw, 2.8rem);
   color: #e10073;
   font-weight: 900;
   margin-bottom: 0.75rem;
   letter-spacing: -0.02em;
-`,xw=v.p`
+`,pw=v.p`
   font-size: clamp(0.95rem, 2.5vw, 1.15rem);
   color: #666;
   max-width: 720px;
   margin: 0 auto;
   line-height: 1.6;
   padding: 0 1rem;
-`,yw=v.div`
+`,bw=v.div`
   display: flex;
   gap: 1rem;
   justify-content: center;
@@ -1684,7 +1673,7 @@ D-78467 Konstanz`},Z5=[{label:"Firma / Organisation",type:"text",lines:1},{label
     color: #e10073;
     font-weight: 800;
   }
-`,vw=v(Kl)`
+`,xw=v(Kl)`
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
@@ -1703,7 +1692,7 @@ D-78467 Konstanz`},Z5=[{label:"Firma / Organisation",type:"text",lines:1},{label
     transform: translateY(-2px);
     box-shadow: 0 10px 30px rgba(225, 0, 115, 0.4);
   }
-`;function Sw(){const[a,s]=C.useState(Bf);C.useEffect(()=>{fetch("/social-stats.json").then(p=>p.ok?p.json():Promise.reject()).then(p=>{p?.kpis?.length&&s(p.kpis)}).catch(()=>{})},[]);const u=[ft("herren/herren_6"),ft("herren/herren_16"),ft("herren/herren_5"),ft("herren/herren_14")].filter(Boolean),[c,f]=C.useState(0);C.useEffect(()=>{if(u.length<=1)return;const p=setInterval(()=>{f(h=>(h+1)%u.length)},6e3);return()=>clearInterval(p)},[u.length]);const d=p=>{document.getElementById(p)?.scrollIntoView({behavior:"smooth",block:"start"})},y=p=>{const h=encodeURIComponent(`Interesse an Sponsoring: ${p}`),g=encodeURIComponent(`Hallo liebes SCKW-Team,
+`;function yw(){const[a,s]=C.useState(Bf);C.useEffect(()=>{fetch("/social-stats.json").then(p=>p.ok?p.json():Promise.reject()).then(p=>{p?.kpis?.length&&s(p.kpis)}).catch(()=>{})},[]);const u=[ft("herren/herren_6"),ft("herren/herren_16"),ft("herren/herren_5"),ft("herren/herren_14")].filter(Boolean),[c,f]=C.useState(0);C.useEffect(()=>{if(u.length<=1)return;const p=setInterval(()=>{f(h=>(h+1)%u.length)},6e3);return()=>clearInterval(p)},[u.length]);const d=p=>{document.getElementById(p)?.scrollIntoView({behavior:"smooth",block:"start"})},y=p=>{const h=encodeURIComponent(`Interesse an Sponsoring: ${p}`),g=encodeURIComponent(`Hallo liebes SCKW-Team,
 
 ich interessiere mich für den Bereich "${p}" und würde gerne mehr erfahren.
 
@@ -1714,7 +1703,7 @@ Firma (optional):
 Telefon (optional): 
 
 Herzliche Grüße
-`);return`mailto:${zj}?subject=${h}&body=${g}`};return r.jsxs(r.Fragment,{children:[r.jsxs(Cj,{children:[u.map((p,h)=>r.jsx(Aj,{$bg:p,$active:h===c},h)),r.jsx(Tj,{}),r.jsxs(Rj,{children:[r.jsx(Mj,{children:"Sponsoring, das messbar wirkt"}),r.jsxs(kj,{children:[r.jsx("strong",{children:"1,3 Millionen Social-Media-Views"})," in dieser Saison, 100 % organisch, ohne Werbebudget. Aktuell erreichen wir"," ",r.jsx("strong",{children:"310.000 Views pro Monat"})," und Ihre Marke ist in jedem Spielbericht dabei."]}),r.jsx(Dj,{children:a.map(p=>r.jsxs(Oj,{children:[r.jsx(Bj,{children:p.value}),r.jsx(Nj,{children:p.label})]},p.label))}),r.jsxs(Uj,{children:[r.jsx(o0,{href:"#kontakt",$primary:!0,onClick:p=>{p.preventDefault(),d("kontakt")},children:"Jetzt Kontakt aufnehmen"}),r.jsx(o0,{href:"#angebot",onClick:p=>{p.preventDefault(),d("angebot")},children:"Angebot ansehen"})]})]})]}),r.jsx(Hj,{children:r.jsxs(Gj,{children:[r.jsx(c0,{}),r.jsxs(Yj,{children:[Vu.text," ",r.jsx("strong",{children:Vu.highlight})," ",Vu.suffix]}),r.jsx(c0,{})]})}),r.jsx(Bs,{children:r.jsxs(Tl,{children:[r.jsxs(Rl,{children:[r.jsx(_s,{children:"Unsere Partner"}),r.jsx(Es,{children:"Starke Marken vertrauen auf unsere Reichweite. Werden Sie Teil dieser Erfolgsgeschichte."})]}),r.jsx(ij,{})]})}),r.jsx(s0,{id:"angebot",children:r.jsxs(Tl,{children:[r.jsxs(Rl,{children:[r.jsx(_s,{children:"Exklusiv-Partnerschaften"}),r.jsx(Es,{children:"Vier einzigartige Pakete, jeweils nur 1× verfügbar. Alle Partner erscheinen in jedem Spielvor- und Nachbericht."})]}),r.jsx($j,{children:q5.map(p=>r.jsxs(Vj,{$vergeben:p.vergeben,children:[r.jsxs(qj,{children:[r.jsxs("div",{children:[r.jsx(Kj,{children:p.name}),r.jsxs(Qj,{children:[p.preis," / Saison"]})]}),r.jsx(Fj,{$vergeben:p.vergeben,children:p.vergeben?"Vergeben":"Verfügbar"})]}),r.jsx(Xj,{children:p.topFeature}),p.vergeben&&p.sponsorLogo?r.jsxs(Jj,{children:[r.jsx(Ij,{src:p.sponsorLogo,alt:p.sponsorName||""}),r.jsx(ew,{children:p.sponsorName})]}):r.jsxs(Zj,{children:[p.trikot!=="–"&&r.jsxs(Ml,{children:["Trikot: ",p.trikot]}),p.id==="stadionname"&&r.jsx(Ml,{children:"Stadion trägt Ihren Namen"}),r.jsxs(Ml,{children:["Bande: ",p.bande]}),r.jsxs(Ml,{children:["Banner: ",p.banner]}),r.jsxs(Ml,{children:["Magazin: ",p.magazin]}),r.jsxs(Ml,{children:[p.saisonkarten," Saisonkarten"]})]}),r.jsx(Pj,{children:"Logo in allen Spielberichten · Stadionansage · Logo Website"}),r.jsx(Wj,{href:p.vergeben?void 0:y(p.name),$vergeben:p.vergeben,children:p.vergeben?"Vergeben":"Jetzt anfragen"})]},p.id))}),r.jsx(h0,{children:"Alle Preise verstehen sich zzgl. MwSt."})]})}),r.jsx(Bs,{id:"werbeflaechen",children:r.jsxs(Tl,{children:[r.jsxs(Rl,{children:[r.jsx(_s,{children:"Werbeflächen"}),r.jsx(Es,{children:"Banden, Banner und Buswerbung, einzeln buchbar zu festen Preisen."})]}),r.jsxs("div",{style:{display:"grid",gridTemplateColumns:"1fr",gap:"2rem",maxWidth:900,margin:"0 auto"},children:[r.jsxs(f0,{children:[r.jsx("div",{style:{padding:"1.25rem 1.25rem 0"},children:r.jsx(d0,{children:"Banden & Banner"})}),r.jsx("div",{style:{overflowX:"auto"},children:r.jsxs(u0,{children:[r.jsx("thead",{children:r.jsxs("tr",{children:[r.jsx("th",{children:"Typ"}),r.jsx("th",{children:"Grösse"}),r.jsx("th",{children:"Preis / Saison"}),r.jsx("th",{children:"Verfügbar"})]})}),r.jsx("tbody",{children:K5.map(p=>r.jsxs("tr",{children:[r.jsx("td",{style:{fontWeight:600},children:p.name}),r.jsx("td",{children:p.groesse}),r.jsx("td",{style:{fontWeight:700,color:"#e10073"},children:p.preis}),r.jsx("td",{children:r.jsxs(tw,{children:[p.slots," Plätze"]})})]},p.name))})]})})]}),r.jsxs(f0,{children:[r.jsxs("div",{style:{padding:"1.25rem 1.25rem 0"},children:[r.jsx(d0,{children:"Buswerbung"}),r.jsx("p",{style:{fontSize:"0.9rem",color:"#666",margin:"0 0 0.75rem",lineHeight:1.5},children:"Jede Woche unterwegs in Konstanz, im Landkreis und bei Auswärtsspielen."})]}),r.jsx("img",{src:"/vereinsbus.png",alt:"Vereinsbus SCKW",style:{width:"100%",display:"block"}}),r.jsx("div",{style:{overflowX:"auto"},children:r.jsxs(u0,{children:[r.jsx("thead",{children:r.jsxs("tr",{children:[r.jsx("th",{children:"Fläche"}),r.jsx("th",{children:"Grösse"}),r.jsx("th",{children:"Preis / Jahr"})]})}),r.jsx("tbody",{children:[...z1,...C1].map(p=>r.jsxs("tr",{children:[r.jsx("td",{style:{fontWeight:600},children:p.position}),r.jsx("td",{children:p.groesse}),r.jsx("td",{style:{fontWeight:700,color:"#e10073"},children:p.preis})]},p.position))})]})}),r.jsx("div",{style:{padding:"0.75rem 1.25rem 1.25rem"},children:r.jsx("ul",{style:{margin:0,paddingLeft:"1.2rem",fontSize:"0.85rem",color:"#666",lineHeight:1.6},children:A1.map((p,h)=>r.jsx("li",{children:p},h))})})]})]}),r.jsx(h0,{children:"Alle Preise verstehen sich zzgl. MwSt."})]})}),r.jsx(s0,{id:"spieltag",children:r.jsxs(Tl,{children:[r.jsxs(Rl,{children:[r.jsx(_s,{children:"Spieltag & Medien"}),r.jsx(Es,{children:"Einstieg ins Sponsoring ab 150 € netto, perfekt zum Ausprobieren."})]}),r.jsx("div",{style:{display:"grid",gridTemplateColumns:"repeat(auto-fit, minmax(280px, 1fr))",gap:"1.25rem",maxWidth:900,margin:"0 auto"},children:Q5.map(p=>r.jsxs(nw,{children:[r.jsx(aw,{children:p.name}),r.jsx(lw,{children:p.preis}),r.jsx(rw,{children:p.beschreibung}),p.hinweis&&r.jsx(iw,{children:p.hinweis})]},p.name))})]})}),r.jsx(Bs,{children:r.jsx(Tl,{children:r.jsx(sw,{children:r.jsxs(ow,{children:[r.jsxs(cw,{children:[r.jsx(uw,{src:"/verbandsliga-karte.jpg",alt:"Verbandsliga Südbaden - Spielorte und Reichweite"}),r.jsx(fw,{children:"Saison 26/27"})]}),r.jsxs(dw,{children:[r.jsx(hw,{children:"Ihre Reichweite wächst mit"}),r.jsx(mw,{children:"Ob Buswerbung, Trikot oder Bande: Ihre Marke wird in der gesamten Region sichtbar. Als frischer Meister und Aufsteiger spielen wir ab Saison 26/27 Verbandsliga, in über 15 Städten zwischen Freiburg und Konstanz."}),r.jsxs(gw,{children:[r.jsx("strong",{children:"Was das für Sie bedeutet:"})," Mehr Gegner, größere Städte, mehr Medienaufmerksamkeit. Ihre Investition wächst automatisch mit, ohne Mehrkosten."]})]})]})})})}),r.jsx(pw,{children:r.jsxs(Tl,{children:[r.jsxs(Rl,{children:[r.jsx(bw,{children:"CLUB 500"}),r.jsx(xw,{children:"Gemeinsam den Fußball beim SC Konstanz-Wollmatingen stärken. Werden Sie Mitglied und fördern Sie unseren Jugend- und Amateurfußball."})]}),r.jsxs(yw,{children:[r.jsx(Qu,{children:"Spendenbescheinigung"}),r.jsx(Qu,{children:"Name auf der Spendentafel"}),r.jsx(Qu,{children:"Jugend- & Amateurfußball"})]}),r.jsx(Rl,{children:r.jsx(vw,{to:"/sponsoring/club-500",children:"Jetzt Mitglied werden →"})})]})}),r.jsx(fj,{headline:"Kontakt aufnehmen",description:"Kurze Anfrage genügt, wir erstellen ein passendes Angebot mit klaren Leistungen.",contactInfos:[{icon:"📧",title:"E-Mail",content:vt.email,isEmail:!0},{icon:"📍",title:"Adresse",content:vt.vollAdresse}]}),r.jsx(eo,{})]})}function jw(){return wp(),!0}const ww=op`
+`);return`mailto:${_j}?subject=${h}&body=${g}`};return r.jsxs(r.Fragment,{children:[r.jsxs(Ej,{children:[u.map((p,h)=>r.jsx(zj,{$bg:p,$active:h===c},h)),r.jsx(Cj,{}),r.jsxs(Aj,{children:[r.jsx(Tj,{children:"Sponsoring, das messbar wirkt"}),r.jsxs(Rj,{children:[r.jsx("strong",{children:"1,3 Millionen Social-Media-Views"})," in dieser Saison, 100 % organisch, ohne Werbebudget. Aktuell erreichen wir"," ",r.jsx("strong",{children:"310.000 Views pro Monat"})," und Ihre Marke ist in jedem Spielbericht dabei."]}),r.jsx(Mj,{children:a.map(p=>r.jsxs(kj,{children:[r.jsx(Dj,{children:p.value}),r.jsx(Oj,{children:p.label})]},p.label))}),r.jsxs(Bj,{children:[r.jsx(o0,{href:"#kontakt",$primary:!0,onClick:p=>{p.preventDefault(),d("kontakt")},children:"Jetzt Kontakt aufnehmen"}),r.jsx(o0,{href:"#angebot",onClick:p=>{p.preventDefault(),d("angebot")},children:"Angebot ansehen"})]})]})]}),r.jsx(Uj,{children:r.jsxs(Lj,{children:[r.jsx(c0,{}),r.jsxs(Hj,{children:[Vu.text," ",r.jsx("strong",{children:Vu.highlight})," ",Vu.suffix]}),r.jsx(c0,{})]})}),r.jsx(Bs,{children:r.jsxs(Tl,{children:[r.jsxs(Rl,{children:[r.jsx(_s,{children:"Unsere Partner"}),r.jsx(Es,{children:"Starke Marken vertrauen auf unsere Reichweite. Werden Sie Teil dieser Erfolgsgeschichte."})]}),r.jsx(lj,{})]})}),r.jsx(s0,{id:"angebot",children:r.jsxs(Tl,{children:[r.jsxs(Rl,{children:[r.jsx(_s,{children:"Exklusiv-Partnerschaften"}),r.jsx(Es,{children:"Vier einzigartige Pakete, jeweils nur 1× verfügbar. Alle Partner erscheinen in jedem Spielvor- und Nachbericht."})]}),r.jsx(Gj,{children:q5.map(p=>r.jsxs(Yj,{$vergeben:p.vergeben,children:[r.jsxs($j,{children:[r.jsxs("div",{children:[r.jsx(Vj,{children:p.name}),r.jsxs(qj,{children:[p.preis," / Saison"]})]}),r.jsx(Zj,{$vergeben:p.vergeben,children:p.vergeben?"Vergeben":"Verfügbar"})]}),r.jsx(Kj,{children:p.topFeature}),p.vergeben&&p.sponsorLogo?r.jsxs(Fj,{children:[r.jsx(Wj,{src:p.sponsorLogo,alt:p.sponsorName||""}),r.jsx(Jj,{children:p.sponsorName})]}):r.jsxs(Qj,{children:[p.trikot!=="–"&&r.jsxs(Ml,{children:["Trikot: ",p.trikot]}),p.id==="stadionname"&&r.jsx(Ml,{children:"Stadion trägt Ihren Namen"}),r.jsxs(Ml,{children:["Bande: ",p.bande]}),r.jsxs(Ml,{children:["Banner: ",p.banner]}),r.jsxs(Ml,{children:["Magazin: ",p.magazin]}),r.jsxs(Ml,{children:[p.saisonkarten," Saisonkarten"]})]}),r.jsx(Xj,{children:"Logo in allen Spielberichten · Stadionansage · Logo Website"}),r.jsx(Pj,{href:p.vergeben?void 0:y(p.name),$vergeben:p.vergeben,children:p.vergeben?"Vergeben":"Jetzt anfragen"})]},p.id))}),r.jsx(h0,{children:"Alle Preise verstehen sich zzgl. MwSt."})]})}),r.jsx(Bs,{id:"werbeflaechen",children:r.jsxs(Tl,{children:[r.jsxs(Rl,{children:[r.jsx(_s,{children:"Werbeflächen"}),r.jsx(Es,{children:"Banden, Banner und Buswerbung, einzeln buchbar zu festen Preisen."})]}),r.jsxs("div",{style:{display:"grid",gridTemplateColumns:"1fr",gap:"2rem",maxWidth:900,margin:"0 auto"},children:[r.jsxs(f0,{children:[r.jsx("div",{style:{padding:"1.25rem 1.25rem 0"},children:r.jsx(d0,{children:"Banden & Banner"})}),r.jsx("div",{style:{overflowX:"auto"},children:r.jsxs(u0,{children:[r.jsx("thead",{children:r.jsxs("tr",{children:[r.jsx("th",{children:"Typ"}),r.jsx("th",{children:"Grösse"}),r.jsx("th",{children:"Preis / Saison"}),r.jsx("th",{children:"Verfügbar"})]})}),r.jsx("tbody",{children:K5.map(p=>r.jsxs("tr",{children:[r.jsx("td",{style:{fontWeight:600},children:p.name}),r.jsx("td",{children:p.groesse}),r.jsx("td",{style:{fontWeight:700,color:"#e10073"},children:p.preis}),r.jsx("td",{children:r.jsxs(Ij,{children:[p.slots," Plätze"]})})]},p.name))})]})})]}),r.jsxs(f0,{children:[r.jsxs("div",{style:{padding:"1.25rem 1.25rem 0"},children:[r.jsx(d0,{children:"Buswerbung"}),r.jsx("p",{style:{fontSize:"0.9rem",color:"#666",margin:"0 0 0.75rem",lineHeight:1.5},children:"Jede Woche unterwegs in Konstanz, im Landkreis und bei Auswärtsspielen."})]}),r.jsx("img",{src:"/vereinsbus.png",alt:"Vereinsbus SCKW",style:{width:"100%",display:"block"}}),r.jsx("div",{style:{overflowX:"auto"},children:r.jsxs(u0,{children:[r.jsx("thead",{children:r.jsxs("tr",{children:[r.jsx("th",{children:"Fläche"}),r.jsx("th",{children:"Grösse"}),r.jsx("th",{children:"Preis / Jahr"})]})}),r.jsx("tbody",{children:[...z1,...C1].map(p=>r.jsxs("tr",{children:[r.jsx("td",{style:{fontWeight:600},children:p.position}),r.jsx("td",{children:p.groesse}),r.jsx("td",{style:{fontWeight:700,color:"#e10073"},children:p.preis})]},p.position))})]})}),r.jsx("div",{style:{padding:"0.75rem 1.25rem 1.25rem"},children:r.jsx("ul",{style:{margin:0,paddingLeft:"1.2rem",fontSize:"0.85rem",color:"#666",lineHeight:1.6},children:A1.map((p,h)=>r.jsx("li",{children:p},h))})})]})]}),r.jsx(h0,{children:"Alle Preise verstehen sich zzgl. MwSt."})]})}),r.jsx(s0,{id:"spieltag",children:r.jsxs(Tl,{children:[r.jsxs(Rl,{children:[r.jsx(_s,{children:"Spieltag & Medien"}),r.jsx(Es,{children:"Einstieg ins Sponsoring ab 150 € netto, perfekt zum Ausprobieren."})]}),r.jsx("div",{style:{display:"grid",gridTemplateColumns:"repeat(auto-fit, minmax(280px, 1fr))",gap:"1.25rem",maxWidth:900,margin:"0 auto"},children:Q5.map(p=>r.jsxs(ew,{children:[r.jsx(tw,{children:p.name}),r.jsx(nw,{children:p.preis}),r.jsx(aw,{children:p.beschreibung}),p.hinweis&&r.jsx(lw,{children:p.hinweis})]},p.name))})]})}),r.jsx(Bs,{children:r.jsx(Tl,{children:r.jsx(rw,{children:r.jsxs(iw,{children:[r.jsxs(sw,{children:[r.jsx(ow,{src:"/verbandsliga-karte.jpg",alt:"Verbandsliga Südbaden - Spielorte und Reichweite"}),r.jsx(cw,{children:"Saison 26/27"})]}),r.jsxs(uw,{children:[r.jsx(fw,{children:"Ihre Reichweite wächst mit"}),r.jsx(dw,{children:"Ob Buswerbung, Trikot oder Bande: Ihre Marke wird in der gesamten Region sichtbar. Als frischer Meister und Aufsteiger spielen wir ab Saison 26/27 Verbandsliga, in über 15 Städten zwischen Freiburg und Konstanz."}),r.jsxs(hw,{children:[r.jsx("strong",{children:"Was das für Sie bedeutet:"})," Mehr Gegner, größere Städte, mehr Medienaufmerksamkeit. Ihre Investition wächst automatisch mit, ohne Mehrkosten."]})]})]})})})}),r.jsx(mw,{children:r.jsxs(Tl,{children:[r.jsxs(Rl,{children:[r.jsx(gw,{children:"CLUB 500"}),r.jsx(pw,{children:"Gemeinsam den Fußball beim SC Konstanz-Wollmatingen stärken. Werden Sie Mitglied und fördern Sie unseren Jugend- und Amateurfußball."})]}),r.jsxs(bw,{children:[r.jsx(Qu,{children:"Spendenbescheinigung"}),r.jsx(Qu,{children:"Name auf der Spendentafel"}),r.jsx(Qu,{children:"Jugend- & Amateurfußball"})]}),r.jsx(Rl,{children:r.jsx(xw,{to:"/sponsoring/club-500",children:"Jetzt Mitglied werden →"})})]})}),r.jsx(cj,{headline:"Kontakt aufnehmen",description:"Kurze Anfrage genügt, wir erstellen ein passendes Angebot mit klaren Leistungen.",contactInfos:[{icon:"📧",title:"E-Mail",content:vt.email,isEmail:!0},{icon:"📍",title:"Adresse",content:vt.vollAdresse}]}),r.jsx(eo,{})]})}function vw(){return wp(),!0}const Sw=op`
   @media print {
     @page { size: A4 portrait; margin: 0; }
 
@@ -1769,7 +1758,7 @@ Herzliche Grüße
     opacity: 0.9;
     transform: translateY(-1px);
   }
-`,_w=v.div`
+`,jw=v.div`
   background: linear-gradient(135deg, #fef3c7, #fde68a);
   border-left: 4px solid #f59e0b;
   padding: 0.75rem 1.5rem;
@@ -1779,7 +1768,7 @@ Herzliche Grüße
   @media print {
     display: none !important;
   }
-`,Ew=v.div`
+`,ww=v.div`
   padding: 2rem;
   background: #e5e7eb;
   min-height: 100vh;
@@ -1930,7 +1919,7 @@ Herzliche Grüße
   border-radius: 2mm;
   min-height: ${a=>(a.$lines||1)*8}mm;
   background: #fafafa;
-`,zw=v.div`
+`,_w=v.div`
   font-size: 7pt;
   color: #999;
   font-style: italic;
@@ -1947,34 +1936,34 @@ Herzliche Grüße
   margin-top: 3mm;
 `,Un=v.div`
   text-align: ${a=>a.$right?"right":a.$center?"center":"left"};
-`;function ha(){return r.jsxs(zw,{children:["Die Preise verstehen sich excl. MwSt. und ohne Druckvorlagen.",r.jsx("br",{}),"Die Druckvorlagen werden von den Inserenten zur Verfügung gestellt."]})}function cn(){return r.jsxs(Nf,{children:[r.jsxs(Un,{children:[r.jsx("strong",{children:"SC Konstanz-Wollmatingen e.V."}),r.jsx("br",{}),"Schleyerweg 5",r.jsx("br",{}),"78467 Konstanz"]}),r.jsxs(Un,{$center:!0,children:[vt.email,r.jsx("br",{}),"partner.sckw.de"]}),r.jsxs(Un,{$right:!0,children:["Sparkasse Bodensee",r.jsx("br",{}),"IBAN: DE12 6905 0001 0000 0228 06",r.jsx("br",{}),"BIC: SOLADES1KNZ"]})]})}const b0=ft("herren/herren_0"),Xu=ft("herren/herren_6"),x0=ft("herren/herren_1"),Cw=ft("herren/herren_14"),$s=v.img`
+`;function ha(){return r.jsxs(_w,{children:["Die Preise verstehen sich excl. MwSt. und ohne Druckvorlagen.",r.jsx("br",{}),"Die Druckvorlagen werden von den Inserenten zur Verfügung gestellt."]})}function cn(){return r.jsxs(Nf,{children:[r.jsxs(Un,{children:[r.jsx("strong",{children:"SC Konstanz-Wollmatingen e.V."}),r.jsx("br",{}),"Schleyerweg 5",r.jsx("br",{}),"78467 Konstanz"]}),r.jsxs(Un,{$center:!0,children:[vt.email,r.jsx("br",{}),"partner.sckw.de"]}),r.jsxs(Un,{$right:!0,children:["Sparkasse Bodensee",r.jsx("br",{}),"IBAN: DE12 6905 0001 0000 0228 06",r.jsx("br",{}),"BIC: SOLADES1KNZ"]})]})}const b0=ft("herren/herren_0"),Xu=ft("herren/herren_6"),x0=ft("herren/herren_1"),Ew=ft("herren/herren_14"),$s=v.img`
   width: 100%;
   border-radius: 3mm;
   object-fit: cover;
-`;function Aw(){return r.jsx(_t,{children:r.jsxs("div",{style:{background:"linear-gradient(150deg, #0a1628 0%, #0e2240 15%, #1a3a6a 35%, #2d5a87 50%, #6b1d4a 65%, #a81e45 80%, #c41e3a 90%, #e10073 100%)",height:"100%",minHeight:"297mm",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",textAlign:"center",color:"#fff",position:"relative",overflow:"hidden"},children:[r.jsx("div",{style:{position:"absolute",top:"-60mm",right:"-50mm",width:"200mm",height:"200mm",borderRadius:"50%",background:"radial-gradient(circle, rgba(74,144,226,0.12) 0%, transparent 70%)"}}),r.jsx("div",{style:{position:"absolute",bottom:"-40mm",left:"-40mm",width:"180mm",height:"180mm",borderRadius:"50%",background:"radial-gradient(circle, rgba(196,30,58,0.10) 0%, transparent 70%)"}}),r.jsx("div",{style:{position:"absolute",top:"40mm",left:"-20mm",width:"140mm",height:"140mm",borderRadius:"50%",background:"radial-gradient(circle, rgba(255,255,255,0.03) 0%, transparent 60%)"}}),r.jsx("img",{src:"/sckw-logo-500club.png",alt:"SC Konstanz-Wollmatingen",style:{height:"70mm",objectFit:"contain",position:"relative",zIndex:1,filter:"drop-shadow(0 3mm 10mm rgba(0,0,0,0.35))"}}),r.jsx("h1",{style:{fontSize:"40pt",fontWeight:900,margin:"8mm 0 6mm",letterSpacing:"-0.03em",position:"relative",zIndex:1,textShadow:"0 2px 12px rgba(0,0,0,0.4)"},children:"SPONSORING"}),r.jsxs("p",{style:{fontSize:"15pt",fontWeight:400,opacity:.95,maxWidth:"140mm",lineHeight:1.5,margin:"0 0 12mm",position:"relative",zIndex:1,textShadow:"0 1px 8px rgba(0,0,0,0.3)"},children:["Werden Sie Teil unserer Erfolgsgeschichte.",r.jsx("br",{}),"Sichtbarkeit, die wirkt."]}),r.jsx("div",{style:{display:"grid",gridTemplateColumns:"repeat(2, 1fr)",gap:"5mm",position:"relative",zIndex:1},children:Bf.slice(0,2).map(a=>r.jsxs("div",{style:{background:"rgba(0,0,0,0.35)",borderRadius:"4mm",padding:"5mm 10mm",backdropFilter:"blur(12px)",border:"1px solid rgba(255,255,255,0.15)"},children:[r.jsx("div",{style:{fontSize:"24pt",fontWeight:900},children:a.value}),r.jsx("div",{style:{fontSize:"7pt",textTransform:"uppercase",letterSpacing:"0.06em",opacity:.9},children:a.label})]},a.label))}),r.jsx("div",{style:{position:"absolute",bottom:"12mm",fontSize:"9pt",opacity:.8,textShadow:"0 1px 4px rgba(0,0,0,0.5)"},children:"Saison 2025/26 · partner.sckw.de"})]})})}function Tw(){return r.jsxs(_t,{children:[r.jsx(Ft,{}),r.jsxs(Wt,{children:[r.jsx(Jt,{children:r.jsx(It,{src:"/logo.svg"})}),r.jsx(en,{children:"WARUM SCKW?"}),r.jsx(wt,{children:"Ihre Investition in lokale Sichtbarkeit – messbar, nachhaltig, emotional."}),r.jsx("div",{style:{display:"grid",gridTemplateColumns:"repeat(4, 1fr)",gap:"3mm",margin:"4mm 0"},children:Bf.map(a=>r.jsxs("div",{style:{background:"linear-gradient(135deg, #1a365d, #2d5a87)",borderRadius:"3mm",padding:"4mm 3mm",textAlign:"center",color:"#fff"},children:[r.jsx("div",{style:{fontSize:"16pt",fontWeight:900},children:a.value}),r.jsx("div",{style:{fontSize:"6.5pt",textTransform:"uppercase",opacity:.9},children:a.label})]},a.label))}),r.jsx(mt,{children:"Was Sie bei uns erreichen"}),r.jsxs(St,{children:[r.jsx(I,{children:"Wiederholte Sichtkontakte bei Ihrer Zielgruppe in Konstanz & Region"}),r.jsx(I,{children:"Emotionale Bindung durch Sport – Ihre Marke wird Teil des Erlebnisses"}),r.jsx(I,{children:"Doppelte Reichweite: Live im Stadion + Digital auf Social Media"}),r.jsx(I,{children:"Messbare Ergebnisse: Wir liefern Reichweiten-Reports auf Wunsch"})]}),r.jsx(mt,{children:"Der Verein auf einen Blick"}),r.jsxs("div",{style:{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"4mm"},children:[r.jsxs("div",{children:[r.jsxs(Oe,{children:[r.jsx("strong",{children:"Gegründet:"})," 1912"]}),r.jsxs(Oe,{children:[r.jsx("strong",{children:"Mitglieder:"})," 500+"]}),r.jsxs(Oe,{children:[r.jsx("strong",{children:"Mannschaften:"})," Herren, Damen, Jugend"]})]}),r.jsxs("div",{children:[r.jsxs(Oe,{children:[r.jsx("strong",{children:"Heimspiele:"})," 15+ pro Saison"]}),r.jsxs(Oe,{children:[r.jsx("strong",{children:"Zuschauer:"})," Ø 200 pro Spiel"]}),r.jsxs(Oe,{children:[r.jsx("strong",{children:"Instagram:"})," 2.500+ Follower"]})]})]}),b0&&r.jsx($s,{src:b0,alt:"Team",style:{height:"55mm",marginTop:"4mm"}}),r.jsx(cn,{})]})]})}function Rw({showPrices:a}){return r.jsxs(_t,{children:[r.jsx(Ft,{}),r.jsxs(Wt,{children:[r.jsx(Jt,{children:r.jsx(It,{src:"/logo.svg"})}),r.jsx(en,{children:"HAUPTSPONSOR"}),r.jsx(wt,{children:"Der Hauptsponsor ist automatisch Mitglied im Business Club und erhält weitere Leistungen zur optimalen Präsentation des Unternehmens."}),r.jsxs(St,{children:[r.jsx(I,{children:"Trikotwerbung auf der Brust"}),r.jsx(I,{children:"Business Club Mitgliedschaft"}),r.jsx(I,{children:"5 Meter Bandenwerbung (Herstellkosten übernimmt der Verein)"}),r.jsx(I,{children:"1/1 seitiges Inserat im SC Magazin"}),r.jsx(I,{children:"10 Saisonkarten"}),r.jsx(I,{children:"Werbeauftritte nach Absprache"}),r.jsx(I,{children:"Nennung (Logo) auf dem Briefpapier des SCKW"}),r.jsx(I,{children:"Lautsprecherdurchsage während dem Spiel und in der Halbzeit"}),r.jsx(I,{children:"Logo / Namenszug auf den Fahrzeugen"}),r.jsx(I,{children:"Logo / Link auf der Vereinshomepage"}),r.jsx(I,{children:"weitere Möglichkeiten nach Absprache"})]}),r.jsxs(Ha,{$hidden:!a,children:["Beitrag: ",r.jsx("strong",{children:"ab 15.000€ pro Saison"})]}),r.jsx(ha,{}),r.jsx(cn,{})]})]})}function Mw({showPrices:a}){return r.jsxs(_t,{children:[r.jsx(Ft,{}),r.jsxs(Wt,{children:[r.jsx(Jt,{children:r.jsx(It,{src:"/logo.svg"})}),r.jsx(en,{children:"CO-SPONSOR"}),r.jsx(wt,{children:"Der Co-Sponsor ist automatisch Mitglied im Business Club und erhält weitere Leistungen zur optimalen Präsentation des Unternehmens."}),r.jsxs(St,{children:[r.jsx(I,{children:"Werbung auf den Trainingsanzügen"}),r.jsx(I,{children:"Business Club Mitgliedschaft"}),r.jsx(I,{children:"5 Meter Bandenwerbung (Herstellkosten und die Montage trägt der Verein)"}),r.jsx(I,{children:"1/2 seitiges Inserat im SC Magazin"}),r.jsx(I,{children:"5 Saisonkarten"}),r.jsx(I,{children:"Werbeauftritte nach Absprache"}),r.jsx(I,{children:"Nennung (Logo) auf dem Briefpapier des SCKW"}),r.jsx(I,{children:"Lautsprecherdurchsage während dem Spiel und in der Halbzeit"}),r.jsx(I,{children:"Logo / Namenszug auf den Fahrzeugen"}),r.jsx(I,{children:"Logo / Link auf der Vereinshomepage"}),r.jsx(I,{children:"weitere Möglichkeiten nach Absprache"})]}),r.jsxs(Ha,{$hidden:!a,children:["Beitrag: ",r.jsx("strong",{children:"ab 9.500€ pro Saison"})]}),r.jsx(ha,{}),r.jsx(cn,{})]})]})}function kw({showPrices:a}){return r.jsxs(_t,{children:[r.jsx(Ft,{}),r.jsxs(Wt,{children:[r.jsx(Jt,{children:r.jsx(It,{src:"/logo.svg"})}),r.jsx(en,{children:"SILBER-PARTNER"}),r.jsx(wt,{children:"Lokale Sichtbarkeit mit starkem Preis-Leistungs-Verhältnis – ideal für mittelständische Unternehmen in der Region."}),r.jsxs(St,{children:[r.jsx(I,{children:"1 Bande (5×2 m) am Gelände"}),r.jsx(I,{children:"Social Media: 12 dedizierte Posts/Jahr + 18 Stories/Jahr"}),r.jsx(I,{children:"Werbeplane am Gelände"}),r.jsx(I,{children:"Vereinsplakate + Eventsichtbarkeit"}),r.jsx(I,{children:"Website: Logo auf Startseite"})]}),r.jsxs(Ha,{$hidden:!a,children:["Beitrag: ",r.jsx("strong",{children:"ab 5.000€ pro Saison"})]}),r.jsx(mt,{style:{marginTop:"8mm"},children:"COMMUNITY-PARTNER"}),r.jsx(wt,{children:"Perfekter Einstieg für lokale Betriebe – Gastronomie, Handwerk, Einzelhandel."}),r.jsxs(St,{children:[r.jsx(I,{children:"1 Bande (3×1 m, 6 Monate sichtbar)"}),r.jsx(I,{children:"Website: Logo auf der Startseite"}),r.jsx(I,{children:"Social Media: 1 Willkommens-Post + 3 weitere Posts/Jahr + 8 Stories/Jahr"}),r.jsx(I,{children:"Optional: Gemeinsame Events (z.B. CL-Abende) mit dem Team in Ihrer Gastronomie"})]}),r.jsxs(Ha,{$hidden:!a,children:["Beitrag: ",r.jsx("strong",{children:"ab 2.000€ pro Saison"})]}),r.jsx(ha,{}),r.jsx(cn,{})]})]})}function Dw({showPrices:a}){return r.jsxs(_t,{children:[r.jsx(Ft,{}),r.jsxs(Wt,{children:[r.jsx(Jt,{children:r.jsx(It,{src:"/logo.svg"})}),r.jsx(en,{children:"BANDENWERBUNG"}),r.jsx(wt,{children:"Fürstenberg-Sportplatz des SC Konstanz-Wollmatingen"}),r.jsx(St,{children:r.jsx(I,{children:"Montage, Gestaltung & Druck übernimmt der Verein auf Wunsch"})}),r.jsxs(Oe,{children:[r.jsx("strong",{children:"Platzierung:"}),r.jsx("br",{}),"Gemäss Besprechung und Belegungsplan.",r.jsx("br",{}),"Die Banden sind unterteilt in einer Größe von 100 x 90 cm.",r.jsx("br",{}),r.jsx("strong",{children:"Mindestabnahmemenge: 2 Meter"})]}),r.jsxs(Ha,{$hidden:!a,children:["Beitrag: ",r.jsx("strong",{children:"ab 800€ pro Saison"})]}),x0&&r.jsx($s,{src:x0,alt:"Banden",style:{height:"60mm",marginTop:"4mm"}}),r.jsx(ha,{}),r.jsx(cn,{})]})]})}function Ow({showPrices:a}){return r.jsxs(_t,{children:[r.jsx(Ft,{}),r.jsxs(Wt,{children:[r.jsx(Jt,{children:r.jsx(It,{src:"/logo.svg"})}),r.jsx(en,{children:'WERBUNG IM „HEIMSPIEL"'}),r.jsx(wt,{children:"Stadionmagazin des SC Konstanz-Wollmatingen"}),r.jsxs(St,{children:[r.jsx(I,{children:"15 Ausgaben pro Saison"}),r.jsx(I,{children:"ca. 100 Exemplare pro Heimspiel"}),r.jsx(I,{children:"Digitale Version (Social Media & Webseite)"}),r.jsx(I,{children:"1.000 - 1.500 Online Zugriffe je Auflage"}),r.jsx(I,{children:"DIN A4 Stadionmagazin"}),r.jsx(I,{children:"wird ausgelegt in diversen Arztpraxen"})]}),a&&r.jsx("div",{style:{display:"grid",gridTemplateColumns:"repeat(3, 1fr)",gap:"4mm",margin:"8mm 0"},children:[{size:"1 SEITE",price:"1.000€",dim:"DIN A4 (297 × 210 mm)"},{size:"1/2 SEITE",price:"500€",dim:"DIN A5 (148 × 210 mm)"},{size:"1/4 SEITE",price:"250€",dim:"DIN A6 (105 × 148 mm)"}].map(s=>r.jsxs("div",{style:{border:"2px solid #1a365d",borderRadius:"3mm",padding:"5mm",textAlign:"center"},children:[r.jsx("div",{style:{fontSize:"14pt",fontWeight:800},children:s.size}),r.jsx("div",{style:{fontSize:"9pt",color:"#666"},children:"FARBE"}),r.jsx("div",{style:{fontSize:"18pt",fontWeight:900,color:"#1a365d",margin:"2mm 0"},children:s.price})]},s.size))}),a&&r.jsxs("div",{style:{fontSize:"10pt",lineHeight:1.7},children:[r.jsx("strong",{children:"Maße"}),r.jsx("br",{}),"1 Seite = DIN A4 (297 x 210 mm)",r.jsx("br",{}),"1/2 Seite = DIN A5 (148 x 210 mm)",r.jsx("br",{}),"1/4 Seite = DIN A6 (105 x 148 mm)"]}),r.jsx(ha,{}),r.jsx(cn,{})]})]})}function Bw({showPrices:a}){return r.jsxs(_t,{children:[r.jsx(Ft,{}),r.jsxs(Wt,{children:[r.jsx(Jt,{children:r.jsx(It,{src:"/logo.svg"})}),r.jsx(en,{children:"SPIELTAG-SPONSORING"}),r.jsx(wt,{children:"Das Zielpublikum sind die ZuschauerInnen bei den Heimspielen der 1. Mannschaft. Perfekter Einstieg ins Sponsoring – ab einem einzelnen Spiel möglich."}),r.jsx(mt,{children:"Ballspende"}),r.jsx(Oe,{style:{fontStyle:"italic"},children:"Ihr Unternehmen sponsert den Spielball. Bei jedem Tor, bei der Mannschaftsaufstellung und in der Halbzeitpause wird Ihr Name genannt. Exklusiv: nur ein Ballsponsor pro Spiel."}),r.jsxs(St,{children:[r.jsx(I,{children:"Stadiondurchsage vor dem Spiel + bei jedem Tor"}),r.jsx(I,{children:"Namensnennung in der Halbzeitpause"}),r.jsx(I,{children:"1 Instagram-Story vor dem Spiel mit Logo"}),r.jsx(I,{children:"Logo/Name auf Website + Erwähnung im SC Magazin"})]}),r.jsxs(Ha,{$hidden:!a,children:["Beitrag: ",r.jsx("strong",{children:"150€ pro Spiel"})," · 5er-Pack:"," ",r.jsx("strong",{children:"500€"})," (statt 750€)"]}),r.jsx(mt,{children:"Spielpräsentator"}),r.jsx(Oe,{style:{fontStyle:"italic"},children:"Die Mannschaftsaufstellung und alle Auswechslungen werden im Namen Ihres Unternehmens präsentiert – 15-20 Nennungen pro Spiel. Exklusiv: nur ein Präsentator pro Spiel. Preis variiert je nach Spiel (z.B. Derby)."}),r.jsxs(St,{children:[r.jsx(I,{children:"Alle Aufstellungen + Auswechslungen im Firmennamen"}),r.jsx(I,{children:"Namentliche Erwähnung im SC Magazin"}),r.jsx(I,{children:"Social Media Erwähnung am Spieltag"})]}),r.jsxs(Ha,{$hidden:!a,children:["Beitrag: ",r.jsx("strong",{children:"ab 250€ pro Spiel"})]}),Xu&&r.jsxs("div",{style:{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"3mm",marginTop:"3mm"},children:[r.jsx($s,{src:Xu,alt:"Action",style:{height:"48mm"}}),r.jsx($s,{src:Cw||Xu,alt:"Jubel",style:{height:"48mm"}})]}),r.jsx(ha,{}),r.jsx(cn,{})]})]})}function Nw({showPrices:a}){return r.jsxs(_t,{children:[r.jsx(Ft,{}),r.jsxs(Wt,{children:[r.jsx(Jt,{children:r.jsx(It,{src:"/logo.svg"})}),r.jsx(en,{children:"BUSWERBUNG"}),r.jsx(wt,{children:"Unser Vereinsbus ist jede Woche in Konstanz, im Landkreis und bei Auswärtsspielen unterwegs – mobile Werbung für Ihr Unternehmen."}),r.jsx("img",{src:"/vereinsbus.png",alt:"Vereinsbus SC Konstanz-Wollmatingen",style:{width:"100%",borderRadius:"3mm",margin:"3mm 0 4mm",display:"block"}}),r.jsxs("table",{style:{width:"100%",borderCollapse:"collapse",fontSize:"10pt",margin:"4mm 0"},children:[r.jsx("thead",{children:r.jsxs("tr",{children:[r.jsx("th",{style:{background:"#1a365d",color:"#fff",padding:"2.5mm 3mm",textAlign:"left",fontWeight:700},children:"Fläche"}),r.jsx("th",{style:{background:"#1a365d",color:"#fff",padding:"2.5mm 3mm",textAlign:"left",fontWeight:700},children:"Größe (ca.)"}),a&&r.jsx("th",{style:{background:"#1a365d",color:"#fff",padding:"2.5mm 3mm",textAlign:"left",fontWeight:700},children:"Preis/Jahr"})]})}),r.jsx("tbody",{children:[...z1,...C1].map((s,u)=>r.jsxs("tr",{style:{background:u%2===1?"#f8fafc":"transparent"},children:[r.jsx("td",{style:{padding:"2mm 3mm",borderBottom:"1px solid #e5e7eb"},children:s.position}),r.jsx("td",{style:{padding:"2mm 3mm",borderBottom:"1px solid #e5e7eb"},children:s.groesse}),a&&r.jsx("td",{style:{padding:"2mm 3mm",borderBottom:"1px solid #e5e7eb",fontWeight:700},children:s.preis})]},s.position))})]}),r.jsx(mt,{children:"Zusatzoptionen"}),r.jsx(St,{children:A1.map((s,u)=>r.jsx(I,{children:s},u))}),r.jsx(ha,{}),r.jsx(cn,{})]})]})}function Uw({showPrices:a}){return r.jsxs(_t,{children:[r.jsx(Ft,{}),r.jsxs(Wt,{children:[r.jsx(Jt,{children:r.jsx(It,{src:"/logo.svg"})}),r.jsx(en,{children:"PRÄMIEN-MODELL"}),r.jsx(wt,{children:"Erfolgsbasiertes Sponsoring – Sie zahlen nur bei sportlichem Erfolg. Perfekt für Sponsoren, die mit dem Team mitfiebern wollen."}),a&&r.jsxs("table",{style:{width:"100%",borderCollapse:"collapse",fontSize:"10pt",margin:"4mm 0"},children:[r.jsx("thead",{children:r.jsxs("tr",{children:[r.jsx("th",{style:{background:"#1a365d",color:"#fff",padding:"2.5mm 3mm",textAlign:"left"},children:"Leistung"}),r.jsx("th",{style:{background:"#1a365d",color:"#fff",padding:"2.5mm 3mm",textAlign:"left"},children:"Starter"}),r.jsx("th",{style:{background:"#1a365d",color:"#fff",padding:"2.5mm 3mm",textAlign:"left"},children:"Premium"}),r.jsx("th",{style:{background:"#1a365d",color:"#fff",padding:"2.5mm 3mm",textAlign:"left"},children:"Kombi"})]})}),r.jsxs("tbody",{children:[X5.map((s,u)=>r.jsxs("tr",{style:{background:u%2===1?"#f8fafc":"transparent"},children:[r.jsx("td",{style:{padding:"2mm 3mm",borderBottom:"1px solid #e5e7eb",fontWeight:600},children:s.label}),r.jsx("td",{style:{padding:"2mm 3mm",borderBottom:"1px solid #e5e7eb"},children:s.starter}),r.jsx("td",{style:{padding:"2mm 3mm",borderBottom:"1px solid #e5e7eb"},children:s.premium}),r.jsx("td",{style:{padding:"2mm 3mm",borderBottom:"1px solid #e5e7eb"},children:s.kombi})]},s.label)),r.jsxs("tr",{style:{background:"#f0f9ff"},children:[r.jsx("td",{style:{padding:"2mm 3mm",fontWeight:700},children:"Ø Kosten/Saison"}),r.jsx("td",{style:{padding:"2mm 3mm",fontWeight:700},children:qu.starter}),r.jsx("td",{style:{padding:"2mm 3mm",fontWeight:700},children:qu.premium}),r.jsx("td",{style:{padding:"2mm 3mm",fontWeight:700},children:qu.kombi})]})]})]}),r.jsx(mt,{children:"So funktioniert's"}),r.jsxs(St,{children:[r.jsx(I,{children:"Sie wählen ein Modell (Starter, Premium oder Kombi)"}),r.jsx(I,{children:"Bei sportlichem Erfolg (Tor, Sieg, Zu-Null) wird die vereinbarte Prämie fällig"}),r.jsx(I,{children:"Stadionansage + Social Media Erwähnung bei jedem Erfolg"}),r.jsx(I,{children:"Niedrig-Risiko: Keine Erfolge = keine Kosten (Starter/Premium)"})]}),r.jsx(mt,{children:"Inkludierte Leistungen"}),r.jsxs("div",{style:{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"4mm"},children:[r.jsxs("div",{children:[r.jsx(Oe,{children:r.jsx("strong",{children:"Starter:"})}),r.jsxs(St,{children:[r.jsx(I,{children:"Stadionansage bei Erfolg"}),r.jsx(I,{children:"Logo auf Website"})]})]}),r.jsxs("div",{children:[r.jsx(Oe,{children:r.jsx("strong",{children:"Premium:"})}),r.jsxs(St,{children:[r.jsx(I,{children:"+ Social Media Post bei Erfolg"}),r.jsx(I,{children:"+ 1 Bande (3×1m) inklusive"})]})]})]}),r.jsx(ha,{}),r.jsx(cn,{})]})]})}const y0=ft("herren/herren_jubel_500club");function Lw(){return r.jsxs(_t,{children:[y0&&r.jsx("img",{src:y0,alt:"Mannschaft feiert",style:{width:"100%",height:"65mm",objectFit:"cover",display:"block"}}),r.jsxs("div",{style:{padding:"8mm 18mm 10mm",position:"relative"},children:[r.jsx(wt,{style:{fontSize:"11pt",margin:"0 0 4mm",fontStyle:"normal",lineHeight:1.6,color:"#333"},children:"Die Aussage, dass Amateurfußball ohne Gönner und Sponsoren kaum noch finanzierbar ist, trifft die aktuelle Realität vieler Vereine. Ob Trikots, Trainingsmaterial, Platzpflege oder Schiedsrichterkosten – die laufenden Ausgaben können oft nicht mehr allein durch Mitgliedsbeiträge gedeckt werden."}),r.jsxs(Oe,{style:{fontSize:"10.5pt",margin:"0 0 5mm",lineHeight:1.6},children:[r.jsx("strong",{children:"Helfen Sie uns mit dem Beitritt in den CLUB 500."})," ","Unterstützen Sie unseren Verein und fördern Sie direkt den Jugend‑ und Amateurfußball, Trainingsmaterial, Infrastruktur und die Entwicklung unserer Mannschaften."]}),r.jsx(mt,{children:"Ihre Vorteile"}),r.jsxs(St,{children:[r.jsxs(I,{children:["Offizielle ",r.jsx("strong",{children:"Spendenbescheinigung"})," (gemeinnütziger Verein)"]}),r.jsxs(I,{children:["Veröffentlichung Ihres ",r.jsx("strong",{children:"Namens oder Firmennamens"})," als Unterstützer"]}),r.jsx(I,{children:"Direkte Förderung des Jugend- und Amateurfußballs in unserer Region"})]}),r.jsx(mt,{children:"Zahlungsoptionen"}),r.jsxs("table",{style:{width:"100%",borderCollapse:"collapse",fontSize:"10.5pt",margin:"2mm 0"},children:[r.jsx("thead",{children:r.jsxs("tr",{children:[r.jsx("th",{style:{borderBottom:"2px solid #1a365d",color:"#1a365d",padding:"2mm 0",textAlign:"left",fontWeight:800,fontSize:"9pt"},children:"Zahlungsweise"}),r.jsx("th",{style:{borderBottom:"2px solid #1a365d",color:"#1a365d",padding:"2mm 0",textAlign:"right",fontWeight:800,fontSize:"9pt"},children:"Beitrag"})]})}),r.jsx("tbody",{children:[{label:"Vierteljährlich",betrag:"125 €"},{label:"Halbjährlich",betrag:"250 €"},{label:"Jährlich",betrag:"500 €"}].map(a=>r.jsxs("tr",{children:[r.jsx("td",{style:{padding:"2.5mm 0",borderBottom:"1px solid #e5e7eb",color:"#444"},children:a.label}),r.jsx("td",{style:{padding:"2.5mm 0",borderBottom:"1px solid #e5e7eb",fontWeight:800,color:"#1a365d",textAlign:"right"},children:a.betrag})]},a.label))})]}),r.jsx(Oe,{style:{fontSize:"9pt",color:"#888",margin:"1mm 0 4mm"},children:"Auch Mehrjahres-Vorauszahlung möglich: 1.000 € (2 Jahre) oder 1.500 € (3 Jahre)."}),r.jsx(mt,{children:"Spendenkonto"}),r.jsxs(Oe,{style:{fontSize:"10.5pt",margin:"0 0 0",lineHeight:1.7},children:[r.jsx("strong",{children:"Sport Club Konstanz‑Wollmatingen e.V."}),r.jsx("br",{}),"IBAN: ",r.jsx("strong",{children:"DE84 6905 0001 0000 0929 99"})," · Sparkasse Bodensee",r.jsx("br",{}),"Schleyerweg 5 · 78467 Konstanz"]}),r.jsxs("div",{style:{marginTop:"6mm",textAlign:"center",borderTop:"1px solid #e5e7eb",paddingTop:"5mm"},children:[r.jsxs(Oe,{style:{margin:0,fontSize:"11pt",fontWeight:800,fontStyle:"italic",color:"#1a365d",lineHeight:1.4},children:["Gehen Sie den gemeinsamen Weg mit uns",r.jsx("br",{}),"in eine erfolgreiche Zukunft!"]}),r.jsxs(Oe,{style:{margin:"2mm 0 0",fontSize:"9pt",color:"#666"},children:["Adel Grimm · Sportlicher Leiter",r.jsx("br",{}),"Tel. +49 152 3384 2436 · grimm@sckw.de"]})]}),r.jsx(cn,{})]})]})}function Hw(){return r.jsxs(_t,{children:[r.jsx(Ft,{}),r.jsxs(Wt,{children:[r.jsx(Jt,{children:r.jsx(It,{src:"/logo.svg"})}),r.jsx(en,{style:{color:"#1a365d",fontSize:"22pt"},children:"BEITRITTSERKLÄRUNG CLUB 500"}),r.jsxs(wt,{style:{margin:"0 0 4mm"},children:["Bitte ausfüllen und an den Verein übergeben oder per E-Mail an"," ",vt.email," senden."]}),r.jsxs("div",{style:{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"3mm"},children:[r.jsxs(ht,{children:[r.jsx(et,{children:"Vorname:"}),r.jsx(Nt,{$lines:1})]}),r.jsxs(ht,{children:[r.jsx(et,{children:"Nachname:"}),r.jsx(Nt,{$lines:1})]})]}),r.jsxs(ht,{children:[r.jsx(et,{children:"Firma (optional):"}),r.jsx(Nt,{$lines:1})]}),r.jsxs(ht,{children:[r.jsx(et,{children:"Straße, Hausnummer:"}),r.jsx(Nt,{$lines:1})]}),r.jsxs("div",{style:{display:"grid",gridTemplateColumns:"1fr 2fr",gap:"3mm"},children:[r.jsxs(ht,{children:[r.jsx(et,{children:"PLZ:"}),r.jsx(Nt,{$lines:1})]}),r.jsxs(ht,{children:[r.jsx(et,{children:"Ort:"}),r.jsx(Nt,{$lines:1})]})]}),r.jsxs("div",{style:{display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:"3mm"},children:[r.jsxs(ht,{children:[r.jsx(et,{children:"Geb.-Datum:"}),r.jsx(Nt,{$lines:1})]}),r.jsxs(ht,{children:[r.jsx(et,{children:"Telefon:"}),r.jsx(Nt,{$lines:1})]}),r.jsxs(ht,{children:[r.jsx(et,{children:"E-Mail:"}),r.jsx(Nt,{$lines:1})]})]}),r.jsx(mt,{style:{marginTop:"4mm"},children:"Zahlungsweise"}),r.jsx(Oe,{style:{fontSize:"9pt",color:"#555",margin:"0 0 2mm"},children:"Bitte ankreuzen:"}),r.jsx("div",{style:{display:"grid",gridTemplateColumns:"repeat(3, 1fr)",gap:"2mm"},children:["125 € vierteljährlich","250 € halbjährlich","500 € jährlich"].map(a=>r.jsx("div",{style:{border:"1px solid #d1d5db",borderRadius:"2mm",padding:"2.5mm 3mm",textAlign:"center",background:"#fafafa"},children:r.jsxs(et,{style:{marginBottom:0,fontSize:"9pt"},children:["☐ ",a]})},a))}),r.jsx(Oe,{style:{fontSize:"8pt",color:"#888",margin:"1mm 0 0"},children:"Auch Mehrjahres-Vorauszahlung möglich: ☐ 1.000 € (2 Jahre) · ☐ 1.500 € (3 Jahre)"}),r.jsx(mt,{style:{marginTop:"4mm"},children:"Wie möchten Sie gewürdigt werden?"}),r.jsx(Oe,{style:{fontSize:"9pt",color:"#555",margin:"0 0 2mm"},children:"Mehrfachauswahl möglich:"}),r.jsx("div",{style:{display:"grid",gridTemplateColumns:"1fr",gap:"1.5mm"},children:['Danke-Post auf Instagram ("Danke [Name], dass du Mitglied im CLUB 500 bist!")',"Nennung auf der Spendentafel (Vereinsgelände / Website)","Ich möchte anonym bleiben"].map(a=>r.jsx("div",{style:{border:"1px solid #d1d5db",borderRadius:"2mm",padding:"2mm 3mm",background:"#fafafa",fontSize:"9pt"},children:r.jsxs(et,{style:{marginBottom:0,fontSize:"9pt"},children:["☐ ",a]})},a))}),r.jsxs(ht,{style:{marginTop:"2mm"},children:[r.jsx(et,{children:"Name/Firma für Veröffentlichung (falls abweichend):"}),r.jsx(Nt,{$lines:1})]}),r.jsx("div",{style:{marginTop:"3mm",background:"#f8fafc",borderRadius:"2mm",padding:"2.5mm 3mm",fontSize:"7.5pt",color:"#666",lineHeight:1.5},children:"Hiermit erkläre ich meinen Beitritt zum SC Konstanz‑Wollmatingen e.V. CLUB 500. Die Mitgliedschaft besteht für 1 Jahr und kann beiderseitig verlängert werden. Der Betrag ist innerhalb 14 Tagen nach Beitrittsdatum auf das unten stehende Konto zu überweisen. Das Mitglied erklärt sich damit einverstanden, dass im Zusammenhang mit der Mitgliedschaft Foto- und Filmaufnahmen und die dazugehörigen Daten für Werbezwecke in den Medien verwendet werden dürfen. Für Ihre Spende wird Ihnen auf Wunsch eine Spendenquittung ausgestellt."}),r.jsxs("div",{style:{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"3mm",marginTop:"4mm"},children:[r.jsxs(ht,{children:[r.jsx(et,{children:"Konstanz, den _______________"}),r.jsx("div",{style:{borderBottom:"1px solid #333",minHeight:"10mm",marginTop:"2mm"}}),r.jsx("div",{style:{fontSize:"7pt",color:"#999",marginTop:"1mm"},children:"Datum"})]}),r.jsxs(ht,{children:[r.jsx(et,{children:"Unterschrift:"}),r.jsx("div",{style:{borderBottom:"1px solid #333",minHeight:"10mm",marginTop:"2mm"}})]})]}),r.jsxs("div",{style:{marginTop:"3mm",fontSize:"8pt",color:"#555",lineHeight:1.5,borderTop:"1px solid #e5e7eb",paddingTop:"2mm"},children:[r.jsx("strong",{children:"Spendenkonto:"})," Sport Club Konstanz‑Wollmatingen e.V. · IBAN: DE84 6905 0001 0000 0929 99 · Sparkasse Bodensee",r.jsx("br",{}),r.jsx("strong",{children:"Kontakt:"})," ",vt.email," · Tel. +49 152 3384 2436 · Schleyerweg 5 · 78467 Konstanz"]}),r.jsxs(Nf,{style:{marginTop:"auto"},children:[r.jsx(Un,{children:r.jsx("strong",{children:"SC Konstanz-Wollmatingen e.V."})}),r.jsx(Un,{$center:!0,children:"CLUB 500"}),r.jsx(Un,{$right:!0,children:"partner.sckw.de"})]})]})]})}function Gw(){return r.jsxs(_t,{children:[r.jsx(Ft,{}),r.jsxs(Wt,{children:[r.jsx(Jt,{children:r.jsx(It,{src:"/logo.svg"})}),r.jsx(en,{style:{color:"#1a365d"},children:"SO GEHT'S WEITER"}),r.jsx(wt,{children:"In 4 einfachen Schritten zum Sponsoring-Start."}),r.jsx("div",{style:{display:"grid",gridTemplateColumns:"repeat(2, 1fr)",gap:"4mm",margin:"4mm 0"},children:[{n:"1",t:"KONTAKT",d:"Kurzes Gespräch oder E-Mail. Wir melden uns innerhalb von 24h."},{n:"2",t:"BEDARF",d:"Wir klären gemeinsam Ziele, Budget und passende Leistungen."},{n:"3",t:"ANGEBOT",d:"Sie erhalten ein individuelles Angebot mit klaren Leistungen."},{n:"4",t:"START",d:"Nach Zusage: Design, Abstimmung, Launch!"}].map(a=>r.jsxs("div",{style:{background:"#f8fafc",borderRadius:"3mm",padding:"4mm",borderLeft:"4px solid #1a365d"},children:[r.jsx("div",{style:{fontSize:"22pt",fontWeight:900,color:"#1a365d"},children:a.n}),r.jsx("div",{style:{fontSize:"11pt",fontWeight:800,marginBottom:"1mm"},children:a.t}),r.jsx(Oe,{style:{margin:0,fontSize:"9pt"},children:a.d})]},a.n))}),r.jsx(mt,{children:"Kontakt"}),r.jsxs("div",{style:{background:"linear-gradient(135deg, #1a365d, #2d5a87)",borderRadius:"3mm",padding:"5mm",color:"#fff",display:"grid",gridTemplateColumns:"1fr 1fr",gap:"4mm"},children:[r.jsxs("div",{children:[r.jsx("div",{style:{fontSize:"8pt",opacity:.7},children:"E-Mail"}),r.jsx("div",{style:{fontSize:"13pt",fontWeight:700},children:vt.email})]}),r.jsxs("div",{children:[r.jsx("div",{style:{fontSize:"8pt",opacity:.7},children:"Website"}),r.jsx("div",{style:{fontSize:"13pt",fontWeight:700},children:"partner.sckw.de"})]}),r.jsxs("div",{style:{gridColumn:"1 / -1"},children:[r.jsx("div",{style:{fontSize:"8pt",opacity:.7},children:"Adresse"}),r.jsxs("div",{style:{fontSize:"11pt"},children:[vt.adresse.name," · ",vt.adresse.strasse," ·"," ",vt.adresse.plz," ",vt.adresse.ort]})]})]}),r.jsx(mt,{children:"Gesprächsleitfaden"}),r.jsxs("div",{style:{background:"#eff6ff",border:"2px dashed #3b82f6",borderRadius:"3mm",padding:"4mm"},children:[r.jsx(Oe,{style:{fontSize:"9pt",color:"#1e3a5f",margin:"0 0 1.5mm"},children:'→ "1,4 Mio. Social-Media-Views in dieser Saison – 100 % organisch, aktuell 394.000 Views/Monat."'}),r.jsx(Oe,{style:{fontSize:"9pt",color:"#1e3a5f",margin:"0 0 1.5mm"},children:'→ "Ihr Logo erscheint nicht nur im Stadion, sondern auch in unseren Social Media Posts."'}),r.jsx(Oe,{style:{fontSize:"9pt",color:"#1e3a5f",margin:"0 0 1.5mm"},children:'→ "Probieren Sie uns für 150€ aus – wenn es passt, upgraden wir."'}),r.jsx(Oe,{style:{fontSize:"9pt",color:"#1e3a5f",margin:"0 0 1.5mm"},children:'→ "Wann startet Ihre nächste Kampagne? Wir können sofort loslegen."'})]}),r.jsx(cn,{})]})]})}function Yw(){return r.jsxs(_t,{children:[r.jsx(Ft,{}),r.jsxs(Wt,{children:[r.jsx(Jt,{children:r.jsx(It,{src:"/logo.svg"})}),r.jsx(en,{style:{color:"#1a365d"},children:"GESPRÄCHSNOTIZ"}),r.jsxs(wt,{children:["Interne Dokumentation – nach dem Gespräch ausfüllen und an"," ",vt.email," senden."]}),r.jsxs("div",{style:{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"3mm"},children:[r.jsxs(ht,{children:[r.jsx(et,{children:"Datum:"}),r.jsx(Nt,{$lines:1})]}),r.jsxs(ht,{children:[r.jsx(et,{children:"Gesprächsführer (Helfer):"}),r.jsx(Nt,{$lines:1})]})]}),Z5.map((a,s)=>r.jsxs(ht,{children:[r.jsxs(et,{children:[a.label,":"]}),r.jsx(Nt,{$lines:a.lines})]},s)),r.jsx("div",{style:{display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:"3mm",marginTop:"3mm"},children:["Hot Lead","Warm Lead","Später kontaktieren"].map(a=>r.jsx("div",{style:{border:"1px solid #d1d5db",borderRadius:"2mm",padding:"2.5mm"},children:r.jsxs(et,{style:{marginBottom:0},children:["☐ ",a]})},a))}),r.jsx("div",{style:{marginTop:"4mm",background:"#f0f9ff",borderRadius:"2mm",padding:"3mm"},children:r.jsxs(Oe,{style:{margin:0,fontSize:"8pt"},children:[r.jsx("strong",{children:"Schnellreferenz:"})," ",vt.email," · partner.sckw.de · ",vt.vollAdresse.replace(/\n/g," · ")]})}),r.jsxs(Nf,{style:{marginTop:"auto"},children:[r.jsx(Un,{children:r.jsx("strong",{children:"Internes Dokument"})}),r.jsx(Un,{$center:!0}),r.jsx(Un,{$right:!0,children:"SC Konstanz-Wollmatingen e.V."})]})]})]})}const On=[{id:"cover",label:"Titelseite",group:"broschüre",render:()=>r.jsx(Aw,{})},{id:"why",label:"Warum SCKW?",group:"broschüre",render:()=>r.jsx(Tw,{})},{id:"haupt",label:"Hauptsponsor",group:"broschüre",needsPrices:!0,render:a=>r.jsx(Rw,{showPrices:a})},{id:"co",label:"Co-Sponsor",group:"broschüre",needsPrices:!0,render:a=>r.jsx(Mw,{showPrices:a})},{id:"silber",label:"Silber + Community",group:"broschüre",needsPrices:!0,render:a=>r.jsx(kw,{showPrices:a})},{id:"banden",label:"Bandenwerbung",group:"broschüre",needsPrices:!0,render:a=>r.jsx(Dw,{showPrices:a})},{id:"magazin",label:"Stadionmagazin",group:"broschüre",needsPrices:!0,render:a=>r.jsx(Ow,{showPrices:a})},{id:"spieltag",label:"Spieltag-Sponsoring",group:"broschüre",needsPrices:!0,render:a=>r.jsx(Bw,{showPrices:a})},{id:"bus",label:"Buswerbung",group:"broschüre",needsPrices:!0,render:a=>r.jsx(Nw,{showPrices:a})},{id:"praemien",label:"Prämienmodell",group:"broschüre",needsPrices:!0,render:a=>r.jsx(Uw,{showPrices:a})},{id:"club500",label:"CLUB 500",group:"community",render:()=>r.jsx(Lw,{})},{id:"club500form",label:"CLUB 500 Anmeldung",group:"community",render:()=>r.jsx(Hw,{})},{id:"steps",label:"So geht's weiter",group:"helfer",render:()=>r.jsx(Gw,{})},{id:"lead",label:"Gesprächsnotiz",group:"helfer",render:()=>r.jsx(Yw,{})}],$w=v.div`
+`;function zw(){return r.jsx(_t,{children:r.jsxs("div",{style:{background:"linear-gradient(150deg, #0a1628 0%, #0e2240 15%, #1a3a6a 35%, #2d5a87 50%, #6b1d4a 65%, #a81e45 80%, #c41e3a 90%, #e10073 100%)",height:"100%",minHeight:"297mm",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",textAlign:"center",color:"#fff",position:"relative",overflow:"hidden"},children:[r.jsx("div",{style:{position:"absolute",top:"-60mm",right:"-50mm",width:"200mm",height:"200mm",borderRadius:"50%",background:"radial-gradient(circle, rgba(74,144,226,0.12) 0%, transparent 70%)"}}),r.jsx("div",{style:{position:"absolute",bottom:"-40mm",left:"-40mm",width:"180mm",height:"180mm",borderRadius:"50%",background:"radial-gradient(circle, rgba(196,30,58,0.10) 0%, transparent 70%)"}}),r.jsx("div",{style:{position:"absolute",top:"40mm",left:"-20mm",width:"140mm",height:"140mm",borderRadius:"50%",background:"radial-gradient(circle, rgba(255,255,255,0.03) 0%, transparent 60%)"}}),r.jsx("img",{src:"/sckw-logo-500club.png",alt:"SC Konstanz-Wollmatingen",style:{height:"70mm",objectFit:"contain",position:"relative",zIndex:1,filter:"drop-shadow(0 3mm 10mm rgba(0,0,0,0.35))"}}),r.jsx("h1",{style:{fontSize:"40pt",fontWeight:900,margin:"8mm 0 6mm",letterSpacing:"-0.03em",position:"relative",zIndex:1,textShadow:"0 2px 12px rgba(0,0,0,0.4)"},children:"SPONSORING"}),r.jsxs("p",{style:{fontSize:"15pt",fontWeight:400,opacity:.95,maxWidth:"140mm",lineHeight:1.5,margin:"0 0 12mm",position:"relative",zIndex:1,textShadow:"0 1px 8px rgba(0,0,0,0.3)"},children:["Werden Sie Teil unserer Erfolgsgeschichte.",r.jsx("br",{}),"Sichtbarkeit, die wirkt."]}),r.jsx("div",{style:{display:"grid",gridTemplateColumns:"repeat(2, 1fr)",gap:"5mm",position:"relative",zIndex:1},children:Bf.slice(0,2).map(a=>r.jsxs("div",{style:{background:"rgba(0,0,0,0.35)",borderRadius:"4mm",padding:"5mm 10mm",backdropFilter:"blur(12px)",border:"1px solid rgba(255,255,255,0.15)"},children:[r.jsx("div",{style:{fontSize:"24pt",fontWeight:900},children:a.value}),r.jsx("div",{style:{fontSize:"7pt",textTransform:"uppercase",letterSpacing:"0.06em",opacity:.9},children:a.label})]},a.label))}),r.jsx("div",{style:{position:"absolute",bottom:"12mm",fontSize:"9pt",opacity:.8,textShadow:"0 1px 4px rgba(0,0,0,0.5)"},children:"Saison 2025/26 · partner.sckw.de"})]})})}function Cw(){return r.jsxs(_t,{children:[r.jsx(Ft,{}),r.jsxs(Wt,{children:[r.jsx(Jt,{children:r.jsx(It,{src:"/logo.svg"})}),r.jsx(en,{children:"WARUM SCKW?"}),r.jsx(wt,{children:"Ihre Investition in lokale Sichtbarkeit – messbar, nachhaltig, emotional."}),r.jsx("div",{style:{display:"grid",gridTemplateColumns:"repeat(4, 1fr)",gap:"3mm",margin:"4mm 0"},children:Bf.map(a=>r.jsxs("div",{style:{background:"linear-gradient(135deg, #1a365d, #2d5a87)",borderRadius:"3mm",padding:"4mm 3mm",textAlign:"center",color:"#fff"},children:[r.jsx("div",{style:{fontSize:"16pt",fontWeight:900},children:a.value}),r.jsx("div",{style:{fontSize:"6.5pt",textTransform:"uppercase",opacity:.9},children:a.label})]},a.label))}),r.jsx(mt,{children:"Was Sie bei uns erreichen"}),r.jsxs(St,{children:[r.jsx(I,{children:"Wiederholte Sichtkontakte bei Ihrer Zielgruppe in Konstanz & Region"}),r.jsx(I,{children:"Emotionale Bindung durch Sport – Ihre Marke wird Teil des Erlebnisses"}),r.jsx(I,{children:"Doppelte Reichweite: Live im Stadion + Digital auf Social Media"}),r.jsx(I,{children:"Messbare Ergebnisse: Wir liefern Reichweiten-Reports auf Wunsch"})]}),r.jsx(mt,{children:"Der Verein auf einen Blick"}),r.jsxs("div",{style:{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"4mm"},children:[r.jsxs("div",{children:[r.jsxs(Oe,{children:[r.jsx("strong",{children:"Gegründet:"})," 1912"]}),r.jsxs(Oe,{children:[r.jsx("strong",{children:"Mitglieder:"})," 500+"]}),r.jsxs(Oe,{children:[r.jsx("strong",{children:"Mannschaften:"})," Herren, Damen, Jugend"]})]}),r.jsxs("div",{children:[r.jsxs(Oe,{children:[r.jsx("strong",{children:"Heimspiele:"})," 15+ pro Saison"]}),r.jsxs(Oe,{children:[r.jsx("strong",{children:"Zuschauer:"})," Ø 200 pro Spiel"]}),r.jsxs(Oe,{children:[r.jsx("strong",{children:"Instagram:"})," 2.500+ Follower"]})]})]}),b0&&r.jsx($s,{src:b0,alt:"Team",style:{height:"55mm",marginTop:"4mm"}}),r.jsx(cn,{})]})]})}function Aw({showPrices:a}){return r.jsxs(_t,{children:[r.jsx(Ft,{}),r.jsxs(Wt,{children:[r.jsx(Jt,{children:r.jsx(It,{src:"/logo.svg"})}),r.jsx(en,{children:"HAUPTSPONSOR"}),r.jsx(wt,{children:"Der Hauptsponsor ist automatisch Mitglied im Business Club und erhält weitere Leistungen zur optimalen Präsentation des Unternehmens."}),r.jsxs(St,{children:[r.jsx(I,{children:"Trikotwerbung auf der Brust"}),r.jsx(I,{children:"Business Club Mitgliedschaft"}),r.jsx(I,{children:"5 Meter Bandenwerbung (Herstellkosten übernimmt der Verein)"}),r.jsx(I,{children:"1/1 seitiges Inserat im SC Magazin"}),r.jsx(I,{children:"10 Saisonkarten"}),r.jsx(I,{children:"Werbeauftritte nach Absprache"}),r.jsx(I,{children:"Nennung (Logo) auf dem Briefpapier des SCKW"}),r.jsx(I,{children:"Lautsprecherdurchsage während dem Spiel und in der Halbzeit"}),r.jsx(I,{children:"Logo / Namenszug auf den Fahrzeugen"}),r.jsx(I,{children:"Logo / Link auf der Vereinshomepage"}),r.jsx(I,{children:"weitere Möglichkeiten nach Absprache"})]}),r.jsxs(Ha,{$hidden:!a,children:["Beitrag: ",r.jsx("strong",{children:"ab 15.000€ pro Saison"})]}),r.jsx(ha,{}),r.jsx(cn,{})]})]})}function Tw({showPrices:a}){return r.jsxs(_t,{children:[r.jsx(Ft,{}),r.jsxs(Wt,{children:[r.jsx(Jt,{children:r.jsx(It,{src:"/logo.svg"})}),r.jsx(en,{children:"CO-SPONSOR"}),r.jsx(wt,{children:"Der Co-Sponsor ist automatisch Mitglied im Business Club und erhält weitere Leistungen zur optimalen Präsentation des Unternehmens."}),r.jsxs(St,{children:[r.jsx(I,{children:"Werbung auf den Trainingsanzügen"}),r.jsx(I,{children:"Business Club Mitgliedschaft"}),r.jsx(I,{children:"5 Meter Bandenwerbung (Herstellkosten und die Montage trägt der Verein)"}),r.jsx(I,{children:"1/2 seitiges Inserat im SC Magazin"}),r.jsx(I,{children:"5 Saisonkarten"}),r.jsx(I,{children:"Werbeauftritte nach Absprache"}),r.jsx(I,{children:"Nennung (Logo) auf dem Briefpapier des SCKW"}),r.jsx(I,{children:"Lautsprecherdurchsage während dem Spiel und in der Halbzeit"}),r.jsx(I,{children:"Logo / Namenszug auf den Fahrzeugen"}),r.jsx(I,{children:"Logo / Link auf der Vereinshomepage"}),r.jsx(I,{children:"weitere Möglichkeiten nach Absprache"})]}),r.jsxs(Ha,{$hidden:!a,children:["Beitrag: ",r.jsx("strong",{children:"ab 9.500€ pro Saison"})]}),r.jsx(ha,{}),r.jsx(cn,{})]})]})}function Rw({showPrices:a}){return r.jsxs(_t,{children:[r.jsx(Ft,{}),r.jsxs(Wt,{children:[r.jsx(Jt,{children:r.jsx(It,{src:"/logo.svg"})}),r.jsx(en,{children:"SILBER-PARTNER"}),r.jsx(wt,{children:"Lokale Sichtbarkeit mit starkem Preis-Leistungs-Verhältnis – ideal für mittelständische Unternehmen in der Region."}),r.jsxs(St,{children:[r.jsx(I,{children:"1 Bande (5×2 m) am Gelände"}),r.jsx(I,{children:"Social Media: 12 dedizierte Posts/Jahr + 18 Stories/Jahr"}),r.jsx(I,{children:"Werbeplane am Gelände"}),r.jsx(I,{children:"Vereinsplakate + Eventsichtbarkeit"}),r.jsx(I,{children:"Website: Logo auf Startseite"})]}),r.jsxs(Ha,{$hidden:!a,children:["Beitrag: ",r.jsx("strong",{children:"ab 5.000€ pro Saison"})]}),r.jsx(mt,{style:{marginTop:"8mm"},children:"COMMUNITY-PARTNER"}),r.jsx(wt,{children:"Perfekter Einstieg für lokale Betriebe – Gastronomie, Handwerk, Einzelhandel."}),r.jsxs(St,{children:[r.jsx(I,{children:"1 Bande (3×1 m, 6 Monate sichtbar)"}),r.jsx(I,{children:"Website: Logo auf der Startseite"}),r.jsx(I,{children:"Social Media: 1 Willkommens-Post + 3 weitere Posts/Jahr + 8 Stories/Jahr"}),r.jsx(I,{children:"Optional: Gemeinsame Events (z.B. CL-Abende) mit dem Team in Ihrer Gastronomie"})]}),r.jsxs(Ha,{$hidden:!a,children:["Beitrag: ",r.jsx("strong",{children:"ab 2.000€ pro Saison"})]}),r.jsx(ha,{}),r.jsx(cn,{})]})]})}function Mw({showPrices:a}){return r.jsxs(_t,{children:[r.jsx(Ft,{}),r.jsxs(Wt,{children:[r.jsx(Jt,{children:r.jsx(It,{src:"/logo.svg"})}),r.jsx(en,{children:"BANDENWERBUNG"}),r.jsx(wt,{children:"Fürstenberg-Sportplatz des SC Konstanz-Wollmatingen"}),r.jsx(St,{children:r.jsx(I,{children:"Montage, Gestaltung & Druck übernimmt der Verein auf Wunsch"})}),r.jsxs(Oe,{children:[r.jsx("strong",{children:"Platzierung:"}),r.jsx("br",{}),"Gemäss Besprechung und Belegungsplan.",r.jsx("br",{}),"Die Banden sind unterteilt in einer Größe von 100 x 90 cm.",r.jsx("br",{}),r.jsx("strong",{children:"Mindestabnahmemenge: 2 Meter"})]}),r.jsxs(Ha,{$hidden:!a,children:["Beitrag: ",r.jsx("strong",{children:"ab 800€ pro Saison"})]}),x0&&r.jsx($s,{src:x0,alt:"Banden",style:{height:"60mm",marginTop:"4mm"}}),r.jsx(ha,{}),r.jsx(cn,{})]})]})}function kw({showPrices:a}){return r.jsxs(_t,{children:[r.jsx(Ft,{}),r.jsxs(Wt,{children:[r.jsx(Jt,{children:r.jsx(It,{src:"/logo.svg"})}),r.jsx(en,{children:'WERBUNG IM „HEIMSPIEL"'}),r.jsx(wt,{children:"Stadionmagazin des SC Konstanz-Wollmatingen"}),r.jsxs(St,{children:[r.jsx(I,{children:"15 Ausgaben pro Saison"}),r.jsx(I,{children:"ca. 100 Exemplare pro Heimspiel"}),r.jsx(I,{children:"Digitale Version (Social Media & Webseite)"}),r.jsx(I,{children:"1.000 - 1.500 Online Zugriffe je Auflage"}),r.jsx(I,{children:"DIN A4 Stadionmagazin"}),r.jsx(I,{children:"wird ausgelegt in diversen Arztpraxen"})]}),a&&r.jsx("div",{style:{display:"grid",gridTemplateColumns:"repeat(3, 1fr)",gap:"4mm",margin:"8mm 0"},children:[{size:"1 SEITE",price:"1.000€",dim:"DIN A4 (297 × 210 mm)"},{size:"1/2 SEITE",price:"500€",dim:"DIN A5 (148 × 210 mm)"},{size:"1/4 SEITE",price:"250€",dim:"DIN A6 (105 × 148 mm)"}].map(s=>r.jsxs("div",{style:{border:"2px solid #1a365d",borderRadius:"3mm",padding:"5mm",textAlign:"center"},children:[r.jsx("div",{style:{fontSize:"14pt",fontWeight:800},children:s.size}),r.jsx("div",{style:{fontSize:"9pt",color:"#666"},children:"FARBE"}),r.jsx("div",{style:{fontSize:"18pt",fontWeight:900,color:"#1a365d",margin:"2mm 0"},children:s.price})]},s.size))}),a&&r.jsxs("div",{style:{fontSize:"10pt",lineHeight:1.7},children:[r.jsx("strong",{children:"Maße"}),r.jsx("br",{}),"1 Seite = DIN A4 (297 x 210 mm)",r.jsx("br",{}),"1/2 Seite = DIN A5 (148 x 210 mm)",r.jsx("br",{}),"1/4 Seite = DIN A6 (105 x 148 mm)"]}),r.jsx(ha,{}),r.jsx(cn,{})]})]})}function Dw({showPrices:a}){return r.jsxs(_t,{children:[r.jsx(Ft,{}),r.jsxs(Wt,{children:[r.jsx(Jt,{children:r.jsx(It,{src:"/logo.svg"})}),r.jsx(en,{children:"SPIELTAG-SPONSORING"}),r.jsx(wt,{children:"Das Zielpublikum sind die ZuschauerInnen bei den Heimspielen der 1. Mannschaft. Perfekter Einstieg ins Sponsoring – ab einem einzelnen Spiel möglich."}),r.jsx(mt,{children:"Ballspende"}),r.jsx(Oe,{style:{fontStyle:"italic"},children:"Ihr Unternehmen sponsert den Spielball. Bei jedem Tor, bei der Mannschaftsaufstellung und in der Halbzeitpause wird Ihr Name genannt. Exklusiv: nur ein Ballsponsor pro Spiel."}),r.jsxs(St,{children:[r.jsx(I,{children:"Stadiondurchsage vor dem Spiel + bei jedem Tor"}),r.jsx(I,{children:"Namensnennung in der Halbzeitpause"}),r.jsx(I,{children:"1 Instagram-Story vor dem Spiel mit Logo"}),r.jsx(I,{children:"Logo/Name auf Website + Erwähnung im SC Magazin"})]}),r.jsxs(Ha,{$hidden:!a,children:["Beitrag: ",r.jsx("strong",{children:"150€ pro Spiel"})," · 5er-Pack:"," ",r.jsx("strong",{children:"500€"})," (statt 750€)"]}),r.jsx(mt,{children:"Spielpräsentator"}),r.jsx(Oe,{style:{fontStyle:"italic"},children:"Die Mannschaftsaufstellung und alle Auswechslungen werden im Namen Ihres Unternehmens präsentiert – 15-20 Nennungen pro Spiel. Exklusiv: nur ein Präsentator pro Spiel. Preis variiert je nach Spiel (z.B. Derby)."}),r.jsxs(St,{children:[r.jsx(I,{children:"Alle Aufstellungen + Auswechslungen im Firmennamen"}),r.jsx(I,{children:"Namentliche Erwähnung im SC Magazin"}),r.jsx(I,{children:"Social Media Erwähnung am Spieltag"})]}),r.jsxs(Ha,{$hidden:!a,children:["Beitrag: ",r.jsx("strong",{children:"ab 250€ pro Spiel"})]}),Xu&&r.jsxs("div",{style:{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"3mm",marginTop:"3mm"},children:[r.jsx($s,{src:Xu,alt:"Action",style:{height:"48mm"}}),r.jsx($s,{src:Ew||Xu,alt:"Jubel",style:{height:"48mm"}})]}),r.jsx(ha,{}),r.jsx(cn,{})]})]})}function Ow({showPrices:a}){return r.jsxs(_t,{children:[r.jsx(Ft,{}),r.jsxs(Wt,{children:[r.jsx(Jt,{children:r.jsx(It,{src:"/logo.svg"})}),r.jsx(en,{children:"BUSWERBUNG"}),r.jsx(wt,{children:"Unser Vereinsbus ist jede Woche in Konstanz, im Landkreis und bei Auswärtsspielen unterwegs – mobile Werbung für Ihr Unternehmen."}),r.jsx("img",{src:"/vereinsbus.png",alt:"Vereinsbus SC Konstanz-Wollmatingen",style:{width:"100%",borderRadius:"3mm",margin:"3mm 0 4mm",display:"block"}}),r.jsxs("table",{style:{width:"100%",borderCollapse:"collapse",fontSize:"10pt",margin:"4mm 0"},children:[r.jsx("thead",{children:r.jsxs("tr",{children:[r.jsx("th",{style:{background:"#1a365d",color:"#fff",padding:"2.5mm 3mm",textAlign:"left",fontWeight:700},children:"Fläche"}),r.jsx("th",{style:{background:"#1a365d",color:"#fff",padding:"2.5mm 3mm",textAlign:"left",fontWeight:700},children:"Größe (ca.)"}),a&&r.jsx("th",{style:{background:"#1a365d",color:"#fff",padding:"2.5mm 3mm",textAlign:"left",fontWeight:700},children:"Preis/Jahr"})]})}),r.jsx("tbody",{children:[...z1,...C1].map((s,u)=>r.jsxs("tr",{style:{background:u%2===1?"#f8fafc":"transparent"},children:[r.jsx("td",{style:{padding:"2mm 3mm",borderBottom:"1px solid #e5e7eb"},children:s.position}),r.jsx("td",{style:{padding:"2mm 3mm",borderBottom:"1px solid #e5e7eb"},children:s.groesse}),a&&r.jsx("td",{style:{padding:"2mm 3mm",borderBottom:"1px solid #e5e7eb",fontWeight:700},children:s.preis})]},s.position))})]}),r.jsx(mt,{children:"Zusatzoptionen"}),r.jsx(St,{children:A1.map((s,u)=>r.jsx(I,{children:s},u))}),r.jsx(ha,{}),r.jsx(cn,{})]})]})}function Bw({showPrices:a}){return r.jsxs(_t,{children:[r.jsx(Ft,{}),r.jsxs(Wt,{children:[r.jsx(Jt,{children:r.jsx(It,{src:"/logo.svg"})}),r.jsx(en,{children:"PRÄMIEN-MODELL"}),r.jsx(wt,{children:"Erfolgsbasiertes Sponsoring – Sie zahlen nur bei sportlichem Erfolg. Perfekt für Sponsoren, die mit dem Team mitfiebern wollen."}),a&&r.jsxs("table",{style:{width:"100%",borderCollapse:"collapse",fontSize:"10pt",margin:"4mm 0"},children:[r.jsx("thead",{children:r.jsxs("tr",{children:[r.jsx("th",{style:{background:"#1a365d",color:"#fff",padding:"2.5mm 3mm",textAlign:"left"},children:"Leistung"}),r.jsx("th",{style:{background:"#1a365d",color:"#fff",padding:"2.5mm 3mm",textAlign:"left"},children:"Starter"}),r.jsx("th",{style:{background:"#1a365d",color:"#fff",padding:"2.5mm 3mm",textAlign:"left"},children:"Premium"}),r.jsx("th",{style:{background:"#1a365d",color:"#fff",padding:"2.5mm 3mm",textAlign:"left"},children:"Kombi"})]})}),r.jsxs("tbody",{children:[X5.map((s,u)=>r.jsxs("tr",{style:{background:u%2===1?"#f8fafc":"transparent"},children:[r.jsx("td",{style:{padding:"2mm 3mm",borderBottom:"1px solid #e5e7eb",fontWeight:600},children:s.label}),r.jsx("td",{style:{padding:"2mm 3mm",borderBottom:"1px solid #e5e7eb"},children:s.starter}),r.jsx("td",{style:{padding:"2mm 3mm",borderBottom:"1px solid #e5e7eb"},children:s.premium}),r.jsx("td",{style:{padding:"2mm 3mm",borderBottom:"1px solid #e5e7eb"},children:s.kombi})]},s.label)),r.jsxs("tr",{style:{background:"#f0f9ff"},children:[r.jsx("td",{style:{padding:"2mm 3mm",fontWeight:700},children:"Ø Kosten/Saison"}),r.jsx("td",{style:{padding:"2mm 3mm",fontWeight:700},children:qu.starter}),r.jsx("td",{style:{padding:"2mm 3mm",fontWeight:700},children:qu.premium}),r.jsx("td",{style:{padding:"2mm 3mm",fontWeight:700},children:qu.kombi})]})]})]}),r.jsx(mt,{children:"So funktioniert's"}),r.jsxs(St,{children:[r.jsx(I,{children:"Sie wählen ein Modell (Starter, Premium oder Kombi)"}),r.jsx(I,{children:"Bei sportlichem Erfolg (Tor, Sieg, Zu-Null) wird die vereinbarte Prämie fällig"}),r.jsx(I,{children:"Stadionansage + Social Media Erwähnung bei jedem Erfolg"}),r.jsx(I,{children:"Niedrig-Risiko: Keine Erfolge = keine Kosten (Starter/Premium)"})]}),r.jsx(mt,{children:"Inkludierte Leistungen"}),r.jsxs("div",{style:{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"4mm"},children:[r.jsxs("div",{children:[r.jsx(Oe,{children:r.jsx("strong",{children:"Starter:"})}),r.jsxs(St,{children:[r.jsx(I,{children:"Stadionansage bei Erfolg"}),r.jsx(I,{children:"Logo auf Website"})]})]}),r.jsxs("div",{children:[r.jsx(Oe,{children:r.jsx("strong",{children:"Premium:"})}),r.jsxs(St,{children:[r.jsx(I,{children:"+ Social Media Post bei Erfolg"}),r.jsx(I,{children:"+ 1 Bande (3×1m) inklusive"})]})]})]}),r.jsx(ha,{}),r.jsx(cn,{})]})]})}const y0=ft("herren/herren_jubel_500club");function Nw(){return r.jsxs(_t,{children:[y0&&r.jsx("img",{src:y0,alt:"Mannschaft feiert",style:{width:"100%",height:"65mm",objectFit:"cover",display:"block"}}),r.jsxs("div",{style:{padding:"8mm 18mm 10mm",position:"relative"},children:[r.jsx(wt,{style:{fontSize:"11pt",margin:"0 0 4mm",fontStyle:"normal",lineHeight:1.6,color:"#333"},children:"Die Aussage, dass Amateurfußball ohne Gönner und Sponsoren kaum noch finanzierbar ist, trifft die aktuelle Realität vieler Vereine. Ob Trikots, Trainingsmaterial, Platzpflege oder Schiedsrichterkosten – die laufenden Ausgaben können oft nicht mehr allein durch Mitgliedsbeiträge gedeckt werden."}),r.jsxs(Oe,{style:{fontSize:"10.5pt",margin:"0 0 5mm",lineHeight:1.6},children:[r.jsx("strong",{children:"Helfen Sie uns mit dem Beitritt in den CLUB 500."})," ","Unterstützen Sie unseren Verein und fördern Sie direkt den Jugend‑ und Amateurfußball, Trainingsmaterial, Infrastruktur und die Entwicklung unserer Mannschaften."]}),r.jsx(mt,{children:"Ihre Vorteile"}),r.jsxs(St,{children:[r.jsxs(I,{children:["Offizielle ",r.jsx("strong",{children:"Spendenbescheinigung"})," (gemeinnütziger Verein)"]}),r.jsxs(I,{children:["Veröffentlichung Ihres ",r.jsx("strong",{children:"Namens oder Firmennamens"})," als Unterstützer"]}),r.jsx(I,{children:"Direkte Förderung des Jugend- und Amateurfußballs in unserer Region"})]}),r.jsx(mt,{children:"Zahlungsoptionen"}),r.jsxs("table",{style:{width:"100%",borderCollapse:"collapse",fontSize:"10.5pt",margin:"2mm 0"},children:[r.jsx("thead",{children:r.jsxs("tr",{children:[r.jsx("th",{style:{borderBottom:"2px solid #1a365d",color:"#1a365d",padding:"2mm 0",textAlign:"left",fontWeight:800,fontSize:"9pt"},children:"Zahlungsweise"}),r.jsx("th",{style:{borderBottom:"2px solid #1a365d",color:"#1a365d",padding:"2mm 0",textAlign:"right",fontWeight:800,fontSize:"9pt"},children:"Beitrag"})]})}),r.jsx("tbody",{children:[{label:"Vierteljährlich",betrag:"125 €"},{label:"Halbjährlich",betrag:"250 €"},{label:"Jährlich",betrag:"500 €"}].map(a=>r.jsxs("tr",{children:[r.jsx("td",{style:{padding:"2.5mm 0",borderBottom:"1px solid #e5e7eb",color:"#444"},children:a.label}),r.jsx("td",{style:{padding:"2.5mm 0",borderBottom:"1px solid #e5e7eb",fontWeight:800,color:"#1a365d",textAlign:"right"},children:a.betrag})]},a.label))})]}),r.jsx(Oe,{style:{fontSize:"9pt",color:"#888",margin:"1mm 0 4mm"},children:"Auch Mehrjahres-Vorauszahlung möglich: 1.000 € (2 Jahre) oder 1.500 € (3 Jahre)."}),r.jsx(mt,{children:"Spendenkonto"}),r.jsxs(Oe,{style:{fontSize:"10.5pt",margin:"0 0 0",lineHeight:1.7},children:[r.jsx("strong",{children:"Sport Club Konstanz‑Wollmatingen e.V."}),r.jsx("br",{}),"IBAN: ",r.jsx("strong",{children:"DE84 6905 0001 0000 0929 99"})," · Sparkasse Bodensee",r.jsx("br",{}),"Schleyerweg 5 · 78467 Konstanz"]}),r.jsxs("div",{style:{marginTop:"6mm",textAlign:"center",borderTop:"1px solid #e5e7eb",paddingTop:"5mm"},children:[r.jsxs(Oe,{style:{margin:0,fontSize:"11pt",fontWeight:800,fontStyle:"italic",color:"#1a365d",lineHeight:1.4},children:["Gehen Sie den gemeinsamen Weg mit uns",r.jsx("br",{}),"in eine erfolgreiche Zukunft!"]}),r.jsxs(Oe,{style:{margin:"2mm 0 0",fontSize:"9pt",color:"#666"},children:["Adel Grimm · Sportlicher Leiter",r.jsx("br",{}),"Tel. +49 152 3384 2436 · grimm@sckw.de"]})]}),r.jsx(cn,{})]})]})}function Uw(){return r.jsxs(_t,{children:[r.jsx(Ft,{}),r.jsxs(Wt,{children:[r.jsx(Jt,{children:r.jsx(It,{src:"/logo.svg"})}),r.jsx(en,{style:{color:"#1a365d",fontSize:"22pt"},children:"BEITRITTSERKLÄRUNG CLUB 500"}),r.jsxs(wt,{style:{margin:"0 0 4mm"},children:["Bitte ausfüllen und an den Verein übergeben oder per E-Mail an"," ",vt.email," senden."]}),r.jsxs("div",{style:{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"3mm"},children:[r.jsxs(ht,{children:[r.jsx(et,{children:"Vorname:"}),r.jsx(Nt,{$lines:1})]}),r.jsxs(ht,{children:[r.jsx(et,{children:"Nachname:"}),r.jsx(Nt,{$lines:1})]})]}),r.jsxs(ht,{children:[r.jsx(et,{children:"Firma (optional):"}),r.jsx(Nt,{$lines:1})]}),r.jsxs(ht,{children:[r.jsx(et,{children:"Straße, Hausnummer:"}),r.jsx(Nt,{$lines:1})]}),r.jsxs("div",{style:{display:"grid",gridTemplateColumns:"1fr 2fr",gap:"3mm"},children:[r.jsxs(ht,{children:[r.jsx(et,{children:"PLZ:"}),r.jsx(Nt,{$lines:1})]}),r.jsxs(ht,{children:[r.jsx(et,{children:"Ort:"}),r.jsx(Nt,{$lines:1})]})]}),r.jsxs("div",{style:{display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:"3mm"},children:[r.jsxs(ht,{children:[r.jsx(et,{children:"Geb.-Datum:"}),r.jsx(Nt,{$lines:1})]}),r.jsxs(ht,{children:[r.jsx(et,{children:"Telefon:"}),r.jsx(Nt,{$lines:1})]}),r.jsxs(ht,{children:[r.jsx(et,{children:"E-Mail:"}),r.jsx(Nt,{$lines:1})]})]}),r.jsx(mt,{style:{marginTop:"4mm"},children:"Zahlungsweise"}),r.jsx(Oe,{style:{fontSize:"9pt",color:"#555",margin:"0 0 2mm"},children:"Bitte ankreuzen:"}),r.jsx("div",{style:{display:"grid",gridTemplateColumns:"repeat(3, 1fr)",gap:"2mm"},children:["125 € vierteljährlich","250 € halbjährlich","500 € jährlich"].map(a=>r.jsx("div",{style:{border:"1px solid #d1d5db",borderRadius:"2mm",padding:"2.5mm 3mm",textAlign:"center",background:"#fafafa"},children:r.jsxs(et,{style:{marginBottom:0,fontSize:"9pt"},children:["☐ ",a]})},a))}),r.jsx(Oe,{style:{fontSize:"8pt",color:"#888",margin:"1mm 0 0"},children:"Auch Mehrjahres-Vorauszahlung möglich: ☐ 1.000 € (2 Jahre) · ☐ 1.500 € (3 Jahre)"}),r.jsx(mt,{style:{marginTop:"4mm"},children:"Wie möchten Sie gewürdigt werden?"}),r.jsx(Oe,{style:{fontSize:"9pt",color:"#555",margin:"0 0 2mm"},children:"Mehrfachauswahl möglich:"}),r.jsx("div",{style:{display:"grid",gridTemplateColumns:"1fr",gap:"1.5mm"},children:['Danke-Post auf Instagram ("Danke [Name], dass du Mitglied im CLUB 500 bist!")',"Nennung auf der Spendentafel (Vereinsgelände / Website)","Ich möchte anonym bleiben"].map(a=>r.jsx("div",{style:{border:"1px solid #d1d5db",borderRadius:"2mm",padding:"2mm 3mm",background:"#fafafa",fontSize:"9pt"},children:r.jsxs(et,{style:{marginBottom:0,fontSize:"9pt"},children:["☐ ",a]})},a))}),r.jsxs(ht,{style:{marginTop:"2mm"},children:[r.jsx(et,{children:"Name/Firma für Veröffentlichung (falls abweichend):"}),r.jsx(Nt,{$lines:1})]}),r.jsx("div",{style:{marginTop:"3mm",background:"#f8fafc",borderRadius:"2mm",padding:"2.5mm 3mm",fontSize:"7.5pt",color:"#666",lineHeight:1.5},children:"Hiermit erkläre ich meinen Beitritt zum SC Konstanz‑Wollmatingen e.V. CLUB 500. Die Mitgliedschaft besteht für 1 Jahr und kann beiderseitig verlängert werden. Der Betrag ist innerhalb 14 Tagen nach Beitrittsdatum auf das unten stehende Konto zu überweisen. Das Mitglied erklärt sich damit einverstanden, dass im Zusammenhang mit der Mitgliedschaft Foto- und Filmaufnahmen und die dazugehörigen Daten für Werbezwecke in den Medien verwendet werden dürfen. Für Ihre Spende wird Ihnen auf Wunsch eine Spendenquittung ausgestellt."}),r.jsxs("div",{style:{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"3mm",marginTop:"4mm"},children:[r.jsxs(ht,{children:[r.jsx(et,{children:"Konstanz, den _______________"}),r.jsx("div",{style:{borderBottom:"1px solid #333",minHeight:"10mm",marginTop:"2mm"}}),r.jsx("div",{style:{fontSize:"7pt",color:"#999",marginTop:"1mm"},children:"Datum"})]}),r.jsxs(ht,{children:[r.jsx(et,{children:"Unterschrift:"}),r.jsx("div",{style:{borderBottom:"1px solid #333",minHeight:"10mm",marginTop:"2mm"}})]})]}),r.jsxs("div",{style:{marginTop:"3mm",fontSize:"8pt",color:"#555",lineHeight:1.5,borderTop:"1px solid #e5e7eb",paddingTop:"2mm"},children:[r.jsx("strong",{children:"Spendenkonto:"})," Sport Club Konstanz‑Wollmatingen e.V. · IBAN: DE84 6905 0001 0000 0929 99 · Sparkasse Bodensee",r.jsx("br",{}),r.jsx("strong",{children:"Kontakt:"})," ",vt.email," · Tel. +49 152 3384 2436 · Schleyerweg 5 · 78467 Konstanz"]}),r.jsxs(Nf,{style:{marginTop:"auto"},children:[r.jsx(Un,{children:r.jsx("strong",{children:"SC Konstanz-Wollmatingen e.V."})}),r.jsx(Un,{$center:!0,children:"CLUB 500"}),r.jsx(Un,{$right:!0,children:"partner.sckw.de"})]})]})]})}function Lw(){return r.jsxs(_t,{children:[r.jsx(Ft,{}),r.jsxs(Wt,{children:[r.jsx(Jt,{children:r.jsx(It,{src:"/logo.svg"})}),r.jsx(en,{style:{color:"#1a365d"},children:"SO GEHT'S WEITER"}),r.jsx(wt,{children:"In 4 einfachen Schritten zum Sponsoring-Start."}),r.jsx("div",{style:{display:"grid",gridTemplateColumns:"repeat(2, 1fr)",gap:"4mm",margin:"4mm 0"},children:[{n:"1",t:"KONTAKT",d:"Kurzes Gespräch oder E-Mail. Wir melden uns innerhalb von 24h."},{n:"2",t:"BEDARF",d:"Wir klären gemeinsam Ziele, Budget und passende Leistungen."},{n:"3",t:"ANGEBOT",d:"Sie erhalten ein individuelles Angebot mit klaren Leistungen."},{n:"4",t:"START",d:"Nach Zusage: Design, Abstimmung, Launch!"}].map(a=>r.jsxs("div",{style:{background:"#f8fafc",borderRadius:"3mm",padding:"4mm",borderLeft:"4px solid #1a365d"},children:[r.jsx("div",{style:{fontSize:"22pt",fontWeight:900,color:"#1a365d"},children:a.n}),r.jsx("div",{style:{fontSize:"11pt",fontWeight:800,marginBottom:"1mm"},children:a.t}),r.jsx(Oe,{style:{margin:0,fontSize:"9pt"},children:a.d})]},a.n))}),r.jsx(mt,{children:"Kontakt"}),r.jsxs("div",{style:{background:"linear-gradient(135deg, #1a365d, #2d5a87)",borderRadius:"3mm",padding:"5mm",color:"#fff",display:"grid",gridTemplateColumns:"1fr 1fr",gap:"4mm"},children:[r.jsxs("div",{children:[r.jsx("div",{style:{fontSize:"8pt",opacity:.7},children:"E-Mail"}),r.jsx("div",{style:{fontSize:"13pt",fontWeight:700},children:vt.email})]}),r.jsxs("div",{children:[r.jsx("div",{style:{fontSize:"8pt",opacity:.7},children:"Website"}),r.jsx("div",{style:{fontSize:"13pt",fontWeight:700},children:"partner.sckw.de"})]}),r.jsxs("div",{style:{gridColumn:"1 / -1"},children:[r.jsx("div",{style:{fontSize:"8pt",opacity:.7},children:"Adresse"}),r.jsxs("div",{style:{fontSize:"11pt"},children:[vt.adresse.name," · ",vt.adresse.strasse," ·"," ",vt.adresse.plz," ",vt.adresse.ort]})]})]}),r.jsx(mt,{children:"Gesprächsleitfaden"}),r.jsxs("div",{style:{background:"#eff6ff",border:"2px dashed #3b82f6",borderRadius:"3mm",padding:"4mm"},children:[r.jsx(Oe,{style:{fontSize:"9pt",color:"#1e3a5f",margin:"0 0 1.5mm"},children:'→ "1,4 Mio. Social-Media-Views in dieser Saison – 100 % organisch, aktuell 394.000 Views/Monat."'}),r.jsx(Oe,{style:{fontSize:"9pt",color:"#1e3a5f",margin:"0 0 1.5mm"},children:'→ "Ihr Logo erscheint nicht nur im Stadion, sondern auch in unseren Social Media Posts."'}),r.jsx(Oe,{style:{fontSize:"9pt",color:"#1e3a5f",margin:"0 0 1.5mm"},children:'→ "Probieren Sie uns für 150€ aus – wenn es passt, upgraden wir."'}),r.jsx(Oe,{style:{fontSize:"9pt",color:"#1e3a5f",margin:"0 0 1.5mm"},children:'→ "Wann startet Ihre nächste Kampagne? Wir können sofort loslegen."'})]}),r.jsx(cn,{})]})]})}function Hw(){return r.jsxs(_t,{children:[r.jsx(Ft,{}),r.jsxs(Wt,{children:[r.jsx(Jt,{children:r.jsx(It,{src:"/logo.svg"})}),r.jsx(en,{style:{color:"#1a365d"},children:"GESPRÄCHSNOTIZ"}),r.jsxs(wt,{children:["Interne Dokumentation – nach dem Gespräch ausfüllen und an"," ",vt.email," senden."]}),r.jsxs("div",{style:{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"3mm"},children:[r.jsxs(ht,{children:[r.jsx(et,{children:"Datum:"}),r.jsx(Nt,{$lines:1})]}),r.jsxs(ht,{children:[r.jsx(et,{children:"Gesprächsführer (Helfer):"}),r.jsx(Nt,{$lines:1})]})]}),Z5.map((a,s)=>r.jsxs(ht,{children:[r.jsxs(et,{children:[a.label,":"]}),r.jsx(Nt,{$lines:a.lines})]},s)),r.jsx("div",{style:{display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:"3mm",marginTop:"3mm"},children:["Hot Lead","Warm Lead","Später kontaktieren"].map(a=>r.jsx("div",{style:{border:"1px solid #d1d5db",borderRadius:"2mm",padding:"2.5mm"},children:r.jsxs(et,{style:{marginBottom:0},children:["☐ ",a]})},a))}),r.jsx("div",{style:{marginTop:"4mm",background:"#f0f9ff",borderRadius:"2mm",padding:"3mm"},children:r.jsxs(Oe,{style:{margin:0,fontSize:"8pt"},children:[r.jsx("strong",{children:"Schnellreferenz:"})," ",vt.email," · partner.sckw.de · ",vt.vollAdresse.replace(/\n/g," · ")]})}),r.jsxs(Nf,{style:{marginTop:"auto"},children:[r.jsx(Un,{children:r.jsx("strong",{children:"Internes Dokument"})}),r.jsx(Un,{$center:!0}),r.jsx(Un,{$right:!0,children:"SC Konstanz-Wollmatingen e.V."})]})]})]})}const On=[{id:"cover",label:"Titelseite",group:"broschüre",render:()=>r.jsx(zw,{})},{id:"why",label:"Warum SCKW?",group:"broschüre",render:()=>r.jsx(Cw,{})},{id:"haupt",label:"Hauptsponsor",group:"broschüre",needsPrices:!0,render:a=>r.jsx(Aw,{showPrices:a})},{id:"co",label:"Co-Sponsor",group:"broschüre",needsPrices:!0,render:a=>r.jsx(Tw,{showPrices:a})},{id:"silber",label:"Silber + Community",group:"broschüre",needsPrices:!0,render:a=>r.jsx(Rw,{showPrices:a})},{id:"banden",label:"Bandenwerbung",group:"broschüre",needsPrices:!0,render:a=>r.jsx(Mw,{showPrices:a})},{id:"magazin",label:"Stadionmagazin",group:"broschüre",needsPrices:!0,render:a=>r.jsx(kw,{showPrices:a})},{id:"spieltag",label:"Spieltag-Sponsoring",group:"broschüre",needsPrices:!0,render:a=>r.jsx(Dw,{showPrices:a})},{id:"bus",label:"Buswerbung",group:"broschüre",needsPrices:!0,render:a=>r.jsx(Ow,{showPrices:a})},{id:"praemien",label:"Prämienmodell",group:"broschüre",needsPrices:!0,render:a=>r.jsx(Bw,{showPrices:a})},{id:"club500",label:"CLUB 500",group:"community",render:()=>r.jsx(Nw,{})},{id:"club500form",label:"CLUB 500 Anmeldung",group:"community",render:()=>r.jsx(Uw,{})},{id:"steps",label:"So geht's weiter",group:"helfer",render:()=>r.jsx(Lw,{})},{id:"lead",label:"Gesprächsnotiz",group:"helfer",render:()=>r.jsx(Hw,{})}],Gw=v.div`
   max-width: 1000px;
   margin: 0 auto;
   padding: 2rem 1.5rem;
   @media print {
     display: none !important;
   }
-`,Vw=v.h2`
+`,Yw=v.h2`
   font-size: 1.6rem;
   font-weight: 800;
   color: #1a365d;
   margin: 0 0 0.5rem;
-`,qw=v.p`
+`,$w=v.p`
   font-size: 0.95rem;
   color: #666;
   margin: 0 0 1.5rem;
   line-height: 1.5;
-`,Kw=v.div`
+`,Vw=v.div`
   display: flex;
   gap: 0.75rem;
   flex-wrap: wrap;
   margin-bottom: 1.5rem;
   align-items: center;
-`,Qw=v.button`
+`,qw=v.button`
   background: ${a=>a.$on?"#1a365d":"#f1f5f9"};
   color: ${a=>a.$on?"#fff":"#475569"};
   border: 2px solid ${a=>a.$on?"#1a365d":"#cbd5e1"};
@@ -2023,7 +2012,7 @@ Herzliche Grüße
     height: 16px;
     cursor: pointer;
   }
-`,Xw=v.div`
+`,Kw=v.div`
   display: flex;
   gap: 0.5rem;
   flex-wrap: wrap;
@@ -2041,7 +2030,7 @@ Herzliche Grüße
   &:hover {
     background: #e2e8f0;
   }
-`,Zw=v.button`
+`,Qw=v.button`
   background: linear-gradient(135deg, #1a365d, #2d5a87);
   color: #fff;
   border: none;
@@ -2062,12 +2051,12 @@ Herzliche Grüße
     transform: none;
     box-shadow: none;
   }
-`,Pw=v.span`
+`,Xw=v.span`
   font-size: 0.85rem;
   color: #64748b;
   font-weight: 500;
-`;function Fw(){const a=jw(),[s]=wp(),u=s.get("preset"),c=s.get("view"),f=()=>u==="club500"?new Set(["club500","club500form"]):new Set(On.filter(Y=>Y.group==="broschüre").map(Y=>Y.id)),[d,y]=C.useState(!0),[p,h]=C.useState(f),[g,x]=C.useState(c==="preview"?"preview":"dashboard");if(!a)return r.jsx(ks,{to:"/",replace:!0});const S=Y=>{h(se=>{const Q=new Set(se);return Q.has(Y)?Q.delete(Y):Q.add(Y),Q})},w=()=>h(new Set(On.map(Y=>Y.id))),R=()=>h(new Set),A=()=>h(new Set(On.filter(Y=>Y.group==="broschüre").map(Y=>Y.id))),B=()=>h(new Set(On.map(Y=>Y.id))),L=()=>h(new Set(["cover","why","spieltag","banden"])),$=()=>h(new Set(["cover","why","haupt","co","silber"])),X=()=>h(new Set(["club500","club500form"])),T=On.filter(Y=>p.has(Y.id)),q=On.filter(Y=>Y.group==="broschüre"),H=On.filter(Y=>Y.group==="community"),W=On.filter(Y=>Y.group==="helfer");return g==="preview"?r.jsxs(r.Fragment,{children:[r.jsx(ww,{}),r.jsxs(m0,{children:[r.jsxs(g0,{children:["Vorschau · ",T.length," Seiten"]}),r.jsxs(p0,{children:[r.jsx(zs,{$active:d,onClick:()=>y(Y=>!Y),children:d?"Preise ✓":"Preise ✗"}),r.jsx(zs,{onClick:()=>x("dashboard"),children:"Zurück"}),r.jsx(zs,{$primary:!0,onClick:()=>window.print(),children:"Drucken / PDF"})]})]}),r.jsxs(_w,{children:[r.jsx("strong",{children:"PDF erstellen:"}),' "Drucken / PDF" klicken, "Als PDF speichern" wählen.',r.jsx("strong",{children:" Hintergrundgrafiken aktivieren"}),". Format: A4, Ränder: Keine."]}),r.jsx(Ew,{children:T.map(Y=>r.jsx("div",{children:Y.render(d)},Y.id))})]}):r.jsxs(r.Fragment,{children:[r.jsxs(m0,{children:[r.jsx(g0,{children:"Sponsoring-Kit · SCKW"}),r.jsx(p0,{children:r.jsx(zs,{onClick:()=>navigator.clipboard.writeText(window.location.href),children:"Link kopieren"})})]}),r.jsxs($w,{children:[r.jsx(Vw,{children:"Sponsoring-Kit zusammenstellen"}),r.jsx(qw,{children:"Wählen Sie die Seiten, die Sie drucken oder als PDF exportieren möchten. Perfekt für individuelle Gespräche – stellen Sie das passende Paket zusammen."}),r.jsxs(Kw,{children:[r.jsx(Qw,{$on:d,onClick:()=>y(Y=>!Y),children:d?"Preise anzeigen ✓":"Preise ausgeblendet ✗"}),r.jsxs(Pw,{children:[p.size," von ",On.length," Seiten ausgewählt"]})]}),r.jsxs(Xw,{children:[r.jsx(Da,{onClick:w,children:"Alles"}),r.jsx(Da,{onClick:A,children:"Broschüre komplett"}),r.jsx(Da,{onClick:B,children:"Komplett-Kit (+ Helfer)"}),r.jsx(Da,{onClick:$,children:"Nur Premium-Pakete"}),r.jsx(Da,{onClick:L,children:"Starter-Paket"}),r.jsx(Da,{onClick:X,children:"CLUB 500"}),r.jsx(Da,{onClick:R,children:"Keine"})]}),r.jsx(Zu,{children:"Broschüre"}),r.jsx(Pu,{children:q.map(Y=>r.jsxs(Fu,{$checked:p.has(Y.id),children:[r.jsx("input",{type:"checkbox",checked:p.has(Y.id),onChange:()=>S(Y.id)}),Y.label]},Y.id))}),r.jsx(Zu,{children:"Community / CLUB 500"}),r.jsx(Pu,{children:H.map(Y=>r.jsxs(Fu,{$checked:p.has(Y.id),children:[r.jsx("input",{type:"checkbox",checked:p.has(Y.id),onChange:()=>S(Y.id)}),Y.label]},Y.id))}),r.jsx(Zu,{children:"Helfer-Anhang"}),r.jsx(Pu,{children:W.map(Y=>r.jsxs(Fu,{$checked:p.has(Y.id),children:[r.jsx("input",{type:"checkbox",checked:p.has(Y.id),onChange:()=>S(Y.id)}),Y.label]},Y.id))}),r.jsxs(Zw,{disabled:p.size===0,onClick:()=>x("preview"),children:["Vorschau & Drucken (",p.size," Seiten)"]})]})]})}function Ww(a,s){if(a.match(/^[a-z]+:\/\//i))return a;if(a.match(/^\/\//))return window.location.protocol+a;if(a.match(/^[a-z]+:/i))return a;const u=document.implementation.createHTMLDocument(),c=u.createElement("base"),f=u.createElement("a");return u.head.appendChild(c),u.body.appendChild(f),s&&(c.href=s),f.href=a,f.href}const Jw=(()=>{let a=0;const s=()=>`0000${(Math.random()*36**4<<0).toString(36)}`.slice(-4);return()=>(a+=1,`u${s()}${a}`)})();function da(a){const s=[];for(let u=0,c=a.length;u<c;u++)s.push(a[u]);return s}let kl=null;function T1(a={}){return kl||(a.includeStyleProperties?(kl=a.includeStyleProperties,kl):(kl=da(window.getComputedStyle(document.documentElement)),kl))}function Vs(a,s){const c=(a.ownerDocument.defaultView||window).getComputedStyle(a).getPropertyValue(s);return c?parseFloat(c.replace("px","")):0}function Iw(a){const s=Vs(a,"border-left-width"),u=Vs(a,"border-right-width");return a.clientWidth+s+u}function e3(a){const s=Vs(a,"border-top-width"),u=Vs(a,"border-bottom-width");return a.clientHeight+s+u}function R1(a,s={}){const u=s.width||Iw(a),c=s.height||e3(a);return{width:u,height:c}}function t3(){let a,s;try{s=process}catch{}const u=s&&s.env?s.env.devicePixelRatio:null;return u&&(a=parseInt(u,10),Number.isNaN(a)&&(a=1)),a||window.devicePixelRatio||1}const Ot=16384;function n3(a){(a.width>Ot||a.height>Ot)&&(a.width>Ot&&a.height>Ot?a.width>a.height?(a.height*=Ot/a.width,a.width=Ot):(a.width*=Ot/a.height,a.height=Ot):a.width>Ot?(a.height*=Ot/a.width,a.width=Ot):(a.width*=Ot/a.height,a.height=Ot))}function qs(a){return new Promise((s,u)=>{const c=new Image;c.onload=()=>{c.decode().then(()=>{requestAnimationFrame(()=>s(c))})},c.onerror=u,c.crossOrigin="anonymous",c.decoding="async",c.src=a})}async function a3(a){return Promise.resolve().then(()=>new XMLSerializer().serializeToString(a)).then(encodeURIComponent).then(s=>`data:image/svg+xml;charset=utf-8,${s}`)}async function l3(a,s,u){const c="http://www.w3.org/2000/svg",f=document.createElementNS(c,"svg"),d=document.createElementNS(c,"foreignObject");return f.setAttribute("width",`${s}`),f.setAttribute("height",`${u}`),f.setAttribute("viewBox",`0 0 ${s} ${u}`),d.setAttribute("width","100%"),d.setAttribute("height","100%"),d.setAttribute("x","0"),d.setAttribute("y","0"),d.setAttribute("externalResourcesRequired","true"),f.appendChild(d),d.appendChild(a),a3(f)}const jt=(a,s)=>{if(a instanceof s)return!0;const u=Object.getPrototypeOf(a);return u===null?!1:u.constructor.name===s.name||jt(u,s)};function r3(a){const s=a.getPropertyValue("content");return`${a.cssText} content: '${s.replace(/'|"/g,"")}';`}function i3(a,s){return T1(s).map(u=>{const c=a.getPropertyValue(u),f=a.getPropertyPriority(u);return`${u}: ${c}${f?" !important":""};`}).join(" ")}function s3(a,s,u,c){const f=`.${a}:${s}`,d=u.cssText?r3(u):i3(u,c);return document.createTextNode(`${f}{${d}}`)}function v0(a,s,u,c){const f=window.getComputedStyle(a,u),d=f.getPropertyValue("content");if(d===""||d==="none")return;const y=Jw();try{s.className=`${s.className} ${y}`}catch{return}const p=document.createElement("style");p.appendChild(s3(y,u,f,c)),s.appendChild(p)}function o3(a,s,u){v0(a,s,":before",u),v0(a,s,":after",u)}const S0="application/font-woff",j0="image/jpeg",c3={woff:S0,woff2:S0,ttf:"application/font-truetype",eot:"application/vnd.ms-fontobject",png:"image/png",jpg:j0,jpeg:j0,gif:"image/gif",tiff:"image/tiff",svg:"image/svg+xml",webp:"image/webp"};function u3(a){const s=/\.([^./]*?)$/g.exec(a);return s?s[1]:""}function Uf(a){const s=u3(a).toLowerCase();return c3[s]||""}function f3(a){return a.split(/,/)[1]}function pf(a){return a.search(/^(data:)/)!==-1}function d3(a,s){return`data:${s};base64,${a}`}async function M1(a,s,u){const c=await fetch(a,s);if(c.status===404)throw new Error(`Resource "${c.url}" not found`);const f=await c.blob();return new Promise((d,y)=>{const p=new FileReader;p.onerror=y,p.onloadend=()=>{try{d(u({res:c,result:p.result}))}catch(h){y(h)}},p.readAsDataURL(f)})}const Wu={};function h3(a,s,u){let c=a.replace(/\?.*/,"");return u&&(c=a),/ttf|otf|eot|woff2?/i.test(c)&&(c=c.replace(/.*\//,"")),s?`[${s}]${c}`:c}async function Lf(a,s,u){const c=h3(a,s,u.includeQueryParams);if(Wu[c]!=null)return Wu[c];u.cacheBust&&(a+=(/\?/.test(a)?"&":"?")+new Date().getTime());let f;try{const d=await M1(a,u.fetchRequestInit,({res:y,result:p})=>(s||(s=y.headers.get("Content-Type")||""),f3(p)));f=d3(d,s)}catch(d){f=u.imagePlaceholder||"";let y=`Failed to fetch resource: ${a}`;d&&(y=typeof d=="string"?d:d.message),y&&console.warn(y)}return Wu[c]=f,f}async function m3(a){const s=a.toDataURL();return s==="data:,"?a.cloneNode(!1):qs(s)}async function g3(a,s){if(a.currentSrc){const d=document.createElement("canvas"),y=d.getContext("2d");d.width=a.clientWidth,d.height=a.clientHeight,y?.drawImage(a,0,0,d.width,d.height);const p=d.toDataURL();return qs(p)}const u=a.poster,c=Uf(u),f=await Lf(u,c,s);return qs(f)}async function p3(a,s){var u;try{if(!((u=a?.contentDocument)===null||u===void 0)&&u.body)return await to(a.contentDocument.body,s,!0)}catch{}return a.cloneNode(!1)}async function b3(a,s){return jt(a,HTMLCanvasElement)?m3(a):jt(a,HTMLVideoElement)?g3(a,s):jt(a,HTMLIFrameElement)?p3(a,s):a.cloneNode(k1(a))}const x3=a=>a.tagName!=null&&a.tagName.toUpperCase()==="SLOT",k1=a=>a.tagName!=null&&a.tagName.toUpperCase()==="SVG";async function y3(a,s,u){var c,f;if(k1(s))return s;let d=[];return x3(a)&&a.assignedNodes?d=da(a.assignedNodes()):jt(a,HTMLIFrameElement)&&(!((c=a.contentDocument)===null||c===void 0)&&c.body)?d=da(a.contentDocument.body.childNodes):d=da(((f=a.shadowRoot)!==null&&f!==void 0?f:a).childNodes),d.length===0||jt(a,HTMLVideoElement)||await d.reduce((y,p)=>y.then(()=>to(p,u)).then(h=>{h&&s.appendChild(h)}),Promise.resolve()),s}function v3(a,s,u){const c=s.style;if(!c)return;const f=window.getComputedStyle(a);f.cssText?(c.cssText=f.cssText,c.transformOrigin=f.transformOrigin):T1(u).forEach(d=>{let y=f.getPropertyValue(d);d==="font-size"&&y.endsWith("px")&&(y=`${Math.floor(parseFloat(y.substring(0,y.length-2)))-.1}px`),jt(a,HTMLIFrameElement)&&d==="display"&&y==="inline"&&(y="block"),d==="d"&&s.getAttribute("d")&&(y=`path(${s.getAttribute("d")})`),c.setProperty(d,y,f.getPropertyPriority(d))})}function S3(a,s){jt(a,HTMLTextAreaElement)&&(s.innerHTML=a.value),jt(a,HTMLInputElement)&&s.setAttribute("value",a.value)}function j3(a,s){if(jt(a,HTMLSelectElement)){const u=s,c=Array.from(u.children).find(f=>a.value===f.getAttribute("value"));c&&c.setAttribute("selected","")}}function w3(a,s,u){return jt(s,Element)&&(v3(a,s,u),o3(a,s,u),S3(a,s),j3(a,s)),s}async function _3(a,s){const u=a.querySelectorAll?a.querySelectorAll("use"):[];if(u.length===0)return a;const c={};for(let d=0;d<u.length;d++){const p=u[d].getAttribute("xlink:href");if(p){const h=a.querySelector(p),g=document.querySelector(p);!h&&g&&!c[p]&&(c[p]=await to(g,s,!0))}}const f=Object.values(c);if(f.length){const d="http://www.w3.org/1999/xhtml",y=document.createElementNS(d,"svg");y.setAttribute("xmlns",d),y.style.position="absolute",y.style.width="0",y.style.height="0",y.style.overflow="hidden",y.style.display="none";const p=document.createElementNS(d,"defs");y.appendChild(p);for(let h=0;h<f.length;h++)p.appendChild(f[h]);a.appendChild(y)}return a}async function to(a,s,u){return!u&&s.filter&&!s.filter(a)?null:Promise.resolve(a).then(c=>b3(c,s)).then(c=>y3(a,c,s)).then(c=>w3(a,c,s)).then(c=>_3(c,s))}const D1=/url\((['"]?)([^'"]+?)\1\)/g,E3=/url\([^)]+\)\s*format\((["']?)([^"']+)\1\)/g,z3=/src:\s*(?:url\([^)]+\)\s*format\([^)]+\)[,;]\s*)+/g;function C3(a){const s=a.replace(/([.*+?^${}()|\[\]\/\\])/g,"\\$1");return new RegExp(`(url\\(['"]?)(${s})(['"]?\\))`,"g")}function A3(a){const s=[];return a.replace(D1,(u,c,f)=>(s.push(f),u)),s.filter(u=>!pf(u))}async function T3(a,s,u,c,f){try{const d=u?Ww(s,u):s,y=Uf(s);let p;return f||(p=await Lf(d,y,c)),a.replace(C3(s),`$1${p}$3`)}catch{}return a}function R3(a,{preferredFontFormat:s}){return s?a.replace(z3,u=>{for(;;){const[c,,f]=E3.exec(u)||[];if(!f)return"";if(f===s)return`src: ${c};`}}):a}function O1(a){return a.search(D1)!==-1}async function B1(a,s,u){if(!O1(a))return a;const c=R3(a,u);return A3(c).reduce((d,y)=>d.then(p=>T3(p,y,s,u)),Promise.resolve(c))}async function Dl(a,s,u){var c;const f=(c=s.style)===null||c===void 0?void 0:c.getPropertyValue(a);if(f){const d=await B1(f,null,u);return s.style.setProperty(a,d,s.style.getPropertyPriority(a)),!0}return!1}async function M3(a,s){await Dl("background",a,s)||await Dl("background-image",a,s),await Dl("mask",a,s)||await Dl("-webkit-mask",a,s)||await Dl("mask-image",a,s)||await Dl("-webkit-mask-image",a,s)}async function k3(a,s){const u=jt(a,HTMLImageElement);if(!(u&&!pf(a.src))&&!(jt(a,SVGImageElement)&&!pf(a.href.baseVal)))return;const c=u?a.src:a.href.baseVal,f=await Lf(c,Uf(c),s);await new Promise((d,y)=>{a.onload=d,a.onerror=s.onImageErrorHandler?(...h)=>{try{d(s.onImageErrorHandler(...h))}catch(g){y(g)}}:y;const p=a;p.decode&&(p.decode=d),p.loading==="lazy"&&(p.loading="eager"),u?(a.srcset="",a.src=f):a.href.baseVal=f})}async function D3(a,s){const c=da(a.childNodes).map(f=>N1(f,s));await Promise.all(c).then(()=>a)}async function N1(a,s){jt(a,Element)&&(await M3(a,s),await k3(a,s),await D3(a,s))}function O3(a,s){const{style:u}=a;s.backgroundColor&&(u.backgroundColor=s.backgroundColor),s.width&&(u.width=`${s.width}px`),s.height&&(u.height=`${s.height}px`);const c=s.style;return c!=null&&Object.keys(c).forEach(f=>{u[f]=c[f]}),a}const w0={};async function _0(a){let s=w0[a];if(s!=null)return s;const c=await(await fetch(a)).text();return s={url:a,cssText:c},w0[a]=s,s}async function E0(a,s){let u=a.cssText;const c=/url\(["']?([^"')]+)["']?\)/g,d=(u.match(/url\([^)]+\)/g)||[]).map(async y=>{let p=y.replace(c,"$1");return p.startsWith("https://")||(p=new URL(p,a.url).href),M1(p,s.fetchRequestInit,({result:h})=>(u=u.replace(y,`url(${h})`),[y,h]))});return Promise.all(d).then(()=>u)}function z0(a){if(a==null)return[];const s=[],u=/(\/\*[\s\S]*?\*\/)/gi;let c=a.replace(u,"");const f=new RegExp("((@.*?keyframes [\\s\\S]*?){([\\s\\S]*?}\\s*?)})","gi");for(;;){const h=f.exec(c);if(h===null)break;s.push(h[0])}c=c.replace(f,"");const d=/@import[\s\S]*?url\([^)]*\)[\s\S]*?;/gi,y="((\\s*?(?:\\/\\*[\\s\\S]*?\\*\\/)?\\s*?@media[\\s\\S]*?){([\\s\\S]*?)}\\s*?})|(([\\s\\S]*?){([\\s\\S]*?)})",p=new RegExp(y,"gi");for(;;){let h=d.exec(c);if(h===null){if(h=p.exec(c),h===null)break;d.lastIndex=p.lastIndex}else p.lastIndex=d.lastIndex;s.push(h[0])}return s}async function B3(a,s){const u=[],c=[];return a.forEach(f=>{if("cssRules"in f)try{da(f.cssRules||[]).forEach((d,y)=>{if(d.type===CSSRule.IMPORT_RULE){let p=y+1;const h=d.href,g=_0(h).then(x=>E0(x,s)).then(x=>z0(x).forEach(S=>{try{f.insertRule(S,S.startsWith("@import")?p+=1:f.cssRules.length)}catch(w){console.error("Error inserting rule from remote css",{rule:S,error:w})}})).catch(x=>{console.error("Error loading remote css",x.toString())});c.push(g)}})}catch(d){const y=a.find(p=>p.href==null)||document.styleSheets[0];f.href!=null&&c.push(_0(f.href).then(p=>E0(p,s)).then(p=>z0(p).forEach(h=>{y.insertRule(h,y.cssRules.length)})).catch(p=>{console.error("Error loading remote stylesheet",p)})),console.error("Error inlining remote css file",d)}}),Promise.all(c).then(()=>(a.forEach(f=>{if("cssRules"in f)try{da(f.cssRules||[]).forEach(d=>{u.push(d)})}catch(d){console.error(`Error while reading CSS rules from ${f.href}`,d)}}),u))}function N3(a){return a.filter(s=>s.type===CSSRule.FONT_FACE_RULE).filter(s=>O1(s.style.getPropertyValue("src")))}async function U3(a,s){if(a.ownerDocument==null)throw new Error("Provided element is not within a Document");const u=da(a.ownerDocument.styleSheets),c=await B3(u,s);return N3(c)}function U1(a){return a.trim().replace(/["']/g,"")}function L3(a){const s=new Set;function u(c){(c.style.fontFamily||getComputedStyle(c).fontFamily).split(",").forEach(d=>{s.add(U1(d))}),Array.from(c.children).forEach(d=>{d instanceof HTMLElement&&u(d)})}return u(a),s}async function H3(a,s){const u=await U3(a,s),c=L3(a);return(await Promise.all(u.filter(d=>c.has(U1(d.style.fontFamily))).map(d=>{const y=d.parentStyleSheet?d.parentStyleSheet.href:null;return B1(d.cssText,y,s)}))).join(`
-`)}async function G3(a,s){const u=s.fontEmbedCSS!=null?s.fontEmbedCSS:s.skipFonts?null:await H3(a,s);if(u){const c=document.createElement("style"),f=document.createTextNode(u);c.appendChild(f),a.firstChild?a.insertBefore(c,a.firstChild):a.appendChild(c)}}async function Y3(a,s={}){const{width:u,height:c}=R1(a,s),f=await to(a,s,!0);return await G3(f,s),await N1(f,s),O3(f,s),await l3(f,u,c)}async function $3(a,s={}){const{width:u,height:c}=R1(a,s),f=await Y3(a,s),d=await qs(f),y=document.createElement("canvas"),p=y.getContext("2d"),h=s.pixelRatio||t3(),g=s.canvasWidth||u,x=s.canvasHeight||c;return y.width=g*h,y.height=x*h,s.skipAutoScale||n3(y),y.style.width=`${g}`,y.style.height=`${x}`,s.backgroundColor&&(p.fillStyle=s.backgroundColor,p.fillRect(0,0,y.width,y.height)),p.drawImage(d,0,0,y.width,y.height),y}async function V3(a,s={}){return(await $3(a,s)).toDataURL()}const Qr=[{id:"vereinsbus",label:"Vereinsbus",image:"/sckw-bud-exclusive-platzhalter.png",zones:[{id:"seite-gross-oben",label:"Seitenfläche groß",x:42.5,y:14.6,width:30.3,height:9.8},{id:"heck",label:"Heckfläche",x:5.9,y:70.4,width:15.2,height:7.9},{id:"seite-gross-unten",label:"Seitenfläche groß",x:43.5,y:71.6,width:27.1,height:8.3}]}],q3=v.div`
+`;function Zw(){const a=vw(),[s]=wp(),u=s.get("preset"),c=s.get("view"),f=()=>u==="club500"?new Set(["club500","club500form"]):new Set(On.filter(Y=>Y.group==="broschüre").map(Y=>Y.id)),[d,y]=C.useState(!0),[p,h]=C.useState(f),[g,x]=C.useState(c==="preview"?"preview":"dashboard");if(!a)return r.jsx(ks,{to:"/",replace:!0});const S=Y=>{h(se=>{const Q=new Set(se);return Q.has(Y)?Q.delete(Y):Q.add(Y),Q})},w=()=>h(new Set(On.map(Y=>Y.id))),R=()=>h(new Set),A=()=>h(new Set(On.filter(Y=>Y.group==="broschüre").map(Y=>Y.id))),B=()=>h(new Set(On.map(Y=>Y.id))),L=()=>h(new Set(["cover","why","spieltag","banden"])),$=()=>h(new Set(["cover","why","haupt","co","silber"])),X=()=>h(new Set(["club500","club500form"])),T=On.filter(Y=>p.has(Y.id)),q=On.filter(Y=>Y.group==="broschüre"),H=On.filter(Y=>Y.group==="community"),W=On.filter(Y=>Y.group==="helfer");return g==="preview"?r.jsxs(r.Fragment,{children:[r.jsx(Sw,{}),r.jsxs(m0,{children:[r.jsxs(g0,{children:["Vorschau · ",T.length," Seiten"]}),r.jsxs(p0,{children:[r.jsx(zs,{$active:d,onClick:()=>y(Y=>!Y),children:d?"Preise ✓":"Preise ✗"}),r.jsx(zs,{onClick:()=>x("dashboard"),children:"Zurück"}),r.jsx(zs,{$primary:!0,onClick:()=>window.print(),children:"Drucken / PDF"})]})]}),r.jsxs(jw,{children:[r.jsx("strong",{children:"PDF erstellen:"}),' "Drucken / PDF" klicken, "Als PDF speichern" wählen.',r.jsx("strong",{children:" Hintergrundgrafiken aktivieren"}),". Format: A4, Ränder: Keine."]}),r.jsx(ww,{children:T.map(Y=>r.jsx("div",{children:Y.render(d)},Y.id))})]}):r.jsxs(r.Fragment,{children:[r.jsxs(m0,{children:[r.jsx(g0,{children:"Sponsoring-Kit · SCKW"}),r.jsx(p0,{children:r.jsx(zs,{onClick:()=>navigator.clipboard.writeText(window.location.href),children:"Link kopieren"})})]}),r.jsxs(Gw,{children:[r.jsx(Yw,{children:"Sponsoring-Kit zusammenstellen"}),r.jsx($w,{children:"Wählen Sie die Seiten, die Sie drucken oder als PDF exportieren möchten. Perfekt für individuelle Gespräche – stellen Sie das passende Paket zusammen."}),r.jsxs(Vw,{children:[r.jsx(qw,{$on:d,onClick:()=>y(Y=>!Y),children:d?"Preise anzeigen ✓":"Preise ausgeblendet ✗"}),r.jsxs(Xw,{children:[p.size," von ",On.length," Seiten ausgewählt"]})]}),r.jsxs(Kw,{children:[r.jsx(Da,{onClick:w,children:"Alles"}),r.jsx(Da,{onClick:A,children:"Broschüre komplett"}),r.jsx(Da,{onClick:B,children:"Komplett-Kit (+ Helfer)"}),r.jsx(Da,{onClick:$,children:"Nur Premium-Pakete"}),r.jsx(Da,{onClick:L,children:"Starter-Paket"}),r.jsx(Da,{onClick:X,children:"CLUB 500"}),r.jsx(Da,{onClick:R,children:"Keine"})]}),r.jsx(Zu,{children:"Broschüre"}),r.jsx(Pu,{children:q.map(Y=>r.jsxs(Fu,{$checked:p.has(Y.id),children:[r.jsx("input",{type:"checkbox",checked:p.has(Y.id),onChange:()=>S(Y.id)}),Y.label]},Y.id))}),r.jsx(Zu,{children:"Community / CLUB 500"}),r.jsx(Pu,{children:H.map(Y=>r.jsxs(Fu,{$checked:p.has(Y.id),children:[r.jsx("input",{type:"checkbox",checked:p.has(Y.id),onChange:()=>S(Y.id)}),Y.label]},Y.id))}),r.jsx(Zu,{children:"Helfer-Anhang"}),r.jsx(Pu,{children:W.map(Y=>r.jsxs(Fu,{$checked:p.has(Y.id),children:[r.jsx("input",{type:"checkbox",checked:p.has(Y.id),onChange:()=>S(Y.id)}),Y.label]},Y.id))}),r.jsxs(Qw,{disabled:p.size===0,onClick:()=>x("preview"),children:["Vorschau & Drucken (",p.size," Seiten)"]})]})]})}function Pw(a,s){if(a.match(/^[a-z]+:\/\//i))return a;if(a.match(/^\/\//))return window.location.protocol+a;if(a.match(/^[a-z]+:/i))return a;const u=document.implementation.createHTMLDocument(),c=u.createElement("base"),f=u.createElement("a");return u.head.appendChild(c),u.body.appendChild(f),s&&(c.href=s),f.href=a,f.href}const Fw=(()=>{let a=0;const s=()=>`0000${(Math.random()*36**4<<0).toString(36)}`.slice(-4);return()=>(a+=1,`u${s()}${a}`)})();function da(a){const s=[];for(let u=0,c=a.length;u<c;u++)s.push(a[u]);return s}let kl=null;function T1(a={}){return kl||(a.includeStyleProperties?(kl=a.includeStyleProperties,kl):(kl=da(window.getComputedStyle(document.documentElement)),kl))}function Vs(a,s){const c=(a.ownerDocument.defaultView||window).getComputedStyle(a).getPropertyValue(s);return c?parseFloat(c.replace("px","")):0}function Ww(a){const s=Vs(a,"border-left-width"),u=Vs(a,"border-right-width");return a.clientWidth+s+u}function Jw(a){const s=Vs(a,"border-top-width"),u=Vs(a,"border-bottom-width");return a.clientHeight+s+u}function R1(a,s={}){const u=s.width||Ww(a),c=s.height||Jw(a);return{width:u,height:c}}function Iw(){let a,s;try{s=process}catch{}const u=s&&s.env?s.env.devicePixelRatio:null;return u&&(a=parseInt(u,10),Number.isNaN(a)&&(a=1)),a||window.devicePixelRatio||1}const Ot=16384;function e3(a){(a.width>Ot||a.height>Ot)&&(a.width>Ot&&a.height>Ot?a.width>a.height?(a.height*=Ot/a.width,a.width=Ot):(a.width*=Ot/a.height,a.height=Ot):a.width>Ot?(a.height*=Ot/a.width,a.width=Ot):(a.width*=Ot/a.height,a.height=Ot))}function qs(a){return new Promise((s,u)=>{const c=new Image;c.onload=()=>{c.decode().then(()=>{requestAnimationFrame(()=>s(c))})},c.onerror=u,c.crossOrigin="anonymous",c.decoding="async",c.src=a})}async function t3(a){return Promise.resolve().then(()=>new XMLSerializer().serializeToString(a)).then(encodeURIComponent).then(s=>`data:image/svg+xml;charset=utf-8,${s}`)}async function n3(a,s,u){const c="http://www.w3.org/2000/svg",f=document.createElementNS(c,"svg"),d=document.createElementNS(c,"foreignObject");return f.setAttribute("width",`${s}`),f.setAttribute("height",`${u}`),f.setAttribute("viewBox",`0 0 ${s} ${u}`),d.setAttribute("width","100%"),d.setAttribute("height","100%"),d.setAttribute("x","0"),d.setAttribute("y","0"),d.setAttribute("externalResourcesRequired","true"),f.appendChild(d),d.appendChild(a),t3(f)}const jt=(a,s)=>{if(a instanceof s)return!0;const u=Object.getPrototypeOf(a);return u===null?!1:u.constructor.name===s.name||jt(u,s)};function a3(a){const s=a.getPropertyValue("content");return`${a.cssText} content: '${s.replace(/'|"/g,"")}';`}function l3(a,s){return T1(s).map(u=>{const c=a.getPropertyValue(u),f=a.getPropertyPriority(u);return`${u}: ${c}${f?" !important":""};`}).join(" ")}function r3(a,s,u,c){const f=`.${a}:${s}`,d=u.cssText?a3(u):l3(u,c);return document.createTextNode(`${f}{${d}}`)}function v0(a,s,u,c){const f=window.getComputedStyle(a,u),d=f.getPropertyValue("content");if(d===""||d==="none")return;const y=Fw();try{s.className=`${s.className} ${y}`}catch{return}const p=document.createElement("style");p.appendChild(r3(y,u,f,c)),s.appendChild(p)}function i3(a,s,u){v0(a,s,":before",u),v0(a,s,":after",u)}const S0="application/font-woff",j0="image/jpeg",s3={woff:S0,woff2:S0,ttf:"application/font-truetype",eot:"application/vnd.ms-fontobject",png:"image/png",jpg:j0,jpeg:j0,gif:"image/gif",tiff:"image/tiff",svg:"image/svg+xml",webp:"image/webp"};function o3(a){const s=/\.([^./]*?)$/g.exec(a);return s?s[1]:""}function Uf(a){const s=o3(a).toLowerCase();return s3[s]||""}function c3(a){return a.split(/,/)[1]}function pf(a){return a.search(/^(data:)/)!==-1}function u3(a,s){return`data:${s};base64,${a}`}async function M1(a,s,u){const c=await fetch(a,s);if(c.status===404)throw new Error(`Resource "${c.url}" not found`);const f=await c.blob();return new Promise((d,y)=>{const p=new FileReader;p.onerror=y,p.onloadend=()=>{try{d(u({res:c,result:p.result}))}catch(h){y(h)}},p.readAsDataURL(f)})}const Wu={};function f3(a,s,u){let c=a.replace(/\?.*/,"");return u&&(c=a),/ttf|otf|eot|woff2?/i.test(c)&&(c=c.replace(/.*\//,"")),s?`[${s}]${c}`:c}async function Lf(a,s,u){const c=f3(a,s,u.includeQueryParams);if(Wu[c]!=null)return Wu[c];u.cacheBust&&(a+=(/\?/.test(a)?"&":"?")+new Date().getTime());let f;try{const d=await M1(a,u.fetchRequestInit,({res:y,result:p})=>(s||(s=y.headers.get("Content-Type")||""),c3(p)));f=u3(d,s)}catch(d){f=u.imagePlaceholder||"";let y=`Failed to fetch resource: ${a}`;d&&(y=typeof d=="string"?d:d.message),y&&console.warn(y)}return Wu[c]=f,f}async function d3(a){const s=a.toDataURL();return s==="data:,"?a.cloneNode(!1):qs(s)}async function h3(a,s){if(a.currentSrc){const d=document.createElement("canvas"),y=d.getContext("2d");d.width=a.clientWidth,d.height=a.clientHeight,y?.drawImage(a,0,0,d.width,d.height);const p=d.toDataURL();return qs(p)}const u=a.poster,c=Uf(u),f=await Lf(u,c,s);return qs(f)}async function m3(a,s){var u;try{if(!((u=a?.contentDocument)===null||u===void 0)&&u.body)return await to(a.contentDocument.body,s,!0)}catch{}return a.cloneNode(!1)}async function g3(a,s){return jt(a,HTMLCanvasElement)?d3(a):jt(a,HTMLVideoElement)?h3(a,s):jt(a,HTMLIFrameElement)?m3(a,s):a.cloneNode(k1(a))}const p3=a=>a.tagName!=null&&a.tagName.toUpperCase()==="SLOT",k1=a=>a.tagName!=null&&a.tagName.toUpperCase()==="SVG";async function b3(a,s,u){var c,f;if(k1(s))return s;let d=[];return p3(a)&&a.assignedNodes?d=da(a.assignedNodes()):jt(a,HTMLIFrameElement)&&(!((c=a.contentDocument)===null||c===void 0)&&c.body)?d=da(a.contentDocument.body.childNodes):d=da(((f=a.shadowRoot)!==null&&f!==void 0?f:a).childNodes),d.length===0||jt(a,HTMLVideoElement)||await d.reduce((y,p)=>y.then(()=>to(p,u)).then(h=>{h&&s.appendChild(h)}),Promise.resolve()),s}function x3(a,s,u){const c=s.style;if(!c)return;const f=window.getComputedStyle(a);f.cssText?(c.cssText=f.cssText,c.transformOrigin=f.transformOrigin):T1(u).forEach(d=>{let y=f.getPropertyValue(d);d==="font-size"&&y.endsWith("px")&&(y=`${Math.floor(parseFloat(y.substring(0,y.length-2)))-.1}px`),jt(a,HTMLIFrameElement)&&d==="display"&&y==="inline"&&(y="block"),d==="d"&&s.getAttribute("d")&&(y=`path(${s.getAttribute("d")})`),c.setProperty(d,y,f.getPropertyPriority(d))})}function y3(a,s){jt(a,HTMLTextAreaElement)&&(s.innerHTML=a.value),jt(a,HTMLInputElement)&&s.setAttribute("value",a.value)}function v3(a,s){if(jt(a,HTMLSelectElement)){const u=s,c=Array.from(u.children).find(f=>a.value===f.getAttribute("value"));c&&c.setAttribute("selected","")}}function S3(a,s,u){return jt(s,Element)&&(x3(a,s,u),i3(a,s,u),y3(a,s),v3(a,s)),s}async function j3(a,s){const u=a.querySelectorAll?a.querySelectorAll("use"):[];if(u.length===0)return a;const c={};for(let d=0;d<u.length;d++){const p=u[d].getAttribute("xlink:href");if(p){const h=a.querySelector(p),g=document.querySelector(p);!h&&g&&!c[p]&&(c[p]=await to(g,s,!0))}}const f=Object.values(c);if(f.length){const d="http://www.w3.org/1999/xhtml",y=document.createElementNS(d,"svg");y.setAttribute("xmlns",d),y.style.position="absolute",y.style.width="0",y.style.height="0",y.style.overflow="hidden",y.style.display="none";const p=document.createElementNS(d,"defs");y.appendChild(p);for(let h=0;h<f.length;h++)p.appendChild(f[h]);a.appendChild(y)}return a}async function to(a,s,u){return!u&&s.filter&&!s.filter(a)?null:Promise.resolve(a).then(c=>g3(c,s)).then(c=>b3(a,c,s)).then(c=>S3(a,c,s)).then(c=>j3(c,s))}const D1=/url\((['"]?)([^'"]+?)\1\)/g,w3=/url\([^)]+\)\s*format\((["']?)([^"']+)\1\)/g,_3=/src:\s*(?:url\([^)]+\)\s*format\([^)]+\)[,;]\s*)+/g;function E3(a){const s=a.replace(/([.*+?^${}()|\[\]\/\\])/g,"\\$1");return new RegExp(`(url\\(['"]?)(${s})(['"]?\\))`,"g")}function z3(a){const s=[];return a.replace(D1,(u,c,f)=>(s.push(f),u)),s.filter(u=>!pf(u))}async function C3(a,s,u,c,f){try{const d=u?Pw(s,u):s,y=Uf(s);let p;return f||(p=await Lf(d,y,c)),a.replace(E3(s),`$1${p}$3`)}catch{}return a}function A3(a,{preferredFontFormat:s}){return s?a.replace(_3,u=>{for(;;){const[c,,f]=w3.exec(u)||[];if(!f)return"";if(f===s)return`src: ${c};`}}):a}function O1(a){return a.search(D1)!==-1}async function B1(a,s,u){if(!O1(a))return a;const c=A3(a,u);return z3(c).reduce((d,y)=>d.then(p=>C3(p,y,s,u)),Promise.resolve(c))}async function Dl(a,s,u){var c;const f=(c=s.style)===null||c===void 0?void 0:c.getPropertyValue(a);if(f){const d=await B1(f,null,u);return s.style.setProperty(a,d,s.style.getPropertyPriority(a)),!0}return!1}async function T3(a,s){await Dl("background",a,s)||await Dl("background-image",a,s),await Dl("mask",a,s)||await Dl("-webkit-mask",a,s)||await Dl("mask-image",a,s)||await Dl("-webkit-mask-image",a,s)}async function R3(a,s){const u=jt(a,HTMLImageElement);if(!(u&&!pf(a.src))&&!(jt(a,SVGImageElement)&&!pf(a.href.baseVal)))return;const c=u?a.src:a.href.baseVal,f=await Lf(c,Uf(c),s);await new Promise((d,y)=>{a.onload=d,a.onerror=s.onImageErrorHandler?(...h)=>{try{d(s.onImageErrorHandler(...h))}catch(g){y(g)}}:y;const p=a;p.decode&&(p.decode=d),p.loading==="lazy"&&(p.loading="eager"),u?(a.srcset="",a.src=f):a.href.baseVal=f})}async function M3(a,s){const c=da(a.childNodes).map(f=>N1(f,s));await Promise.all(c).then(()=>a)}async function N1(a,s){jt(a,Element)&&(await T3(a,s),await R3(a,s),await M3(a,s))}function k3(a,s){const{style:u}=a;s.backgroundColor&&(u.backgroundColor=s.backgroundColor),s.width&&(u.width=`${s.width}px`),s.height&&(u.height=`${s.height}px`);const c=s.style;return c!=null&&Object.keys(c).forEach(f=>{u[f]=c[f]}),a}const w0={};async function _0(a){let s=w0[a];if(s!=null)return s;const c=await(await fetch(a)).text();return s={url:a,cssText:c},w0[a]=s,s}async function E0(a,s){let u=a.cssText;const c=/url\(["']?([^"')]+)["']?\)/g,d=(u.match(/url\([^)]+\)/g)||[]).map(async y=>{let p=y.replace(c,"$1");return p.startsWith("https://")||(p=new URL(p,a.url).href),M1(p,s.fetchRequestInit,({result:h})=>(u=u.replace(y,`url(${h})`),[y,h]))});return Promise.all(d).then(()=>u)}function z0(a){if(a==null)return[];const s=[],u=/(\/\*[\s\S]*?\*\/)/gi;let c=a.replace(u,"");const f=new RegExp("((@.*?keyframes [\\s\\S]*?){([\\s\\S]*?}\\s*?)})","gi");for(;;){const h=f.exec(c);if(h===null)break;s.push(h[0])}c=c.replace(f,"");const d=/@import[\s\S]*?url\([^)]*\)[\s\S]*?;/gi,y="((\\s*?(?:\\/\\*[\\s\\S]*?\\*\\/)?\\s*?@media[\\s\\S]*?){([\\s\\S]*?)}\\s*?})|(([\\s\\S]*?){([\\s\\S]*?)})",p=new RegExp(y,"gi");for(;;){let h=d.exec(c);if(h===null){if(h=p.exec(c),h===null)break;d.lastIndex=p.lastIndex}else p.lastIndex=d.lastIndex;s.push(h[0])}return s}async function D3(a,s){const u=[],c=[];return a.forEach(f=>{if("cssRules"in f)try{da(f.cssRules||[]).forEach((d,y)=>{if(d.type===CSSRule.IMPORT_RULE){let p=y+1;const h=d.href,g=_0(h).then(x=>E0(x,s)).then(x=>z0(x).forEach(S=>{try{f.insertRule(S,S.startsWith("@import")?p+=1:f.cssRules.length)}catch(w){console.error("Error inserting rule from remote css",{rule:S,error:w})}})).catch(x=>{console.error("Error loading remote css",x.toString())});c.push(g)}})}catch(d){const y=a.find(p=>p.href==null)||document.styleSheets[0];f.href!=null&&c.push(_0(f.href).then(p=>E0(p,s)).then(p=>z0(p).forEach(h=>{y.insertRule(h,y.cssRules.length)})).catch(p=>{console.error("Error loading remote stylesheet",p)})),console.error("Error inlining remote css file",d)}}),Promise.all(c).then(()=>(a.forEach(f=>{if("cssRules"in f)try{da(f.cssRules||[]).forEach(d=>{u.push(d)})}catch(d){console.error(`Error while reading CSS rules from ${f.href}`,d)}}),u))}function O3(a){return a.filter(s=>s.type===CSSRule.FONT_FACE_RULE).filter(s=>O1(s.style.getPropertyValue("src")))}async function B3(a,s){if(a.ownerDocument==null)throw new Error("Provided element is not within a Document");const u=da(a.ownerDocument.styleSheets),c=await D3(u,s);return O3(c)}function U1(a){return a.trim().replace(/["']/g,"")}function N3(a){const s=new Set;function u(c){(c.style.fontFamily||getComputedStyle(c).fontFamily).split(",").forEach(d=>{s.add(U1(d))}),Array.from(c.children).forEach(d=>{d instanceof HTMLElement&&u(d)})}return u(a),s}async function U3(a,s){const u=await B3(a,s),c=N3(a);return(await Promise.all(u.filter(d=>c.has(U1(d.style.fontFamily))).map(d=>{const y=d.parentStyleSheet?d.parentStyleSheet.href:null;return B1(d.cssText,y,s)}))).join(`
+`)}async function L3(a,s){const u=s.fontEmbedCSS!=null?s.fontEmbedCSS:s.skipFonts?null:await U3(a,s);if(u){const c=document.createElement("style"),f=document.createTextNode(u);c.appendChild(f),a.firstChild?a.insertBefore(c,a.firstChild):a.appendChild(c)}}async function H3(a,s={}){const{width:u,height:c}=R1(a,s),f=await to(a,s,!0);return await L3(f,s),await N1(f,s),k3(f,s),await n3(f,u,c)}async function G3(a,s={}){const{width:u,height:c}=R1(a,s),f=await H3(a,s),d=await qs(f),y=document.createElement("canvas"),p=y.getContext("2d"),h=s.pixelRatio||Iw(),g=s.canvasWidth||u,x=s.canvasHeight||c;return y.width=g*h,y.height=x*h,s.skipAutoScale||e3(y),y.style.width=`${g}`,y.style.height=`${x}`,s.backgroundColor&&(p.fillStyle=s.backgroundColor,p.fillRect(0,0,y.width,y.height)),p.drawImage(d,0,0,y.width,y.height),y}async function Y3(a,s={}){return(await G3(a,s)).toDataURL()}const Qr=[{id:"vereinsbus",label:"Vereinsbus",image:"/sckw-bud-exclusive-platzhalter.png",zones:[{id:"seite-gross-oben",label:"Seitenfläche groß",x:42.5,y:14.6,width:30.3,height:9.8},{id:"heck",label:"Heckfläche",x:5.9,y:70.4,width:15.2,height:7.9},{id:"seite-gross-unten",label:"Seitenfläche groß",x:43.5,y:71.6,width:27.1,height:8.3}]}],$3=v.div`
   min-height: 100vh;
   background: #f5f6f8;
   padding: 2rem 1rem;
@@ -2075,13 +2064,13 @@ Herzliche Grüße
   @media (min-width: 768px) {
     padding: 3rem 2rem;
   }
-`,K3=v.div`
+`,V3=v.div`
   max-width: 1200px;
   margin: 0 auto;
-`,Q3=v.div`
+`,q3=v.div`
   text-align: center;
   margin-bottom: 2rem;
-`,X3=v.h1`
+`,K3=v.h1`
   font-size: 1.8rem;
   font-weight: 800;
   color: #1a365d;
@@ -2090,11 +2079,11 @@ Herzliche Grüße
   @media (min-width: 768px) {
     font-size: 2.2rem;
   }
-`,Z3=v.p`
+`,Q3=v.p`
   font-size: 1rem;
   color: #666;
   margin: 0;
-`,P3=v.select`
+`,X3=v.select`
   display: block;
   margin: 0 auto 2rem;
   padding: 0.6rem 1.2rem;
@@ -2110,7 +2099,7 @@ Herzliche Grüße
     outline: none;
     border-color: #3b82f6;
   }
-`,F3=v.div`
+`,Z3=v.div`
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
@@ -2119,22 +2108,22 @@ Herzliche Grüße
     flex-direction: row;
     align-items: flex-start;
   }
-`,W3=v.div`
+`,P3=v.div`
   flex: 1;
   min-width: 0;
-`,J3=v.div`
+`,F3=v.div`
   position: relative;
   width: 100%;
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
   background: #111;
-`,I3=v.img`
+`,W3=v.img`
   width: 100%;
   display: block;
   user-select: none;
   -webkit-user-drag: none;
-`,e6=v.div`
+`,J3=v.div`
   position: absolute;
   border: none;
   background: transparent;
@@ -2148,25 +2137,25 @@ Herzliche Grüße
   &:hover {
     background: ${a=>a.$hasLogo?"transparent":"rgba(59,130,246,0.08)"};
   }
-`,t6=v.img`
+`,I3=v.img`
   width: ${a=>a.$scale*100}%;
   height: auto;
   object-fit: contain;
   pointer-events: none;
   transform: translate(${a=>a.$offsetX}%, ${a=>a.$offsetY}%);
-`,n6=v.div`
+`,e6=v.div`
   width: 100%;
 
   @media (min-width: 900px) {
     width: 300px;
     flex-shrink: 0;
   }
-`,a6=v.h3`
+`,t6=v.h3`
   font-size: 1.1rem;
   font-weight: 700;
   color: #1a365d;
   margin: 0 0 1rem;
-`,l6=v.div`
+`,n6=v.div`
   background: #fff;
   border: 2px solid ${a=>a.$active?"#3b82f6":"#e5e7eb"};
   border-radius: 10px;
@@ -2178,16 +2167,16 @@ Herzliche Grüße
   &:hover {
     border-color: #3b82f6;
   }
-`,r6=v.div`
+`,a6=v.div`
   font-weight: 700;
   font-size: 0.95rem;
   color: #1a365d;
   margin-bottom: 0.5rem;
-`,i6=v.div`
+`,l6=v.div`
   display: flex;
   gap: 0.5rem;
   align-items: center;
-`,s6=v.label`
+`,r6=v.label`
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
@@ -2203,7 +2192,7 @@ Herzliche Grüße
   &:hover {
     background: #2563eb;
   }
-`,o6=v.button`
+`,i6=v.button`
   padding: 0.4rem 0.8rem;
   background: #fee2e2;
   color: #dc2626;
@@ -2217,16 +2206,16 @@ Herzliche Grüße
   &:hover {
     background: #fecaca;
   }
-`,c6=v.img`
+`,s6=v.img`
   width: 48px;
   height: 32px;
   object-fit: contain;
   border-radius: 4px;
   border: 1px solid #e5e7eb;
   margin-left: auto;
-`,u6=v.input`
+`,o6=v.input`
   display: none;
-`,f6=v.div`
+`,c6=v.div`
   font-size: 0.8rem;
   color: #999;
   margin-top: 0.25rem;
@@ -2245,7 +2234,7 @@ Herzliche Grüße
   flex: 1;
   accent-color: #3b82f6;
   cursor: pointer;
-`,d6=v.button`
+`,u6=v.button`
   width: 100%;
   padding: 0.6rem;
   margin-top: 0.5rem;
@@ -2262,7 +2251,7 @@ Herzliche Grüße
     background: #e5e7eb;
     color: #333;
   }
-`,h6=v.button`
+`,f6=v.button`
   width: 100%;
   padding: 0.7rem;
   margin-top: 0.5rem;
@@ -2283,7 +2272,7 @@ Herzliche Grüße
     background: #9ca3af;
     cursor: not-allowed;
   }
-`;function m6(){const[a,s]=C.useState(Qr[0].id),[u,c]=C.useState(null),[f,d]=C.useState([]),[y,p]=C.useState(!1),h=C.useRef({}),g=C.useRef(null),x=Qr.find(T=>T.id===a)??Qr[0],S=T=>f.find(q=>q.zoneId===T),w=C.useCallback((T,q)=>{if(!q)return;const H=new FileReader;H.onload=W=>{const Y=W.target?.result;d(se=>[...se.filter(Q=>Q.zoneId!==T),{zoneId:T,dataUrl:Y,scale:1,offsetX:0,offsetY:0}])},H.readAsDataURL(q)},[]),R=C.useCallback((T,q)=>{d(H=>H.map(W=>W.zoneId===T?{...W,scale:q}:W))},[]),A=C.useCallback((T,q,H)=>{d(W=>W.map(Y=>Y.zoneId===T?{...Y,offsetX:q,offsetY:H}:Y))},[]),B=C.useCallback(T=>{d(q=>q.filter(H=>H.zoneId!==T))},[]),L=C.useCallback(()=>{d([]),c(null)},[]),$=C.useCallback(async()=>{if(g.current){p(!0);try{const T=await V3(g.current,{pixelRatio:2,cacheBust:!0}),q=document.createElement("a");q.download=`${x.label}-mockup.png`,q.href=T,q.click()}finally{p(!1)}}},[x.label]),X=T=>{c(T.id),S(T.id)||h.current[T.id]?.click()};return r.jsx(q3,{children:r.jsxs(K3,{children:[r.jsxs(Q3,{children:[r.jsx(X3,{children:"Mockup Generator"}),r.jsx(Z3,{children:"Laden Sie Ihr Logo hoch und sehen Sie live, wie es auf unseren Werbeflächen aussieht."})]}),Qr.length>1&&r.jsx(P3,{value:a,onChange:T=>{s(T.target.value),d([]),c(null)},children:Qr.map(T=>r.jsx("option",{value:T.id,children:T.label},T.id))}),r.jsxs(F3,{children:[r.jsx(W3,{children:r.jsxs(J3,{ref:g,children:[r.jsx(I3,{src:x.image,alt:x.label,draggable:!1}),x.zones.map(T=>{const q=S(T.id);return r.jsx(e6,{$active:u===T.id,$hasLogo:!!q,style:{left:`${T.x}%`,top:`${T.y}%`,width:`${T.width}%`,height:`${T.height}%`},onClick:()=>X(T),onDragOver:H=>{H.preventDefault(),c(T.id)},onDrop:H=>{H.preventDefault();const W=H.dataTransfer.files?.[0];w(T.id,W)},children:q&&r.jsx(t6,{src:q.dataUrl,alt:"Logo",draggable:!1,$scale:q.scale,$offsetX:q.offsetX,$offsetY:q.offsetY})},T.id)})]})}),r.jsxs(n6,{children:[r.jsx(a6,{children:"Werbeflächen"}),x.zones.map(T=>{const q=S(T.id);return r.jsxs(l6,{$active:u===T.id,onClick:()=>c(T.id),children:[r.jsx(r6,{children:T.label}),r.jsxs(i6,{children:[r.jsx(s6,{htmlFor:`file-${T.id}`,children:q?"Ändern":"Logo hochladen"}),r.jsx(u6,{id:`file-${T.id}`,ref:H=>{h.current[T.id]=H},type:"file",accept:"image/*",onChange:H=>w(T.id,H.target.files?.[0])}),q&&r.jsx(o6,{onClick:H=>{H.stopPropagation(),B(T.id)},children:"Entfernen"}),q&&r.jsx(c6,{src:q.dataUrl,alt:"Vorschau"})]}),q&&r.jsxs(r.Fragment,{children:[r.jsxs(Ju,{children:[r.jsxs(Iu,{children:[Math.round(q.scale*100),"%"]}),r.jsx(ef,{type:"range",min:"0.3",max:"3",step:"0.05",value:q.scale,onClick:H=>H.stopPropagation(),onChange:H=>{H.stopPropagation(),R(T.id,parseFloat(H.target.value))}})]}),r.jsxs(Ju,{children:[r.jsx(Iu,{children:"X"}),r.jsx(ef,{type:"range",min:"-100",max:"100",step:"1",value:q.offsetX,onClick:H=>H.stopPropagation(),onChange:H=>{H.stopPropagation(),A(T.id,parseFloat(H.target.value),q.offsetY)}})]}),r.jsxs(Ju,{children:[r.jsx(Iu,{children:"Y"}),r.jsx(ef,{type:"range",min:"-100",max:"100",step:"1",value:q.offsetY,onClick:H=>H.stopPropagation(),onChange:H=>{H.stopPropagation(),A(T.id,q.offsetX,parseFloat(H.target.value))}})]})]}),!q&&r.jsx(f6,{children:"Klicken oder Bild hierher ziehen"})]},T.id)}),f.length>0&&r.jsxs(r.Fragment,{children:[r.jsx(h6,{onClick:$,disabled:y,children:y?"Wird erstellt...":"Bild herunterladen"}),r.jsx(d6,{onClick:L,children:"Alle Logos entfernen"})]})]})]})]})})}var g6=Object.defineProperty,Ks=Object.getOwnPropertySymbols,L1=Object.prototype.hasOwnProperty,H1=Object.prototype.propertyIsEnumerable,C0=(a,s,u)=>s in a?g6(a,s,{enumerable:!0,configurable:!0,writable:!0,value:u}):a[s]=u,bf=(a,s)=>{for(var u in s||(s={}))L1.call(s,u)&&C0(a,u,s[u]);if(Ks)for(var u of Ks(s))H1.call(s,u)&&C0(a,u,s[u]);return a},xf=(a,s)=>{var u={};for(var c in a)L1.call(a,c)&&s.indexOf(c)<0&&(u[c]=a[c]);if(a!=null&&Ks)for(var c of Ks(a))s.indexOf(c)<0&&H1.call(a,c)&&(u[c]=a[c]);return u};/**
+`;function d6(){const[a,s]=C.useState(Qr[0].id),[u,c]=C.useState(null),[f,d]=C.useState([]),[y,p]=C.useState(!1),h=C.useRef({}),g=C.useRef(null),x=Qr.find(T=>T.id===a)??Qr[0],S=T=>f.find(q=>q.zoneId===T),w=C.useCallback((T,q)=>{if(!q)return;const H=new FileReader;H.onload=W=>{const Y=W.target?.result;d(se=>[...se.filter(Q=>Q.zoneId!==T),{zoneId:T,dataUrl:Y,scale:1,offsetX:0,offsetY:0}])},H.readAsDataURL(q)},[]),R=C.useCallback((T,q)=>{d(H=>H.map(W=>W.zoneId===T?{...W,scale:q}:W))},[]),A=C.useCallback((T,q,H)=>{d(W=>W.map(Y=>Y.zoneId===T?{...Y,offsetX:q,offsetY:H}:Y))},[]),B=C.useCallback(T=>{d(q=>q.filter(H=>H.zoneId!==T))},[]),L=C.useCallback(()=>{d([]),c(null)},[]),$=C.useCallback(async()=>{if(g.current){p(!0);try{const T=await Y3(g.current,{pixelRatio:2,cacheBust:!0}),q=document.createElement("a");q.download=`${x.label}-mockup.png`,q.href=T,q.click()}finally{p(!1)}}},[x.label]),X=T=>{c(T.id),S(T.id)||h.current[T.id]?.click()};return r.jsx($3,{children:r.jsxs(V3,{children:[r.jsxs(q3,{children:[r.jsx(K3,{children:"Mockup Generator"}),r.jsx(Q3,{children:"Laden Sie Ihr Logo hoch und sehen Sie live, wie es auf unseren Werbeflächen aussieht."})]}),Qr.length>1&&r.jsx(X3,{value:a,onChange:T=>{s(T.target.value),d([]),c(null)},children:Qr.map(T=>r.jsx("option",{value:T.id,children:T.label},T.id))}),r.jsxs(Z3,{children:[r.jsx(P3,{children:r.jsxs(F3,{ref:g,children:[r.jsx(W3,{src:x.image,alt:x.label,draggable:!1}),x.zones.map(T=>{const q=S(T.id);return r.jsx(J3,{$active:u===T.id,$hasLogo:!!q,style:{left:`${T.x}%`,top:`${T.y}%`,width:`${T.width}%`,height:`${T.height}%`},onClick:()=>X(T),onDragOver:H=>{H.preventDefault(),c(T.id)},onDrop:H=>{H.preventDefault();const W=H.dataTransfer.files?.[0];w(T.id,W)},children:q&&r.jsx(I3,{src:q.dataUrl,alt:"Logo",draggable:!1,$scale:q.scale,$offsetX:q.offsetX,$offsetY:q.offsetY})},T.id)})]})}),r.jsxs(e6,{children:[r.jsx(t6,{children:"Werbeflächen"}),x.zones.map(T=>{const q=S(T.id);return r.jsxs(n6,{$active:u===T.id,onClick:()=>c(T.id),children:[r.jsx(a6,{children:T.label}),r.jsxs(l6,{children:[r.jsx(r6,{htmlFor:`file-${T.id}`,children:q?"Ändern":"Logo hochladen"}),r.jsx(o6,{id:`file-${T.id}`,ref:H=>{h.current[T.id]=H},type:"file",accept:"image/*",onChange:H=>w(T.id,H.target.files?.[0])}),q&&r.jsx(i6,{onClick:H=>{H.stopPropagation(),B(T.id)},children:"Entfernen"}),q&&r.jsx(s6,{src:q.dataUrl,alt:"Vorschau"})]}),q&&r.jsxs(r.Fragment,{children:[r.jsxs(Ju,{children:[r.jsxs(Iu,{children:[Math.round(q.scale*100),"%"]}),r.jsx(ef,{type:"range",min:"0.3",max:"3",step:"0.05",value:q.scale,onClick:H=>H.stopPropagation(),onChange:H=>{H.stopPropagation(),R(T.id,parseFloat(H.target.value))}})]}),r.jsxs(Ju,{children:[r.jsx(Iu,{children:"X"}),r.jsx(ef,{type:"range",min:"-100",max:"100",step:"1",value:q.offsetX,onClick:H=>H.stopPropagation(),onChange:H=>{H.stopPropagation(),A(T.id,parseFloat(H.target.value),q.offsetY)}})]}),r.jsxs(Ju,{children:[r.jsx(Iu,{children:"Y"}),r.jsx(ef,{type:"range",min:"-100",max:"100",step:"1",value:q.offsetY,onClick:H=>H.stopPropagation(),onChange:H=>{H.stopPropagation(),A(T.id,q.offsetX,parseFloat(H.target.value))}})]})]}),!q&&r.jsx(c6,{children:"Klicken oder Bild hierher ziehen"})]},T.id)}),f.length>0&&r.jsxs(r.Fragment,{children:[r.jsx(f6,{onClick:$,disabled:y,children:y?"Wird erstellt...":"Bild herunterladen"}),r.jsx(u6,{onClick:L,children:"Alle Logos entfernen"})]})]})]})]})})}var h6=Object.defineProperty,Ks=Object.getOwnPropertySymbols,L1=Object.prototype.hasOwnProperty,H1=Object.prototype.propertyIsEnumerable,C0=(a,s,u)=>s in a?h6(a,s,{enumerable:!0,configurable:!0,writable:!0,value:u}):a[s]=u,bf=(a,s)=>{for(var u in s||(s={}))L1.call(s,u)&&C0(a,u,s[u]);if(Ks)for(var u of Ks(s))H1.call(s,u)&&C0(a,u,s[u]);return a},xf=(a,s)=>{var u={};for(var c in a)L1.call(a,c)&&s.indexOf(c)<0&&(u[c]=a[c]);if(a!=null&&Ks)for(var c of Ks(a))s.indexOf(c)<0&&H1.call(a,c)&&(u[c]=a[c]);return u};/**
  * @license QR Code generator library (TypeScript)
  * Copyright (c) Project Nayuki.
  * SPDX-License-Identifier: MIT
@@ -2291,7 +2280,7 @@ Herzliche Grüße
  * @license qrcode.react
  * Copyright (c) Paul O'Shannessy
  * SPDX-License-Identifier: ISC
- */var p6={L:Bl.QrCode.Ecc.LOW,M:Bl.QrCode.Ecc.MEDIUM,Q:Bl.QrCode.Ecc.QUARTILE,H:Bl.QrCode.Ecc.HIGH},G1=128,Y1="L",$1="#FFFFFF",V1="#000000",q1=!1,K1=1,b6=4,x6=0,y6=.1;function Q1(a,s=0){const u=[];return a.forEach(function(c,f){let d=null;c.forEach(function(y,p){if(!y&&d!==null){u.push(`M${d+s} ${f+s}h${p-d}v1H${d+s}z`),d=null;return}if(p===c.length-1){if(!y)return;d===null?u.push(`M${p+s},${f+s} h1v1H${p+s}z`):u.push(`M${d+s},${f+s} h${p+1-d}v1H${d+s}z`);return}y&&d===null&&(d=p)})}),u.join("")}function X1(a,s){return a.slice().map((u,c)=>c<s.y||c>=s.y+s.h?u:u.map((f,d)=>d<s.x||d>=s.x+s.w?f:!1))}function v6(a,s,u,c){if(c==null)return null;const f=a.length+u*2,d=Math.floor(s*y6),y=f/s,p=(c.width||d)*y,h=(c.height||d)*y,g=c.x==null?a.length/2-p/2:c.x*y,x=c.y==null?a.length/2-h/2:c.y*y,S=c.opacity==null?1:c.opacity;let w=null;if(c.excavate){let A=Math.floor(g),B=Math.floor(x),L=Math.ceil(p+g-A),$=Math.ceil(h+x-B);w={x:A,y:B,w:L,h:$}}const R=c.crossOrigin;return{x:g,y:x,h,w:p,excavation:w,opacity:S,crossOrigin:R}}function S6(a,s){return s!=null?Math.max(Math.floor(s),0):a?b6:x6}function Z1({value:a,level:s,minVersion:u,includeMargin:c,marginSize:f,imageSettings:d,size:y,boostLevel:p}){let h=_e.useMemo(()=>{const A=(Array.isArray(a)?a:[a]).reduce((B,L)=>(B.push(...Bl.QrSegment.makeSegments(L)),B),[]);return Bl.QrCode.encodeSegments(A,p6[s],u,void 0,void 0,p)},[a,s,u,p]);const{cells:g,margin:x,numCells:S,calculatedImageSettings:w}=_e.useMemo(()=>{let R=h.getModules();const A=S6(c,f),B=R.length+A*2,L=v6(R,y,A,d);return{cells:R,margin:A,numCells:B,calculatedImageSettings:L}},[h,y,d,c,f]);return{qrcode:h,margin:x,cells:g,numCells:S,calculatedImageSettings:w}}var j6=function(){try{new Path2D().addPath(new Path2D)}catch{return!1}return!0}(),w6=_e.forwardRef(function(s,u){const c=s,{value:f,size:d=G1,level:y=Y1,bgColor:p=$1,fgColor:h=V1,includeMargin:g=q1,minVersion:x=K1,boostLevel:S,marginSize:w,imageSettings:R}=c,B=xf(c,["value","size","level","bgColor","fgColor","includeMargin","minVersion","boostLevel","marginSize","imageSettings"]),{style:L}=B,$=xf(B,["style"]),X=R?.src,T=_e.useRef(null),q=_e.useRef(null),H=_e.useCallback(at=>{T.current=at,typeof u=="function"?u(at):u&&(u.current=at)},[u]),[W,Y]=_e.useState(!1),{margin:se,cells:Q,numCells:be,calculatedImageSettings:Se}=Z1({value:f,level:y,minVersion:x,boostLevel:S,includeMargin:g,marginSize:w,imageSettings:R,size:d});_e.useEffect(()=>{if(T.current!=null){const at=T.current,Ce=at.getContext("2d");if(!Ce)return;let N=Q;const Z=q.current,ne=Se!=null&&Z!==null&&Z.complete&&Z.naturalHeight!==0&&Z.naturalWidth!==0;ne&&Se.excavation!=null&&(N=X1(Q,Se.excavation));const ce=window.devicePixelRatio||1;at.height=at.width=d*ce;const _=d/be*ce;Ce.scale(_,_),Ce.fillStyle=p,Ce.fillRect(0,0,be,be),Ce.fillStyle=h,j6?Ce.fill(new Path2D(Q1(N,se))):Q.forEach(function(K,P){K.forEach(function(F,ee){F&&Ce.fillRect(ee+se,P+se,1,1)})}),Se&&(Ce.globalAlpha=Se.opacity),ne&&Ce.drawImage(Z,Se.x+se,Se.y+se,Se.w,Se.h)}}),_e.useEffect(()=>{Y(!1)},[X]);const Ue=bf({height:d,width:d},L);let Ut=null;return X!=null&&(Ut=_e.createElement("img",{src:X,key:X,style:{display:"none"},onLoad:()=>{Y(!0)},ref:q,crossOrigin:Se?.crossOrigin})),_e.createElement(_e.Fragment,null,_e.createElement("canvas",bf({style:Ue,height:d,width:d,ref:H,role:"img"},$)),Ut)});w6.displayName="QRCodeCanvas";var P1=_e.forwardRef(function(s,u){const c=s,{value:f,size:d=G1,level:y=Y1,bgColor:p=$1,fgColor:h=V1,includeMargin:g=q1,minVersion:x=K1,boostLevel:S,title:w,marginSize:R,imageSettings:A}=c,B=xf(c,["value","size","level","bgColor","fgColor","includeMargin","minVersion","boostLevel","title","marginSize","imageSettings"]),{margin:L,cells:$,numCells:X,calculatedImageSettings:T}=Z1({value:f,level:y,minVersion:x,boostLevel:S,includeMargin:g,marginSize:R,imageSettings:A,size:d});let q=$,H=null;A!=null&&T!=null&&(T.excavation!=null&&(q=X1($,T.excavation)),H=_e.createElement("image",{href:A.src,height:T.h,width:T.w,x:T.x+L,y:T.y+L,preserveAspectRatio:"none",opacity:T.opacity,crossOrigin:T.crossOrigin}));const W=Q1(q,L);return _e.createElement("svg",bf({height:d,width:d,viewBox:`0 0 ${X} ${X}`,ref:u,role:"img"},B),!!w&&_e.createElement("title",null,w),_e.createElement("path",{fill:p,d:`M0,0 h${X}v${X}H0z`,shapeRendering:"crispEdges"}),_e.createElement("path",{fill:h,d:W,shapeRendering:"crispEdges"}),H)});P1.displayName="QRCodeSVG";const _6={subtitle:"Nach der Meisterschaft in der Landesliga spielt unsere erste Mannschaft ab der Saison 2026/27 in der Verbandsliga. 100 Felder, 500 € pro Feld und Saison - jedes Feld steht für einen Förderer.",heroImage:"/sckw-logo-500club.png",heroTitle:"500er Club",sectionTitle:"Unterstützungsmöglichkeiten",memberships:[{value:500,label:"500 €",duration:"1 Jahr",description:"Saison 2026/27"},{value:1e3,label:"1.000 €",duration:"2 Jahre",description:"Unterstützung"},{value:1500,label:"1.500 €",duration:"3 Jahre",description:"Unterstützung"}],customAmount:{label:"Eigener Betrag",minAmount:500,minHint:"Mindestens 500 €"},benefits:[{icon:"📄",title:"Spendenbescheinigung",text:"Der SC Konstanz-Wollmatingen ist als gemeinnützig anerkannt. Auf Wunsch erhalten Sie eine Zuwendungsbestätigung."},{icon:"🏅",title:"Ihr Name auf der Tafel",text:'Wenn Sie möchten. Wer lieber im Hintergrund bleibt, erscheint als „SCKW Gönner".'},{icon:"⚽",title:"Direkte Förderung der Ersten",text:"Auswärtsfahrten, Training, Material und Spielbetrieb in der Verbandsliga."}],spendentafel:{label:"Spendentafel (optional)",sublabel:"Tragen Sie hier Ihren Namen oder Firmennamen ein, wenn Sie auf unserer Spendentafel (Website & Vereinsgelände) veröffentlicht werden möchten. Lassen Sie das Feld leer, wenn Sie anonym spenden möchten.",nameFieldPlaceholder:"Name/Firma für die Spendentafel (leer = anonym)"},bescheinigung:{label:"Ich möchte eine Spendenbescheinigung erhalten",hinweis:"Sie erhalten Ihre Spendenbescheinigung per E-Mail als PDF.",fields:{vorname:"Vorname",nachname:"Nachname",email:"E-Mail",strasse:"Straße + Hausnr.",plz:"PLZ",ort:"Ort"}},paypalCtaLabel:"Mit PayPal spenden",paypalHinweis:"Bitte geben Sie bei PayPal im Mitteilungsfeld Ihren vollständigen Namen und Ihre Adresse an, damit wir Ihnen eine Spendenbescheinigung ausstellen können.",bankCtaLabel:"Per Überweisung",verwendungszweck:"CLUB 500",paypalMeUrl:"https://www.paypal.me/sckw2012",bankDetails:{kontoinhaber:"Sport Club Konstanz-Wollmatingen e.V.",iban:"DE84 6905 0001 0000 0929 99",ibanClean:"DE84690500010000092999",bic:"SOLADES1KNZ",bank:"Sparkasse Bodensee",adresse:"Schleyerweg 5 · 78467 Konstanz"}},E6=100,z6=[{feld:1,name:"Ulrike Dunand",anonym:!1,saisonBis:2027},{feld:2,name:"Dieter Graf",anonym:!1,saisonBis:2027},{feld:3,name:"Bernd Reister",anonym:!1,saisonBis:2027},{feld:4,name:"Stefan Weber",anonym:!1,saisonBis:2027},{feld:5,name:"Lutz Grüneberg",anonym:!1,saisonBis:2027},{feld:6,name:"Steffen Allert",anonym:!1,saisonBis:2028},{feld:7,name:"Fa. Müller Putz & Stuck GmbH",anonym:!1,saisonBis:2027},{feld:8,name:"René Frey",anonym:!1,saisonBis:2027},{feld:9,name:"Luciano Rossetti",anonym:!1,saisonBis:2027},{feld:10,name:"Paolo Rossetti",anonym:!1,saisonBis:2027},{feld:11,name:"Rolf Degen",anonym:!1,saisonBis:2027},{feld:12,name:"Senioren des SCKW",anonym:!1,saisonBis:2027},{feld:13,name:"Brigitte und Thomas Fuchs",anonym:!1,saisonBis:2027}],C6={felderGesamt:E6,foerderer:z6},A0="SCKW Gönner",Oa={blau:"#0061D6",magenta:"#CC0546",navy:"#021A3E",grund:"#010814",rahmen:"#264270",weiss:"#FFFFFF",gedaempft:"#96BAF0"};function A6(){const{felderGesamt:a,foerderer:s}=C6,u=new Map(s.map(d=>[d.feld,d])),c=s.length,f=Array.from({length:a},(d,y)=>y+1);return r.jsx("section",{"aria-labelledby":"tafel-titel",style:{background:Oa.grund,padding:"3rem 1rem",color:Oa.weiss},children:r.jsxs("div",{style:{maxWidth:1100,margin:"0 auto"},children:[r.jsx("h2",{id:"tafel-titel",style:{textAlign:"center",fontSize:"clamp(1.5rem,4vw,2.25rem)",margin:0},children:"Unsere Förderer"}),r.jsxs("p",{style:{textAlign:"center",fontWeight:700,letterSpacing:".05em",marginTop:".75rem"},children:[c," von ",a," Feldern vergeben"]}),r.jsx("div",{role:"progressbar","aria-valuenow":c,"aria-valuemin":0,"aria-valuemax":a,"aria-label":`${c} von ${a} Feldern vergeben`,style:{height:10,borderRadius:999,background:"#0E1E3A",overflow:"hidden",margin:"0 auto 2rem",maxWidth:640},children:r.jsx("div",{style:{width:`${c/a*100}%`,height:"100%",background:Oa.magenta}})}),r.jsx("ol",{style:{listStyle:"none",display:"grid",gridTemplateColumns:"repeat(auto-fill, minmax(140px, 1fr))",gap:".5rem",padding:0,margin:0},children:f.map(d=>{const y=u.get(d),p=y?y.anonym?A0:y.name:null;return r.jsxs("li",{style:{background:y?Oa.blau:Oa.navy,border:y?"none":`2px solid ${Oa.rahmen}`,borderRadius:8,padding:".5rem .4rem",minHeight:62,display:"flex",flexDirection:"column",justifyContent:y?"space-between":"center",alignItems:y?"stretch":"center"},children:[r.jsx("span",{style:{fontSize:y?".7rem":"1.1rem",fontWeight:700,color:y?"#C6DEFC":"#5C7CA0",lineHeight:1},children:String(d).padStart(2,"0")}),p&&r.jsx("span",{style:{fontSize:".8rem",fontWeight:600,textAlign:"center",lineHeight:1.15,hyphens:"auto"},children:p})]},d)})}),r.jsxs("p",{style:{textAlign:"center",marginTop:"2rem",color:Oa.gedaempft,fontSize:".95rem"},children:["Jedes Feld steht für einen Förderer unserer ersten Mannschaft. Ob Ihr Name erscheint, entscheiden Sie selbst - sonst steht dort „",A0,'".']})]})})}const T6=v.section`
+ */var m6={L:Bl.QrCode.Ecc.LOW,M:Bl.QrCode.Ecc.MEDIUM,Q:Bl.QrCode.Ecc.QUARTILE,H:Bl.QrCode.Ecc.HIGH},G1=128,Y1="L",$1="#FFFFFF",V1="#000000",q1=!1,K1=1,g6=4,p6=0,b6=.1;function Q1(a,s=0){const u=[];return a.forEach(function(c,f){let d=null;c.forEach(function(y,p){if(!y&&d!==null){u.push(`M${d+s} ${f+s}h${p-d}v1H${d+s}z`),d=null;return}if(p===c.length-1){if(!y)return;d===null?u.push(`M${p+s},${f+s} h1v1H${p+s}z`):u.push(`M${d+s},${f+s} h${p+1-d}v1H${d+s}z`);return}y&&d===null&&(d=p)})}),u.join("")}function X1(a,s){return a.slice().map((u,c)=>c<s.y||c>=s.y+s.h?u:u.map((f,d)=>d<s.x||d>=s.x+s.w?f:!1))}function x6(a,s,u,c){if(c==null)return null;const f=a.length+u*2,d=Math.floor(s*b6),y=f/s,p=(c.width||d)*y,h=(c.height||d)*y,g=c.x==null?a.length/2-p/2:c.x*y,x=c.y==null?a.length/2-h/2:c.y*y,S=c.opacity==null?1:c.opacity;let w=null;if(c.excavate){let A=Math.floor(g),B=Math.floor(x),L=Math.ceil(p+g-A),$=Math.ceil(h+x-B);w={x:A,y:B,w:L,h:$}}const R=c.crossOrigin;return{x:g,y:x,h,w:p,excavation:w,opacity:S,crossOrigin:R}}function y6(a,s){return s!=null?Math.max(Math.floor(s),0):a?g6:p6}function Z1({value:a,level:s,minVersion:u,includeMargin:c,marginSize:f,imageSettings:d,size:y,boostLevel:p}){let h=_e.useMemo(()=>{const A=(Array.isArray(a)?a:[a]).reduce((B,L)=>(B.push(...Bl.QrSegment.makeSegments(L)),B),[]);return Bl.QrCode.encodeSegments(A,m6[s],u,void 0,void 0,p)},[a,s,u,p]);const{cells:g,margin:x,numCells:S,calculatedImageSettings:w}=_e.useMemo(()=>{let R=h.getModules();const A=y6(c,f),B=R.length+A*2,L=x6(R,y,A,d);return{cells:R,margin:A,numCells:B,calculatedImageSettings:L}},[h,y,d,c,f]);return{qrcode:h,margin:x,cells:g,numCells:S,calculatedImageSettings:w}}var v6=function(){try{new Path2D().addPath(new Path2D)}catch{return!1}return!0}(),S6=_e.forwardRef(function(s,u){const c=s,{value:f,size:d=G1,level:y=Y1,bgColor:p=$1,fgColor:h=V1,includeMargin:g=q1,minVersion:x=K1,boostLevel:S,marginSize:w,imageSettings:R}=c,B=xf(c,["value","size","level","bgColor","fgColor","includeMargin","minVersion","boostLevel","marginSize","imageSettings"]),{style:L}=B,$=xf(B,["style"]),X=R?.src,T=_e.useRef(null),q=_e.useRef(null),H=_e.useCallback(at=>{T.current=at,typeof u=="function"?u(at):u&&(u.current=at)},[u]),[W,Y]=_e.useState(!1),{margin:se,cells:Q,numCells:be,calculatedImageSettings:Se}=Z1({value:f,level:y,minVersion:x,boostLevel:S,includeMargin:g,marginSize:w,imageSettings:R,size:d});_e.useEffect(()=>{if(T.current!=null){const at=T.current,Ce=at.getContext("2d");if(!Ce)return;let N=Q;const Z=q.current,ne=Se!=null&&Z!==null&&Z.complete&&Z.naturalHeight!==0&&Z.naturalWidth!==0;ne&&Se.excavation!=null&&(N=X1(Q,Se.excavation));const ce=window.devicePixelRatio||1;at.height=at.width=d*ce;const _=d/be*ce;Ce.scale(_,_),Ce.fillStyle=p,Ce.fillRect(0,0,be,be),Ce.fillStyle=h,v6?Ce.fill(new Path2D(Q1(N,se))):Q.forEach(function(K,P){K.forEach(function(F,ee){F&&Ce.fillRect(ee+se,P+se,1,1)})}),Se&&(Ce.globalAlpha=Se.opacity),ne&&Ce.drawImage(Z,Se.x+se,Se.y+se,Se.w,Se.h)}}),_e.useEffect(()=>{Y(!1)},[X]);const Ue=bf({height:d,width:d},L);let Ut=null;return X!=null&&(Ut=_e.createElement("img",{src:X,key:X,style:{display:"none"},onLoad:()=>{Y(!0)},ref:q,crossOrigin:Se?.crossOrigin})),_e.createElement(_e.Fragment,null,_e.createElement("canvas",bf({style:Ue,height:d,width:d,ref:H,role:"img"},$)),Ut)});S6.displayName="QRCodeCanvas";var P1=_e.forwardRef(function(s,u){const c=s,{value:f,size:d=G1,level:y=Y1,bgColor:p=$1,fgColor:h=V1,includeMargin:g=q1,minVersion:x=K1,boostLevel:S,title:w,marginSize:R,imageSettings:A}=c,B=xf(c,["value","size","level","bgColor","fgColor","includeMargin","minVersion","boostLevel","title","marginSize","imageSettings"]),{margin:L,cells:$,numCells:X,calculatedImageSettings:T}=Z1({value:f,level:y,minVersion:x,boostLevel:S,includeMargin:g,marginSize:R,imageSettings:A,size:d});let q=$,H=null;A!=null&&T!=null&&(T.excavation!=null&&(q=X1($,T.excavation)),H=_e.createElement("image",{href:A.src,height:T.h,width:T.w,x:T.x+L,y:T.y+L,preserveAspectRatio:"none",opacity:T.opacity,crossOrigin:T.crossOrigin}));const W=Q1(q,L);return _e.createElement("svg",bf({height:d,width:d,viewBox:`0 0 ${X} ${X}`,ref:u,role:"img"},B),!!w&&_e.createElement("title",null,w),_e.createElement("path",{fill:p,d:`M0,0 h${X}v${X}H0z`,shapeRendering:"crispEdges"}),_e.createElement("path",{fill:h,d:W,shapeRendering:"crispEdges"}),H)});P1.displayName="QRCodeSVG";const j6={subtitle:"Nach der Meisterschaft in der Landesliga spielt unsere erste Mannschaft ab der Saison 2026/27 in der Verbandsliga. 100 Felder, 500 € pro Feld und Saison - jedes Feld steht für einen Förderer.",heroImage:"/sckw-logo-500club.png",heroTitle:"500er Club",sectionTitle:"Unterstützungsmöglichkeiten",memberships:[{value:500,label:"500 €",duration:"1 Jahr",description:"Saison 2026/27"},{value:1e3,label:"1.000 €",duration:"2 Jahre",description:"Unterstützung"},{value:1500,label:"1.500 €",duration:"3 Jahre",description:"Unterstützung"}],customAmount:{label:"Eigener Betrag",minAmount:500,minHint:"Mindestens 500 €"},benefits:[{icon:"📄",title:"Spendenbescheinigung",text:"Der SC Konstanz-Wollmatingen ist als gemeinnützig anerkannt. Auf Wunsch erhalten Sie eine Zuwendungsbestätigung."},{icon:"🏅",title:"Ihr Name auf der Tafel",text:'Wenn Sie möchten. Wer lieber im Hintergrund bleibt, erscheint als „SCKW Gönner".'},{icon:"⚽",title:"Direkte Förderung der Ersten",text:"Auswärtsfahrten, Training, Material und Spielbetrieb in der Verbandsliga."}],spendentafel:{label:"Spendentafel (optional)",sublabel:"Tragen Sie hier Ihren Namen oder Firmennamen ein, wenn Sie auf unserer Spendentafel (Website & Vereinsgelände) veröffentlicht werden möchten. Lassen Sie das Feld leer, wenn Sie anonym spenden möchten.",nameFieldPlaceholder:"Name/Firma für die Spendentafel (leer = anonym)"},bescheinigung:{label:"Ich möchte eine Spendenbescheinigung erhalten",hinweis:"Sie erhalten Ihre Spendenbescheinigung per E-Mail als PDF.",fields:{vorname:"Vorname",nachname:"Nachname",email:"E-Mail",strasse:"Straße + Hausnr.",plz:"PLZ",ort:"Ort"}},paypalCtaLabel:"Mit PayPal spenden",paypalHinweis:"Bitte geben Sie bei PayPal im Mitteilungsfeld Ihren vollständigen Namen und Ihre Adresse an, damit wir Ihnen eine Spendenbescheinigung ausstellen können.",bankCtaLabel:"Per Überweisung",verwendungszweck:"CLUB 500",paypalMeUrl:"https://www.paypal.me/sckw2012",bankDetails:{kontoinhaber:"Sport Club Konstanz-Wollmatingen e.V.",iban:"DE84 6905 0001 0000 0929 99",ibanClean:"DE84690500010000092999",bic:"SOLADES1KNZ",bank:"Sparkasse Bodensee",adresse:"Schleyerweg 5 · 78467 Konstanz"}},w6=100,_6=[{feld:1,name:"Ulrike Dunand",anonym:!1,saisonBis:2027},{feld:2,name:"Dieter Graf",anonym:!1,saisonBis:2027},{feld:3,name:"Bernd Reister",anonym:!1,saisonBis:2027},{feld:4,name:"Stefan Weber",anonym:!1,saisonBis:2027},{feld:5,name:"Lutz Grüneberg",anonym:!1,saisonBis:2027},{feld:6,name:"Steffen Allert",anonym:!1,saisonBis:2028},{feld:7,name:"Fa. Müller Putz & Stuck GmbH",anonym:!1,saisonBis:2027},{feld:8,name:"René Frey",anonym:!1,saisonBis:2027},{feld:9,name:"Luciano Rossetti",anonym:!1,saisonBis:2027},{feld:10,name:"Paolo Rossetti",anonym:!1,saisonBis:2027},{feld:11,name:"Rolf Degen",anonym:!1,saisonBis:2027},{feld:12,name:"Senioren des SCKW",anonym:!1,saisonBis:2027},{feld:13,name:"Brigitte und Thomas Fuchs",anonym:!1,saisonBis:2027}],E6={felderGesamt:w6,foerderer:_6},A0="SCKW Gönner",Oa={blau:"#0061D6",magenta:"#CC0546",navy:"#021A3E",grund:"#010814",rahmen:"#264270",weiss:"#FFFFFF",gedaempft:"#96BAF0"};function z6(){const{felderGesamt:a,foerderer:s}=E6,u=new Map(s.map(d=>[d.feld,d])),c=s.length,f=Array.from({length:a},(d,y)=>y+1);return r.jsx("section",{"aria-labelledby":"tafel-titel",style:{background:Oa.grund,padding:"3rem 1rem",color:Oa.weiss},children:r.jsxs("div",{style:{maxWidth:1100,margin:"0 auto"},children:[r.jsx("h2",{id:"tafel-titel",style:{textAlign:"center",fontSize:"clamp(1.5rem,4vw,2.25rem)",margin:0},children:"Unsere Förderer"}),r.jsxs("p",{style:{textAlign:"center",fontWeight:700,letterSpacing:".05em",marginTop:".75rem"},children:[c," von ",a," Feldern vergeben"]}),r.jsx("div",{role:"progressbar","aria-valuenow":c,"aria-valuemin":0,"aria-valuemax":a,"aria-label":`${c} von ${a} Feldern vergeben`,style:{height:10,borderRadius:999,background:"#0E1E3A",overflow:"hidden",margin:"0 auto 2rem",maxWidth:640},children:r.jsx("div",{style:{width:`${c/a*100}%`,height:"100%",background:Oa.magenta}})}),r.jsx("ol",{style:{listStyle:"none",display:"grid",gridTemplateColumns:"repeat(auto-fill, minmax(140px, 1fr))",gap:".5rem",padding:0,margin:0},children:f.map(d=>{const y=u.get(d),p=y?y.anonym?A0:y.name:null;return r.jsxs("li",{style:{background:y?Oa.blau:Oa.navy,border:y?"none":`2px solid ${Oa.rahmen}`,borderRadius:8,padding:".5rem .4rem",minHeight:62,display:"flex",flexDirection:"column",justifyContent:y?"space-between":"center",alignItems:y?"stretch":"center"},children:[r.jsx("span",{style:{fontSize:y?".7rem":"1.1rem",fontWeight:700,color:y?"#C6DEFC":"#5C7CA0",lineHeight:1},children:String(d).padStart(2,"0")}),p&&r.jsx("span",{style:{fontSize:".8rem",fontWeight:600,textAlign:"center",lineHeight:1.15,hyphens:"auto"},children:p})]},d)})}),r.jsxs("p",{style:{textAlign:"center",marginTop:"2rem",color:Oa.gedaempft,fontSize:".95rem"},children:["Jedes Feld steht für einen Förderer unserer ersten Mannschaft. Ob Ihr Name erscheint, entscheiden Sie selbst - sonst steht dort „",A0,'".']})]})})}const C6=v.section`
   background: #0b0b0d;
   min-height: 70vh;
   display: flex;
@@ -2300,7 +2289,7 @@ Herzliche Grüße
   position: relative;
   padding: 6rem 1.5rem 4rem;
   overflow: hidden;
-`,R6=v.div`
+`,A6=v.div`
   position: absolute;
   inset: 0;
   background: url(${({$bg:a})=>a}) center/cover no-repeat;
@@ -2308,7 +2297,7 @@ Herzliche Grüße
   transition: opacity 900ms ease;
   z-index: 1;
   filter: saturate(1.05) brightness(0.65);
-`,M6=v.div`
+`,T6=v.div`
   position: absolute;
   inset: 0;
   pointer-events: none;
@@ -2318,7 +2307,7 @@ Herzliche Grüße
     rgba(0, 0, 0, 0.55) 100%
   );
   z-index: 2;
-`,k6=v.div`
+`,R6=v.div`
   position: relative;
   z-index: 3;
   text-align: center;
@@ -2326,12 +2315,12 @@ Herzliche Grüße
   display: flex;
   flex-direction: column;
   align-items: center;
-`,D6=v.img`
+`,M6=v.img`
   width: clamp(100px, 22vw, 180px);
   height: auto;
   margin-bottom: 1.25rem;
   filter: drop-shadow(0 6px 24px rgba(0, 0, 0, 0.6));
-`,O6=v.h1`
+`,k6=v.h1`
   color: #fff;
   font-size: clamp(2.2rem, 7vw, 4rem);
   font-weight: 900;
@@ -2339,7 +2328,7 @@ Herzliche Grüße
   margin: 0 0 0.5rem;
   text-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
   line-height: 1.1;
-`,B6=v.p`
+`,D6=v.p`
   color: rgba(255, 255, 255, 0.85);
   font-size: clamp(1rem, 3vw, 1.3rem);
   font-weight: 500;
@@ -2347,7 +2336,7 @@ Herzliche Grüße
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
   line-height: 1.5;
   max-width: 600px;
-`,N6=v.a`
+`,O6=v.a`
   display: inline-flex;
   align-items: center;
   background: #fff;
@@ -2381,7 +2370,7 @@ Herzliche Grüße
   @media (min-width: 768px) {
     padding: 4rem 0;
   }
-`,U6=v(F1)`
+`,B6=v(F1)`
   background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
 `,R0=v.h2`
   font-size: clamp(1.5rem, 4.5vw, 2.2rem);
@@ -2397,7 +2386,7 @@ Herzliche Grüße
   margin: 0 auto 2rem;
   line-height: 1.6;
   text-align: center;
-`,L6=v.div`
+`,N6=v.div`
   display: grid;
   grid-template-columns: 1fr;
   gap: 1rem;
@@ -2405,22 +2394,22 @@ Herzliche Grüße
   @media (min-width: 600px) {
     grid-template-columns: repeat(3, 1fr);
   }
-`,H6=v.div`
+`,U6=v.div`
   background: #fff;
   border-radius: 16px;
   padding: 1.5rem 1.25rem;
   text-align: center;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
   border: 1px solid #f0f0f0;
-`,G6=v.div`
+`,L6=v.div`
   font-size: 1.8rem;
   margin-bottom: 0.5rem;
-`,Y6=v.h3`
+`,H6=v.h3`
   font-size: 1rem;
   color: #222;
   font-weight: 800;
   margin: 0 0 0.4rem;
-`,$6=v.p`
+`,G6=v.p`
   font-size: 0.9rem;
   color: #444;
   line-height: 1.5;
@@ -2434,7 +2423,7 @@ Herzliche Grüße
   font-weight: 700;
   color: #333;
   margin-bottom: 0.6rem;
-`,V6=v.div`
+`,Y6=v.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 0.75rem;
@@ -2443,7 +2432,7 @@ Herzliche Grüße
   @media (max-width: 600px) {
     grid-template-columns: 1fr;
   }
-`,q6=v.button`
+`,$6=v.button`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -2462,23 +2451,23 @@ Herzliche Grüße
     border-color: #e10073;
     box-shadow: 0 4px 16px rgba(225, 0, 115, 0.1);
   }
-`,K6=v.div`
+`,V6=v.div`
   font-size: 1.4rem;
   font-weight: 900;
   color: ${({$active:a})=>a?"#e10073":"#222"};
   margin-bottom: 0.25rem;
   transition: color 0.15s;
-`,Q6=v.div`
+`,q6=v.div`
   font-size: 0.85rem;
   font-weight: 700;
   color: ${({$active:a})=>a?"#e10073":"#555"};
   margin-bottom: 0.2rem;
   transition: color 0.15s;
-`,X6=v.div`
+`,K6=v.div`
   font-size: 0.75rem;
   color: #999;
   line-height: 1.3;
-`,Z6=v.div`
+`,Q6=v.div`
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
@@ -2494,14 +2483,14 @@ Herzliche Grüße
   &:hover {
     border-color: #e10073;
   }
-`,P6=v.div`
+`,X6=v.div`
   display: flex;
   align-items: center;
   gap: 0.6rem;
   font-weight: 800;
   font-size: 0.95rem;
   color: #333;
-`,F6=v.div`
+`,Z6=v.div`
   width: 20px;
   height: 20px;
   border-radius: 50%;
@@ -2518,15 +2507,15 @@ Herzliche Grüße
     border-radius: 50%;
     background: ${({$active:a})=>a?"#e10073":"transparent"};
   }
-`,W6=v.div`
+`,P6=v.div`
   display: grid;
   grid-template-columns: 1fr auto;
   gap: 0.5rem;
   align-items: start;
-`,J6=v.div`
+`,F6=v.div`
   display: flex;
   gap: 0.35rem;
-`,I6=v.button`
+`,W6=v.button`
   padding: 0.6rem 0.75rem;
   border-radius: 8px;
   border: 1.5px solid ${({$active:a})=>a?"#e10073":"#e5e7eb"};
@@ -2561,18 +2550,18 @@ Herzliche Grüße
   &::placeholder {
     color: #9ca3af;
   }
-`,e_=v.div`
+`,J6=v.div`
   font-size: 0.75rem;
   color: #999;
   margin-top: 0.3rem;
-`,t_=v.div`
+`,I6=v.div`
   margin-bottom: 1.5rem;
-`,n_=v.div`
+`,e_=v.div`
   font-size: 0.78rem;
   color: #999;
   line-height: 1.4;
   margin-bottom: 0.5rem;
-`,a_=v.label`
+`,t_=v.label`
   display: flex;
   align-items: flex-start;
   gap: 0.6rem;
@@ -2589,32 +2578,32 @@ Herzliche Grüße
     accent-color: #e10073;
     flex-shrink: 0;
   }
-`,l_=v.div`
+`,n_=v.div`
   font-size: 0.78rem;
   color: #999;
   margin: 0.3rem 0 0 1.6rem;
   line-height: 1.4;
-`,r_=zf`
+`,a_=zf`
   from { opacity: 0; max-height: 0; }
   to { opacity: 1; max-height: 400px; }
-`,i_=zf`
+`,l_=zf`
   from { opacity: 1; max-height: 400px; }
   to { opacity: 0; max-height: 0; }
-`,s_=v.div`
+`,r_=v.div`
   overflow: hidden;
   margin-top: 0.75rem;
   margin-left: 1.6rem;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  ${({$visible:a})=>a?Ir`animation: ${r_} 0.3s ease forwards;`:Ir`animation: ${i_} 0.2s ease forwards; pointer-events: none;`}
+  ${({$visible:a})=>a?Ir`animation: ${a_} 0.3s ease forwards;`:Ir`animation: ${l_} 0.2s ease forwards; pointer-events: none;`}
 `,D0=v.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 0.5rem;
-`,o_=v.div`
+`,i_=v.div`
   margin-bottom: 1.75rem;
-`,c_=v.div`
+`,s_=v.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 0.75rem;
@@ -2622,7 +2611,7 @@ Herzliche Grüße
   @media (max-width: 480px) {
     grid-template-columns: 1fr;
   }
-`,u_=v.a`
+`,o_=v.a`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -2641,7 +2630,7 @@ Herzliche Grüße
     transform: translateY(-3px);
     box-shadow: 0 10px 30px rgba(225, 0, 115, 0.35);
   }
-`,f_=v.button`
+`,c_=v.button`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -2667,7 +2656,7 @@ Herzliche Grüße
   opacity: 0.8;
   font-weight: 600;
   margin-top: 0.15rem;
-`,d_=v.div`
+`,u_=v.div`
   margin-top: 0.75rem;
   padding: 0.75rem 1rem;
   background: #fff8e1;
@@ -2676,7 +2665,7 @@ Herzliche Grüße
   font-size: 0.82rem;
   color: #6d4c00;
   line-height: 1.5;
-`,h_=v.div`
+`,f_=v.div`
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.55);
@@ -2685,7 +2674,7 @@ Herzliche Grüße
   justify-content: center;
   z-index: 1000;
   padding: 1rem;
-`,m_=v.div`
+`,d_=v.div`
   background: #fff;
   border-radius: 16px;
   padding: 2rem;
@@ -2695,7 +2684,7 @@ Herzliche Grüße
   position: relative;
   max-height: 90vh;
   overflow-y: auto;
-`,g_=v.button`
+`,h_=v.button`
   position: absolute;
   top: 12px;
   right: 12px;
@@ -2712,17 +2701,17 @@ Herzliche Grüße
   justify-content: center;
   transition: background 0.2s;
   &:hover { background: #f0f0f0; }
-`,p_=v.h3`
+`,m_=v.h3`
   font-size: 1.25rem;
   font-weight: 800;
   color: #e10073;
   margin: 0 0 0.5rem;
-`,b_=v.p`
+`,g_=v.p`
   font-size: 0.85rem;
   color: #666;
   margin: 0 0 1.25rem;
   line-height: 1.5;
-`,x_=v.div`
+`,p_=v.div`
   display: flex;
   justify-content: center;
   margin-bottom: 1.25rem;
@@ -2735,7 +2724,7 @@ Herzliche Grüße
   color: #444;
   line-height: 1.7;
   strong { color: #222; }
-`,y_=v.div`
+`,b_=v.div`
   margin-top: 1rem;
   padding: 0.75rem 1rem;
   background: #f0fdf4;
@@ -2744,12 +2733,12 @@ Herzliche Grüße
   font-size: 0.82rem;
   color: #166534;
   line-height: 1.5;
-`;function tf(a){return a.toLocaleString("de-DE",{minimumFractionDigits:a%1===0?0:1,maximumFractionDigits:2})}function v_(a,s,u,c,f){return["BCD","002","1","SCT",u,a,s,`EUR${c.toFixed(2)}`,"","",f].join(`
-`)}const nf=[ft("herren/herren_club500_1"),ft("herren/herren_club500_4"),ft("herren/herren_club500_2"),ft("herren/herren_club500_3"),ft("herren/herren_club500_5")].filter(Boolean),S_=["1 Jahr","2 Jahre","3 Jahre"];function j_(){const a=_6,[s,u]=C.useState(0);C.useEffect(()=>{if(nf.length<=1)return;const Q=setInterval(()=>u(be=>(be+1)%nf.length),6e3);return()=>clearInterval(Q)},[]);const[c,f]=C.useState(0),[d,y]=C.useState(!1),[p,h]=C.useState(""),[g,x]=C.useState("1 Jahr"),[S,w]=C.useState(""),[R,A]=C.useState(!1),[B,L]=C.useState({vorname:"",nachname:"",email:"",strasse:"",plz:"",ort:""}),[$,X]=C.useState(!1),T=C.useMemo(()=>{if(d){const Q=parseFloat(p.replace(",","."));return isNaN(Q)||Q<a.customAmount.minAmount?0:Q}return a.memberships[c]?.value??0},[d,p,c,a.memberships,a.customAmount.minAmount]),q=C.useMemo(()=>d?g:a.memberships[c]?.duration??"",[d,g,c,a.memberships]),H=C.useMemo(()=>{const Q=[a.verwendungszweck];if(q&&Q.push(q),S.trim()&&Q.push(`Tafel: ${S.trim()}`),R){const be=[B.vorname,B.nachname].filter(Boolean).join(" "),Se=[B.strasse,B.plz,B.ort].filter(Boolean).join(", "),Ue=[be,Se].filter(Boolean).join(", ");Ue&&Q.push(`Besch: ${Ue}`)}return Q.join(" | ")},[a.verwendungszweck,q,S,R,B]),W=C.useMemo(()=>T<=0?"#":`${a.paypalMeUrl}/${T}EUR`,[T,a.paypalMeUrl]),Y=C.useMemo(()=>v_(a.bankDetails.kontoinhaber,a.bankDetails.ibanClean,a.bankDetails.bic,T,H),[a.bankDetails.kontoinhaber,a.bankDetails.ibanClean,a.bankDetails.bic,T,H]),se=(Q,be)=>L(Se=>({...Se,[Q]:be}));return r.jsxs(r.Fragment,{children:[r.jsxs(T6,{children:[nf.map((Q,be)=>r.jsx(R6,{$bg:Q,$active:be===s},be)),r.jsx(M6,{}),r.jsxs(k6,{children:[r.jsx(D6,{src:a.heroImage,alt:"500er Club"}),r.jsx(O6,{children:a.heroTitle}),r.jsx(B6,{children:a.subtitle}),r.jsx(N6,{href:"#feld-sichern",onClick:Q=>{Q.preventDefault(),document.getElementById("feld-sichern")?.scrollIntoView({behavior:"smooth"})},children:"Feld sichern"})]})]}),r.jsx(F1,{children:r.jsxs(T0,{children:[r.jsx(R0,{children:"Was Ihre Unterstützung bewirkt"}),r.jsx(M0,{children:"Mit einem Feld im 500er Club unterstützen Sie direkt unsere erste Mannschaft in der Verbandsliga."}),r.jsx(L6,{children:a.benefits.map((Q,be)=>r.jsxs(H6,{children:[r.jsx(G6,{children:Q.icon}),r.jsx(Y6,{children:Q.title}),r.jsx($6,{children:Q.text})]},be))})]})}),r.jsx(A6,{}),r.jsx(U6,{id:"feld-sichern",children:r.jsxs(T0,{children:[r.jsx(R0,{children:"Feld sichern"}),r.jsx(M0,{children:"Wählen Sie, für wie viele Saisons Sie ein Feld übernehmen möchten."}),r.jsx(k0,{children:a.sectionTitle}),r.jsx(V6,{children:a.memberships.map((Q,be)=>r.jsxs(q6,{$active:!d&&c===be,onClick:()=>{y(!1),f(be)},type:"button",children:[r.jsx(K6,{$active:!d&&c===be,children:Q.label}),r.jsx(Q6,{$active:!d&&c===be,children:Q.duration}),r.jsx(X6,{children:Q.description})]},Q.value))}),r.jsxs(Z6,{$active:d,onClick:()=>{d||y(!0)},children:[r.jsxs(P6,{children:[r.jsx(F6,{$active:d}),a.customAmount.label]}),d&&r.jsxs(W6,{onClick:Q=>Q.stopPropagation(),children:[r.jsx(ca,{type:"text",inputMode:"decimal",placeholder:"Betrag in EUR",value:p,onChange:Q=>h(Q.target.value),autoFocus:!0}),r.jsx(J6,{children:S_.map(Q=>r.jsx(I6,{$active:g===Q,onClick:()=>x(Q),type:"button",children:Q},Q))})]}),d&&r.jsx(e_,{children:a.customAmount.minHint})]}),r.jsxs(t_,{children:[r.jsx(k0,{children:a.spendentafel.label}),r.jsx(n_,{children:a.spendentafel.sublabel}),r.jsx(ca,{type:"text",placeholder:a.spendentafel.nameFieldPlaceholder,value:S,onChange:Q=>w(Q.target.value)})]}),r.jsxs(o_,{children:[r.jsxs(a_,{children:[r.jsx("input",{type:"checkbox",checked:R,onChange:Q=>A(Q.target.checked)}),r.jsx("span",{children:a.bescheinigung.label})]}),r.jsx(l_,{children:a.bescheinigung.hinweis}),r.jsxs(s_,{$visible:R,children:[r.jsxs(D0,{children:[r.jsx(ca,{type:"text",name:"bescheinigung-vorname",autoComplete:"given-name",placeholder:a.bescheinigung.fields.vorname,value:B.vorname,onChange:Q=>se("vorname",Q.target.value)}),r.jsx(ca,{type:"text",name:"bescheinigung-nachname",autoComplete:"family-name",placeholder:a.bescheinigung.fields.nachname,value:B.nachname,onChange:Q=>se("nachname",Q.target.value)})]}),r.jsx(ca,{type:"email",name:"bescheinigung-email",autoComplete:"email",placeholder:a.bescheinigung.fields.email,value:B.email,onChange:Q=>se("email",Q.target.value)}),r.jsx(ca,{type:"text",name:"bescheinigung-strasse",autoComplete:"street-address",placeholder:a.bescheinigung.fields.strasse,value:B.strasse,onChange:Q=>se("strasse",Q.target.value)}),r.jsxs(D0,{children:[r.jsx(ca,{type:"text",name:"bescheinigung-plz",autoComplete:"postal-code",placeholder:a.bescheinigung.fields.plz,value:B.plz,onChange:Q=>se("plz",Q.target.value)}),r.jsx(ca,{type:"text",name:"bescheinigung-ort",autoComplete:"address-level2",placeholder:a.bescheinigung.fields.ort,value:B.ort,onChange:Q=>se("ort",Q.target.value)})]})]})]}),r.jsxs(c_,{children:[r.jsxs(u_,{href:W,target:"_blank",rel:"noopener noreferrer",children:[a.paypalCtaLabel,r.jsxs(O0,{children:[tf(T)," €"]})]}),r.jsxs(f_,{type:"button",onClick:()=>X(!0),children:[a.bankCtaLabel,r.jsxs(O0,{children:[tf(T)," €"]})]})]}),R&&r.jsx(d_,{children:a.paypalHinweis})]})}),r.jsx(eo,{}),$&&r.jsx(h_,{onClick:()=>X(!1),children:r.jsxs(m_,{onClick:Q=>Q.stopPropagation(),children:[r.jsx(g_,{onClick:()=>X(!1),children:"×"}),r.jsx(p_,{children:"Überweisung per QR-Code"}),r.jsx(b_,{children:"Scannen Sie den QR-Code mit Ihrer Banking-App (Sparkasse, VR-Banking, ING, etc.) – alle Daten werden automatisch ausgefüllt."}),T>0&&r.jsx(x_,{children:r.jsx(P1,{value:Y,size:220,level:"M"})}),r.jsx(Xr,{children:r.jsx("strong",{children:a.bankDetails.kontoinhaber})}),r.jsxs(Xr,{children:["IBAN: ",r.jsx("strong",{children:a.bankDetails.iban})]}),r.jsxs(Xr,{children:["Betrag: ",r.jsxs("strong",{children:[tf(T)," €"]}),q&&r.jsxs(r.Fragment,{children:[" · ",r.jsx("strong",{children:q})]})]}),r.jsxs(Xr,{children:["Verwendungszweck: ",r.jsx("strong",{children:H})]}),r.jsxs(Xr,{style:{fontSize:"0.8rem",color:"#888"},children:[a.bankDetails.bank," · ",a.bankDetails.adresse]}),R&&B.email&&r.jsxs(y_,{children:["Wir senden Ihre Spendenbescheinigung an ",r.jsx("strong",{children:B.email}),"."]})]})})]})}const w_=["1 Spieler-Post in der Hinrunde + 1 in der Rückrunde","1 Sponsor-Vorstellung mit 1-2 Bildern gemeinsam mit dem Spieler","Du kommst mit aufs Bild, wenn er Spieler des Spiels wird oder trifft","Ein vom Spieler signiertes Trikot für dein Büro","Exklusiv: nur ein Partner pro Spieler","So sichtbar oder so dezent, wie du magst"];function __(){return r.jsxs(r.Fragment,{children:[r.jsxs(E_,{children:[r.jsx(z_,{to:"/sponsoring",children:"← Zurück zur Übersicht"}),r.jsx(C_,{children:"Personal Partner"}),r.jsx(A_,{children:"Unterstütze gezielt einen SCKW-Spieler und werde ein Teil seiner Saison. Persönlich, exklusiv und direkt am Herzstück des Vereins."})]}),r.jsx(T_,{children:r.jsxs(B0,{children:[r.jsx(R_,{children:"Als Personal Partner stehst du hinter einem einzelnen Spieler und begleitest seine Saison bei uns. Wir sind ein Amateurverein, kein Profi-Club - es geht um Verbundenheit mit dem SCKW und dem Spieler, nicht um eine Werbetabelle. Dafür bist du ganz nah dran."}),r.jsxs(M_,{children:[r.jsx(k_,{children:"Was drin ist"}),r.jsx(D_,{children:w_.map(a=>r.jsx(O_,{children:a},a))}),r.jsxs(B_,{children:[r.jsx(N_,{children:"Eine Saison"}),r.jsx(U_,{children:"2.500 €"})]}),r.jsx(L_,{children:"Verhandlungsbasis - im Gespräch individuell anpassbar"})]})]})}),r.jsx(H_,{children:r.jsxs(B0,{children:[r.jsx(G_,{children:"Interesse?"}),r.jsx(Y_,{children:"Lass uns kurz sprechen, welchen Spieler du begleiten möchtest."}),r.jsx($_,{href:`mailto:${vt.email}?subject=${encodeURIComponent("Personal Partner - Interesse")}`,children:"Anfragen"})]})}),r.jsx(eo,{})]})}const E_=v.section`
+`;function tf(a){return a.toLocaleString("de-DE",{minimumFractionDigits:a%1===0?0:1,maximumFractionDigits:2})}function x_(a,s,u,c,f){return["BCD","002","1","SCT",u,a,s,`EUR${c.toFixed(2)}`,"","",f].join(`
+`)}const nf=[ft("herren/herren_club500_1"),ft("herren/herren_club500_4"),ft("herren/herren_club500_2"),ft("herren/herren_club500_3"),ft("herren/herren_club500_5")].filter(Boolean),y_=["1 Jahr","2 Jahre","3 Jahre"];function v_(){const a=j6,[s,u]=C.useState(0);C.useEffect(()=>{if(nf.length<=1)return;const Q=setInterval(()=>u(be=>(be+1)%nf.length),6e3);return()=>clearInterval(Q)},[]);const[c,f]=C.useState(0),[d,y]=C.useState(!1),[p,h]=C.useState(""),[g,x]=C.useState("1 Jahr"),[S,w]=C.useState(""),[R,A]=C.useState(!1),[B,L]=C.useState({vorname:"",nachname:"",email:"",strasse:"",plz:"",ort:""}),[$,X]=C.useState(!1),T=C.useMemo(()=>{if(d){const Q=parseFloat(p.replace(",","."));return isNaN(Q)||Q<a.customAmount.minAmount?0:Q}return a.memberships[c]?.value??0},[d,p,c,a.memberships,a.customAmount.minAmount]),q=C.useMemo(()=>d?g:a.memberships[c]?.duration??"",[d,g,c,a.memberships]),H=C.useMemo(()=>{const Q=[a.verwendungszweck];if(q&&Q.push(q),S.trim()&&Q.push(`Tafel: ${S.trim()}`),R){const be=[B.vorname,B.nachname].filter(Boolean).join(" "),Se=[B.strasse,B.plz,B.ort].filter(Boolean).join(", "),Ue=[be,Se].filter(Boolean).join(", ");Ue&&Q.push(`Besch: ${Ue}`)}return Q.join(" | ")},[a.verwendungszweck,q,S,R,B]),W=C.useMemo(()=>T<=0?"#":`${a.paypalMeUrl}/${T}EUR`,[T,a.paypalMeUrl]),Y=C.useMemo(()=>x_(a.bankDetails.kontoinhaber,a.bankDetails.ibanClean,a.bankDetails.bic,T,H),[a.bankDetails.kontoinhaber,a.bankDetails.ibanClean,a.bankDetails.bic,T,H]),se=(Q,be)=>L(Se=>({...Se,[Q]:be}));return r.jsxs(r.Fragment,{children:[r.jsxs(C6,{children:[nf.map((Q,be)=>r.jsx(A6,{$bg:Q,$active:be===s},be)),r.jsx(T6,{}),r.jsxs(R6,{children:[r.jsx(M6,{src:a.heroImage,alt:"500er Club"}),r.jsx(k6,{children:a.heroTitle}),r.jsx(D6,{children:a.subtitle}),r.jsx(O6,{href:"#feld-sichern",onClick:Q=>{Q.preventDefault(),document.getElementById("feld-sichern")?.scrollIntoView({behavior:"smooth"})},children:"Feld sichern"})]})]}),r.jsx(F1,{children:r.jsxs(T0,{children:[r.jsx(R0,{children:"Was Ihre Unterstützung bewirkt"}),r.jsx(M0,{children:"Mit einem Feld im 500er Club unterstützen Sie direkt unsere erste Mannschaft in der Verbandsliga."}),r.jsx(N6,{children:a.benefits.map((Q,be)=>r.jsxs(U6,{children:[r.jsx(L6,{children:Q.icon}),r.jsx(H6,{children:Q.title}),r.jsx(G6,{children:Q.text})]},be))})]})}),r.jsx(z6,{}),r.jsx(B6,{id:"feld-sichern",children:r.jsxs(T0,{children:[r.jsx(R0,{children:"Feld sichern"}),r.jsx(M0,{children:"Wählen Sie, für wie viele Saisons Sie ein Feld übernehmen möchten."}),r.jsx(k0,{children:a.sectionTitle}),r.jsx(Y6,{children:a.memberships.map((Q,be)=>r.jsxs($6,{$active:!d&&c===be,onClick:()=>{y(!1),f(be)},type:"button",children:[r.jsx(V6,{$active:!d&&c===be,children:Q.label}),r.jsx(q6,{$active:!d&&c===be,children:Q.duration}),r.jsx(K6,{children:Q.description})]},Q.value))}),r.jsxs(Q6,{$active:d,onClick:()=>{d||y(!0)},children:[r.jsxs(X6,{children:[r.jsx(Z6,{$active:d}),a.customAmount.label]}),d&&r.jsxs(P6,{onClick:Q=>Q.stopPropagation(),children:[r.jsx(ca,{type:"text",inputMode:"decimal",placeholder:"Betrag in EUR",value:p,onChange:Q=>h(Q.target.value),autoFocus:!0}),r.jsx(F6,{children:y_.map(Q=>r.jsx(W6,{$active:g===Q,onClick:()=>x(Q),type:"button",children:Q},Q))})]}),d&&r.jsx(J6,{children:a.customAmount.minHint})]}),r.jsxs(I6,{children:[r.jsx(k0,{children:a.spendentafel.label}),r.jsx(e_,{children:a.spendentafel.sublabel}),r.jsx(ca,{type:"text",placeholder:a.spendentafel.nameFieldPlaceholder,value:S,onChange:Q=>w(Q.target.value)})]}),r.jsxs(i_,{children:[r.jsxs(t_,{children:[r.jsx("input",{type:"checkbox",checked:R,onChange:Q=>A(Q.target.checked)}),r.jsx("span",{children:a.bescheinigung.label})]}),r.jsx(n_,{children:a.bescheinigung.hinweis}),r.jsxs(r_,{$visible:R,children:[r.jsxs(D0,{children:[r.jsx(ca,{type:"text",name:"bescheinigung-vorname",autoComplete:"given-name",placeholder:a.bescheinigung.fields.vorname,value:B.vorname,onChange:Q=>se("vorname",Q.target.value)}),r.jsx(ca,{type:"text",name:"bescheinigung-nachname",autoComplete:"family-name",placeholder:a.bescheinigung.fields.nachname,value:B.nachname,onChange:Q=>se("nachname",Q.target.value)})]}),r.jsx(ca,{type:"email",name:"bescheinigung-email",autoComplete:"email",placeholder:a.bescheinigung.fields.email,value:B.email,onChange:Q=>se("email",Q.target.value)}),r.jsx(ca,{type:"text",name:"bescheinigung-strasse",autoComplete:"street-address",placeholder:a.bescheinigung.fields.strasse,value:B.strasse,onChange:Q=>se("strasse",Q.target.value)}),r.jsxs(D0,{children:[r.jsx(ca,{type:"text",name:"bescheinigung-plz",autoComplete:"postal-code",placeholder:a.bescheinigung.fields.plz,value:B.plz,onChange:Q=>se("plz",Q.target.value)}),r.jsx(ca,{type:"text",name:"bescheinigung-ort",autoComplete:"address-level2",placeholder:a.bescheinigung.fields.ort,value:B.ort,onChange:Q=>se("ort",Q.target.value)})]})]})]}),r.jsxs(s_,{children:[r.jsxs(o_,{href:W,target:"_blank",rel:"noopener noreferrer",children:[a.paypalCtaLabel,r.jsxs(O0,{children:[tf(T)," €"]})]}),r.jsxs(c_,{type:"button",onClick:()=>X(!0),children:[a.bankCtaLabel,r.jsxs(O0,{children:[tf(T)," €"]})]})]}),R&&r.jsx(u_,{children:a.paypalHinweis})]})}),r.jsx(eo,{}),$&&r.jsx(f_,{onClick:()=>X(!1),children:r.jsxs(d_,{onClick:Q=>Q.stopPropagation(),children:[r.jsx(h_,{onClick:()=>X(!1),children:"×"}),r.jsx(m_,{children:"Überweisung per QR-Code"}),r.jsx(g_,{children:"Scannen Sie den QR-Code mit Ihrer Banking-App (Sparkasse, VR-Banking, ING, etc.) – alle Daten werden automatisch ausgefüllt."}),T>0&&r.jsx(p_,{children:r.jsx(P1,{value:Y,size:220,level:"M"})}),r.jsx(Xr,{children:r.jsx("strong",{children:a.bankDetails.kontoinhaber})}),r.jsxs(Xr,{children:["IBAN: ",r.jsx("strong",{children:a.bankDetails.iban})]}),r.jsxs(Xr,{children:["Betrag: ",r.jsxs("strong",{children:[tf(T)," €"]}),q&&r.jsxs(r.Fragment,{children:[" · ",r.jsx("strong",{children:q})]})]}),r.jsxs(Xr,{children:["Verwendungszweck: ",r.jsx("strong",{children:H})]}),r.jsxs(Xr,{style:{fontSize:"0.8rem",color:"#888"},children:[a.bankDetails.bank," · ",a.bankDetails.adresse]}),R&&B.email&&r.jsxs(b_,{children:["Wir senden Ihre Spendenbescheinigung an ",r.jsx("strong",{children:B.email}),"."]})]})})]})}const S_=["1 Spieler-Post in der Hinrunde + 1 in der Rückrunde","1 Sponsor-Vorstellung mit 1-2 Bildern gemeinsam mit dem Spieler","Du kommst mit aufs Bild, wenn er Spieler des Spiels wird oder trifft","Ein vom Spieler signiertes Trikot für dein Büro","Exklusiv: nur ein Partner pro Spieler","So sichtbar oder so dezent, wie du magst"];function j_(){return r.jsxs(r.Fragment,{children:[r.jsxs(w_,{children:[r.jsx(__,{to:"/sponsoring",children:"← Zurück zur Übersicht"}),r.jsx(E_,{children:"Personal Partner"}),r.jsx(z_,{children:"Unterstütze gezielt einen SCKW-Spieler und werde ein Teil seiner Saison. Persönlich, exklusiv und direkt am Herzstück des Vereins."})]}),r.jsx(C_,{children:r.jsxs(B0,{children:[r.jsx(A_,{children:"Als Personal Partner stehst du hinter einem einzelnen Spieler und begleitest seine Saison bei uns. Wir sind ein Amateurverein, kein Profi-Club - es geht um Verbundenheit mit dem SCKW und dem Spieler, nicht um eine Werbetabelle. Dafür bist du ganz nah dran."}),r.jsxs(T_,{children:[r.jsx(R_,{children:"Was drin ist"}),r.jsx(M_,{children:S_.map(a=>r.jsx(k_,{children:a},a))}),r.jsxs(D_,{children:[r.jsx(O_,{children:"Eine Saison"}),r.jsx(B_,{children:"2.500 €"})]}),r.jsx(N_,{children:"Verhandlungsbasis - im Gespräch individuell anpassbar"})]})]})}),r.jsx(U_,{children:r.jsxs(B0,{children:[r.jsx(L_,{children:"Interesse?"}),r.jsx(H_,{children:"Lass uns kurz sprechen, welchen Spieler du begleiten möchtest."}),r.jsx(G_,{href:`mailto:${vt.email}?subject=${encodeURIComponent("Personal Partner - Interesse")}`,children:"Anfragen"})]})}),r.jsx(eo,{})]})}const w_=v.section`
   background: #0b0b0d;
   padding: 3.5rem 1rem 3rem;
   text-align: center;
-`,z_=v(Kl)`
+`,__=v(Kl)`
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
@@ -2763,13 +2752,13 @@ Herzliche Grüße
   &:hover {
     color: white;
   }
-`,C_=v.h1`
+`,E_=v.h1`
   color: white;
   font-size: clamp(1.8rem, 6vw, 3rem);
   font-weight: 900;
   margin: 0 0 0.75rem 0;
   letter-spacing: -0.02em;
-`,A_=v.p`
+`,z_=v.p`
   color: rgba(255, 255, 255, 0.8);
   font-size: clamp(0.95rem, 2.5vw, 1.15rem);
   max-width: 620px;
@@ -2783,20 +2772,20 @@ Herzliche Grüße
   @media (min-width: 768px) {
     padding: 0 2rem;
   }
-`,T_=v.section`
+`,C_=v.section`
   padding: 3rem 0;
 
   @media (min-width: 768px) {
     padding: 4rem 0;
   }
-`,R_=v.p`
+`,A_=v.p`
   font-size: 1.1rem;
   color: #333;
   line-height: 1.7;
   text-align: center;
   margin: 0 auto 2.5rem;
   max-width: 620px;
-`,M_=v.div`
+`,T_=v.div`
   background: white;
   border-radius: 16px;
   padding: 2rem 1.75rem;
@@ -2806,16 +2795,16 @@ Herzliche Grüße
   @media (min-width: 768px) {
     padding: 2.5rem;
   }
-`,k_=v.h2`
+`,R_=v.h2`
   font-size: 1.4rem;
   color: #e10073;
   font-weight: 800;
   margin: 0 0 1.5rem 0;
-`,D_=v.ul`
+`,M_=v.ul`
   list-style: none;
   margin: 0;
   padding: 0;
-`,O_=v.li`
+`,k_=v.li`
   position: relative;
   padding: 0.7rem 0 0.7rem 1.75rem;
   font-size: 1.02rem;
@@ -2835,43 +2824,43 @@ Herzliche Grüße
     color: #e10073;
     font-weight: 800;
   }
-`,B_=v.div`
+`,D_=v.div`
   display: flex;
   align-items: baseline;
   justify-content: space-between;
   margin-top: 1.75rem;
   padding-top: 1.5rem;
   border-top: 2px solid #f0f0f0;
-`,N_=v.span`
+`,O_=v.span`
   font-size: 1rem;
   color: #666;
   font-weight: 600;
-`,U_=v.span`
+`,B_=v.span`
   font-size: clamp(1.8rem, 5vw, 2.4rem);
   color: #e10073;
   font-weight: 900;
   letter-spacing: -0.02em;
-`,L_=v.p`
+`,N_=v.p`
   margin: 0.6rem 0 0 0;
   font-size: 0.9rem;
   color: #888;
   text-align: right;
-`,H_=v.section`
+`,U_=v.section`
   padding: 3rem 0;
   text-align: center;
   background: linear-gradient(135deg, #fff6fa 0%, #ffeef5 100%);
-`,G_=v.h2`
+`,L_=v.h2`
   font-size: clamp(1.4rem, 4vw, 2rem);
   color: #e10073;
   font-weight: 800;
   margin: 0 0 0.5rem 0;
-`,Y_=v.p`
+`,H_=v.p`
   font-size: 1.05rem;
   color: #555;
   margin: 0 auto 0.5rem;
   max-width: 480px;
   line-height: 1.6;
-`,$_=v.a`
+`,G_=v.a`
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -2890,7 +2879,7 @@ Herzliche Grüße
     transform: translateY(-2px);
     box-shadow: 0 10px 30px rgba(225, 0, 115, 0.4);
   }
-`,ai={colors:{primary:"#d9245f",primaryDark:"#b81d51",primaryLight:"#ff4b82",secondary:"#1696ff",secondaryDark:"#0e6ec0",secondaryLight:"#5ab8ff",text:"#222",textMuted:"#666",bg:"#fff",bgMuted:"#f8f9fa",border:"#e9ecef"}},V_="https://partner.sckw.de",q_=6e3,K_=[{id:"reichweite",active:!0,eyebrow:"SC Konstanz-Wollmatingen · Sponsoring",title:"1,3 Mio. Views pro Saison",subline:"100% organisch - deine Marke bei jedem Spiel im Bild.",href:"/sponsoring",image:"herren/herren_6",cta:"Partner werden"},{id:"exklusiv",active:!0,eyebrow:"Exklusiv-Partnerschaften",title:"Werde das Gesicht des Vereins",subline:"Stadionname, Trikot-Rücken oder -Ärmel - noch zu vergeben.",href:"/sponsoring#angebot",image:"herren/herren_16",badge:"Noch frei",cta:"Details ansehen"},{id:"werbeflaechen",active:!0,eyebrow:"Werbeflächen",title:"Dein Logo bei jedem Heimspiel",subline:"Banden & Banner direkt am Spielfeldrand.",href:"/sponsoring#werbeflaechen",image:"herren/herren_5",cta:"Flächen ansehen"},{id:"spieltag",active:!0,eyebrow:"Spieltag & Medien",title:"Schon mit kleinem Budget dabei",subline:"Ballspende, Spielpräsentator oder Magazin-Inserat.",href:"/sponsoring#spieltag",image:"herren/herren_14",badge:"Einstieg",cta:"Möglichkeiten ansehen"},{id:"club-500",active:!0,eyebrow:"Club 500",title:"Gemeinsam stark - schon als Fan",subline:"Werde Teil des Club 500 und unterstütze den Verein.",href:"/sponsoring/club-500",image:"herren/herren_6",cta:"Zum Club 500"},{id:"kontakt",active:!0,eyebrow:"Partner werden",title:"Lass uns über Sponsoring reden",subline:"Individuelle Pakete jederzeit möglich - sponsoring@sckw.de.",href:"/sponsoring",image:"herren/herren_16",cta:"Zur Sponsoring-Seite"}],af=K_.filter(a=>a.active),Q_=45;function X_(){const[a,s]=C.useState(0),[u,c]=C.useState(!1),[f,d]=C.useState(!1),y=C.useRef(null),p=af.length,h=C.useCallback(R=>s((R%p+p)%p),[p]);C.useEffect(()=>{const R=window.matchMedia("(prefers-reduced-motion: reduce)");d(R.matches);const A=()=>d(R.matches);return R.addEventListener?.("change",A),()=>R.removeEventListener?.("change",A)},[]),C.useEffect(()=>{if(u||f||p<=1)return;const R=setInterval(()=>s(A=>(A+1)%p),q_);return()=>clearInterval(R)},[u,f,p]);const g=R=>{y.current=R.touches[0].clientX},x=R=>{if(y.current===null)return;const A=R.changedTouches[0].clientX-y.current;Math.abs(A)>Q_&&h(a+(A<0?1:-1)),y.current=null};if(p===0)return null;const S=af[a],w=ft(S.image);return r.jsxs(Z_,{role:"group","aria-roledescription":"Karussell","aria-label":"Sponsoring-Angebote des SC Konstanz-Wollmatingen",onMouseEnter:()=>c(!0),onMouseLeave:()=>c(!1),onFocus:()=>c(!0),onBlur:()=>c(!1),onTouchStart:g,onTouchEnd:x,children:[r.jsxs(W1,{href:`${V_}${S.href}`,target:"_blank",rel:"noopener noreferrer","aria-label":`${S.title} - ${S.cta} (öffnet in neuem Tab)`,$bg:w,children:[r.jsxs(P_,{children:[r.jsx(F_,{src:"/logo-transparent.avif",alt:"SC Konstanz-Wollmatingen"}),S.badge&&r.jsx(W_,{children:S.badge})]}),r.jsxs(J_,{children:[r.jsx(I_,{children:S.eyebrow}),r.jsx(e4,{children:S.title}),r.jsx(t4,{children:S.subline}),r.jsxs(n4,{children:[S.cta,r.jsx("span",{"aria-hidden":!0,children:"→"})]})]})]},S.id),p>1&&r.jsxs(a4,{children:[r.jsx(N0,{onClick:()=>h(a-1),"aria-label":"Vorheriges Angebot",children:"‹"}),r.jsx(l4,{children:af.map((R,A)=>r.jsx(r4,{$active:A===a,onClick:()=>h(A),"aria-label":`Angebot ${A+1} von ${p}`,"aria-current":A===a?"true":void 0},R.id))}),r.jsx(N0,{onClick:()=>h(a+1),"aria-label":"Nächstes Angebot",children:"›"})]})]})}const Z_=v.div`
+`,ai={colors:{primary:"#d9245f",primaryDark:"#b81d51",primaryLight:"#ff4b82",secondary:"#1696ff",secondaryDark:"#0e6ec0",secondaryLight:"#5ab8ff",text:"#222",textMuted:"#666",bg:"#fff",bgMuted:"#f8f9fa",border:"#e9ecef"}},Y_="https://partner.sckw.de",$_=6e3,V_=[{id:"reichweite",active:!0,eyebrow:"SC Konstanz-Wollmatingen · Sponsoring",title:"1,3 Mio. Views pro Saison",subline:"100% organisch - deine Marke bei jedem Spiel im Bild.",href:"/sponsoring",image:"herren/herren_6",cta:"Partner werden"},{id:"exklusiv",active:!0,eyebrow:"Exklusiv-Partnerschaften",title:"Werde das Gesicht des Vereins",subline:"Stadionname, Trikot-Rücken oder -Ärmel - noch zu vergeben.",href:"/sponsoring#angebot",image:"herren/herren_16",badge:"Noch frei",cta:"Details ansehen"},{id:"werbeflaechen",active:!0,eyebrow:"Werbeflächen",title:"Dein Logo bei jedem Heimspiel",subline:"Banden & Banner direkt am Spielfeldrand.",href:"/sponsoring#werbeflaechen",image:"herren/herren_5",cta:"Flächen ansehen"},{id:"spieltag",active:!0,eyebrow:"Spieltag & Medien",title:"Schon mit kleinem Budget dabei",subline:"Ballspende, Spielpräsentator oder Magazin-Inserat.",href:"/sponsoring#spieltag",image:"herren/herren_14",badge:"Einstieg",cta:"Möglichkeiten ansehen"},{id:"club-500",active:!0,eyebrow:"Club 500",title:"Gemeinsam stark - schon als Fan",subline:"Werde Teil des Club 500 und unterstütze den Verein.",href:"/sponsoring/club-500",image:"herren/herren_6",cta:"Zum Club 500"},{id:"kontakt",active:!0,eyebrow:"Partner werden",title:"Lass uns über Sponsoring reden",subline:"Individuelle Pakete jederzeit möglich - sponsoring@sckw.de.",href:"/sponsoring",image:"herren/herren_16",cta:"Zur Sponsoring-Seite"}],af=V_.filter(a=>a.active),q_=45;function K_(){const[a,s]=C.useState(0),[u,c]=C.useState(!1),[f,d]=C.useState(!1),y=C.useRef(null),p=af.length,h=C.useCallback(R=>s((R%p+p)%p),[p]);C.useEffect(()=>{const R=window.matchMedia("(prefers-reduced-motion: reduce)");d(R.matches);const A=()=>d(R.matches);return R.addEventListener?.("change",A),()=>R.removeEventListener?.("change",A)},[]),C.useEffect(()=>{if(u||f||p<=1)return;const R=setInterval(()=>s(A=>(A+1)%p),$_);return()=>clearInterval(R)},[u,f,p]);const g=R=>{y.current=R.touches[0].clientX},x=R=>{if(y.current===null)return;const A=R.changedTouches[0].clientX-y.current;Math.abs(A)>q_&&h(a+(A<0?1:-1)),y.current=null};if(p===0)return null;const S=af[a],w=ft(S.image);return r.jsxs(Q_,{role:"group","aria-roledescription":"Karussell","aria-label":"Sponsoring-Angebote des SC Konstanz-Wollmatingen",onMouseEnter:()=>c(!0),onMouseLeave:()=>c(!1),onFocus:()=>c(!0),onBlur:()=>c(!1),onTouchStart:g,onTouchEnd:x,children:[r.jsxs(W1,{href:`${Y_}${S.href}`,target:"_blank",rel:"noopener noreferrer","aria-label":`${S.title} - ${S.cta} (öffnet in neuem Tab)`,$bg:w,children:[r.jsxs(X_,{children:[r.jsx(Z_,{src:"/logo-transparent.avif",alt:"SC Konstanz-Wollmatingen"}),S.badge&&r.jsx(P_,{children:S.badge})]}),r.jsxs(F_,{children:[r.jsx(W_,{children:S.eyebrow}),r.jsx(J_,{children:S.title}),r.jsx(I_,{children:S.subline}),r.jsxs(e4,{children:[S.cta,r.jsx("span",{"aria-hidden":!0,children:"→"})]})]})]},S.id),p>1&&r.jsxs(t4,{children:[r.jsx(N0,{onClick:()=>h(a-1),"aria-label":"Vorheriges Angebot",children:"‹"}),r.jsx(n4,{children:af.map((R,A)=>r.jsx(a4,{$active:A===a,onClick:()=>h(A),"aria-label":`Angebot ${A+1} von ${p}`,"aria-current":A===a?"true":void 0},R.id))}),r.jsx(N0,{onClick:()=>h(a+1),"aria-label":"Nächstes Angebot",children:"›"})]})]})}const Q_=v.div`
   position: relative;
   width: 100%;
   max-width: 960px;
@@ -2954,12 +2943,12 @@ Herzliche Grüße
       display: none;
     }
   }
-`,P_=v.div`
+`,X_=v.div`
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
   gap: 12px;
-`,F_=v.img`
+`,Z_=v.img`
   height: 44px;
   width: auto;
   filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.6));
@@ -2967,7 +2956,7 @@ Herzliche Grüße
   @media (max-width: 480px) {
     height: 36px;
   }
-`,W_=v.span`
+`,P_=v.span`
   flex-shrink: 0;
   font-size: 12px;
   font-weight: 800;
@@ -2978,11 +2967,11 @@ Herzliche Grüße
   color: #fff;
   background: ${ai.colors.primary};
   box-shadow: 0 4px 14px rgba(217, 36, 95, 0.45);
-`,J_=v.div`
+`,F_=v.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
-`,I_=v.span`
+`,W_=v.span`
   display: inline-flex;
   align-items: center;
   gap: 10px;
@@ -3000,7 +2989,7 @@ Herzliche Grüße
     border-radius: 3px;
     background: ${ai.colors.primary};
   }
-`,e4=v.h2`
+`,J_=v.h2`
   margin: 0;
   font-size: clamp(1.7rem, 4.5vw, 2.5rem);
   line-height: 1.08;
@@ -3012,7 +3001,7 @@ Herzliche Grüße
   @media (max-width: 480px) {
     font-size: clamp(1.5rem, 8vw, 2rem);
   }
-`,t4=v.p`
+`,I_=v.p`
   margin: 0;
   font-size: 16px;
   line-height: 1.45;
@@ -3023,7 +3012,7 @@ Herzliche Grüße
   @media (max-width: 480px) {
     font-size: 14.5px;
   }
-`,n4=v.span`
+`,e4=v.span`
   margin-top: 10px;
   align-self: flex-start;
   display: inline-flex;
@@ -3044,7 +3033,7 @@ Herzliche Grüße
   ${W1}:hover & span {
     transform: translateX(4px);
   }
-`,a4=v.div`
+`,t4=v.div`
   position: absolute;
   bottom: 16px;
   left: 0;
@@ -3085,11 +3074,11 @@ Herzliche Grüße
   @media (max-width: 480px) {
     display: none;
   }
-`,l4=v.div`
+`,n4=v.div`
   display: flex;
   align-items: center;
   gap: 2px;
-`,r4=v.button`
+`,a4=v.button`
   position: relative;
   width: ${a=>a.$active?"32px":"24px"};
   height: 24px;
@@ -3117,7 +3106,7 @@ Herzliche Grüße
     outline-offset: 2px;
     border-radius: 6px;
   }
-`,i4=op`
+`,l4=op`
   :root,
   html,
   body,
@@ -3131,8 +3120,8 @@ Herzliche Grüße
     color-scheme: light;
     text-align: left;
   }
-`,s4=v.div`
+`,r4=v.div`
   padding: 0;
   display: flex;
   justify-content: center;
-`;function o4(){return r.jsxs(r.Fragment,{children:[r.jsx(i4,{}),r.jsx(s4,{children:r.jsx(X_,{})})]})}function c4(){const{pathname:a,hash:s}=on();return C.useEffect(()=>{if(!s){window.scrollTo(0,0);return}const u=decodeURIComponent(s.slice(1));let c=0,f=0,d=0;const y=()=>{const p=document.getElementById(u);p?(p.scrollIntoView({block:"start"}),d=window.setTimeout(()=>p.scrollIntoView({block:"start"}),400)):c++<20&&(f=window.setTimeout(y,100))};return y(),()=>{window.clearTimeout(f),window.clearTimeout(d)}},[a,s]),null}function u4(){return r.jsxs(q2,{children:[r.jsx(c4,{}),r.jsxs(v2,{children:[r.jsx(ln,{path:"/",element:r.jsxs(r.Fragment,{children:[r.jsx(Cl,{}),r.jsx(ks,{to:"/sponsoring",replace:!0})]})}),r.jsx(ln,{path:"/sponsoring",element:r.jsxs(r.Fragment,{children:[r.jsx(Cl,{}),r.jsx(Sw,{})]})}),r.jsx(ln,{path:"/sponsoring-handoff",element:r.jsx(Fw,{})}),r.jsx(ln,{path:"/widget",element:r.jsx(o4,{})}),r.jsx(ln,{path:"/sponsoring/club-500",element:r.jsxs(r.Fragment,{children:[r.jsx(Cl,{}),r.jsx(j_,{})]})}),r.jsx(ln,{path:"/sponsoring/pakete",element:r.jsx(ks,{to:"/sponsoring#angebot",replace:!0})}),r.jsx(ln,{path:"/sponsoring/spielerpatenschaft",element:r.jsxs(r.Fragment,{children:[r.jsx(Cl,{}),r.jsx(__,{})]})}),r.jsx(ln,{path:"/mockup-generator",element:r.jsxs(r.Fragment,{children:[r.jsx(Cl,{}),r.jsx(m6,{})]})}),r.jsx(ln,{path:"/renovierung",element:r.jsxs(r.Fragment,{children:[r.jsx(Cl,{}),r.jsx(V5,{})]})}),r.jsx(ln,{path:"*",element:r.jsx(ks,{to:"/sponsoring",replace:!0})})]})]})}console.log("sckw sponsoring Website loaded");Ry.createRoot(document.getElementById("root")).render(r.jsx(C.StrictMode,{children:r.jsx(Av,{theme:ai,children:r.jsx(u4,{})})}));
+`;function i4(){return r.jsxs(r.Fragment,{children:[r.jsx(l4,{}),r.jsx(r4,{children:r.jsx(K_,{})})]})}function s4(){const{pathname:a,hash:s}=on();return C.useEffect(()=>{if(!s){window.scrollTo(0,0);return}const u=decodeURIComponent(s.slice(1));let c=0,f=0,d=0;const y=()=>{const p=document.getElementById(u);p?(p.scrollIntoView({block:"start"}),d=window.setTimeout(()=>p.scrollIntoView({block:"start"}),400)):c++<20&&(f=window.setTimeout(y,100))};return y(),()=>{window.clearTimeout(f),window.clearTimeout(d)}},[a,s]),null}function o4(){return r.jsxs(q2,{children:[r.jsx(s4,{}),r.jsxs(v2,{children:[r.jsx(ln,{path:"/",element:r.jsxs(r.Fragment,{children:[r.jsx(Cl,{}),r.jsx(ks,{to:"/sponsoring",replace:!0})]})}),r.jsx(ln,{path:"/sponsoring",element:r.jsxs(r.Fragment,{children:[r.jsx(Cl,{}),r.jsx(yw,{})]})}),r.jsx(ln,{path:"/sponsoring-handoff",element:r.jsx(Zw,{})}),r.jsx(ln,{path:"/widget",element:r.jsx(i4,{})}),r.jsx(ln,{path:"/sponsoring/club-500",element:r.jsxs(r.Fragment,{children:[r.jsx(Cl,{}),r.jsx(v_,{})]})}),r.jsx(ln,{path:"/sponsoring/pakete",element:r.jsx(ks,{to:"/sponsoring#angebot",replace:!0})}),r.jsx(ln,{path:"/sponsoring/spielerpatenschaft",element:r.jsxs(r.Fragment,{children:[r.jsx(Cl,{}),r.jsx(j_,{})]})}),r.jsx(ln,{path:"/mockup-generator",element:r.jsxs(r.Fragment,{children:[r.jsx(Cl,{}),r.jsx(d6,{})]})}),r.jsx(ln,{path:"/renovierung",element:r.jsxs(r.Fragment,{children:[r.jsx(Cl,{}),r.jsx(V5,{})]})}),r.jsx(ln,{path:"*",element:r.jsx(ks,{to:"/sponsoring",replace:!0})})]})]})}console.log("sckw sponsoring Website loaded");Ry.createRoot(document.getElementById("root")).render(r.jsx(C.StrictMode,{children:r.jsx(Av,{theme:ai,children:r.jsx(o4,{})})}));
