@@ -53,18 +53,11 @@ const MainSponsorLogo = styled.img`
   max-width: 180px;
   max-height: 100px;
   object-fit: contain;
-  margin-bottom: 0.75rem;
 
   @media (max-width: 768px) {
     max-width: 140px;
     max-height: 80px;
   }
-`;
-
-const MainSponsorName = styled.div`
-  font-size: 1.1rem;
-  color: #333;
-  font-weight: 700;
 `;
 
 const PartnersGrid = styled.div`
@@ -106,14 +99,6 @@ const PartnerLogo = styled.img`
   max-width: 100%;
   max-height: 50px;
   object-fit: contain;
-  margin-bottom: 0.5rem;
-`;
-
-const PartnerName = styled.div`
-  font-size: 0.75rem;
-  color: #555;
-  font-weight: 600;
-  line-height: 1.3;
 `;
 
 // Aktuelle Sponsoren - zentral gepflegt (Reihenfolge wie auf sckw.de)
@@ -181,7 +166,6 @@ export default function CurrentSponsors() {
         >
           <MainSponsorBadge>Hauptsponsor</MainSponsorBadge>
           <MainSponsorLogo src={hauptsponsor.logo} alt={hauptsponsor.name} />
-          <MainSponsorName>{hauptsponsor.name}</MainSponsorName>
         </MainSponsorCard>
       </MainSponsorSection>
 
@@ -195,7 +179,6 @@ export default function CurrentSponsors() {
             rel="noopener noreferrer"
           >
             <PartnerLogo src={partner.logo} alt={partner.name} />
-            <PartnerName>{partner.name}</PartnerName>
           </PartnerCard>
         ))}
       </PartnersGrid>
