@@ -1,5 +1,5 @@
 {
-  "stand": "2026-08-14",
+  "stand": "2026-08-21",
   "felderGesamt": 100,
   "foerderer": [
     { "feld": 1,  "name": "Ulrike Dunand",                "anonym": false, "saisonBis": 2027 },
@@ -12,6 +12,8 @@
     { "feld": 8,  "name": "René Frey",                    "anonym": false, "saisonBis": 2027 },
     { "feld": 9,  "name": "Luciano Rossetti",             "anonym": false, "saisonBis": 2027 },
     { "feld": 10, "name": "Paolo Rossetti",               "anonym": false, "saisonBis": 2027 },
-    { "feld": 11, "name": "Rolf Degen",                   "anonym": false, "saisonBis": 2027 }
+    { "feld": 11, "name": "Rolf Degen",                   "anonym": false, "saisonBis": 2027 },
+    { "feld": 12, "name": "Senioren des SCKW",            "anonym": false, "saisonBis": 2027 },
+    { "feld": 13, "name": "Brigitte und Thomas Fuchs",    "anonym": false, "saisonBis": 2027 }
   ]
 }

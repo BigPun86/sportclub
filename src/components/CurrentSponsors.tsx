@@ -116,7 +116,7 @@ const PartnerName = styled.div`
   line-height: 1.3;
 `;
 
-// Aktuelle Sponsoren - zentral gepflegt
+// Aktuelle Sponsoren - zentral gepflegt (Reihenfolge wie auf sckw.de)
 const currentSponsors = {
   hauptsponsor: {
     name: "Fuchsbau Immobilien",
@@ -125,9 +125,9 @@ const currentSponsors = {
   },
   partners: [
     {
-      name: "Tasty Delivery",
-      logo: "/sponsors/tasty.png",
-      website: "https://tasty-delivery.de",
+      name: "Graf Hardenberg",
+      logo: "/sponsors/grafhardenberg.png",
+      website: "https://www.grafhardenberg.de/",
     },
     {
       name: "Stadtwerke Konstanz",
@@ -135,34 +135,34 @@ const currentSponsors = {
       website: "https://www.stadtwerke-konstanz.de/",
     },
     {
-      name: "Graf Hardenberg",
-      logo: "/sponsors/grafhardenberg.png",
-      website: "https://www.grafhardenberg.de/",
+      name: "Sparkasse Bodensee",
+      logo: "/sponsors/sparkasse-bodensee.png",
+      website: "https://www.sparkasse-bodensee.de/",
     },
     {
-      name: "Kountz",
-      logo: "/sponsors/KOUNTZ.avif",
-      website: "#",
+      name: "FUCHS",
+      logo: "/sponsors/fuchs.png",
+      website: "https://www.fuchs-haustechnik.de/",
     },
     {
-      name: "Rothaus",
-      logo: "/sponsors/Rothaus.avif",
-      website: "https://www.rothaus.de/",
+      name: "Logan's Linde",
+      logo: "/sponsors/logans-linde.png",
+      website: "https://logans-wollmatingen.de/",
     },
     {
-      name: "J&C",
-      logo: "/sponsors/JC.avif",
-      website: "#",
+      name: "KARAKI Services",
+      logo: "/sponsors/karaki-services.png",
+      website: "https://karaki-services.de/",
     },
     {
       name: "Danlin Media",
       logo: "/sponsors/DANLIN.avif",
-      website: "#",
+      website: "https://www.danlin-media.de/",
     },
     {
-      name: "Logan's Linde",
-      logo: "/sponsors/logans.png",
-      website: "https://logans-wollmatingen.de/",
+      name: "grenz|gänger tools",
+      logo: "/sponsors/grenzgaenger-tools.png",
+      website: "https://grenzgaenger-tools.de",
     },
   ],
 };
