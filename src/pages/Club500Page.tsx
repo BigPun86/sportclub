@@ -436,33 +436,10 @@ const BescheinigungSection = styled.div`
 
 const CTARow = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 0.75rem;
-
-  @media (max-width: 480px) {
-    grid-template-columns: 1fr;
-  }
-`;
-
-const PaypalCTA = styled.a`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 1rem;
-  font-weight: 800;
-  font-size: 0.95rem;
-  border-radius: 50px;
-  text-decoration: none;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  background: linear-gradient(135deg, #e10073, #ff6b9d);
-  color: #fff;
-  box-shadow: 0 6px 20px rgba(225, 0, 115, 0.25);
-
-  &:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 30px rgba(225, 0, 115, 0.35);
-  }
+  max-width: 420px;
+  margin: 0 auto;
 `;
 
 const BankCTA = styled.button`
@@ -470,21 +447,20 @@ const BankCTA = styled.button`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 1rem;
+  padding: 1.1rem;
   font-weight: 800;
-  font-size: 0.95rem;
+  font-size: 1rem;
   border-radius: 50px;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  background: #fff;
-  color: #e10073;
-  border: 2px solid #e10073;
-  box-shadow: 0 4px 12px rgba(225, 0, 115, 0.1);
+  background: linear-gradient(135deg, #e10073, #ff6b9d);
+  color: #fff;
+  border: none;
+  box-shadow: 0 6px 20px rgba(225, 0, 115, 0.25);
 
   &:hover {
     transform: translateY(-3px);
-    box-shadow: 0 10px 24px rgba(225, 0, 115, 0.2);
-    background: #fff0f6;
+    box-shadow: 0 10px 30px rgba(225, 0, 115, 0.35);
   }
 `;
 
@@ -495,7 +471,7 @@ const CTAAmount = styled.span`
   margin-top: 0.15rem;
 `;
 
-const PaypalHinweis = styled.div`
+const UeberweisungHinweis = styled.div`
   margin-top: 0.75rem;
   padding: 0.75rem 1rem;
   background: #fff8e1;
@@ -673,11 +649,6 @@ export default function Club500Page() {
     return parts.join(" | ");
   }, [cfg.verwendungszweck, selectedDuration, tafelName, wantBescheinigung, bForm]);
 
-  const paypalHref = useMemo(() => {
-    if (baseAmount <= 0) return "#";
-    return `${cfg.paypalMeUrl}/${baseAmount}EUR`;
-  }, [baseAmount, cfg.paypalMeUrl]);
-
   const epcPayload = useMemo(() =>
     buildEpcPayload(cfg.bankDetails.kontoinhaber, cfg.bankDetails.ibanClean,
       cfg.bankDetails.bic, baseAmount, verwendungszweck),
@@ -835,19 +806,15 @@ export default function Club500Page() {
             </MiniForm>
           </BescheinigungSection>
 
-          {/* CTAs */}
+          {/* CTA */}
           <CTARow>
-            <PaypalCTA href={paypalHref} target="_blank" rel="noopener noreferrer">
-              {cfg.paypalCtaLabel}
-              <CTAAmount>{formatEuro(baseAmount)} €</CTAAmount>
-            </PaypalCTA>
             <BankCTA type="button" onClick={() => setShowQrModal(true)}>
               {cfg.bankCtaLabel}
               <CTAAmount>{formatEuro(baseAmount)} €</CTAAmount>
             </BankCTA>
           </CTARow>
           {wantBescheinigung && (
-            <PaypalHinweis>{cfg.paypalHinweis}</PaypalHinweis>
+            <UeberweisungHinweis>{cfg.ueberweisungHinweis}</UeberweisungHinweis>
           )}
 
         </Container>

@@ -86,13 +86,10 @@ export const club500Config = {
     },
   },
 
-  paypalCtaLabel: "Mit PayPal spenden",
-  paypalHinweis:
-    "Bitte geben Sie bei PayPal im Mitteilungsfeld Ihren vollständigen Namen und Ihre Adresse an, damit wir Ihnen eine Spendenbescheinigung ausstellen können.",
-  bankCtaLabel: "Per Überweisung",
+  bankCtaLabel: "Per Überweisung spenden",
+  ueberweisungHinweis:
+    "Ihr Name und Ihre Adresse werden automatisch in den Verwendungszweck übernommen, damit wir Ihnen die Spendenbescheinigung zuschicken können.",
   verwendungszweck: "CLUB 500",
-
-  paypalMeUrl: "https://www.paypal.me/sckw2012",
 
   bankDetails: {
     kontoinhaber: "Sport Club Konstanz-Wollmatingen e.V.",

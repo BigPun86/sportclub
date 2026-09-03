@@ -750,7 +750,7 @@ export default function RenovierungPage() {
   };
 
   const handleCopyIBAN = () => {
-    navigator.clipboard.writeText("DE12 6905 0001 0000 0228 06");
+    navigator.clipboard.writeText("DE84 6905 0001 0000 0929 99");
   };
 
   return (
@@ -939,13 +939,9 @@ export default function RenovierungPage() {
           <DonationButtons>
             <DonationButton
               className="primary"
-              href="https://www.paypal.com/donate/?hosted_button_id=NRFWJ3SGN37XW"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="#"
+              onClick={handleBankClick}
             >
-              💳 Mit PayPal spenden
-            </DonationButton>
-            <DonationButton href="#" onClick={handleBankClick}>
               🏦 Per Überweisung spenden
             </DonationButton>
           </DonationButtons>
@@ -971,7 +967,7 @@ export default function RenovierungPage() {
               </BankRow>
               <BankRow>
                 <BankLabel>IBAN:</BankLabel>
-                <BankValue>DE12 6905 0001 0000 0228 06</BankValue>
+                <BankValue>DE84 6905 0001 0000 0929 99</BankValue>
               </BankRow>
               <BankRow>
                 <BankLabel>BIC:</BankLabel>

@@ -379,7 +379,7 @@ function BrochureFooter() {
       <FooterCol $right>
         Sparkasse Bodensee
         <br />
-        IBAN: DE12 6905 0001 0000 0228 06
+        IBAN: DE84 6905 0001 0000 0929 99
         <br />
         BIC: SOLADES1KNZ
       </FooterCol>

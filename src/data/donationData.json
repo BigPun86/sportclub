@@ -10,23 +10,20 @@
           "name": "Maria Schmidt",
           "amount": 500,
           "comment": "Für die Zukunft unserer Kinder! Der Fürstenberg braucht neue Kabinen.",
-          "date": "2024-07-29",
-          "paypalTransactionId": "example_txn_001"
+          "date": "2024-07-29"
         },
         {
           "name": "Anonymous",
           "amount": 250,
           "comment": "Tolle Initiative, weiter so!",
           "date": "2024-07-28",
-          "anonymous": true,
-          "paypalTransactionId": "example_txn_002"
+          "anonymous": true
         },
         {
           "name": "Thomas Müller",
           "amount": 450,
           "comment": "Als ehemaliger Spieler freue ich mich über die Renovierung.",
-          "date": "2024-07-27",
-          "paypalTransactionId": "example_txn_003"
+          "date": "2024-07-27"
         }
       ]
     },
@@ -38,21 +35,18 @@
           "name": "Local Business GmbH",
           "amount": 1000,
           "comment": "Gerne unterstützen wir den Vereinssport in Konstanz!",
-          "date": "2024-07-29",
-          "paypalTransactionId": "example_txn_004"
+          "date": "2024-07-29"
         },
         {
           "name": "Familie Weber",
           "amount": 300,
           "comment": "Der Fürstenberg soll wieder schön werden.",
-          "date": "2024-07-28",
-          "paypalTransactionId": "example_txn_005"
+          "date": "2024-07-28"
         },
         {
           "name": "Stefan K.",
           "amount": 800,
-          "date": "2024-07-26",
-          "paypalTransactionId": "example_txn_006"
+          "date": "2024-07-26"
         }
       ]
     },
@@ -65,15 +59,13 @@
           "amount": 200,
           "comment": "Moderne Geräte sind wichtig für den Verein.",
           "date": "2024-07-28",
-          "anonymous": true,
-          "paypalTransactionId": "example_txn_007"
+          "anonymous": true
         },
         {
           "name": "Petra Hoffmann",
           "amount": 250,
           "comment": "Für saubere Trikots! 😊",
-          "date": "2024-07-27",
-          "paypalTransactionId": "example_txn_008"
+          "date": "2024-07-27"
         }
       ]
     }

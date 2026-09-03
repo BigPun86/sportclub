@@ -1,3 +1,5 @@
+> **Session-Start (Pflicht):** Lies `/Users/agrimm/Dev/CLAUDE.md` — Workflow, Tool-Routing, Review-Gate, Memory. Erst danach mit dem Task beginnen.
+
 # sckw-sponsoring — Claude Context
 
 Eigenes Projekt fuer Adels Fussballverein (SCKW).
@@ -9,7 +11,8 @@ Kein Kunde — persoenliches Projekt fuer den Verein.
 - Vite + React 19 + TypeScript + styled-components
 - Routing: react-router-dom v7
 - Deployment: GitHub Pages (gh-pages) → partner.sckw.de
-- CI: GitHub Actions (Webhook-Handler fuer PayPal, Social-Stats-Cron)
+- CI: GitHub Actions (Social-Stats-Cron)
+- Zahlung: nur Ueberweisung (PayPal Sep 2026 entfernt, Gebuehren)
 
 ## Kontext
 
