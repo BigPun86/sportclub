@@ -29,7 +29,7 @@ Bei Unklarheiten ueber Features oder Anforderungen: Adel direkt fragen.
 ## Sponsoring-Struktur (3-Saeulen-Modell)
 
 1. **Exklusiv-Partnerschaften**: Hauptsponsor (15k), Stadionname (12k), Co-Sponsor I (9.5k, Trikot-Ruecken), Co-Sponsor II (8k, Trikot-Aermel)
-2. **Werbeflaechen**: Banden (800/1.400), Banner (1.200/2.000), Buswerbung (600–2.000)
+2. **Werbeflaechen**: Banden (600/1.000), Banner (1.200/2.000), Buswerbung (600–2.000)
 3. **Spieltag & Medien**: Ballspende (150/Spiel), Spielpraesentator (ab 250), Magazin-Inserate (250–1.000)
 
 ## Offene Aufgaben

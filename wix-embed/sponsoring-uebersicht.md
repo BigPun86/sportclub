@@ -30,8 +30,8 @@ Alle inklusive: Logo in allen Spielvor-/nachberichten, Stadionansage bei jedem H
 ## 2. Werbeflächen (à la carte)
 | Fläche | Größe | Preis |
 |---|---|---|
-| Einzelbande | 3 × 1 m | 800 € |
-| Doppelbande | 6 × 1 m | 1.400 € |
+| Einzelbande | 3 × 1 m | 600 € |
+| Doppelbande | 6 × 1 m | 1.000 € |
 | Banner Standard | ~2 × 1,5 m | 1.200 € |
 | Banner XL | ~3 × 2 m | 2.000 € |
 

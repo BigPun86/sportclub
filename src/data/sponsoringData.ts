@@ -154,14 +154,14 @@ export const werbeflaechenALaCarte: Werbeflaeche[] = [
   {
     name: "Einzelbande",
     groesse: "3 × 1 m",
-    preis: "800 €",
+    preis: "600 €",
     slots: 25,
     kategorie: "bande",
   },
   {
     name: "Doppelbande",
     groesse: "6 × 1 m",
-    preis: "1.400 €",
+    preis: "1.000 €",
     slots: 12,
     kategorie: "bande",
   },
