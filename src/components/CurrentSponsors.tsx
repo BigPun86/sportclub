@@ -125,6 +125,11 @@ const currentSponsors = {
       website: "https://www.sparkasse-bodensee.de/",
     },
     {
+      name: "MUMM Magazin",
+      logo: "/sponsors/mumm-magazin.png",
+      website: "https://www.nil-media.de/mumm-magazin/",
+    },
+    {
       name: "FUCHS",
       logo: "/sponsors/fuchs.png",
       website: "https://www.fuchs-haustechnik.de/",
