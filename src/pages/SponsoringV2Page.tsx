@@ -414,6 +414,8 @@ const SponsorInfo = styled.div`
   border-radius: 10px;
   margin-bottom: 1rem;
   flex: 1;
+  text-decoration: none;
+  color: inherit;
 `;
 
 const SponsorLogo = styled.img`
@@ -850,7 +852,12 @@ export default function SponsoringV2Page() {
                 <PaketTopFeature>{pkg.topFeature}</PaketTopFeature>
 
                 {pkg.vergeben && pkg.sponsorLogo ? (
-                  <SponsorInfo>
+                  <SponsorInfo
+                    as={pkg.sponsorWebsite ? "a" : "div"}
+                    href={pkg.sponsorWebsite}
+                    target={pkg.sponsorWebsite ? "_blank" : undefined}
+                    rel={pkg.sponsorWebsite ? "noopener noreferrer" : undefined}
+                  >
                     <SponsorLogo
                       src={pkg.sponsorLogo}
                       alt={pkg.sponsorName || ""}
