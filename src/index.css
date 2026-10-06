@@ -75,10 +75,6 @@ button {
 button:hover {
   border-color: #646cff;
 }
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
 
 @media (prefers-color-scheme: light) {
   :root {
@@ -90,6 +86,27 @@ button:focus-visible {
   }
   button {
     background-color: #f9f9f9;
+  }
+}
+
+/* Visible keyboard focus everywhere (club blue, light variant on navy) */
+:focus-visible {
+  outline: 3px solid #0864c8;
+  outline-offset: 3px;
+}
+footer :focus-visible,
+[data-dark] :focus-visible {
+  outline-color: #9cc8ff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
 

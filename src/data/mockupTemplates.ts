@@ -46,4 +46,34 @@ export const mockupTemplates: MockupTemplate[] = [
       },
     ],
   },
+  {
+    id: "fuerstenberg-bande",
+    label: "Fürstenberg: Bande",
+    image: "/stadion/bande.jpg",
+    zones: [
+      {
+        id: "freie-bande",
+        label: "Einzelbande 3 × 1 m",
+        x: 4.2,
+        y: 44.5,
+        width: 37.5,
+        height: 17.5,
+      },
+    ],
+  },
+  {
+    id: "fuerstenberg-tribuene",
+    label: "Fürstenberg: Tribünendach",
+    image: "/stadion/tribuene.jpg",
+    zones: [
+      {
+        id: "dach-schriftzug",
+        label: "Schriftzug Tribünendach",
+        x: 0.5,
+        y: 15.5,
+        width: 77,
+        height: 9.5,
+      },
+    ],
+  },
 ];

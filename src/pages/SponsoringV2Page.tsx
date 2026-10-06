@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { getHeroImage } from "../utils/imageLoader";
 import {
@@ -7,707 +7,742 @@ import {
   kontakt,
   aufstiegsBanner,
   exklusivPakete,
+  sharedLeistungen,
   werbeflaechenALaCarte,
   busFlaechenPremium,
   busFlaechenStandard,
   busZusatzoptionen,
+  busNote,
   spieltagAngebote,
+  verbandsligaSpielorte,
   type KPI,
 } from "../data/sponsoringData";
 import CurrentSponsors from "../components/CurrentSponsors";
 import { ContactSection } from "../components/ContactSection";
 import Footer from "../components/Footer";
+import StadiumPreview from "../components/StadiumPreview";
+import {
+  ButtonLink,
+  Container,
+  Eyebrow,
+  SectionHeader,
+} from "../components/ui";
+import { buttonStyles, type ButtonVariant } from "../components/buttonStyles";
+import { brand } from "../theme";
 
-const EMAIL_KONTAKT = "sponsoring@sckw.de";
+const prefersReducedMotion = () =>
+  typeof window !== "undefined" &&
+  window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-const Container = styled.div`
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 0 1rem;
+// Keep "€" on the same line as its number
+const nb = (text: string) => text.replace(/ €/g, "\u00a0€");
 
-  @media (min-width: 768px) {
-    padding: 0 2rem;
+const scrollToId = (id: string) => {
+  document.getElementById(id)?.scrollIntoView({
+    behavior: prefersReducedMotion() ? "auto" : "smooth",
+    block: "start",
+  });
+};
+
+// -- Page frame --
+
+const Page = styled.div`
+  color-scheme: light;
+  font-family: ${brand.fontBody};
+  color: ${brand.ink};
+  text-align: left;
+  background: #fff;
+
+  section[id] {
+    scroll-margin-top: 72px;
   }
 `;
 
-const Section = styled.section`
-  padding: 3rem 0;
-  overflow-x: hidden;
+const Section = styled.section<{ $tone?: "white" | "paper" | "navy" }>`
+  padding: 4rem 0;
+  background: ${({ $tone }) =>
+    $tone === "paper" ? brand.paper : $tone === "navy" ? brand.navy : "#fff"};
+  position: relative;
+  overflow: hidden;
 
   @media (min-width: 768px) {
-    padding: 5rem 0;
+    padding: 6rem 0;
   }
-`;
-
-const SectionAlt = styled(Section)`
-  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
-`;
-
-const SectionHeader = styled.div`
-  text-align: center;
-  margin-bottom: 2rem;
-  @media (min-width: 768px) {
-    margin-bottom: 3rem;
-  }
-`;
-
-const SectionTitle = styled.h2`
-  font-size: clamp(1.6rem, 5vw, 2.4rem);
-  color: #e10073;
-  font-weight: 800;
-  margin-bottom: 0.75rem;
-  letter-spacing: -0.02em;
-  padding: 0 0.5rem;
-`;
-
-const SectionSubtitle = styled.p`
-  font-size: clamp(0.95rem, 2.5vw, 1.15rem);
-  color: #666;
-  max-width: 720px;
-  margin: 0 auto;
-  line-height: 1.6;
-  padding: 0 1rem;
 `;
 
 // -- Hero --
 
 const Hero = styled.section`
-  background: #0b0b0d;
-  min-height: 85vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   position: relative;
-  padding: 4rem 0 3rem 0;
   overflow: hidden;
+  background: ${brand.navyDeep};
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: min(calc(100svh - 70px), 860px);
 `;
 
 const HeroSlide = styled.div<{ $bg: string; $active: boolean }>`
   position: absolute;
   inset: 0;
-  background: url(${({ $bg }) => $bg}) center/cover no-repeat;
+  background: url(${({ $bg }) => $bg}) center 30% / cover no-repeat;
   opacity: ${({ $active }) => ($active ? 1 : 0)};
-  transition: opacity 900ms ease;
-  z-index: 1;
-  filter: saturate(1.05) brightness(0.85);
+  transition: opacity 1.2s ease;
 `;
 
-const HeroOverlay = styled.div`
+const HeroShade = styled.div`
   position: absolute;
   inset: 0;
-  pointer-events: none;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 2;
-  box-shadow: inset 0 0 150px rgba(0, 0, 0, 0.6);
+  background:
+    linear-gradient(
+      90deg,
+      rgba(10, 24, 48, 0.94) 0%,
+      rgba(10, 24, 48, 0.78) 45%,
+      rgba(10, 24, 48, 0.35) 100%
+    ),
+    linear-gradient(0deg, rgba(10, 24, 48, 0.95) 0%, rgba(10, 24, 48, 0) 45%);
 `;
 
-const HeroContent = styled.div`
+const HeroInner = styled(Container)`
   position: relative;
-  z-index: 3;
-  text-align: center;
-  max-width: 900px;
-  padding: 0 1.25rem;
+  width: 100%;
+  padding-top: 5rem;
+  padding-bottom: 2.5rem;
 `;
 
 const HeroTitle = styled.h1`
-  color: white;
-  font-size: clamp(2rem, 8vw, 4.2rem);
-  font-weight: 900;
-  margin-bottom: 1rem;
-  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-  letter-spacing: -0.02em;
-  line-height: 1.1;
-`;
-
-const HeroSubtitle = styled.p`
-  color: white;
-  font-size: clamp(1rem, 3.5vw, 1.4rem);
-  font-weight: 500;
-  margin-bottom: 2.5rem;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
-  line-height: 1.5;
-  opacity: 0.95;
-  max-width: 650px;
-  margin-left: auto;
-  margin-right: auto;
-`;
-
-const HeroStats = styled.div`
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 0.75rem;
-  margin-bottom: 2.5rem;
-  max-width: 100%;
-
-  @media (min-width: 768px) {
-    gap: 1.25rem;
-    max-width: 720px;
-    margin-left: auto;
-    margin-right: auto;
-    grid-template-columns: repeat(4, 1fr);
-  }
-`;
-
-const StatItem = styled.div`
-  background: rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(12px);
-  border-radius: 16px;
-  padding: 1rem 0.5rem;
-  text-align: center;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  transition: transform 0.2s ease;
-
-  &:hover {
-    transform: translateY(-2px);
-  }
-`;
-
-const StatNumber = styled.div`
-  font-size: clamp(1.1rem, 4.5vw, 1.6rem);
-  font-weight: 900;
-  color: white;
-  margin-bottom: 0.2rem;
-`;
-
-const StatLabel = styled.div`
-  font-size: 0.65rem;
-  color: rgba(255, 255, 255, 0.9);
-  text-transform: uppercase;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-
-  @media (min-width: 768px) {
-    font-size: 0.75rem;
-  }
-`;
-
-const HeroCTAGroup = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  align-items: center;
-
-  @media (min-width: 768px) {
-    flex-direction: row;
-    justify-content: center;
-    gap: 1.5rem;
-  }
-`;
-
-const HeroCTA = styled.a<{ $primary?: boolean }>`
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background: ${({ $primary }) => ($primary ? "white" : "transparent")};
-  color: ${({ $primary }) => ($primary ? "#e10073" : "white")};
+  font-family: ${brand.fontDisplay};
   font-weight: 800;
-  font-size: clamp(0.85rem, 2.5vw, 1rem);
-  padding: 0.9rem 2rem;
-  border-radius: 50px;
-  text-decoration: none;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: ${({ $primary }) =>
-    $primary ? "0 6px 20px rgba(0, 0, 0, 0.2)" : "none"};
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  border: 2px solid
-    ${({ $primary }) => ($primary ? "white" : "rgba(255, 255, 255, 0.4)")};
-  width: 100%;
-  max-width: 280px;
-  min-height: 48px;
+  font-size: clamp(3rem, 10vw, 6.5rem);
+  line-height: 0.9;
+  letter-spacing: 0;
+  margin: 0;
+  color: #fff;
 
-  @media (min-width: 768px) {
-    width: auto;
-    min-width: 220px;
+  span {
+    display: block;
   }
-
-  &:hover {
-    transform: translateY(-3px);
-    background: ${({ $primary }) =>
-      $primary ? "#f8f9fa" : "rgba(255, 255, 255, 0.1)"};
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  span:first-child {
+    font-style: italic;
   }
 `;
 
-// -- Aufstiegs-Banner --
-
-const pulse = keyframes`
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.7; }
-`;
-
-const PromoBanner = styled.div`
-  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-  padding: 1rem 1.5rem;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-`;
-
-const BannerInner = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.75rem;
-  flex-wrap: wrap;
-  max-width: 900px;
-  margin: 0 auto;
-`;
-
-const BannerPulse = styled.span`
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: #22c55e;
-  animation: ${pulse} 2s ease-in-out infinite;
-  flex-shrink: 0;
-`;
-
-const BannerText = styled.span`
-  color: white;
-  font-size: clamp(0.85rem, 2.5vw, 1rem);
-  font-weight: 700;
-  letter-spacing: 0.02em;
+const HeroLead = styled.p`
+  max-width: 34rem;
+  margin: 1.5rem 0 2rem;
+  font-size: clamp(1.05rem, 2.4vw, 1.25rem);
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.88);
 
   strong {
-    color: #fbbf24;
+    color: #fff;
+    font-weight: 700;
   }
 `;
 
-// -- Exklusiv-Pakete --
+const HeroActions = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+`;
+
+const Stats = styled.ul`
+  list-style: none;
+  margin: 3.5rem 0 0;
+  padding: 1.5rem 0 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem 1rem;
+
+  @media (min-width: 900px) {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0;
+
+    li + li {
+      border-left: 1px solid rgba(255, 255, 255, 0.2);
+      padding-left: 1.5rem;
+    }
+  }
+`;
+
+const StatValue = styled.strong`
+  display: block;
+  font-family: ${brand.fontDisplay};
+  font-weight: 800;
+  font-size: clamp(2rem, 5vw, 2.75rem);
+  line-height: 1;
+  color: #fff;
+  font-variant-numeric: tabular-nums;
+`;
+
+const StatLabel = styled.span`
+  display: block;
+  margin-top: 0.35rem;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.75);
+`;
+
+// -- Promotion band --
+
+const Band = styled.div`
+  background: ${brand.red};
+  color: #fff;
+  padding: 0.9rem 0;
+  font-size: 1.05rem;
+  line-height: 1.4;
+
+  strong {
+    font-family: ${brand.fontDisplay};
+    font-weight: 800;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    margin-right: 0.5rem;
+  }
+`;
+
+// -- Exclusive packages --
+
+const Included = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem 1.5rem;
+  margin-bottom: 1.5rem;
+  padding: 1rem 1.25rem;
+  background: #fff;
+  border: 1px solid ${brand.line};
+  border-radius: 12px;
+  font-size: 0.95rem;
+  color: ${brand.ink};
+
+  strong {
+    font-weight: 700;
+  }
+`;
+
+const CheckItem = styled.li`
+  display: flex;
+  gap: 0.6rem;
+  align-items: flex-start;
+  line-height: 1.45;
+
+  svg {
+    flex-shrink: 0;
+    margin-top: 0.2rem;
+    color: ${brand.blue};
+  }
+`;
+
+const InlineChecks = styled.ul`
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+`;
 
 const PaketGrid = styled.div`
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.25rem;
+  gap: 1rem;
 
-  @media (min-width: 768px) {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
+  @media (min-width: 900px) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.25rem;
   }
 `;
 
-const PaketCard = styled.div<{ $vergeben?: boolean }>`
-  background: white;
-  border-radius: 16px;
-  padding: 1.75rem 1.5rem;
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.06);
-  border: 2px solid ${({ $vergeben }) => ($vergeben ? "#e5e7eb" : "#e10073")};
+const PaketCard = styled.article`
   display: flex;
   flex-direction: column;
-  transition: all 0.3s ease;
-  opacity: ${({ $vergeben }) => ($vergeben ? 0.85 : 1)};
+  background: #fff;
+  border: 1px solid ${brand.line};
+  border-radius: 14px;
+  padding: 1.5rem;
 
-  &:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 32px rgba(0, 0, 0, 0.1);
+  @media (min-width: 768px) {
+    padding: 1.75rem;
   }
-`;
-
-const PaketHeader = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 1rem;
-  gap: 0.75rem;
-  flex-wrap: wrap;
 `;
 
 const PaketName = styled.h3`
-  font-size: 1.2rem;
+  font-family: ${brand.fontDisplay};
   font-weight: 800;
-  color: #222;
+  font-size: 1.6rem;
+  line-height: 1;
+  text-transform: uppercase;
+  color: ${brand.navy};
   margin: 0;
 `;
 
-const PaketPreis = styled.div`
-  font-size: 1.1rem;
+const Placement = styled.p`
+  margin: 0.4rem 0 0;
+  font-weight: 600;
+  color: ${brand.red};
+`;
+
+const Price = styled.p`
+  margin: 1.25rem 0;
+  font-family: ${brand.fontDisplay};
   font-weight: 800;
-  color: #e10073;
-  white-space: nowrap;
+  font-size: 2.6rem;
+  line-height: 1;
+  color: ${brand.navy};
+  font-variant-numeric: tabular-nums;
+
+  span {
+    font-family: ${brand.fontBody};
+    font-size: 1rem;
+    font-weight: 500;
+    color: ${brand.muted};
+    margin-left: 0.15rem;
+  }
 `;
 
-const PaketTopFeature = styled.div`
-  background: linear-gradient(135deg, #e10073, #ff6b9d);
-  color: white;
-  font-size: 0.8rem;
-  font-weight: 700;
-  padding: 0.35rem 0.9rem;
-  border-radius: 20px;
-  display: inline-block;
-  margin-bottom: 0.75rem;
-  letter-spacing: 0.02em;
-`;
-
-const PaketLeistungen = styled.div`
+const FeatureList = styled.ul`
+  list-style: none;
+  margin: 0 0 1.5rem;
+  padding: 1.25rem 0 0;
+  border-top: 1px solid ${brand.line};
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.3rem 1rem;
-  font-size: 0.85rem;
-  color: #555;
-  margin-bottom: 1rem;
+  gap: 0.55rem;
   flex: 1;
 `;
 
-const PaketLeistung = styled.div`
-  display: flex;
-  gap: 0.4rem;
-  align-items: baseline;
-  padding: 0.2rem 0;
-
-  &::before {
-    content: "\\2713";
-    color: #e10073;
-    font-weight: 700;
-    flex-shrink: 0;
-    font-size: 0.75rem;
-  }
-`;
-
-const PaketShared = styled.div`
-  font-size: 0.8rem;
-  color: #888;
-  border-top: 1px solid #f0f0f0;
-  padding-top: 0.75rem;
-  margin-bottom: 1rem;
-  line-height: 1.5;
-`;
-
-const StatusBadge = styled.span<{ $vergeben?: boolean }>`
-  display: inline-block;
-  padding: 0.3rem 0.75rem;
-  border-radius: 20px;
-  font-size: 0.75rem;
-  font-weight: 700;
-  background: ${({ $vergeben }) => ($vergeben ? "#fee2e2" : "#d1fae5")};
-  color: ${({ $vergeben }) => ($vergeben ? "#991b1b" : "#065f46")};
-`;
-
-const PaketCTA = styled.a<{ $vergeben?: boolean }>`
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background: ${({ $vergeben }) => ($vergeben ? "#e5e7eb" : "#e10073")};
-  color: ${({ $vergeben }) => ($vergeben ? "#6b7280" : "white")};
-  font-weight: 700;
-  font-size: 0.9rem;
-  padding: 0.7rem 1.5rem;
-  border-radius: 50px;
-  text-decoration: none;
-  transition: all 0.2s ease;
-  pointer-events: ${({ $vergeben }) => ($vergeben ? "none" : "auto")};
+const PaketAction = styled.button<{ $variant?: ButtonVariant }>`
+  ${buttonStyles}
+  width: 100%;
   margin-top: auto;
+`;
 
-  &:hover {
-    background: #b8005a;
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(225, 0, 115, 0.3);
+const TakenStrip = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1.5rem;
+  margin-bottom: 1rem;
+  padding: 1rem 1.25rem;
+  border: 1px dashed #b9c6d8;
+  border-radius: 12px;
+  color: ${brand.muted};
+
+  span {
+    font-size: 0.95rem;
   }
 `;
 
-const SponsorInfo = styled.div`
+const TakenName = styled.strong`
+  display: block;
+  font-family: ${brand.fontDisplay};
+  font-weight: 800;
+  font-size: 1.25rem;
+  text-transform: uppercase;
+  color: ${brand.navy};
+`;
+
+const TakenSponsor = styled.a`
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  padding: 0.75rem;
-  background: #f9fafb;
-  border-radius: 10px;
-  margin-bottom: 1rem;
-  flex: 1;
   text-decoration: none;
-  color: inherit;
+  color: ${brand.ink};
+
+  img {
+    width: 88px;
+    height: 52px;
+    object-fit: contain;
+    background: #fff;
+    border: 1px solid ${brand.line};
+    border-radius: 8px;
+    padding: 0.3rem;
+  }
+
+  strong {
+    font-weight: 700;
+  }
 `;
 
-const SponsorLogo = styled.img`
-  max-width: 80px;
-  max-height: 50px;
-  object-fit: contain;
-`;
-
-const SponsorName = styled.div`
+const Note = styled.p`
+  margin: 1.25rem 0 0;
   font-size: 0.9rem;
-  font-weight: 700;
-  color: #333;
+  color: ${brand.muted};
 `;
 
-// -- Werbeflächen-Tabelle --
+// -- Ad spaces --
+
+const Card = styled.div`
+  background: #fff;
+  border: 1px solid ${brand.line};
+  border-radius: 14px;
+  overflow: hidden;
+`;
+
+const CardHead = styled.div`
+  padding: 1.5rem 1.5rem 1rem;
+
+  h3 {
+    font-family: ${brand.fontDisplay};
+    font-weight: 800;
+    font-size: 1.6rem;
+    text-transform: uppercase;
+    color: ${brand.navy};
+    margin: 0;
+  }
+
+  p {
+    margin: 0.35rem 0 0;
+    color: ${brand.muted};
+  }
+`;
+
+const TableScroll = styled.div`
+  overflow-x: auto;
+
+  &:focus-visible {
+    outline-offset: -3px;
+  }
+`;
 
 const PriceTable = styled.table`
   width: 100%;
   border-collapse: collapse;
-  font-size: 0.9rem;
+  font-size: 1rem;
+  font-variant-numeric: tabular-nums;
+
+  th,
+  td {
+    padding: 0.8rem 1.5rem;
+    text-align: left;
+    white-space: nowrap;
+  }
 
   th {
-    text-align: left;
-    padding: 0.75rem 0.75rem;
+    font-size: 0.875rem;
     font-weight: 700;
-    color: white;
-    background: #e10073;
-
-    &:first-child {
-      border-radius: 10px 0 0 0;
-    }
-    &:last-child {
-      border-radius: 0 10px 0 0;
-    }
+    color: ${brand.muted};
+    background: ${brand.paper};
+    border-top: 1px solid ${brand.line};
+    border-bottom: 1px solid ${brand.line};
   }
 
   td {
-    padding: 0.65rem 0.75rem;
-    border-bottom: 1px solid #f0f0f0;
-    color: #333;
+    border-bottom: 1px solid ${brand.line};
+    color: ${brand.ink};
   }
 
-  tr:nth-child(even) td {
-    background: #fafafa;
-  }
-  tr:last-child td {
+  tbody tr:last-child td {
     border-bottom: none;
   }
+
+  td:first-child {
+    font-weight: 600;
+    white-space: normal;
+  }
+
+  .num {
+    text-align: right;
+  }
+
+  td.num:last-child {
+    font-weight: 700;
+  }
+
+  @media (max-width: 600px) {
+    font-size: 0.9rem;
+
+    th,
+    td {
+      padding: 0.7rem 0.5rem;
+      white-space: normal;
+    }
+    th:first-child,
+    td:first-child {
+      padding-left: 1rem;
+    }
+    th:last-child,
+    td:last-child {
+      padding-right: 1rem;
+      white-space: nowrap;
+    }
+  }
 `;
 
-const TableCard = styled.div`
-  background: white;
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.06);
-  border: 1px solid #f0f0f0;
-`;
-
-const TableTitle = styled.h3`
-  font-size: 1.1rem;
-  font-weight: 800;
-  color: #222;
-  margin: 0 0 1rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-`;
-
-const SlotsTag = styled.span`
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: #065f46;
-  background: #d1fae5;
-  padding: 0.2rem 0.5rem;
-  border-radius: 4px;
-`;
-
-// -- Spieltag & Medien --
-
-const MiniCard = styled.div`
-  background: white;
-  border-radius: 14px;
-  padding: 1.25rem;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
-  border: 1px solid #f0f0f0;
-  display: flex;
-  flex-direction: column;
-`;
-
-const MiniCardName = styled.h4`
-  font-size: 1rem;
-  font-weight: 800;
-  color: #222;
-  margin: 0 0 0.25rem;
-`;
-
-const MiniCardPreis = styled.div`
-  font-size: 1.05rem;
-  font-weight: 800;
-  color: #e10073;
-  margin-bottom: 0.5rem;
-`;
-
-const MiniCardDesc = styled.p`
-  font-size: 0.85rem;
-  color: #666;
-  line-height: 1.5;
-  margin: 0;
-  flex: 1;
-`;
-
-const MiniCardHint = styled.div`
-  font-size: 0.8rem;
-  color: #888;
-  margin-top: 0.5rem;
-  font-style: italic;
-`;
-
-const NettoHinweis = styled.p`
-  text-align: center;
-  font-size: 0.8rem;
-  color: #999;
-  margin-top: 1.5rem;
-  margin-bottom: 0;
-`;
-
-// -- Reichweiten-Karte --
-
-const MapSection = styled.div`
-  margin-top: 3rem;
-  background: white;
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
-  border: 1px solid #f0f0f0;
-`;
-
-const MapGrid = styled.div`
+const AdGrid = styled.div`
   display: grid;
-  grid-template-columns: 1fr;
+  gap: 1.25rem;
+`;
 
-  @media (min-width: 768px) {
-    grid-template-columns: 1fr 1fr;
+const BusLayout = styled.div`
+  display: grid;
+  grid-template-areas: "img" "table" "opt";
+
+  & > img {
+    grid-area: img;
+  }
+  & > div[role="region"] {
+    grid-area: table;
+  }
+
+  @media (min-width: 960px) {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-rows: auto 1fr;
+    grid-template-areas: "img table" "opt table";
+    align-items: start;
   }
 `;
 
-const MapImageContainer = styled.div`
-  position: relative;
-  min-height: 280px;
-  overflow: hidden;
-
-  @media (min-width: 768px) {
-    min-height: 360px;
-  }
-`;
-
-const MapImage = styled.img`
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+const BusImage = styled.img`
   display: block;
+  width: 100%;
+  height: auto;
+  background: #0b0b0d;
 `;
 
-const MapBadge = styled.div`
-  position: absolute;
-  top: 1rem;
-  left: 1rem;
-  background: rgba(225, 0, 115, 0.9);
-  backdrop-filter: blur(8px);
-  color: white;
-  font-size: 0.75rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  padding: 0.4rem 0.8rem;
-  border-radius: 6px;
+const Options = styled.div`
+  grid-area: opt;
+  padding: 1.25rem 1.5rem 1.5rem;
+
+  h4 {
+    margin: 0 0 0.75rem;
+    font-size: 1rem;
+    font-weight: 700;
+    color: ${brand.ink};
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.5rem;
+    color: ${brand.ink};
+  }
 `;
 
-const MapContent = styled.div`
-  padding: 2rem 1.5rem;
+// -- Matchday --
+
+const MatchdayGrid = styled.div`
+  display: grid;
+  gap: 1rem;
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.25rem;
+  }
+`;
+
+const MatchdayCard = styled.article`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  background: #fff;
+  border: 1px solid ${brand.line};
+  border-radius: 14px;
+  padding: 1.5rem;
 
-  @media (min-width: 768px) {
-    padding: 2.5rem 2rem;
+  h3 {
+    font-family: ${brand.fontDisplay};
+    font-weight: 800;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    color: ${brand.navy};
+    margin: 0;
+  }
+
+  p {
+    margin: 0;
+    line-height: 1.5;
+    color: ${brand.ink};
   }
 `;
 
-const MapTitle = styled.h3`
-  font-size: 1.3rem;
+const MatchdayPrice = styled.p`
+  && {
+    margin: 0.5rem 0 1rem;
+    font-family: ${brand.fontDisplay};
+    font-weight: 800;
+    font-size: 1.9rem;
+    color: ${brand.red};
+    font-variant-numeric: tabular-nums;
+  }
+`;
+
+const MatchdayHint = styled.p`
+  && {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid ${brand.line};
+    font-weight: 600;
+    color: ${brand.muted};
+  }
+`;
+
+// -- Reach --
+
+const Watermark = styled.div`
+  position: absolute;
+  inset: auto -2rem -1.5rem auto;
+  font-family: ${brand.fontDisplay};
   font-weight: 800;
-  color: #222;
-  margin: 0 0 0.75rem 0;
+  font-style: italic;
+  font-size: clamp(6rem, 18vw, 15rem);
+  line-height: 0.8;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.04);
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
 `;
 
-const MapText = styled.p`
-  font-size: 0.95rem;
-  color: #555;
-  line-height: 1.6;
-  margin: 0 0 1.25rem 0;
+const ReachGrid = styled.div`
+  position: relative;
+  display: grid;
+  gap: 2.5rem;
+
+  @media (min-width: 960px) {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 4rem;
+    align-items: center;
+  }
 `;
 
-const MapHighlight = styled.div`
-  background: #fff6fa;
-  border: 1px solid #f2c2d9;
-  border-radius: 12px;
-  padding: 1rem;
+const Venues = styled.div`
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 14px;
+  padding: 1.5rem;
+
+  @media (min-width: 768px) {
+    padding: 2rem;
+  }
+`;
+
+const VenuesTitle = styled.h3`
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.75);
+`;
+
+const VenueList = styled.ul`
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.5rem 1.25rem;
+
+  @media (min-width: 600px) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  li {
+    font-family: ${brand.fontDisplay};
+    font-weight: 700;
+    font-size: clamp(1.1rem, 4.4vw, 1.35rem);
+    line-height: 1.2;
+    text-transform: uppercase;
+    color: #fff;
+    padding-left: 0.75rem;
+    border-left: 3px solid ${brand.red};
+  }
+`;
+
+const VenuesNote = styled.p`
+  margin: 1.25rem 0 0;
   font-size: 0.9rem;
-  color: #444;
-  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.6);
+`;
+
+const ReachText = styled.p`
+  margin: 0 0 1.5rem;
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.85);
+  max-width: 60ch;
+`;
+
+const ReachPoint = styled.div`
+  border-left: 3px solid ${brand.red};
+  padding: 0.25rem 0 0.25rem 1.25rem;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.85);
+  max-width: 60ch;
 
   strong {
-    color: #e10073;
+    display: block;
+    color: #fff;
+    font-weight: 700;
   }
 `;
 
-// -- Club 500 --
+// -- 500er Club --
 
-const Club500Section = styled.section`
-  padding: 4rem 0;
-  background: linear-gradient(135deg, #fff6fa 0%, #ffeef5 50%, #fff0f7 100%);
-  overflow-x: hidden;
-`;
-
-const Club500Title = styled.h2`
-  font-size: clamp(1.8rem, 5vw, 2.8rem);
-  color: #e10073;
-  font-weight: 900;
-  margin-bottom: 0.75rem;
-  letter-spacing: -0.02em;
-`;
-
-const Club500Subtitle = styled.p`
-  font-size: clamp(0.95rem, 2.5vw, 1.15rem);
-  color: #666;
-  max-width: 720px;
-  margin: 0 auto;
-  line-height: 1.6;
-  padding: 0 1rem;
-`;
-
-const Club500Highlights = styled.div`
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-top: 1.5rem;
-`;
-
-const Club500Chip = styled.div`
-  background: white;
-  border-radius: 50px;
-  padding: 0.6rem 1.25rem;
-  font-size: 0.9rem;
-  color: #444;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-  border: 1px solid #f2c2d9;
-  font-weight: 600;
-
-  &::before {
-    content: "\\2713  ";
-    color: #e10073;
-    font-weight: 800;
-  }
-`;
-
-const Club500CTA = styled(Link)`
-  display: inline-flex;
+const ClubTeaser = styled.div`
+  display: grid;
+  gap: 1.5rem;
   align-items: center;
-  gap: 0.5rem;
-  background: linear-gradient(135deg, #e10073, #ff6b9d);
-  color: white;
-  font-weight: 800;
-  font-size: 1.05rem;
-  padding: 1rem 2.5rem;
-  border-radius: 50px;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  box-shadow: 0 6px 20px rgba(225, 0, 115, 0.3);
-  margin-top: 2rem;
+  padding: 2rem 1.5rem;
+  border: 1px solid ${brand.line};
+  border-top: 4px solid ${brand.blue};
+  border-radius: 14px;
+  background: #fff;
 
-  &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 30px rgba(225, 0, 115, 0.4);
+  @media (min-width: 768px) {
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 3rem;
+    padding: 2.5rem;
+  }
+
+  h2 {
+    font-family: ${brand.fontDisplay};
+    font-weight: 800;
+    font-size: clamp(2rem, 5vw, 2.75rem);
+    line-height: 1;
+    text-transform: uppercase;
+    color: ${brand.navy};
+    margin: 0 0 0.75rem;
+  }
+
+  p {
+    margin: 0;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: ${brand.muted};
+    max-width: 60ch;
   }
 `;
 
-// -- Data --
+const Lower = styled.span`
+  text-transform: none;
+`;
+
+const ClubLink = styled(Link)<{ $variant?: ButtonVariant }>`
+  ${buttonStyles}
+`;
+
+function Check() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">
+      <path
+        d="M3 8.5l3 3 7-7"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2.2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
 
 export default function SponsoringV2Page() {
   const [liveKpis, setLiveKpis] = useState<KPI[]>(fallbackKpis);
+  const [interest, setInterest] = useState<string | undefined>();
 
   useEffect(() => {
     fetch("/social-stats.json")
@@ -727,397 +762,407 @@ export default function SponsoringV2Page() {
   const [heroIndex, setHeroIndex] = useState(0);
 
   useEffect(() => {
-    if (heroImages.length <= 1) return;
+    if (heroImages.length <= 1 || prefersReducedMotion()) return;
     const id = setInterval(() => {
       setHeroIndex((i) => (i + 1) % heroImages.length);
-    }, 6000);
+    }, 7000);
     return () => clearInterval(id);
   }, [heroImages.length]);
 
-  const scrollTo = (id: string) => {
-    document
-      .getElementById(id)
-      ?.scrollIntoView({ behavior: "smooth", block: "start" });
+  const requestPackage = (name: string) => {
+    setInterest(name);
+    scrollToId("kontakt");
   };
 
-  const generateMailto = (category: string) => {
-    const subject = encodeURIComponent(`Interesse an Sponsoring: ${category}`);
-    const body = encodeURIComponent(
-      `Hallo liebes SCKW-Team,\n\nich interessiere mich für den Bereich "${category}" und würde gerne mehr erfahren.\n\nBitte senden Sie mir weitere Informationen.\n\nMein Name: \nFirma (optional): \nTelefon (optional): \n\nHerzliche Grüße\n`,
-    );
-    return `mailto:${EMAIL_KONTAKT}?subject=${subject}&body=${body}`;
-  };
+  const freiePakete = exklusivPakete.filter((p) => !p.vergeben);
+  const vergebenePakete = exklusivPakete.filter((p) => p.vergeben);
+  const preisZahl = (preis: string) => Number(preis.replace(/\D/g, ""));
+  const minPreis = [...freiePakete].sort(
+    (a, b) => preisZahl(a.preis) - preisZahl(b.preis),
+  )[0]?.preis;
+  const interestOptions = [
+    ...freiePakete.map((p) => p.name),
+    "Bande oder Banner",
+    "Buswerbung",
+    ...spieltagAngebote.map((a) => a.name),
+  ];
+  const included = sharedLeistungen.split(" · ");
 
   return (
-    <>
+    <Page>
       {/* Hero */}
-      <Hero>
+      <Hero aria-labelledby="hero-title" data-dark>
         {heroImages.map((src, i) => (
-          <HeroSlide key={i} $bg={src} $active={i === heroIndex} />
+          <HeroSlide
+            key={i}
+            $bg={src}
+            $active={i === heroIndex}
+            aria-hidden="true"
+          />
         ))}
-        <HeroOverlay />
-        <HeroContent>
-          <HeroTitle>Sponsoring, das messbar wirkt</HeroTitle>
-          <HeroSubtitle>
-            <strong>1,3 Millionen Social-Media-Views</strong> in dieser Saison,
-            100 % organisch, ohne Werbebudget. Aktuell erreichen wir{" "}
-            <strong>310.000 Views pro Monat</strong> und Ihre Marke ist in jedem
-            Spielbericht dabei.
-          </HeroSubtitle>
-          <HeroStats>
-            {liveKpis.map((kpi) => (
-              <StatItem key={kpi.label}>
-                <StatNumber>{kpi.value}</StatNumber>
-                <StatLabel>{kpi.label}</StatLabel>
-              </StatItem>
-            ))}
-          </HeroStats>
-          <HeroCTAGroup>
-            <HeroCTA
+        <HeroShade />
+        <HeroInner>
+          <Eyebrow $onDark>Partner werden beim SC Konstanz-Wollmatingen</Eyebrow>
+          <HeroTitle id="hero-title">
+            <span>Sponsoring,</span> <span>das messbar wirkt.</span>
+          </HeroTitle>
+          <HeroLead>
+            Wir sind ein Sportverein aus Wollmatingen, seit 1930. Und wir
+            haben Reichweite: <strong>1,7 Millionen Views</strong> auf Instagram
+            und Facebook in den letzten zwölf Monaten, ohne einen Euro
+            Werbebudget.
+          </HeroLead>
+          <HeroActions>
+            <ButtonLink
               href="#kontakt"
-              $primary
               onClick={(e) => {
                 e.preventDefault();
-                scrollTo("kontakt");
+                scrollToId("kontakt");
               }}
             >
-              Jetzt Kontakt aufnehmen
-            </HeroCTA>
-            <HeroCTA
+              Anfrage stellen
+            </ButtonLink>
+            <ButtonLink
               href="#angebot"
+              $variant="outlineLight"
               onClick={(e) => {
                 e.preventDefault();
-                scrollTo("angebot");
+                scrollToId("angebot");
               }}
             >
-              Angebot ansehen
-            </HeroCTA>
-          </HeroCTAGroup>
-        </HeroContent>
+              Angebote ansehen
+            </ButtonLink>
+          </HeroActions>
+          <Stats aria-label="Reichweite in Zahlen">
+            {liveKpis.map((kpi) => (
+              <li key={kpi.label}>
+                <StatValue>{kpi.value}</StatValue>
+                <StatLabel>{kpi.label}</StatLabel>
+              </li>
+            ))}
+          </Stats>
+        </HeroInner>
       </Hero>
 
-      {/* Aufstiegs-Banner */}
       {aufstiegsBanner.active && (
-        <PromoBanner>
-          <BannerInner>
-            <BannerPulse />
-            <BannerText>
-              {aufstiegsBanner.text}{" "}
-              <strong>{aufstiegsBanner.highlight}</strong>{" "}
-              {aufstiegsBanner.suffix}
-            </BannerText>
-            <BannerPulse />
-          </BannerInner>
-        </PromoBanner>
+        <Band data-dark>
+          <Container>
+            <strong>{aufstiegsBanner.text}</strong>
+            {aufstiegsBanner.suffix} {aufstiegsBanner.highlight}.
+          </Container>
+        </Band>
       )}
 
-      {/* Partner (Social Proof) */}
-      <Section>
+      {/* Partner */}
+      <Section aria-labelledby="partner-title">
         <Container>
-          <SectionHeader>
-            <SectionTitle>Unsere Partner</SectionTitle>
-            <SectionSubtitle>
-              Starke Marken vertrauen auf unsere Reichweite. Werden Sie Teil
-              dieser Erfolgsgeschichte.
-            </SectionSubtitle>
-          </SectionHeader>
+          <SectionHeader
+            id="partner-title"
+            eyebrow="Saison 26/27"
+            title="Unsere Partner."
+            lead="Ohne sie ginge es nicht. Danke an alle Unternehmen, die den SCKW schon unterstützen."
+          />
           <CurrentSponsors />
         </Container>
       </Section>
 
       {/* Exklusiv-Partnerschaften */}
-      <SectionAlt id="angebot">
+      <Section $tone="paper" id="angebot" aria-labelledby="angebot-title">
         <Container>
-          <SectionHeader>
-            <SectionTitle>Exklusiv-Partnerschaften</SectionTitle>
-            <SectionSubtitle>
-              Vier einzigartige Pakete, jeweils nur 1× verfügbar. Alle Partner
-              erscheinen in jedem Spielvor- und Nachbericht.
-            </SectionSubtitle>
-          </SectionHeader>
+          <SectionHeader
+            id="angebot-title"
+            eyebrow={`Ab ${minPreis} pro Saison`}
+            title="Exklusiv-Partnerschaften."
+            lead="Trikot oder Stadionname, dazu Bande, Banner, Magazin und Saisonkarten. Jedes Paket gibt es nur einmal."
+          />
+
+          <Included>
+            <strong>In jedem Paket enthalten:</strong>
+            <InlineChecks>
+              {included.map((item) => (
+                <CheckItem key={item}>
+                  <Check />
+                  {item}
+                </CheckItem>
+              ))}
+            </InlineChecks>
+          </Included>
+
+          {vergebenePakete.map((pkg) => (
+            <TakenStrip key={pkg.id}>
+              <div>
+                <TakenName>{pkg.name}</TakenName>
+                <span>{pkg.topFeature}, vergeben an</span>
+              </div>
+              <TakenSponsor
+                as={pkg.sponsorWebsite ? "a" : "div"}
+                href={pkg.sponsorWebsite}
+                target={pkg.sponsorWebsite ? "_blank" : undefined}
+                rel={pkg.sponsorWebsite ? "noopener noreferrer" : undefined}
+              >
+                {pkg.sponsorLogo && <img src={pkg.sponsorLogo} alt="" />}
+                <strong>{pkg.sponsorName}</strong>
+              </TakenSponsor>
+            </TakenStrip>
+          ))}
 
           <PaketGrid>
-            {exklusivPakete.map((pkg) => (
-              <PaketCard key={pkg.id} $vergeben={pkg.vergeben}>
-                <PaketHeader>
-                  <div>
-                    <PaketName>{pkg.name}</PaketName>
-                    <PaketPreis>{pkg.preis} / Saison</PaketPreis>
-                  </div>
-                  <StatusBadge $vergeben={pkg.vergeben}>
-                    {pkg.vergeben ? "Vergeben" : "Verfügbar"}
-                  </StatusBadge>
-                </PaketHeader>
-
-                <PaketTopFeature>{pkg.topFeature}</PaketTopFeature>
-
-                {pkg.vergeben && pkg.sponsorLogo ? (
-                  <SponsorInfo
-                    as={pkg.sponsorWebsite ? "a" : "div"}
-                    href={pkg.sponsorWebsite}
-                    target={pkg.sponsorWebsite ? "_blank" : undefined}
-                    rel={pkg.sponsorWebsite ? "noopener noreferrer" : undefined}
-                  >
-                    <SponsorLogo
-                      src={pkg.sponsorLogo}
-                      alt={pkg.sponsorName || ""}
-                    />
-                    <SponsorName>{pkg.sponsorName}</SponsorName>
-                  </SponsorInfo>
-                ) : (
-                  <PaketLeistungen>
-                    {pkg.trikot !== "–" && (
-                      <PaketLeistung>Trikot: {pkg.trikot}</PaketLeistung>
-                    )}
-                    {pkg.id === "stadionname" && (
-                      <PaketLeistung>Stadion trägt Ihren Namen</PaketLeistung>
-                    )}
-                    <PaketLeistung>Bande: {pkg.bande}</PaketLeistung>
-                    <PaketLeistung>Banner: {pkg.banner}</PaketLeistung>
-                    <PaketLeistung>Magazin: {pkg.magazin}</PaketLeistung>
-                    <PaketLeistung>
-                      {pkg.saisonkarten} Saisonkarten
-                    </PaketLeistung>
-                  </PaketLeistungen>
-                )}
-
-                <PaketShared>
-                  Logo in allen Spielberichten · Stadionansage · Logo Website
-                </PaketShared>
-
-                <PaketCTA
-                  href={pkg.vergeben ? undefined : generateMailto(pkg.name)}
-                  $vergeben={pkg.vergeben}
+            {freiePakete.map((pkg) => (
+              <PaketCard key={pkg.id} aria-labelledby={`paket-${pkg.id}`}>
+                <PaketName id={`paket-${pkg.id}`}>{pkg.name}</PaketName>
+                <Placement>{pkg.topFeature}</Placement>
+                <Price>
+                  {pkg.preis} <span>pro Saison</span>
+                </Price>
+                <FeatureList>
+                  {pkg.id === "stadionname" && (
+                    <CheckItem>
+                      <Check />
+                      Das Stadion trägt Ihren Namen
+                    </CheckItem>
+                  )}
+                  {pkg.trikot !== "–" && (
+                    <CheckItem>
+                      <Check />
+                      Trikot: {pkg.trikot}
+                    </CheckItem>
+                  )}
+                  <CheckItem>
+                    <Check />
+                    Bande: {pkg.bande}
+                  </CheckItem>
+                  <CheckItem>
+                    <Check />
+                    Banner: {pkg.banner}
+                  </CheckItem>
+                  <CheckItem>
+                    <Check />
+                    Stadionmagazin: {pkg.magazin}
+                  </CheckItem>
+                  <CheckItem>
+                    <Check />
+                    {pkg.saisonkarten} Saisonkarten
+                  </CheckItem>
+                </FeatureList>
+                <PaketAction
+                  type="button"
+                  onClick={() => requestPackage(pkg.name)}
                 >
-                  {pkg.vergeben ? "Vergeben" : "Jetzt anfragen"}
-                </PaketCTA>
+                  {pkg.name} anfragen
+                </PaketAction>
               </PaketCard>
             ))}
           </PaketGrid>
-          <NettoHinweis>Alle Preise verstehen sich zzgl. MwSt.</NettoHinweis>
+          <Note>Alle Preise zzgl. MwSt.</Note>
         </Container>
-      </SectionAlt>
+      </Section>
+
+      <StadiumPreview onRequest={requestPackage} />
 
       {/* Werbeflächen */}
-      <Section id="werbeflaechen">
+      <Section
+        $tone="paper"
+        id="werbeflaechen"
+        aria-labelledby="werbeflaechen-title"
+      >
         <Container>
-          <SectionHeader>
-            <SectionTitle>Werbeflächen</SectionTitle>
-            <SectionSubtitle>
-              Banden, Banner und Buswerbung, einzeln buchbar zu festen Preisen.
-            </SectionSubtitle>
-          </SectionHeader>
+          <SectionHeader
+            id="werbeflaechen-title"
+            eyebrow="Einzeln buchbar"
+            title="Werbeflächen."
+            lead="Banden, Banner und Buswerbung zu festen Preisen. Für Betriebe, die in der Region gesehen werden wollen."
+          />
 
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "1fr",
-              gap: "2rem",
-              maxWidth: 900,
-              margin: "0 auto",
-            }}
-          >
-            {/* Banden & Banner */}
-            <TableCard>
-              <div style={{ padding: "1.25rem 1.25rem 0" }}>
-                <TableTitle>Banden & Banner</TableTitle>
-              </div>
-              <div style={{ overflowX: "auto" }}>
+          <AdGrid>
+            <Card>
+              <CardHead>
+                <h3>Banden & Banner</h3>
+                <p>Am Spielfeldrand, bei jedem Heimspiel sichtbar.</p>
+              </CardHead>
+              <TableScroll
+                tabIndex={0}
+                role="region"
+                aria-label="Preise Banden und Banner"
+              >
                 <PriceTable>
                   <thead>
                     <tr>
-                      <th>Typ</th>
-                      <th>Grösse</th>
-                      <th>Preis / Saison</th>
-                      <th>Verfügbar</th>
+                      <th scope="col">Fläche</th>
+                      <th scope="col">Größe</th>
+                      <th scope="col" className="num">
+                        Plätze
+                      </th>
+                      <th scope="col" className="num">
+                        Preis pro Saison
+                      </th>
                     </tr>
                   </thead>
                   <tbody>
                     {werbeflaechenALaCarte.map((f) => (
                       <tr key={f.name}>
-                        <td style={{ fontWeight: 600 }}>{f.name}</td>
+                        <td>{f.name}</td>
                         <td>{f.groesse}</td>
-                        <td style={{ fontWeight: 700, color: "#e10073" }}>
-                          {f.preis}
-                        </td>
-                        <td>
-                          <SlotsTag>{f.slots} Plätze</SlotsTag>
-                        </td>
+                        <td className="num">{f.slots}</td>
+                        <td className="num">{f.preis}</td>
                       </tr>
                     ))}
                   </tbody>
                 </PriceTable>
-              </div>
-            </TableCard>
+              </TableScroll>
+            </Card>
 
-            {/* Buswerbung */}
-            <TableCard>
-              <div style={{ padding: "1.25rem 1.25rem 0" }}>
-                <TableTitle>Buswerbung</TableTitle>
-                <p
-                  style={{
-                    fontSize: "0.9rem",
-                    color: "#666",
-                    margin: "0 0 0.75rem",
-                    lineHeight: 1.5,
-                  }}
-                >
+            <Card>
+              <CardHead>
+                <h3>Buswerbung</h3>
+                <p>
                   Jede Woche unterwegs in Konstanz, im Landkreis und bei
                   Auswärtsspielen.
                 </p>
-              </div>
-              <img
-                src="/vereinsbus.png"
-                alt="Vereinsbus SCKW"
-                style={{ width: "100%", display: "block" }}
-              />
-              <div style={{ overflowX: "auto" }}>
-                <PriceTable>
-                  <thead>
-                    <tr>
-                      <th>Fläche</th>
-                      <th>Grösse</th>
-                      <th>Preis / Jahr</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {[...busFlaechenPremium, ...busFlaechenStandard].map(
-                      (f) => (
-                        <tr key={f.position}>
-                          <td style={{ fontWeight: 600 }}>{f.position}</td>
-                          <td>{f.groesse}</td>
-                          <td style={{ fontWeight: 700, color: "#e10073" }}>
-                            {f.preis}
-                          </td>
-                        </tr>
-                      ),
-                    )}
-                  </tbody>
-                </PriceTable>
-              </div>
-              <div style={{ padding: "0.75rem 1.25rem 1.25rem" }}>
-                <ul
-                  style={{
-                    margin: 0,
-                    paddingLeft: "1.2rem",
-                    fontSize: "0.85rem",
-                    color: "#666",
-                    lineHeight: 1.6,
-                  }}
+              </CardHead>
+              <BusLayout>
+                <BusImage
+                  src="/vereinsbus.png"
+                  alt="Vereinsbus des SCKW mit eingezeichneten Werbeflächen"
+                />
+                <Options>
+                  <h4>Optionen</h4>
+                  <ul>
+                    {busZusatzoptionen.map((opt) => (
+                      <CheckItem key={opt}>
+                        <Check />
+                        {opt}
+                      </CheckItem>
+                    ))}
+                  </ul>
+                  <Note>{busNote}</Note>
+                </Options>
+                <TableScroll
+                  tabIndex={0}
+                  role="region"
+                  aria-label="Preise Buswerbung"
                 >
-                  {busZusatzoptionen.map((opt, i) => (
-                    <li key={i}>{opt}</li>
-                  ))}
-                </ul>
-              </div>
-            </TableCard>
-          </div>
-          <NettoHinweis>Alle Preise verstehen sich zzgl. MwSt.</NettoHinweis>
+                  <PriceTable>
+                    <thead>
+                      <tr>
+                        <th scope="col">Fläche</th>
+                        <th scope="col">Größe</th>
+                        <th scope="col" className="num">
+                          Preis pro Jahr
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {[...busFlaechenPremium, ...busFlaechenStandard].map(
+                        (f) => (
+                          <tr key={f.position}>
+                            <td>{f.position}</td>
+                            <td>{f.groesse}</td>
+                            <td className="num">{f.preis}</td>
+                          </tr>
+                        ),
+                      )}
+                    </tbody>
+                  </PriceTable>
+                </TableScroll>
+              </BusLayout>
+            </Card>
+          </AdGrid>
+          <Note>Alle Preise zzgl. MwSt.</Note>
         </Container>
       </Section>
 
       {/* Spieltag & Medien */}
-      <SectionAlt id="spieltag">
+      <Section id="spieltag" aria-labelledby="spieltag-title">
         <Container>
-          <SectionHeader>
-            <SectionTitle>Spieltag & Medien</SectionTitle>
-            <SectionSubtitle>
-              Einstieg ins Sponsoring ab 150 € netto, perfekt zum Ausprobieren.
-            </SectionSubtitle>
-          </SectionHeader>
-
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-              gap: "1.25rem",
-              maxWidth: 900,
-              margin: "0 auto",
-            }}
-          >
+          <SectionHeader
+            id="spieltag-title"
+            eyebrow="Ab 150 € netto"
+            title="Spieltag & Medien."
+            lead="Der einfachste Einstieg ins Sponsoring, gut zum Ausprobieren."
+          />
+          <MatchdayGrid>
             {spieltagAngebote.map((a) => (
-              <MiniCard key={a.name}>
-                <MiniCardName>{a.name}</MiniCardName>
-                <MiniCardPreis>{a.preis}</MiniCardPreis>
-                <MiniCardDesc>{a.beschreibung}</MiniCardDesc>
-                {a.hinweis && <MiniCardHint>{a.hinweis}</MiniCardHint>}
-              </MiniCard>
+              <MatchdayCard key={a.name}>
+                <h3>{a.name}</h3>
+                <MatchdayPrice>{nb(a.preis)}</MatchdayPrice>
+                <p>{nb(a.beschreibung)}</p>
+                {a.hinweis && <MatchdayHint>{nb(a.hinweis)}</MatchdayHint>}
+              </MatchdayCard>
             ))}
-          </div>
-        </Container>
-      </SectionAlt>
-
-      {/* Reichweiten-Karte */}
-      <Section>
-        <Container>
-          <MapSection>
-            <MapGrid>
-              <MapImageContainer>
-                <MapImage
-                  src="/verbandsliga-karte.jpg"
-                  alt="Verbandsliga Südbaden - Spielorte und Reichweite"
-                />
-                <MapBadge>Saison 26/27</MapBadge>
-              </MapImageContainer>
-              <MapContent>
-                <MapTitle>Ihre Reichweite wächst mit</MapTitle>
-                <MapText>
-                  Ob Buswerbung, Trikot oder Bande: Ihre Marke wird in der
-                  gesamten Region sichtbar. Als frischer Meister und Aufsteiger
-                  spielen wir ab Saison 26/27 Verbandsliga, in über 15 Städten
-                  zwischen Freiburg und Konstanz.
-                </MapText>
-                <MapHighlight>
-                  <strong>Was das für Sie bedeutet:</strong> Mehr Gegner,
-                  größere Städte, mehr Medienaufmerksamkeit. Ihre Investition
-                  wächst automatisch mit, ohne Mehrkosten.
-                </MapHighlight>
-              </MapContent>
-            </MapGrid>
-          </MapSection>
+          </MatchdayGrid>
         </Container>
       </Section>
 
-      {/* CLUB 500 */}
-      <Club500Section>
+      {/* Reichweite */}
+      <Section $tone="navy" aria-labelledby="reichweite-title" data-dark>
+        <Watermark aria-hidden="true">Verbandsliga</Watermark>
         <Container>
-          <SectionHeader>
-            <Club500Title>CLUB 500</Club500Title>
-            <Club500Subtitle>
-              Gemeinsam den Fußball beim SC Konstanz-Wollmatingen stärken.
-              Werden Sie Mitglied und fördern Sie unseren Jugend- und
-              Amateurfußball.
-            </Club500Subtitle>
-          </SectionHeader>
-          <Club500Highlights>
-            <Club500Chip>Spendenbescheinigung</Club500Chip>
-            <Club500Chip>Name auf der Spendentafel</Club500Chip>
-            <Club500Chip>Jugend- & Amateurfußball</Club500Chip>
-          </Club500Highlights>
-          <SectionHeader>
-            <Club500CTA to="/sponsoring/club-500">
-              Jetzt Mitglied werden &rarr;
-            </Club500CTA>
-          </SectionHeader>
+          <ReachGrid>
+            <div>
+              <SectionHeader
+                id="reichweite-title"
+                eyebrow="Verbandsliga Südbaden"
+                title="Ihre Reichweite wächst mit."
+                onDark
+              />
+              <ReachText>
+                Als Meister und Aufsteiger spielen wir seit dieser Saison
+                Verbandsliga, gegen 15 Vereine von Kuppenheim bei Baden-Baden bis
+                an den Bodensee. Trikot und Vereinsbus sind bei den
+                Auswärtsspielen dabei.
+              </ReachText>
+              <ReachPoint>
+                <strong>Was das für Sie bedeutet</strong>
+                Mehr Kilometer für den Vereinsbus, eine höhere Liga für Ihre
+                Bande. Ihr Paket kostet dadurch nicht mehr.
+              </ReachPoint>
+            </div>
+            <Venues>
+              <VenuesTitle>Auswärts unterwegs in</VenuesTitle>
+              <VenueList>
+                {verbandsligaSpielorte.map((ort) => (
+                  <li key={ort}>{ort}</li>
+                ))}
+              </VenueList>
+              <VenuesNote>
+                Heimspiele in Konstanz. Quelle: SBFV, Staffel 2026/27.
+              </VenuesNote>
+            </Venues>
+          </ReachGrid>
         </Container>
-      </Club500Section>
+      </Section>
 
-      {/* Kontakt */}
+      {/* 500er Club */}
+      <Section aria-labelledby="club500-title">
+        <Container>
+          <ClubTeaser>
+            <div>
+              <Eyebrow>100 Felder, 500 € pro Feld und Saison</Eyebrow>
+              <h2 id="club500-title">
+                Der <Lower>500er</Lower> Club.
+              </h2>
+              <p>
+                Für Privatpersonen und Firmen: Mit einem Feld im 500er Club
+                unterstützen Sie direkt unsere erste Mannschaft in der
+                Verbandsliga. Sie erhalten eine Spendenbescheinigung und auf
+                Wunsch einen Platz auf der Spendentafel.
+              </p>
+            </div>
+            <ClubLink to="/sponsoring/club-500" $variant="outlineDark">
+              Zum 500er Club
+            </ClubLink>
+          </ClubTeaser>
+        </Container>
+      </Section>
+
       <ContactSection
-        headline="Kontakt aufnehmen"
-        description="Kurze Anfrage genügt, wir erstellen ein passendes Angebot mit klaren Leistungen."
-        contactInfos={[
-          {
-            icon: "📧",
-            title: "E-Mail",
-            content: kontakt.email,
-            isEmail: true,
-          },
-          { icon: "📍", title: "Adresse", content: kontakt.vollAdresse },
-        ]}
+        email={kontakt.email}
+        address={kontakt.vollAdresse.split("\n")}
+        interestOptions={interestOptions}
+        interest={interest}
       />
 
       <Footer />
-    </>
+    </Page>
   );
 }

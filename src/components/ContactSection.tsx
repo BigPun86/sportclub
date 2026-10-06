@@ -1,146 +1,143 @@
 import styled from "styled-components";
+import { useEffect, useState } from "react";
+import { brand } from "../theme";
+import { Button, Container, SectionHeader } from "./ui";
 
-const ContactGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.25rem;
-  margin: 1.5rem 0 1.25rem 0;
-  width: 100%;
-`;
+// GitHub Pages has no backend, so the form builds a ready-to-send mail
+// in the visitor's mail client instead of pretending to submit.
 
-const ContactBox = styled.div`
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-  padding: 1.25rem 1rem;
-  text-align: center;
-`;
-
-const ContactTitle = styled.h4`
-  font-size: 1.1rem;
-  color: #e10073;
-  font-weight: 700;
-  margin-bottom: 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-`;
-
-const ContactText = styled.p<{ $isEmail?: boolean }>`
-  font-size: 0.95rem;
-  color: #222;
-  line-height: 1.5;
-
-  a {
-    color: #e10073;
-    text-decoration: none;
-    font-weight: 600;
-
-    &:hover {
-      text-decoration: underline;
-    }
-  }
-
-  ${({ $isEmail }) =>
-    $isEmail &&
-    `
-    a {
-      color: #e10073;
-      &:hover {
-        color: #b8005a;
-      }
-    }
-  `}
-`;
-
-interface ContactInfo {
-  icon: string;
-  title: string;
-  content: string | React.JSX.Element;
-  isEmail?: boolean;
-}
+type FieldName = "firstName" | "lastName" | "phone" | "email" | "consent";
+type Errors = Partial<Record<FieldName, string>>;
 
 interface ContactSectionProps {
-  headline: string;
-  description: string;
-  contactInfos: ContactInfo[];
+  email: string;
+  address: string[];
+  interestOptions: string[];
+  interest?: string;
 }
 
 export function ContactSection({
-  headline,
-  description,
-  contactInfos,
+  email,
+  address,
+  interestOptions,
+  interest,
 }: ContactSectionProps) {
+  const [selected, setSelected] = useState(interest ?? "");
+  const [errors, setErrors] = useState<Errors>({});
+  const [sent, setSent] = useState(false);
+
+  useEffect(() => {
+    if (interest) setSelected(interest);
+  }, [interest]);
+
   const handleSubmit: React.FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
     const form = e.currentTarget;
-    const formData = new FormData(form);
-    const website = String(formData.get("website") || "");
-    if (website.trim() !== "") {
-      // Spam/Honeypot ausgelöst - silently ignore
-      return;
-    }
+    const data = new FormData(form);
+    if (String(data.get("website") || "").trim() !== "") return; // honeypot
 
-    const firstName = String(formData.get("firstName") || "").trim();
-    const lastName = String(formData.get("lastName") || "").trim();
-    const email = String(formData.get("email") || "").trim();
-    const phone = String(formData.get("phone") || "").trim();
+    const get = (k: string) => String(data.get(k) || "").trim();
+    const firstName = get("firstName");
+    const lastName = get("lastName");
+    const company = get("company");
+    const phone = get("phone");
+    const mail = get("email");
+    const message = get("message");
 
-    const errors: Record<string, string> = {};
-    if (!firstName) errors.firstName = "Bitte Vornamen angeben";
-    if (!lastName) errors.lastName = "Bitte Nachnamen angeben";
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))
-      errors.email = "Bitte gültige E-Mail eingeben";
+    const next: Errors = {};
+    if (!firstName) next.firstName = "Bitte geben Sie Ihren Vornamen an.";
+    if (!lastName) next.lastName = "Bitte geben Sie Ihren Nachnamen an.";
     if (!/^[+\d][\d\s\-/()]{5,}$/.test(phone))
-      errors.phone = "Bitte gültige Telefonnummer eingeben";
+      next.phone = "Bitte geben Sie eine Telefonnummer an, z. B. 07531 123456.";
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(mail))
+      next.email = "Bitte geben Sie eine gültige E-Mail-Adresse an.";
+    if (!data.get("consent"))
+      next.consent = "Bitte stimmen Sie der Datenverarbeitung zu.";
 
-    if (Object.keys(errors).length > 0) {
-      // Minimal-UX: Browser-Validation übernehmen; Fokus auf ersten Fehler
-      const firstErrorField = Object.keys(errors)[0];
-      const el = form.querySelector<HTMLInputElement>(
-        `[name="${firstErrorField}"]`
-      );
-      if (el) el.focus();
-      alert(Object.values(errors).join("\n"));
+    setErrors(next);
+    const firstError = Object.keys(next)[0];
+    if (firstError) {
+      form.querySelector<HTMLInputElement>(`[name="${firstError}"]`)?.focus();
+      setSent(false);
       return;
     }
 
-    // Erfolgsfeedback (Stub)
-    alert("Danke! Wir melden uns innerhalb von 24 Stunden.");
-    form.reset();
+    const topic = selected || "Sponsoring allgemein";
+    const subject = `Sponsoring-Anfrage: ${topic}${company ? ` (${company})` : ""}`;
+    const body = [
+      "Hallo SCKW-Team,",
+      "",
+      `ich interessiere mich für: ${topic}.`,
+      ...(message ? ["", message] : []),
+      "",
+      `Name: ${firstName} ${lastName}`,
+      ...(company ? [`Firma: ${company}`] : []),
+      `Telefon: ${phone}`,
+      `E-Mail: ${mail}`,
+      "",
+      "Viele Grüße",
+      `${firstName} ${lastName}`,
+    ].join("\n");
+
+    window.location.href = `mailto:${email}?subject=${encodeURIComponent(
+      subject,
+    )}&body=${encodeURIComponent(body)}`;
+    setSent(true);
   };
 
+  const errorProps = (name: FieldName) =>
+    errors[name]
+      ? { "aria-invalid": true, "aria-describedby": `${name}-error` }
+      : {};
+
+  const fieldError = (name: FieldName) =>
+    errors[name] ? <ErrorText id={`${name}-error`}>{errors[name]}</ErrorText> : null;
+
   return (
-    <Section id="kontakt">
-      <Inner>
-        <SectionHeadline>{headline}</SectionHeadline>
-        <SectionText>{description}</SectionText>
+    <Section id="kontakt" aria-labelledby="kontakt-title">
+      <Container>
+        <Grid>
+          <div>
+            <SectionHeader
+              id="kontakt-title"
+              eyebrow="Kontakt"
+              title="Partner werden."
+              lead="Schreiben Sie uns kurz, was Sie sich vorstellen. Wir melden uns innerhalb von 24 Stunden und finden mit Ihnen das passende Paket."
+            />
+            <Direct>
+              <DirectLabel>E-Mail</DirectLabel>
+              <DirectMail href={`mailto:${email}`}>{email}</DirectMail>
+              <DirectLabel>Anschrift</DirectLabel>
+              <address>
+                {address.map((line) => (
+                  <span key={line}>
+                    {line}
+                    <br />
+                  </span>
+                ))}
+              </address>
+            </Direct>
+          </div>
 
-        <ContactGrid>
-          {contactInfos.map((info, index) => (
-            <ContactBox key={index}>
-              <ContactTitle>
-                {info.icon} {info.title}
-              </ContactTitle>
-              <ContactText $isEmail={info.isEmail}>
-                {info.isEmail ? (
-                  <a href={`mailto:${info.content}`}>{info.content}</a>
-                ) : (
-                  info.content
-                )}
-              </ContactText>
-            </ContactBox>
-          ))}
-        </ContactGrid>
-
-        <FormWrapper>
-          <FormTitle>Kontakt aufnehmen</FormTitle>
-          <FormDescription>
-            Kurzformular ausfüllen - wir melden uns innerhalb von 24 Stunden.
-          </FormDescription>
-          <ContactForm noValidate onSubmit={handleSubmit}>
-            <Row>
+          <FormCard>
+            <FormTitle>Anfrage stellen</FormTitle>
+            <Form noValidate onSubmit={handleSubmit}>
+              <FieldFull>
+                <label htmlFor="interest">Interesse an</label>
+                <select
+                  id="interest"
+                  name="interest"
+                  value={selected}
+                  onChange={(e) => setSelected(e.target.value)}
+                >
+                  <option value="">Noch offen, bitte beraten</option>
+                  {interestOptions.map((o) => (
+                    <option key={o} value={o}>
+                      {o}
+                    </option>
+                  ))}
+                </select>
+              </FieldFull>
               <Field>
                 <label htmlFor="firstName">Vorname</label>
                 <input
@@ -149,7 +146,9 @@ export function ContactSection({
                   type="text"
                   autoComplete="given-name"
                   required
+                  {...errorProps("firstName")}
                 />
+                {fieldError("firstName")}
               </Field>
               <Field>
                 <label htmlFor="lastName">Nachname</label>
@@ -159,12 +158,14 @@ export function ContactSection({
                   type="text"
                   autoComplete="family-name"
                   required
+                  {...errorProps("lastName")}
                 />
+                {fieldError("lastName")}
               </Field>
-            </Row>
-            <Row>
               <Field>
-                <label htmlFor="company">Firma (optional)</label>
+                <label htmlFor="company">
+                  Firma <Optional>(optional)</Optional>
+                </label>
                 <input
                   id="company"
                   name="company"
@@ -180,10 +181,10 @@ export function ContactSection({
                   type="tel"
                   autoComplete="tel"
                   required
+                  {...errorProps("phone")}
                 />
+                {fieldError("phone")}
               </Field>
-            </Row>
-            <Row>
               <FieldFull>
                 <label htmlFor="email">E-Mail</label>
                 <input
@@ -192,140 +193,207 @@ export function ContactSection({
                   type="email"
                   autoComplete="email"
                   required
+                  {...errorProps("email")}
                 />
+                {fieldError("email")}
               </FieldFull>
-            </Row>
+              <FieldFull>
+                <label htmlFor="message">
+                  Nachricht <Optional>(optional)</Optional>
+                </label>
+                <textarea id="message" name="message" rows={4} />
+              </FieldFull>
 
-            <Honeypot aria-hidden="true" tabIndex={-1}>
-              <label htmlFor="website">
-                Wenn Sie ein Mensch sind, lassen Sie dieses Feld leer
-              </label>
-              <input
-                id="website"
-                name="website"
-                type="text"
-                autoComplete="off"
-              />
-            </Honeypot>
+              <Honeypot aria-hidden="true">
+                <label htmlFor="website">Dieses Feld bitte leer lassen</label>
+                <input
+                  id="website"
+                  name="website"
+                  type="text"
+                  tabIndex={-1}
+                  autoComplete="off"
+                />
+              </Honeypot>
 
-            <Consent>
-              <input id="consent" name="consent" type="checkbox" required />
-              <label htmlFor="consent">
-                Ich stimme der Verarbeitung meiner Daten gemäß{" "}
-                <a
-                  href="/datenschutz"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Datenschutzhinweisen
-                </a>{" "}
-                zu.
-              </label>
-            </Consent>
+              <FieldFull>
+                <Consent>
+                  <input
+                    id="consent"
+                    name="consent"
+                    type="checkbox"
+                    required
+                    {...errorProps("consent")}
+                  />
+                  <label htmlFor="consent">
+                    Ich stimme der Verarbeitung meiner Daten gemäß den{" "}
+                    <a
+                      href="https://www.sckw.de/datenschutz"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Datenschutzhinweisen
+                    </a>{" "}
+                    zu.
+                  </label>
+                </Consent>
+                {fieldError("consent")}
+              </FieldFull>
 
-            <SubmitRow>
-              <SubmitButton type="submit">Absenden</SubmitButton>
-              <SmallNote>
-                Alternativ:{" "}
-                <a href="mailto:sponsoring@sckw.de">sponsoring@sckw.de</a>
-              </SmallNote>
-            </SubmitRow>
-          </ContactForm>
-        </FormWrapper>
-      </Inner>
+              <FieldFull>
+                <Button type="submit">Anfrage per E-Mail senden</Button>
+                <Hint>
+                  Ihr E-Mail-Programm öffnet sich mit der fertigen Anfrage.
+                </Hint>
+              </FieldFull>
+
+              <Status role="status" aria-live="polite">
+                {sent && (
+                  <>
+                    Ihre Anfrage liegt jetzt im E-Mail-Programm bereit. Bitte
+                    dort auf Senden klicken. Hat sich nichts geöffnet? Dann
+                    schreiben Sie uns direkt an{" "}
+                    <a href={`mailto:${email}`}>{email}</a>.
+                  </>
+                )}
+              </Status>
+            </Form>
+          </FormCard>
+        </Grid>
+      </Container>
     </Section>
   );
 }
 
 const Section = styled.section`
-  background: #f7f7fa;
-  border-radius: 10px;
-  padding: 2.5rem 2rem;
-  margin: 3rem 0 2rem 0;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.03);
+  background: ${brand.paper};
+  color-scheme: light;
+  padding: 4rem 0;
+  text-align: left;
+  scroll-margin-top: 72px;
+
+  @media (min-width: 768px) {
+    padding: 6rem 0;
+  }
 `;
 
-const Inner = styled.div`
-  max-width: 1000px;
-  margin: 0 auto;
+const Grid = styled.div`
+  display: grid;
+  gap: 2.5rem;
+
+  @media (min-width: 960px) {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    gap: 4rem;
+    align-items: start;
+  }
 `;
 
-const FormWrapper = styled.div`
-  margin-top: 1.5rem;
-  background: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
-  padding: 1.25rem;
+const Direct = styled.div`
+  display: grid;
+  gap: 0.25rem;
+  color: ${brand.ink};
+  font-size: 1.05rem;
+  line-height: 1.5;
+
+  address {
+    font-style: normal;
+  }
 `;
 
-const FormTitle = styled.h4`
-  margin: 0 0 0.5rem 0;
-  font-size: 1.25rem;
-  color: #e10073;
+const DirectLabel = styled.span`
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: ${brand.muted};
 `;
 
-const FormDescription = styled.p`
-  margin: 0 0 1rem 0;
-  color: #555;
+const DirectMail = styled.a`
+  font-family: ${brand.fontDisplay};
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: ${brand.blue};
+  text-decoration: none;
+  overflow-wrap: anywhere;
+
+  &:hover {
+    text-decoration: underline;
+    color: ${brand.blue};
+  }
 `;
 
-const ContactForm = styled.form`
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
+const FormCard = styled.div`
+  background: #fff;
+  border: 1px solid ${brand.line};
+  border-radius: 14px;
+  padding: 1.5rem;
+
+  @media (min-width: 768px) {
+    padding: 2rem;
+  }
+`;
+
+const FormTitle = styled.h3`
+  font-family: ${brand.fontDisplay};
+  font-weight: 800;
+  font-size: 1.75rem;
+  text-transform: uppercase;
+  color: ${brand.navy};
+  margin: 0 0 1.25rem;
+`;
+
+const Form = styled.form`
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+
+  @media (min-width: 640px) {
+    grid-template-columns: 1fr 1fr;
+  }
 
   label {
     font-weight: 600;
-    color: #333;
-    margin-bottom: 0.25rem;
-    display: inline-block;
-    text-align: left;
+    font-size: 0.95rem;
+    color: ${brand.ink};
+    margin-bottom: 0.35rem;
   }
 
   input[type="text"],
   input[type="tel"],
-  input[type="email"] {
+  input[type="email"],
+  select,
+  textarea {
     width: 100%;
-    border: 1px solid #e5e7eb;
-    border-radius: 10px;
-    padding: 0.75rem 0.9rem;
+    border: 1px solid #b9c6d8;
+    border-radius: 8px;
+    padding: 0.7rem 0.85rem;
+    font: inherit;
     font-size: 1rem;
-    line-height: 1.2;
-    height: 44px;
-    outline: none;
-    transition: box-shadow 0.2s ease, border-color 0.2s ease;
     background: #fff;
-    color: #111;
-    caret-color: #e10073;
-    box-sizing: border-box;
+    color: ${brand.ink};
+    color-scheme: light;
   }
 
-  input:focus {
-    border-color: #e10073;
-    box-shadow: 0 0 0 3px rgba(225, 0, 115, 0.15);
+  input[type="text"],
+  input[type="tel"],
+  input[type="email"],
+  select {
+    height: 48px;
   }
 
-  input::placeholder {
-    color: #9ca3af;
+  textarea {
+    resize: vertical;
+    min-height: 110px;
   }
 
-  input:-webkit-autofill,
-  input:-webkit-autofill:hover,
-  input:-webkit-autofill:focus {
-    -webkit-text-fill-color: #111;
-    transition: background-color 9999s ease-in-out 0s;
-    box-shadow: 0 0 0px 1000px #fff inset;
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible {
+    outline: 3px solid ${brand.blue};
+    outline-offset: 1px;
+    border-color: ${brand.blue};
   }
-`;
 
-const Row = styled.div`
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 0.75rem;
-
-  @media (min-width: 640px) {
-    grid-template-columns: 1fr 1fr;
-    align-items: start;
+  [aria-invalid="true"] {
+    border-color: ${brand.red};
   }
 `;
 
@@ -336,6 +404,22 @@ const Field = styled.div`
 
 const FieldFull = styled(Field)`
   grid-column: 1 / -1;
+
+  & > button {
+    align-self: flex-start;
+  }
+`;
+
+const Optional = styled.span`
+  font-weight: 400;
+  color: ${brand.muted};
+`;
+
+const ErrorText = styled.span`
+  margin-top: 0.35rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: ${brand.redDark};
 `;
 
 const Honeypot = styled.div`
@@ -349,74 +433,48 @@ const Honeypot = styled.div`
 const Consent = styled.div`
   display: flex;
   align-items: flex-start;
-  gap: 0.5rem;
-  font-size: 0.9rem;
-  color: #555;
+  gap: 0.6rem;
 
   input[type="checkbox"] {
-    margin-top: 0.2rem;
+    width: 20px;
+    height: 20px;
+    margin: 0.1rem 0 0;
+    flex-shrink: 0;
+    accent-color: ${brand.blue};
+  }
+
+  label {
+    font-weight: 400;
+    color: ${brand.muted};
+    margin: 0;
   }
 
   a {
-    color: #e10073;
-  }
-`;
-
-const SubmitRow = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  flex-wrap: wrap;
-`;
-
-const SubmitButton = styled.button`
-  background: linear-gradient(135deg, #e10073, #ff6b9d);
-  color: #fff;
-  border: none;
-  border-radius: 9999px;
-  padding: 0.8rem 1.5rem;
-  font-weight: 700;
-  cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  box-shadow: 0 6px 16px rgba(225, 0, 115, 0.25);
-
-  &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 24px rgba(225, 0, 115, 0.35);
-  }
-`;
-
-const SmallNote = styled.span`
-  font-size: 0.9rem;
-  color: #666;
-
-  a {
-    color: #e10073;
+    color: ${brand.blue};
     font-weight: 600;
-    text-decoration: none;
-  }
-
-  a:hover {
     text-decoration: underline;
   }
 `;
 
-const SectionHeadline = styled.h3`
-  font-size: clamp(1.7rem, 2.5vw, 2.1rem);
-  color: #e10073;
-  font-weight: 800;
-  margin-bottom: 1.5rem;
-  text-align: center;
-  width: 100%;
+const Hint = styled.span`
+  margin-top: 0.6rem;
+  font-size: 0.9rem;
+  color: ${brand.muted};
 `;
 
-const SectionText = styled.p`
-  font-size: 1.13rem;
-  color: #222;
-  margin-bottom: 2.5rem;
-  line-height: 1.7;
-  text-align: center;
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
+const Status = styled.p`
+  grid-column: 1 / -1;
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: ${brand.ink};
+
+  &:empty {
+    display: none;
+  }
+
+  a {
+    color: ${brand.blue};
+    font-weight: 600;
+  }
 `;

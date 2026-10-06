@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, type ReactNode } from "react";
 import {
   BrowserRouter as Router,
   Routes,
@@ -51,6 +51,15 @@ function ScrollManager() {
   return null;
 }
 
+function WithNav({ children }: { children: ReactNode }) {
+  return (
+    <>
+      <Navigation />
+      <main id="inhalt">{children}</main>
+    </>
+  );
+}
+
 export default function App() {
   return (
     <Router>
@@ -68,10 +77,9 @@ export default function App() {
         <Route
           path="/sponsoring"
           element={
-            <>
-              <Navigation />
+            <WithNav>
               <SponsoringV2Page />
-            </>
+            </WithNav>
           }
         />
 
@@ -82,10 +90,9 @@ export default function App() {
         <Route
           path="/sponsoring/club-500"
           element={
-            <>
-              <Navigation />
+            <WithNav>
               <Club500Page />
-            </>
+            </WithNav>
           }
         />
         <Route
@@ -95,30 +102,27 @@ export default function App() {
         <Route
           path="/sponsoring/spielerpatenschaft"
           element={
-            <>
-              <Navigation />
+            <WithNav>
               <SpielerPartnerPage />
-            </>
+            </WithNav>
           }
         />
 
         <Route
           path="/mockup-generator"
           element={
-            <>
-              <Navigation />
+            <WithNav>
               <MockupGeneratorPage />
-            </>
+            </WithNav>
           }
         />
 
         <Route
           path="/renovierung"
           element={
-            <>
-              <Navigation />
+            <WithNav>
               <RenovierungPage />
-            </>
+            </WithNav>
           }
         />
 

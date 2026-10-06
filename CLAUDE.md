@@ -23,8 +23,8 @@ Bei Unklarheiten ueber Features oder Anforderungen: Adel direkt fragen.
 
 - SC Konstanz-Wollmatingen e.V. (gegr. 1930)
 - **Meister 2025/26 — Aufstieg in die Verbandsliga Suedbaden ab Saison 26/27**
-- Social Media (Stand Jun 2026, 28 Tage): ~310K Views (IG 230K + FB 81K kombiniert), 21.4K Reach
-- Social Media (Saison Jul 25 – Jun 26): ~1,3 Mio. Views, 100% organisch
+- Social Media (01.10.2025 - 05.10.2026, 100 % organisch): 1,73 Mio. Views (IG 1.317.939 + FB 413.620), IG Reach 63.300
+- Instagram letzte 90 Tage (Stand 05.10.2026): 431.973 Aufrufe, 52 % Nicht-Follower, 2.260 Follower
 
 ## Sponsoring-Struktur (3-Saeulen-Modell)
 
@@ -45,4 +45,4 @@ Bei Unklarheiten ueber Features oder Anforderungen: Adel direkt fragen.
   - `INSTAGRAM_ACCOUNT_ID`
   - `FACEBOOK_PAGE_ID`
 - Danach Workflow manuell testen via Actions → Run workflow
-- KPIs in `sponsoringData.ts` sind aktuell hardcoded als Fallback (Stand Jun 2026)
+- KPIs in `sponsoringData.ts` sind aktuell hardcoded als Fallback (Stand 05.10.2026). Achtung: das Script erzeugt noch das alte KPI-Set (28-Tage-Views), vor Aktivierung angleichen

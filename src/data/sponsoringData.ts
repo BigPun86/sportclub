@@ -9,10 +9,30 @@
 
 export const aufstiegsBanner = {
   active: true,
-  text: "Meister & Aufsteiger!",
+  text: "Meister 2025/26 und Aufsteiger.",
   highlight: "Verbandsliga Südbaden",
-  suffix: "Ab Saison 26/27 spielen wir eine Liga höher!",
+  suffix: "Seit Saison 26/27 spielen wir in der",
 };
+
+// Auswärts-Spielorte Verbandsliga Südbaden 26/27
+// Quelle: SBFV "Informationen Spielbetrieb Verbandsliga Herren 2026-2027" (Stand 05.08.2026)
+export const verbandsligaSpielorte: string[] = [
+  "Auggen",
+  "Bühlertal",
+  "Denzlingen",
+  "Gundelfingen",
+  "Hausen",
+  "Hofstetten",
+  "Kuppenheim",
+  "Lahr",
+  "Laufenburg",
+  "Linx",
+  "Pfullendorf",
+  "Rielasingen",
+  "Salem",
+  "Wolfenweiler",
+  "Wyhl",
+];
 
 // ============================================================================
 // KPIs / Reichweite
@@ -26,19 +46,20 @@ export interface KPI {
 
 export const kpis: KPI[] = [
   {
-    value: "1,3 Mio.",
-    label: "Social-Media-Views / Saison",
-    description: "IG 1,07 Mio. + FB 203K kombiniert (Jul 25 - Jun 26)",
+    value: "1,7 Mio.",
+    label: "Social-Media-Views in 12 Monaten",
+    description:
+      "IG 1,32 Mio. + FB 414K, 01.10.2025 - 05.10.2026, 100 % organisch",
   },
   {
-    value: "310.000",
-    label: "Views / Monat aktuell",
-    description: "IG 230K + FB 81K kombiniert (28 Tage, Mai-Jun 26)",
+    value: "63.300",
+    label: "Personen erreicht auf Instagram",
+    description: "Instagram Reach, 01.10.2025 - 05.10.2026",
   },
   {
-    value: "21.400",
-    label: "Personen erreicht / Monat",
-    description: "Instagram Reach, 97% Non-Followers",
+    value: "52 %",
+    label: "der Aufrufe von Nicht-Followern",
+    description: "Instagram, letzte 90 Tage (431.973 Aufrufe), Stand 05.10.2026",
   },
   {
     value: "60.000+",
@@ -68,7 +89,7 @@ export interface ExklusivPaket {
 }
 
 const sharedLeistungen =
-  "Logo in allen Spielvor-/Nachberichten · Stadionansage jedes Heimspiel · Logo Startseite";
+  "Logo in allen Spielvor- und Nachberichten · Stadionansage bei jedem Heimspiel · Logo auf der Startseite";
 
 export const exklusivPakete: ExklusivPaket[] = [
   {
@@ -196,19 +217,20 @@ export const spieltagAngebote: SpieltagAngebot[] = [
   {
     name: "Ballspende",
     beschreibung:
-      "Durchsage vor Spiel, bei jedem Tor & Halbzeit · 1 Insta-Story",
+      "Ihr Name als Ballspender: Durchsage vor dem Spiel, bei jedem Tor und zur Halbzeit, dazu eine Instagram-Story.",
     preis: "150 € / Spiel",
     hinweis: "5er-Pack: 500 €",
   },
   {
     name: "Spielpräsentator",
-    beschreibung: "Alle Aufstellungen & Auswechslungen im Firmennamen",
+    beschreibung:
+      "Alle Aufstellungen und Auswechslungen, präsentiert von Ihrer Firma.",
     preis: "ab 250 € / Spiel",
   },
   {
     name: "Magazin-Inserat",
     beschreibung:
-      "15 Ausgaben/Saison · ca. 100 Exemplare + 1.000-1.500 Online-Zugriffe",
+      "Unser Heimspielmagazin: 15 Ausgaben pro Saison, je rund 100 gedruckte Exemplare und 1.000 bis 1.500 Online-Zugriffe.",
     preis: "250 - 1.000 €",
     hinweis: "1/4 Seite 250 € · 1/2 Seite 500 € · 1 Seite 1.000 €",
   },
@@ -306,7 +328,7 @@ export const busFlaechenStandard: BusFlaeche[] = [
 ];
 
 export const busZusatzoptionen: string[] = [
-  "Mehrjahresrabatt: 10% (2 Jahre), 15% (3 Jahre)",
+  "Mehrjahresrabatt: 10 % (2 Jahre), 15 % (3 Jahre)",
   "Kombi-Paket Online + Bus: +150 € (Logo & Link auf Website)",
   "Design & Folierung: optionaler Kostenbeitrag (50-100 €)",
   "Social-Media-Add-on: +200 € für 1 dedizierten Post/Jahr",

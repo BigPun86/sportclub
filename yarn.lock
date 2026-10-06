@@ -2,7 +2,7 @@
 # Manual changes might be lost - proceed with caution!
 
 __metadata:
-  version: 8
+  version: 10
   cacheKey: 10c0
 
 "@ampproject/remapping@npm:^2.2.0":
@@ -507,6 +507,20 @@ __metadata:
     "@eslint/core": "npm:^0.15.1"
     levn: "npm:^0.4.1"
   checksum: 10c0/c61888eb8757abc0d25a53c1832f85521c2f347126c475eb32d3596be3505e8619e0ceddee7346d195089a2eb1633b61e6127a5772b8965a85eb9f55b8b1cebe
+  languageName: node
+  linkType: hard
+
+"@fontsource/barlow-condensed@npm:^5.3.0":
+  version: 5.3.0
+  resolution: "@fontsource/barlow-condensed@npm:5.3.0"
+  checksum: 10c0/0b2a913cc5e75ca66cdeddbc5304be3fff5dbb374f70e82cdf515f4fec32871bb5dd50e16fe3faf2bc2f656b387be475dd95d039463a035b583209d625c94643
+  languageName: node
+  linkType: hard
+
+"@fontsource/barlow@npm:^5.3.0":
+  version: 5.3.0
+  resolution: "@fontsource/barlow@npm:5.3.0"
+  checksum: 10c0/2efe5abb3dac2ef2eb3ae9a3fd5acdc6955daf85efc1b5439081003e2d67ea90d62aae1d54fd1dcf6fc0eccfc815174bb77e70120a4973c0142431827d0b9c6d
   languageName: node
   linkType: hard
 
@@ -3178,6 +3192,8 @@ __metadata:
   resolution: "sportclub@workspace:."
   dependencies:
     "@eslint/js": "npm:^9.30.1"
+    "@fontsource/barlow": "npm:^5.3.0"
+    "@fontsource/barlow-condensed": "npm:^5.3.0"
     "@types/react": "npm:^19.1.8"
     "@types/react-dom": "npm:^19.1.6"
     "@types/react-router-dom": "npm:^5.3.3"

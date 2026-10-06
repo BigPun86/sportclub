@@ -1,103 +1,91 @@
 import styled from "styled-components";
+import { brand } from "../theme";
 
-const Container = styled.div`
-  max-width: 1000px;
-  margin: 0 auto;
-`;
-
-const MainSponsorSection = styled.div`
-  display: flex;
-  justify-content: center;
-  margin-bottom: 2.5rem;
-`;
-
-const MainSponsorCard = styled.a`
-  background: white;
-  border-radius: 20px;
-  padding: 2rem 3rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  box-shadow: 0 8px 32px rgba(225, 0, 115, 0.12);
-  border: 3px solid #e10073;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  min-width: 280px;
-
-  @media (max-width: 768px) {
-    padding: 1.5rem 2rem;
-    min-width: 220px;
-  }
-
-  &:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 12px 40px rgba(225, 0, 115, 0.2);
-  }
-`;
-
-const MainSponsorBadge = styled.div`
-  background: linear-gradient(135deg, #e10073, #ff6b9d);
-  color: white;
-  font-size: 0.7rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  padding: 0.4rem 1rem;
-  border-radius: 20px;
-  margin-bottom: 1rem;
-`;
-
-const MainSponsorLogo = styled.img`
-  max-width: 180px;
-  max-height: 100px;
-  object-fit: contain;
-
-  @media (max-width: 768px) {
-    max-width: 140px;
-    max-height: 80px;
-  }
-`;
-
-const PartnersGrid = styled.div`
+const Layout = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   gap: 1rem;
-  max-width: 800px;
-  margin: 0 auto;
 
-  @media (min-width: 768px) {
-    grid-template-columns: repeat(4, 1fr);
+  @media (min-width: 900px) {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
     gap: 1.25rem;
   }
 `;
 
-const PartnerCard = styled.a`
-  background: white;
-  border-radius: 12px;
-  padding: 1.25rem 1rem;
+const MainSponsorCard = styled.a`
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
-  border: 2px solid #f0f0f0;
+  justify-content: space-between;
+  gap: 1.5rem;
+  background: #fff;
+  border: 1px solid ${brand.line};
+  border-top: 4px solid ${brand.red};
+  border-radius: 14px;
+  padding: 1.5rem;
   text-decoration: none;
-  transition: all 0.3s ease;
-  min-height: 100px;
+  min-height: 220px;
+  transition: border-color 0.2s ease;
 
   &:hover {
-    transform: translateY(-4px);
-    border-color: #e10073;
-    box-shadow: 0 8px 24px rgba(225, 0, 115, 0.12);
+    border-color: ${brand.blue};
+    border-top-color: ${brand.red};
+  }
+`;
+
+const MainSponsorLabel = styled.span`
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: ${brand.red};
+`;
+
+const MainSponsorLogo = styled.img`
+  align-self: center;
+  width: 100%;
+  max-width: 220px;
+  max-height: 120px;
+  object-fit: contain;
+`;
+
+const MainSponsorName = styled.span`
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: ${brand.ink};
+`;
+
+const PartnersGrid = styled.ul`
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+
+  @media (min-width: 600px) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+  }
+`;
+
+const PartnerCard = styled.a`
+  height: 100%;
+  min-height: 96px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  border: 1px solid ${brand.line};
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  text-decoration: none;
+  transition: border-color 0.2s ease;
+
+  &:hover {
+    border-color: ${brand.blue};
   }
 `;
 
 const PartnerLogo = styled.img`
   max-width: 100%;
-  max-height: 50px;
+  max-height: 48px;
   object-fit: contain;
 `;
 
@@ -161,32 +149,30 @@ export default function CurrentSponsors() {
   const { hauptsponsor, partners } = currentSponsors;
 
   return (
-    <Container>
-      {/* Hauptsponsor prominent */}
-      <MainSponsorSection>
-        <MainSponsorCard
-          href={hauptsponsor.website}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <MainSponsorBadge>Hauptsponsor</MainSponsorBadge>
-          <MainSponsorLogo src={hauptsponsor.logo} alt={hauptsponsor.name} />
-        </MainSponsorCard>
-      </MainSponsorSection>
+    <Layout>
+      <MainSponsorCard
+        href={hauptsponsor.website}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <MainSponsorLabel>Hauptsponsor</MainSponsorLabel>
+        <MainSponsorLogo src={hauptsponsor.logo} alt={hauptsponsor.name} />
+        <MainSponsorName>{hauptsponsor.name}</MainSponsorName>
+      </MainSponsorCard>
 
-      {/* Partner Grid */}
-      <PartnersGrid>
-        {partners.map((partner, index) => (
-          <PartnerCard
-            key={index}
-            href={partner.website}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <PartnerLogo src={partner.logo} alt={partner.name} />
-          </PartnerCard>
+      <PartnersGrid aria-label="Partner">
+        {partners.map((partner) => (
+          <li key={partner.name}>
+            <PartnerCard
+              href={partner.website}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <PartnerLogo src={partner.logo} alt={partner.name} />
+            </PartnerCard>
+          </li>
         ))}
       </PartnersGrid>
-    </Container>
+    </Layout>
   );
 }

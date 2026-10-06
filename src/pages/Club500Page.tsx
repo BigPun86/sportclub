@@ -5,204 +5,188 @@ import { getHeroImage } from "../utils/imageLoader";
 import { club500Config } from "../data/club500Data";
 import Footer from "../components/Footer";
 import Foerdertafel from "../components/Foerdertafel";
+import {
+  ButtonLink,
+  Container,
+  Eyebrow,
+  SectionHeader,
+} from "../components/ui";
+import { buttonStyles, type ButtonVariant } from "../components/buttonStyles";
+import { brand } from "../theme";
 
 // ---------------------------------------------------------------------------
-// Hero (same pattern as SponsoringV2Page)
+// Page frame + hero (same look as SponsoringV2Page)
 // ---------------------------------------------------------------------------
+
+const Page = styled.div`
+  color-scheme: light;
+  font-family: ${brand.fontBody};
+  color: ${brand.ink};
+  text-align: left;
+  background: #fff;
+`;
 
 const Hero = styled.section`
-  background: #0b0b0d;
-  min-height: 70vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   position: relative;
-  padding: 6rem 1.5rem 4rem;
   overflow: hidden;
+  background: ${brand.navyDeep};
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: min(calc(100svh - 70px), 760px);
 `;
 
 const HeroSlide = styled.div<{ $bg: string; $active: boolean }>`
   position: absolute;
   inset: 0;
-  background: url(${({ $bg }) => $bg}) center/cover no-repeat;
+  background: url(${({ $bg }) => $bg}) center 30% / cover no-repeat;
   opacity: ${({ $active }) => ($active ? 1 : 0)};
-  transition: opacity 900ms ease;
-  z-index: 1;
-  filter: saturate(1.05) brightness(0.65);
+  transition: opacity 1.2s ease;
 `;
 
-const HeroOverlay = styled.div`
+const HeroShade = styled.div`
   position: absolute;
   inset: 0;
-  pointer-events: none;
-  background: linear-gradient(
-    180deg,
-    rgba(0, 0, 0, 0.3) 0%,
-    rgba(0, 0, 0, 0.55) 100%
-  );
-  z-index: 2;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(10, 24, 48, 0.94) 0%,
+      rgba(10, 24, 48, 0.78) 45%,
+      rgba(10, 24, 48, 0.35) 100%
+    ),
+    linear-gradient(0deg, rgba(10, 24, 48, 0.95) 0%, rgba(10, 24, 48, 0) 45%);
 `;
 
-const HeroContent = styled.div`
+const HeroInner = styled(Container)`
   position: relative;
-  z-index: 3;
-  text-align: center;
-  max-width: 800px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
-const HeroLogo = styled.img`
-  width: clamp(100px, 22vw, 180px);
-  height: auto;
-  margin-bottom: 1.25rem;
-  filter: drop-shadow(0 6px 24px rgba(0, 0, 0, 0.6));
+  width: 100%;
+  padding-top: 5rem;
+  padding-bottom: 3.5rem;
 `;
 
 const HeroTitle = styled.h1`
-  color: #fff;
-  font-size: clamp(2.2rem, 7vw, 4rem);
-  font-weight: 900;
-  letter-spacing: 0.06em;
-  margin: 0 0 0.5rem;
-  text-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
-  line-height: 1.1;
-`;
-
-const HeroSub = styled.p`
-  color: rgba(255, 255, 255, 0.85);
-  font-size: clamp(1rem, 3vw, 1.3rem);
-  font-weight: 500;
-  margin: 0 0 2rem;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
-  line-height: 1.5;
-  max-width: 600px;
-`;
-
-const HeroCTA = styled.a`
-  display: inline-flex;
-  align-items: center;
-  background: #fff;
-  color: #e10073;
+  font-family: ${brand.fontDisplay};
   font-weight: 800;
-  font-size: clamp(0.9rem, 2.5vw, 1.05rem);
-  padding: 0.9rem 2.5rem;
-  border-radius: 50px;
-  text-decoration: none;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.25);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-size: clamp(3rem, 10vw, 6.5rem);
+  line-height: 0.9;
+  margin: 0;
+  color: #fff;
 
-  &:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 32px rgba(0, 0, 0, 0.35);
+  span {
+    text-transform: none;
   }
+`;
+
+const HeroLead = styled.p`
+  max-width: 36rem;
+  margin: 1.5rem 0 2rem;
+  font-size: clamp(1.05rem, 2.4vw, 1.25rem);
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.88);
+`;
+
+const HeroActions = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
 `;
 
 // ---------------------------------------------------------------------------
-// Content Sections (matching SponsoringV2Page pattern)
+// Sections
 // ---------------------------------------------------------------------------
 
-const Container = styled.div`
-  max-width: 960px;
-  margin: 0 auto;
-  padding: 0 1.25rem;
+const Section = styled.section<{ $paper?: boolean }>`
+  padding: 4rem 0;
+  scroll-margin-top: 72px;
+  background: ${({ $paper }) => ($paper ? brand.paper : "#fff")};
 
   @media (min-width: 768px) {
-    padding: 0 2rem;
+    padding: 6rem 0;
   }
-`;
-
-
-const Section = styled.section`
-  padding: 3rem 0;
-  scroll-margin-top: 90px;
-
-  @media (min-width: 768px) {
-    padding: 4rem 0;
-  }
-`;
-
-const SectionAlt = styled(Section)`
-  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
-`;
-
-const SectionTitle = styled.h2`
-  font-size: clamp(1.5rem, 4.5vw, 2.2rem);
-  color: #e10073;
-  font-weight: 800;
-  margin-bottom: 0.5rem;
-  letter-spacing: -0.02em;
-  text-align: center;
-`;
-
-const SectionSubtitle = styled.p`
-  font-size: clamp(0.92rem, 2.3vw, 1.05rem);
-  color: #666;
-  max-width: 600px;
-  margin: 0 auto 2rem;
-  line-height: 1.6;
-  text-align: center;
 `;
 
 // -- Benefits --
 
 const BenefitGrid = styled.div`
   display: grid;
-  grid-template-columns: 1fr;
   gap: 1rem;
 
-  @media (min-width: 600px) {
-    grid-template-columns: repeat(3, 1fr);
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.25rem;
   }
 `;
 
-const BenefitCard = styled.div`
+const BenefitCard = styled.article`
   background: #fff;
-  border-radius: 16px;
-  padding: 1.5rem 1.25rem;
-  text-align: center;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
-  border: 1px solid #f0f0f0;
-`;
-
-const BenefitIcon = styled.div`
-  font-size: 1.8rem;
-  margin-bottom: 0.5rem;
+  border: 1px solid ${brand.line};
+  border-top: 4px solid ${brand.red};
+  border-radius: 14px;
+  padding: 1.5rem;
 `;
 
 const BenefitTitle = styled.h3`
-  font-size: 1rem;
-  color: #222;
+  font-family: ${brand.fontDisplay};
   font-weight: 800;
-  margin: 0 0 0.4rem;
+  font-size: 1.5rem;
+  line-height: 1.05;
+  text-transform: uppercase;
+  color: ${brand.navy};
+  margin: 0 0 0.6rem;
 `;
 
 const BenefitText = styled.p`
-  font-size: 0.9rem;
-  color: #444;
-  line-height: 1.5;
   margin: 0;
+  line-height: 1.55;
+  color: ${brand.ink};
+`;
 
-  strong {
-    color: #222;
+// -- Fördertafel (component stays untouched, only typography via wrapper) --
+
+const TafelWrap = styled.div`
+  h2 {
+    font-family: ${brand.fontDisplay};
+    font-weight: 800;
+    text-transform: uppercase;
+    scroll-margin-top: 90px;
   }
 `;
 
-// -- Form Elements --
+// -- Form --
 
-const FieldLabel = styled.div`
-  font-size: 0.85rem;
+const FormCard = styled.div`
+  max-width: 760px;
+  background: #fff;
+  border: 1px solid ${brand.line};
+  border-radius: 14px;
+  padding: 1.5rem;
+
+  @media (min-width: 768px) {
+    padding: 2rem;
+  }
+`;
+
+const FieldLabel = styled.label`
+  display: block;
+  font-size: 1rem;
   font-weight: 700;
-  color: #333;
+  color: ${brand.ink};
   margin-bottom: 0.6rem;
+`;
+
+const GroupLabel = styled.h3`
+  font-family: ${brand.fontBody};
+  font-size: 1rem;
+  font-weight: 700;
+  color: ${brand.ink};
+  margin: 0 0 0.6rem;
 `;
 
 const MembershipGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 0.75rem;
   margin-bottom: 0.75rem;
 
@@ -211,81 +195,81 @@ const MembershipGrid = styled.div`
   }
 `;
 
-const MembershipCard = styled.button<{ $active: boolean }>`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 1.5rem 1rem;
-  border-radius: 16px;
-  border: 2px solid ${({ $active }) => ($active ? "#e10073" : "#e5e7eb")};
-  background: ${({ $active }) => ($active ? "#fff0f6" : "#fff")};
-  cursor: pointer;
-  transition: all 0.2s;
-  text-align: center;
-  font-family: inherit;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+const selectable = css<{ $active: boolean }>`
+  border: 2px solid ${({ $active }) => ($active ? brand.blue : brand.line)};
+  background: ${({ $active }) => ($active ? "#eef5ff" : "#fff")};
+  border-radius: 12px;
+  transition: border-color 0.15s ease, background-color 0.15s ease;
 
   &:hover {
-    border-color: #e10073;
-    box-shadow: 0 4px 16px rgba(225, 0, 115, 0.1);
+    border-color: ${brand.blue};
   }
 `;
 
-const MembershipPrice = styled.div<{ $active: boolean }>`
-  font-size: 1.4rem;
-  font-weight: 900;
-  color: ${({ $active }) => ($active ? "#e10073" : "#222")};
-  margin-bottom: 0.25rem;
-  transition: color 0.15s;
+const MembershipCard = styled.button<{ $active: boolean }>`
+  ${selectable}
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 1.1rem 1.1rem 1rem;
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+  color: ${brand.ink};
 `;
 
-const MembershipDuration = styled.div<{ $active: boolean }>`
-  font-size: 0.85rem;
+const MembershipPrice = styled.span`
+  font-family: ${brand.fontDisplay};
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1;
+  color: ${brand.navy};
+`;
+
+const MembershipDuration = styled.span`
+  margin-top: 0.35rem;
+  font-size: 1rem;
   font-weight: 700;
-  color: ${({ $active }) => ($active ? "#e10073" : "#555")};
-  margin-bottom: 0.2rem;
-  transition: color 0.15s;
 `;
 
-const MembershipDesc = styled.div`
-  font-size: 0.75rem;
-  color: #999;
-  line-height: 1.3;
+const MembershipDesc = styled.span`
+  font-size: 0.9rem;
+  color: ${brand.muted};
 `;
 
 const CustomCard = styled.div<{ $active: boolean }>`
+  ${selectable}
   display: flex;
   flex-direction: column;
-  gap: 0.6rem;
-  padding: 1.25rem;
-  border-radius: 16px;
-  border: 2px solid ${({ $active }) => ($active ? "#e10073" : "#e5e7eb")};
-  background: ${({ $active }) => ($active ? "#fff0f6" : "#fff")};
-  margin-bottom: 1.75rem;
-  cursor: pointer;
-  transition: all 0.2s;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-
-  &:hover {
-    border-color: #e10073;
-  }
+  gap: 0.75rem;
+  padding: 1rem 1.1rem;
+  margin-bottom: 2rem;
 `;
 
-const CustomHeader = styled.div`
+const CustomHeader = styled.button`
   display: flex;
   align-items: center;
   gap: 0.6rem;
-  font-weight: 800;
-  font-size: 0.95rem;
-  color: #333;
+  padding: 0;
+  border: none;
+  background: none;
+  font: inherit;
+  font-weight: 700;
+  font-size: 1rem;
+  color: ${brand.ink};
+  cursor: pointer;
+  text-align: left;
+
+  &:hover {
+    border-color: transparent;
+  }
 `;
 
-const CustomRadio = styled.div<{ $active: boolean }>`
+const CustomRadio = styled.span<{ $active: boolean }>`
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  border: 2px solid ${({ $active }) => ($active ? "#e10073" : "#ccc")};
+  border: 2px solid ${({ $active }) => ($active ? brand.blue : "#9aa9bd")};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -296,107 +280,102 @@ const CustomRadio = styled.div<{ $active: boolean }>`
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    background: ${({ $active }) => ($active ? "#e10073" : "transparent")};
+    background: ${({ $active }) => ($active ? brand.blue : "transparent")};
   }
 `;
 
 const CustomFields = styled.div`
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: 1fr;
   gap: 0.5rem;
-  align-items: start;
+
+  @media (min-width: 600px) {
+    grid-template-columns: 1fr auto;
+    align-items: start;
+  }
 `;
 
 const DurationRadioRow = styled.div`
   display: flex;
-  gap: 0.35rem;
+  gap: 0.4rem;
 `;
 
 const DurationBtn = styled.button<{ $active: boolean }>`
-  padding: 0.6rem 0.75rem;
+  ${selectable}
+  min-height: 48px;
+  padding: 0 0.85rem;
   border-radius: 8px;
-  border: 1.5px solid ${({ $active }) => ($active ? "#e10073" : "#e5e7eb")};
-  background: ${({ $active }) => ($active ? "#fff0f6" : "#fff")};
-  color: ${({ $active }) => ($active ? "#e10073" : "#555")};
+  color: ${({ $active }) => ($active ? "#0650a3" : brand.ink)};
+  font: inherit;
   font-weight: 700;
-  font-size: 0.82rem;
+  font-size: 0.95rem;
   cursor: pointer;
-  transition: all 0.15s;
   white-space: nowrap;
-
-  &:hover {
-    border-color: #e10073;
-  }
 `;
 
 const Input = styled.input`
   width: 100%;
-  padding: 0.75rem 1rem;
-  border: 1px solid #e5e7eb;
-  border-radius: 10px;
-  font-size: 0.95rem;
-  outline: none;
-  transition: border-color 0.2s, box-shadow 0.2s;
-  box-sizing: border-box;
+  height: 48px;
+  padding: 0 0.85rem;
+  border: 1px solid #b9c6d8;
+  border-radius: 8px;
+  font: inherit;
+  font-size: 1rem;
   background: #fff;
-  color: #111;
+  color: ${brand.ink};
+  color-scheme: light;
 
-  &:focus {
-    border-color: #e10073;
-    box-shadow: 0 0 0 3px rgba(225, 0, 115, 0.12);
+  &:focus-visible {
+    outline: 3px solid ${brand.blue};
+    outline-offset: 1px;
+    border-color: ${brand.blue};
   }
 
   &::placeholder {
-    color: #9ca3af;
+    color: #7b8ba1;
   }
 `;
 
-const CustomHint = styled.div`
-  font-size: 0.75rem;
-  color: #999;
-  margin-top: 0.3rem;
+const CustomHint = styled.p`
+  margin: 0;
+  font-size: 0.9rem;
+  color: ${brand.muted};
 `;
-
-
-// -- Spendentafel --
 
 const ToggleGroup = styled.div`
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.75rem;
 `;
 
-const ToggleSublabel = styled.div`
-  font-size: 0.78rem;
-  color: #999;
-  line-height: 1.4;
-  margin-bottom: 0.5rem;
+const ToggleSublabel = styled.p`
+  margin: 0 0 0.6rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: ${brand.muted};
 `;
-
-// -- Bescheinigung --
 
 const CheckboxLabel = styled.label`
   display: flex;
   align-items: flex-start;
   gap: 0.6rem;
   cursor: pointer;
-  font-size: 0.9rem;
-  color: #333;
-  font-weight: 600;
+  font-weight: 700;
   line-height: 1.4;
+  color: ${brand.ink};
 
   input {
-    margin-top: 2px;
-    width: 18px;
-    height: 18px;
-    accent-color: #e10073;
+    margin: 0.1rem 0 0;
+    width: 20px;
+    height: 20px;
+    accent-color: ${brand.blue};
     flex-shrink: 0;
   }
 `;
 
-const BescheinigungHinweis = styled.div`
-  font-size: 0.78rem;
-  color: #999;
-  margin: 0.3rem 0 0 1.6rem;
-  line-height: 1.4;
+const BescheinigungHinweis = styled.p`
+  margin: 0.35rem 0 0 1.85rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: ${brand.muted};
 `;
 
 const slideDown = keyframes`
@@ -412,7 +391,7 @@ const slideUp = keyframes`
 const MiniForm = styled.div<{ $visible: boolean }>`
   overflow: hidden;
   margin-top: 0.75rem;
-  margin-left: 1.6rem;
+  margin-left: 1.85rem;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
@@ -429,57 +408,35 @@ const FormRow = styled.div`
 `;
 
 const BescheinigungSection = styled.div`
-  margin-bottom: 1.75rem;
+  margin-bottom: 2rem;
 `;
 
-// -- CTAs --
-
-const CTARow = styled.div`
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 0.75rem;
-  max-width: 420px;
-  margin: 0 auto;
-`;
-
-const BankCTA = styled.button`
-  display: flex;
+const BankCTA = styled.button<{ $variant?: ButtonVariant }>`
+  ${buttonStyles}
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 1.1rem;
-  font-weight: 800;
-  font-size: 1rem;
-  border-radius: 50px;
-  cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  background: linear-gradient(135deg, #e10073, #ff6b9d);
-  color: #fff;
-  border: none;
-  box-shadow: 0 6px 20px rgba(225, 0, 115, 0.25);
-
-  &:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 30px rgba(225, 0, 115, 0.35);
-  }
+  gap: 0.1rem;
+  width: 100%;
+  max-width: 420px;
+  min-height: 60px;
+  padding: 0.6rem 1.4rem;
 `;
 
 const CTAAmount = styled.span`
-  font-size: 0.78rem;
-  opacity: 0.8;
+  font-size: 0.95rem;
   font-weight: 600;
-  margin-top: 0.15rem;
+  opacity: 0.9;
 `;
 
-const UeberweisungHinweis = styled.div`
-  margin-top: 0.75rem;
-  padding: 0.75rem 1rem;
-  background: #fff8e1;
-  border: 1px solid #ffe082;
-  border-radius: 8px;
-  font-size: 0.82rem;
-  color: #6d4c00;
+const UeberweisungHinweis = styled.p`
+  margin: 1rem 0 0;
+  padding: 0.85rem 1rem;
+  background: ${brand.paper};
+  border-left: 3px solid ${brand.blue};
+  border-radius: 6px;
+  font-size: 0.95rem;
   line-height: 1.5;
+  color: ${brand.ink};
+  max-width: 60ch;
 `;
 
 // -- Modal --
@@ -487,7 +444,7 @@ const UeberweisungHinweis = styled.div`
 const ModalBackdrop = styled.div`
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.55);
+  background: rgba(10, 24, 48, 0.6);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -497,45 +454,58 @@ const ModalBackdrop = styled.div`
 
 const ModalBox = styled.div`
   background: #fff;
-  border-radius: 16px;
-  padding: 2rem;
+  border-radius: 14px;
+  border-top: 4px solid ${brand.red};
+  padding: 2rem 1.5rem 1.5rem;
   max-width: 460px;
   width: 100%;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 24px 48px rgba(10, 24, 48, 0.35);
   position: relative;
   max-height: 90vh;
   overflow-y: auto;
+  font-family: ${brand.fontBody};
+  color: ${brand.ink};
+  text-align: left;
+  color-scheme: light;
 `;
 
 const ModalClose = styled.button`
   position: absolute;
-  top: 12px;
-  right: 12px;
-  background: none;
+  top: 10px;
+  right: 10px;
+  width: 44px;
+  height: 44px;
+  padding: 0;
   border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-  color: #888;
-  width: 36px;
-  height: 36px;
   border-radius: 50%;
+  background: none;
+  font-size: 1.6rem;
+  line-height: 1;
+  color: ${brand.muted};
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background 0.2s;
-  &:hover { background: #f0f0f0; }
+
+  &:hover {
+    background: ${brand.paper};
+    border-color: transparent;
+  }
 `;
 
-const ModalTitle = styled.h3`
-  font-size: 1.25rem;
+const ModalTitle = styled.h2`
+  font-family: ${brand.fontDisplay};
+  font-size: 1.75rem;
   font-weight: 800;
-  color: #e10073;
-  margin: 0 0 0.5rem;
+  text-transform: uppercase;
+  color: ${brand.navy};
+  margin: 0 2.5rem 0.5rem 0;
+  line-height: 1;
 `;
 
 const ModalHint = styled.p`
-  font-size: 0.85rem;
-  color: #666;
+  font-size: 0.95rem;
+  color: ${brand.muted};
   margin: 0 0 1.25rem;
   line-height: 1.5;
 `;
@@ -547,24 +517,29 @@ const QRWrap = styled.div`
   padding: 1rem;
   background: #fff;
   border-radius: 12px;
-  border: 1px solid #eee;
+  border: 1px solid ${brand.line};
 `;
 
 const ModalBankRow = styled.div`
-  font-size: 0.88rem;
-  color: #444;
+  font-size: 0.95rem;
   line-height: 1.7;
-  strong { color: #222; }
+  overflow-wrap: anywhere;
+  strong { color: ${brand.navy}; }
 `;
 
-const ModalEmailHint = styled.div`
-  margin-top: 1rem;
+const ModalBankMeta = styled.div`
+  margin-top: 0.25rem;
+  font-size: 0.875rem;
+  color: ${brand.muted};
+`;
+
+const ModalEmailHint = styled.p`
+  margin: 1rem 0 0;
   padding: 0.75rem 1rem;
-  background: #f0fdf4;
-  border: 1px solid #bbf7d0;
-  border-radius: 8px;
-  font-size: 0.82rem;
-  color: #166534;
+  background: ${brand.paper};
+  border-left: 3px solid ${brand.blue};
+  border-radius: 6px;
+  font-size: 0.95rem;
   line-height: 1.5;
 `;
 
@@ -597,6 +572,17 @@ const HERO_IMAGES = [
 
 const DURATION_OPTIONS = ["1 Jahr", "2 Jahre", "3 Jahre"];
 
+const prefersReducedMotion = () =>
+  typeof window !== "undefined" &&
+  window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+const scrollToId = (id: string) => {
+  document.getElementById(id)?.scrollIntoView({
+    behavior: prefersReducedMotion() ? "auto" : "smooth",
+    block: "start",
+  });
+};
+
 // ---------------------------------------------------------------------------
 // Component
 // ---------------------------------------------------------------------------
@@ -606,7 +592,7 @@ export default function Club500Page() {
 
   const [heroIdx, setHeroIdx] = useState(0);
   useEffect(() => {
-    if (HERO_IMAGES.length <= 1) return;
+    if (HERO_IMAGES.length <= 1 || prefersReducedMotion()) return;
     const id = setInterval(() => setHeroIdx((i) => (i + 1) % HERO_IMAGES.length), 6000);
     return () => clearInterval(id);
   }, []);
@@ -622,6 +608,15 @@ export default function Club500Page() {
   const [bForm, setBForm] = useState({ vorname: "", nachname: "", email: "", strasse: "", plz: "", ort: "" });
 
   const [showQrModal, setShowQrModal] = useState(false);
+
+  useEffect(() => {
+    if (!showQrModal) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setShowQrModal(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [showQrModal]);
 
   const baseAmount = useMemo(() => {
     if (customMode) {
@@ -657,41 +652,54 @@ export default function Club500Page() {
   const updateBForm = (f: string, v: string) => setBForm((p) => ({ ...p, [f]: v }));
 
   return (
-    <>
+    <Page>
       {/* ===== Hero ===== */}
-      <Hero>
+      <Hero aria-labelledby="club500-title" data-dark>
         {HERO_IMAGES.map((src, i) => (
-          <HeroSlide key={i} $bg={src} $active={i === heroIdx} />
+          <HeroSlide key={i} $bg={src} $active={i === heroIdx} aria-hidden="true" />
         ))}
-        <HeroOverlay />
-        <HeroContent>
-          <HeroLogo src={cfg.heroImage} alt="500er Club" />
-          <HeroTitle>{cfg.heroTitle}</HeroTitle>
-          <HeroSub>{cfg.subtitle}</HeroSub>
-          <HeroCTA
-            href="#feld-sichern"
-            onClick={(e) => {
-              e.preventDefault();
-              document.getElementById("feld-sichern")?.scrollIntoView({ behavior: "smooth" });
-            }}
-          >
-            Feld sichern
-          </HeroCTA>
-        </HeroContent>
+        <HeroShade />
+        <HeroInner>
+          <Eyebrow $onDark>100 Felder, 500 € pro Feld und Saison</Eyebrow>
+          <HeroTitle id="club500-title">
+            Der <span>500er</span> Club.
+          </HeroTitle>
+          <HeroLead>{cfg.subtitle}</HeroLead>
+          <HeroActions>
+            <ButtonLink
+              href="#feld-sichern"
+              onClick={(e) => {
+                e.preventDefault();
+                scrollToId("feld-sichern");
+              }}
+            >
+              Feld sichern
+            </ButtonLink>
+            <ButtonLink
+              href="#tafel-titel"
+              $variant="outlineLight"
+              onClick={(e) => {
+                e.preventDefault();
+                scrollToId("tafel-titel");
+              }}
+            >
+              Unsere Förderer ansehen
+            </ButtonLink>
+          </HeroActions>
+        </HeroInner>
       </Hero>
 
       {/* ===== Benefits ===== */}
-      <Section>
+      <Section aria-labelledby="benefits-title">
         <Container>
-          <SectionTitle>Was Ihre Unterstützung bewirkt</SectionTitle>
-          <SectionSubtitle>
-            Mit einem Feld im 500er Club unterstützen Sie direkt unsere erste
-            Mannschaft in der Verbandsliga.
-          </SectionSubtitle>
+          <SectionHeader
+            id="benefits-title"
+            eyebrow="Ihre Unterstützung"
+            title="Was Ihr Feld bewirkt."
+          />
           <BenefitGrid>
-            {cfg.benefits.map((b, i) => (
-              <BenefitCard key={i}>
-                <BenefitIcon>{b.icon}</BenefitIcon>
+            {cfg.benefits.map((b) => (
+              <BenefitCard key={b.title}>
                 <BenefitTitle>{b.title}</BenefitTitle>
                 <BenefitText>{b.text}</BenefitText>
               </BenefitCard>
@@ -701,136 +709,163 @@ export default function Club500Page() {
       </Section>
 
       {/* ===== Fördertafel ===== */}
-      <Foerdertafel />
+      <TafelWrap data-dark>
+        <Foerdertafel />
+      </TafelWrap>
 
       {/* ===== Form ===== */}
-      <SectionAlt id="feld-sichern">
+      <Section $paper id="feld-sichern" aria-labelledby="feld-title">
         <Container>
-          <SectionTitle>Feld sichern</SectionTitle>
-          <SectionSubtitle>
-            Wählen Sie, für wie viele Saisons Sie ein Feld übernehmen möchten.
-          </SectionSubtitle>
+          <SectionHeader
+            id="feld-title"
+            eyebrow="Per Überweisung oder QR-Code"
+            title="Feld sichern."
+            lead="Wählen Sie, für wie viele Saisons Sie ein Feld übernehmen möchten."
+          />
 
-          {/* Membership options */}
-          <FieldLabel>{cfg.sectionTitle}</FieldLabel>
-          <MembershipGrid>
-            {cfg.memberships.map((m, i) => (
-              <MembershipCard
-                key={m.value}
-                $active={!customMode && selectedIdx === i}
-                onClick={() => { setCustomMode(false); setSelectedIdx(i); }}
-                type="button"
-              >
-                <MembershipPrice $active={!customMode && selectedIdx === i}>
-                  {m.label}
-                </MembershipPrice>
-                <MembershipDuration $active={!customMode && selectedIdx === i}>
-                  {m.duration}
-                </MembershipDuration>
-                <MembershipDesc>{m.description}</MembershipDesc>
-              </MembershipCard>
-            ))}
-          </MembershipGrid>
+          <FormCard>
+            {/* Membership options */}
+            <div role="group" aria-labelledby="optionen-label">
+              <GroupLabel id="optionen-label">{cfg.sectionTitle}</GroupLabel>
+              <MembershipGrid>
+                {cfg.memberships.map((m, i) => {
+                  const active = !customMode && selectedIdx === i;
+                  return (
+                    <MembershipCard
+                      key={m.value}
+                      $active={active}
+                      aria-pressed={active}
+                      onClick={() => { setCustomMode(false); setSelectedIdx(i); }}
+                      type="button"
+                    >
+                      <MembershipPrice>{m.label}</MembershipPrice>
+                      <MembershipDuration>{m.duration}</MembershipDuration>
+                      <MembershipDesc>{m.description}</MembershipDesc>
+                    </MembershipCard>
+                  );
+                })}
+              </MembershipGrid>
 
-          <CustomCard $active={customMode} onClick={() => { if (!customMode) setCustomMode(true); }}>
-            <CustomHeader>
-              <CustomRadio $active={customMode} />
-              {cfg.customAmount.label}
-            </CustomHeader>
-            {customMode && (
-              <CustomFields onClick={(e) => e.stopPropagation()}>
-                <Input
-                  type="text" inputMode="decimal"
-                  placeholder="Betrag in EUR"
-                  value={customValue}
-                  onChange={(e) => setCustomValue(e.target.value)}
-                  autoFocus
-                />
-                <DurationRadioRow>
-                  {DURATION_OPTIONS.map((d) => (
-                    <DurationBtn key={d} $active={customDuration === d}
-                      onClick={() => setCustomDuration(d)} type="button">
-                      {d}
-                    </DurationBtn>
-                  ))}
-                </DurationRadioRow>
-              </CustomFields>
-            )}
-            {customMode && <CustomHint>{cfg.customAmount.minHint}</CustomHint>}
-          </CustomCard>
+              <CustomCard $active={customMode} onClick={() => { if (!customMode) setCustomMode(true); }}>
+                <CustomHeader type="button" aria-pressed={customMode}>
+                  <CustomRadio $active={customMode} />
+                  {cfg.customAmount.label}
+                </CustomHeader>
+                {customMode && (
+                  <CustomFields onClick={(e) => e.stopPropagation()}>
+                    <Input
+                      type="text" inputMode="decimal"
+                      placeholder="Betrag in EUR"
+                      aria-label="Eigener Betrag in Euro"
+                      value={customValue}
+                      onChange={(e) => setCustomValue(e.target.value)}
+                      autoFocus
+                    />
+                    <DurationRadioRow role="group" aria-label="Laufzeit">
+                      {DURATION_OPTIONS.map((d) => (
+                        <DurationBtn key={d} $active={customDuration === d}
+                          aria-pressed={customDuration === d}
+                          onClick={() => setCustomDuration(d)} type="button">
+                          {d}
+                        </DurationBtn>
+                      ))}
+                    </DurationRadioRow>
+                  </CustomFields>
+                )}
+                {customMode && <CustomHint>{cfg.customAmount.minHint}</CustomHint>}
+              </CustomCard>
+            </div>
 
-          {/* Spendentafel */}
-          <ToggleGroup>
-            <FieldLabel>{cfg.spendentafel.label}</FieldLabel>
-            <ToggleSublabel>{cfg.spendentafel.sublabel}</ToggleSublabel>
-            <Input
-              type="text"
-              placeholder={cfg.spendentafel.nameFieldPlaceholder}
-              value={tafelName}
-              onChange={(e) => setTafelName(e.target.value)}
-            />
-          </ToggleGroup>
+            {/* Spendentafel */}
+            <ToggleGroup>
+              <FieldLabel htmlFor="tafel-name">{cfg.spendentafel.label}</FieldLabel>
+              <ToggleSublabel id="tafel-hinweis">{cfg.spendentafel.sublabel}</ToggleSublabel>
+              <Input
+                id="tafel-name"
+                type="text"
+                aria-describedby="tafel-hinweis"
+                placeholder={cfg.spendentafel.nameFieldPlaceholder}
+                value={tafelName}
+                onChange={(e) => setTafelName(e.target.value)}
+              />
+            </ToggleGroup>
 
-          {/* Bescheinigung */}
-          <BescheinigungSection>
-            <CheckboxLabel>
-              <input type="checkbox" checked={wantBescheinigung}
-                onChange={(e) => setWantBescheinigung(e.target.checked)} />
-              <span>{cfg.bescheinigung.label}</span>
-            </CheckboxLabel>
-            <BescheinigungHinweis>{cfg.bescheinigung.hinweis}</BescheinigungHinweis>
+            {/* Bescheinigung */}
+            <BescheinigungSection>
+              <CheckboxLabel>
+                <input type="checkbox" checked={wantBescheinigung}
+                  onChange={(e) => setWantBescheinigung(e.target.checked)} />
+                <span>{cfg.bescheinigung.label}</span>
+              </CheckboxLabel>
+              <BescheinigungHinweis>{cfg.bescheinigung.hinweis}</BescheinigungHinweis>
 
-            <MiniForm $visible={wantBescheinigung}>
-              <FormRow>
-                <Input type="text" name="bescheinigung-vorname" autoComplete="given-name"
-                  placeholder={cfg.bescheinigung.fields.vorname}
-                  value={bForm.vorname} onChange={(e) => updateBForm("vorname", e.target.value)} />
-                <Input type="text" name="bescheinigung-nachname" autoComplete="family-name"
-                  placeholder={cfg.bescheinigung.fields.nachname}
-                  value={bForm.nachname} onChange={(e) => updateBForm("nachname", e.target.value)} />
-              </FormRow>
-              <Input type="email" name="bescheinigung-email" autoComplete="email"
-                placeholder={cfg.bescheinigung.fields.email}
-                value={bForm.email} onChange={(e) => updateBForm("email", e.target.value)} />
-              <Input type="text" name="bescheinigung-strasse" autoComplete="street-address"
-                placeholder={cfg.bescheinigung.fields.strasse}
-                value={bForm.strasse} onChange={(e) => updateBForm("strasse", e.target.value)} />
-              <FormRow>
-                <Input type="text" name="bescheinigung-plz" autoComplete="postal-code"
-                  placeholder={cfg.bescheinigung.fields.plz}
-                  value={bForm.plz} onChange={(e) => updateBForm("plz", e.target.value)} />
-                <Input type="text" name="bescheinigung-ort" autoComplete="address-level2"
-                  placeholder={cfg.bescheinigung.fields.ort}
-                  value={bForm.ort} onChange={(e) => updateBForm("ort", e.target.value)} />
-              </FormRow>
-            </MiniForm>
-          </BescheinigungSection>
+              <MiniForm $visible={wantBescheinigung}>
+                <FormRow>
+                  <Input type="text" name="bescheinigung-vorname" autoComplete="given-name"
+                    aria-label={cfg.bescheinigung.fields.vorname}
+                    placeholder={cfg.bescheinigung.fields.vorname}
+                    value={bForm.vorname} onChange={(e) => updateBForm("vorname", e.target.value)} />
+                  <Input type="text" name="bescheinigung-nachname" autoComplete="family-name"
+                    aria-label={cfg.bescheinigung.fields.nachname}
+                    placeholder={cfg.bescheinigung.fields.nachname}
+                    value={bForm.nachname} onChange={(e) => updateBForm("nachname", e.target.value)} />
+                </FormRow>
+                <Input type="email" name="bescheinigung-email" autoComplete="email"
+                  aria-label={cfg.bescheinigung.fields.email}
+                  placeholder={cfg.bescheinigung.fields.email}
+                  value={bForm.email} onChange={(e) => updateBForm("email", e.target.value)} />
+                <Input type="text" name="bescheinigung-strasse" autoComplete="street-address"
+                  aria-label={cfg.bescheinigung.fields.strasse}
+                  placeholder={cfg.bescheinigung.fields.strasse}
+                  value={bForm.strasse} onChange={(e) => updateBForm("strasse", e.target.value)} />
+                <FormRow>
+                  <Input type="text" name="bescheinigung-plz" autoComplete="postal-code"
+                    aria-label={cfg.bescheinigung.fields.plz}
+                    placeholder={cfg.bescheinigung.fields.plz}
+                    value={bForm.plz} onChange={(e) => updateBForm("plz", e.target.value)} />
+                  <Input type="text" name="bescheinigung-ort" autoComplete="address-level2"
+                    aria-label={cfg.bescheinigung.fields.ort}
+                    placeholder={cfg.bescheinigung.fields.ort}
+                    value={bForm.ort} onChange={(e) => updateBForm("ort", e.target.value)} />
+                </FormRow>
+              </MiniForm>
+            </BescheinigungSection>
 
-          {/* CTA */}
-          <CTARow>
+            {/* CTA */}
             <BankCTA type="button" onClick={() => setShowQrModal(true)}>
               {cfg.bankCtaLabel}
-              <CTAAmount>{formatEuro(baseAmount)} €</CTAAmount>
+              <CTAAmount>{formatEuro(baseAmount)}&nbsp;€</CTAAmount>
             </BankCTA>
-          </CTARow>
-          {wantBescheinigung && (
-            <UeberweisungHinweis>{cfg.ueberweisungHinweis}</UeberweisungHinweis>
-          )}
-
+            {wantBescheinigung && (
+              <UeberweisungHinweis>{cfg.ueberweisungHinweis}</UeberweisungHinweis>
+            )}
+          </FormCard>
         </Container>
-      </SectionAlt>
+      </Section>
 
       <Footer />
 
       {/* ===== QR Modal ===== */}
       {showQrModal && (
         <ModalBackdrop onClick={() => setShowQrModal(false)}>
-          <ModalBox onClick={(e) => e.stopPropagation()}>
-            <ModalClose onClick={() => setShowQrModal(false)}>×</ModalClose>
-            <ModalTitle>Überweisung per QR-Code</ModalTitle>
+          <ModalBox
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="qr-title"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <ModalClose
+              type="button"
+              aria-label="Schließen"
+              onClick={() => setShowQrModal(false)}
+              autoFocus
+            >
+              ×
+            </ModalClose>
+            <ModalTitle id="qr-title">Überweisung per QR-Code</ModalTitle>
             <ModalHint>
               Scannen Sie den QR-Code mit Ihrer Banking-App (Sparkasse,
-              VR-Banking, ING, etc.) – alle Daten werden automatisch ausgefüllt.
+              VR-Banking, ING usw.). Alle Daten werden automatisch ausgefüllt.
             </ModalHint>
             {baseAmount > 0 && (
               <QRWrap><QRCodeSVG value={epcPayload} size={220} level="M" /></QRWrap>
@@ -838,13 +873,13 @@ export default function Club500Page() {
             <ModalBankRow><strong>{cfg.bankDetails.kontoinhaber}</strong></ModalBankRow>
             <ModalBankRow>IBAN: <strong>{cfg.bankDetails.iban}</strong></ModalBankRow>
             <ModalBankRow>
-              Betrag: <strong>{formatEuro(baseAmount)} €</strong>
-              {selectedDuration && <> · <strong>{selectedDuration}</strong></>}
+              Betrag: <strong>{formatEuro(baseAmount)}&nbsp;€</strong>
+              {selectedDuration && <>, <strong>{selectedDuration}</strong></>}
             </ModalBankRow>
             <ModalBankRow>Verwendungszweck: <strong>{verwendungszweck}</strong></ModalBankRow>
-            <ModalBankRow style={{ fontSize: "0.8rem", color: "#888" }}>
-              {cfg.bankDetails.bank} · {cfg.bankDetails.adresse}
-            </ModalBankRow>
+            <ModalBankMeta>
+              {cfg.bankDetails.bank}, {cfg.bankDetails.adresse}
+            </ModalBankMeta>
             {wantBescheinigung && bForm.email && (
               <ModalEmailHint>
                 Wir senden Ihre Spendenbescheinigung an <strong>{bForm.email}</strong>.
@@ -853,6 +888,6 @@ export default function Club500Page() {
           </ModalBox>
         </ModalBackdrop>
       )}
-    </>
+    </Page>
   );
 }

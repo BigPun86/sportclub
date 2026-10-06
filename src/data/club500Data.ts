@@ -12,7 +12,7 @@ export interface MembershipOption {
 
 export const club500Config = {
   subtitle:
-    "Nach der Meisterschaft in der Landesliga spielt unsere erste Mannschaft ab der Saison 2026/27 in der Verbandsliga. 100 Felder, 500 € pro Feld und Saison - jedes Feld steht für einen Förderer.",
+    "Nach der Meisterschaft in der Landesliga spielt unsere erste Mannschaft seit dieser Saison in der Verbandsliga. Mit einem Feld im 500er Club stehen Sie direkt hinter ihr, ob privat oder mit Ihrer Firma. Jedes Feld steht für einen Förderer.",
 
   heroImage: "/sckw-logo-500club.png",
   heroTitle: "500er Club",
@@ -56,13 +56,13 @@ export const club500Config = {
     },
     {
       icon: "🏅",
-      title: "Ihr Name auf der Tafel",
-      text: "Wenn Sie möchten. Wer lieber im Hintergrund bleibt, erscheint als „SCKW Gönner\".",
+      title: "Ihr Name auf der Spendentafel",
+      text: "Auf der Website und am Vereinsgelände, wenn Sie möchten. Wer lieber im Hintergrund bleibt, erscheint als „SCKW Gönner“.",
     },
     {
       icon: "⚽",
-      title: "Direkte Förderung der Ersten",
-      text: "Auswärtsfahrten, Training, Material und Spielbetrieb in der Verbandsliga.",
+      title: "Direkt für die Erste",
+      text: "Ihr Beitrag fließt in Auswärtsfahrten, Training, Material und den Spielbetrieb in der Verbandsliga.",
     },
   ],
 
