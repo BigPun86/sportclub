@@ -40,9 +40,13 @@ const MainSponsorLabel = styled.span`
 const MainSponsorLogo = styled.img`
   align-self: center;
   width: 100%;
-  max-width: 220px;
-  max-height: 120px;
+  max-width: 320px;
+  max-height: 170px;
   object-fit: contain;
+
+  @media (min-width: 900px) {
+    max-height: 240px;
+  }
 `;
 
 const MainSponsorName = styled.span`
@@ -83,9 +87,10 @@ const PartnerCard = styled.a`
   }
 `;
 
-const PartnerLogo = styled.img`
+// Square or upright logos look tiny at the height of wide ones.
+const PartnerLogo = styled.img<{ $square?: boolean }>`
   max-width: 100%;
-  max-height: 48px;
+  max-height: ${(p) => (p.$square ? "68px" : "48px")};
   object-fit: contain;
 `;
 
@@ -126,6 +131,7 @@ const currentSponsors = {
       name: "Logan's Linde",
       logo: "/sponsors/logans-linde.png",
       website: "https://logans-wollmatingen.de/",
+      square: true,
     },
     {
       name: "KARAKI Services",
@@ -146,11 +152,13 @@ const currentSponsors = {
       name: "HI-PRO Europe",
       logo: "/sponsors/hi-pro.webp",
       website: "https://www.hi-pro.eu/",
+      square: true,
     },
     {
       name: "Enis Sporttreff",
       logo: "/sponsors/enis-sporttreff.webp",
       website: "https://enis-sporttreff.de/",
+      square: true,
     },
     {
       name: "ZMVZ Dr. Schütz GmbH",
@@ -183,7 +191,7 @@ export default function CurrentSponsors() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <PartnerLogo src={partner.logo} alt={partner.name} />
+              <PartnerLogo src={partner.logo} alt={partner.name} $square={"square" in partner && partner.square} />
             </PartnerCard>
           </li>
         ))}
