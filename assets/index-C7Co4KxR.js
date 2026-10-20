@@ -1030,9 +1030,13 @@ D-78467 Konstanz`},pj=[{label:"Firma / Organisation",type:"text",lines:1},{label
 `,vj=y.img`
   align-self: center;
   width: 100%;
-  max-width: 220px;
-  max-height: 120px;
+  max-width: 320px;
+  max-height: 170px;
   object-fit: contain;
+
+  @media (min-width: 900px) {
+    max-height: 240px;
+  }
 `,Sj=y.span`
   font-size: 0.95rem;
   font-weight: 600;
@@ -1067,9 +1071,9 @@ D-78467 Konstanz`},pj=[{label:"Firma / Organisation",type:"text",lines:1},{label
   }
 `,Ej=y.img`
   max-width: 100%;
-  max-height: 48px;
+  max-height: ${a=>a.$square?"68px":"48px"};
   object-fit: contain;
-`,_j={hauptsponsor:{name:"Fuchsbau Immobilien",logo:"/sponsors/fuchsbau-logo.png",website:"https://immofuchsbau.com/"},partners:[{name:"Graf Hardenberg",logo:"/sponsors/grafhardenberg.png",website:"https://www.grafhardenberg.de/"},{name:"Stadtwerke Konstanz",logo:"/sponsors/Stadtwerke.avif",website:"https://www.stadtwerke-konstanz.de/"},{name:"Sparkasse Bodensee",logo:"/sponsors/sparkasse-bodensee.png",website:"https://www.sparkasse-bodensee.de/"},{name:"MUMM Magazin",logo:"/sponsors/mumm-magazin.png",website:"https://www.nil-media.de/mumm-magazin/"},{name:"FUCHS",logo:"/sponsors/fuchs.png",website:"https://www.fuchs-haustechnik.de/"},{name:"Logan's Linde",logo:"/sponsors/logans-linde.png",website:"https://logans-wollmatingen.de/"},{name:"KARAKI Services",logo:"/sponsors/karaki-services.png",website:"https://karaki-services.de/"},{name:"Danlin Media",logo:"/sponsors/DANLIN.avif",website:"https://www.danlin-media.de/"},{name:"grenz|gänger tools",logo:"/sponsors/grenzgaenger-tools.png",website:"https://grenzgaenger-tools.de"},{name:"HI-PRO Europe",logo:"/sponsors/hi-pro.webp",website:"https://www.hi-pro.eu/"},{name:"Enis Sporttreff",logo:"/sponsors/enis-sporttreff.webp",website:"https://enis-sporttreff.de/"},{name:"ZMVZ Dr. Schütz GmbH",logo:"/sponsors/dr-schuetz.svg",website:"https://www.schuetz-die-zaehne.de/"}]};function zj(){const{hauptsponsor:a,partners:s}=_j;return i.jsxs(bj,{children:[i.jsxs(xj,{href:a.website,target:"_blank",rel:"noopener noreferrer",children:[i.jsx(yj,{children:"Hauptsponsor"}),i.jsx(vj,{src:a.logo,alt:a.name}),i.jsx(Sj,{children:a.name})]}),i.jsx(jj,{"aria-label":"Partner",children:s.map(u=>i.jsx("li",{children:i.jsx(wj,{href:u.website,target:"_blank",rel:"noopener noreferrer",children:i.jsx(Ej,{src:u.logo,alt:u.name})})},u.name))})]})}const Fl=cn`
+`,_j={hauptsponsor:{name:"Fuchsbau Immobilien",logo:"/sponsors/fuchsbau-logo.png",website:"https://immofuchsbau.com/"},partners:[{name:"Graf Hardenberg",logo:"/sponsors/grafhardenberg.png",website:"https://www.grafhardenberg.de/"},{name:"Stadtwerke Konstanz",logo:"/sponsors/Stadtwerke.avif",website:"https://www.stadtwerke-konstanz.de/"},{name:"Sparkasse Bodensee",logo:"/sponsors/sparkasse-bodensee.png",website:"https://www.sparkasse-bodensee.de/"},{name:"MUMM Magazin",logo:"/sponsors/mumm-magazin.png",website:"https://www.nil-media.de/mumm-magazin/"},{name:"FUCHS",logo:"/sponsors/fuchs.png",website:"https://www.fuchs-haustechnik.de/"},{name:"Logan's Linde",logo:"/sponsors/logans-linde.png",website:"https://logans-wollmatingen.de/",square:!0},{name:"KARAKI Services",logo:"/sponsors/karaki-services.png",website:"https://karaki-services.de/"},{name:"Danlin Media",logo:"/sponsors/DANLIN.avif",website:"https://www.danlin-media.de/"},{name:"grenz|gänger tools",logo:"/sponsors/grenzgaenger-tools.png",website:"https://grenzgaenger-tools.de"},{name:"HI-PRO Europe",logo:"/sponsors/hi-pro.webp",website:"https://www.hi-pro.eu/",square:!0},{name:"Enis Sporttreff",logo:"/sponsors/enis-sporttreff.webp",website:"https://enis-sporttreff.de/",square:!0},{name:"ZMVZ Dr. Schütz GmbH",logo:"/sponsors/dr-schuetz.svg",website:"https://www.schuetz-die-zaehne.de/"}]};function zj(){const{hauptsponsor:a,partners:s}=_j;return i.jsxs(bj,{children:[i.jsxs(xj,{href:a.website,target:"_blank",rel:"noopener noreferrer",children:[i.jsx(yj,{children:"Hauptsponsor"}),i.jsx(vj,{src:a.logo,alt:a.name}),i.jsx(Sj,{children:a.name})]}),i.jsx(jj,{"aria-label":"Partner",children:s.map(u=>i.jsx("li",{children:i.jsx(wj,{href:u.website,target:"_blank",rel:"noopener noreferrer",children:i.jsx(Ej,{src:u.logo,alt:u.name,$square:"square"in u&&u.square})})},u.name))})]})}const Fl=cn`
   display: inline-flex;
   align-items: center;
   justify-content: center;
