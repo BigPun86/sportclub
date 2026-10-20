@@ -97,11 +97,13 @@ export default function Foerdertafel() {
         >
           {felder.map((nr) => {
             const eintrag = belegt.get(nr);
-            const label = eintrag
+            const rohName = eintrag
               ? eintrag.anonym
                 ? ANONYM_LABEL
                 : eintrag.name
               : null;
+            // "|" im Namen erzwingt den Zeilenumbruch, gleiche Konvention wie im Tafel-Generator
+            const label = rohName ? rohName.replace("|", "\n") : null;
 
             return (
               <li
@@ -136,6 +138,7 @@ export default function Foerdertafel() {
                       textAlign: "center",
                       lineHeight: 1.15,
                       hyphens: "auto",
+                      whiteSpace: "pre-line",
                     }}
                   >
                     {label}

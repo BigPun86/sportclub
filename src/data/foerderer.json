@@ -1,5 +1,5 @@
 {
-  "stand": "2026-08-27",
+  "stand": "2026-10-21",
   "felderGesamt": 100,
   "foerderer": [
     { "feld": 1,  "name": "Ulrike Dunand",                "anonym": false, "saisonBis": 2027 },
@@ -15,6 +15,8 @@
     { "feld": 11, "name": "Rolf Degen",                   "anonym": false, "saisonBis": 2027 },
     { "feld": 12, "name": "Senioren des SCKW",            "anonym": false, "saisonBis": 2027 },
     { "feld": 13, "name": "Brigitte und Thomas Fuchs",    "anonym": false, "saisonBis": 2027 },
+    { "feld": 14, "name": "ZMVZ|Dr. Schütz GmbH",         "anonym": false, "saisonBis": 2027 },
+    { "feld": 15, "name": "Izo|Guggelhahn",               "anonym": false, "saisonBis": 2027 },
     { "feld": 17, "name": "Manni",                       "anonym": false, "saisonBis": 2027 }
   ]
 }
