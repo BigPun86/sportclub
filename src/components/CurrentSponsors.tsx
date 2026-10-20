@@ -165,6 +165,12 @@ const currentSponsors = {
       logo: "/sponsors/dr-schuetz.svg",
       website: "https://www.schuetz-die-zaehne.de/",
     },
+    {
+      name: "Adel Bruno Grimm",
+      logo: "/sponsors/adelbrunogrimm.png",
+      website: "https://adelbrunogrimm.com/",
+      square: true,
+    },
   ],
 };
 
