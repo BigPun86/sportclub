@@ -142,6 +142,21 @@ const currentSponsors = {
       logo: "/sponsors/grenzgaenger-tools.png",
       website: "https://grenzgaenger-tools.de",
     },
+    {
+      name: "HI-PRO Europe",
+      logo: "/sponsors/hi-pro.webp",
+      website: "https://www.hi-pro.eu/",
+    },
+    {
+      name: "Enis Sporttreff",
+      logo: "/sponsors/enis-sporttreff.webp",
+      website: "https://enis-sporttreff.de/",
+    },
+    {
+      name: "ZMVZ Dr. Schütz GmbH",
+      logo: "/sponsors/dr-schuetz.svg",
+      website: "https://www.schuetz-die-zaehne.de/",
+    },
   ],
 };
 
