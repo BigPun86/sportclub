@@ -94,7 +94,7 @@ const PartnerLogo = styled.img<{ $square?: boolean }>`
   object-fit: contain;
 `;
 
-// Aktuelle Sponsoren - zentral gepflegt (Reihenfolge wie auf sckw.de)
+// Aktuelle Sponsoren - Reihenfolge, Namen und Links wie auf sckw.de (Stand 21.10.2026)
 const currentSponsors = {
   hauptsponsor: {
     name: "Fuchsbau Immobilien",
@@ -102,75 +102,20 @@ const currentSponsors = {
     website: "https://immofuchsbau.com/",
   },
   partners: [
-    {
-      name: "Graf Hardenberg",
-      logo: "/sponsors/grafhardenberg.png",
-      website: "https://www.grafhardenberg.de/",
-    },
-    {
-      name: "Stadtwerke Konstanz",
-      logo: "/sponsors/Stadtwerke.avif",
-      website: "https://www.stadtwerke-konstanz.de/",
-    },
-    {
-      name: "Sparkasse Bodensee",
-      logo: "/sponsors/sparkasse-bodensee.png",
-      website: "https://www.sparkasse-bodensee.de/",
-    },
-    {
-      name: "MUMM Magazin",
-      logo: "/sponsors/mumm-magazin.png",
-      website: "https://www.nil-media.de/mumm-magazin/",
-    },
-    {
-      name: "FUCHS",
-      logo: "/sponsors/fuchs.png",
-      website: "https://www.fuchs-haustechnik.de/",
-    },
-    {
-      name: "Logan's Linde",
-      logo: "/sponsors/logans-linde.png",
-      website: "https://logans-wollmatingen.de/",
-      square: true,
-    },
-    {
-      name: "KARAKI Services",
-      logo: "/sponsors/karaki-services.png",
-      website: "https://karaki-services.de/",
-    },
-    {
-      name: "Danlin Media",
-      logo: "/sponsors/DANLIN.avif",
-      website: "https://www.danlin-media.de/",
-    },
-    {
-      name: "grenz|gänger tools",
-      logo: "/sponsors/grenzgaenger-tools.png",
-      website: "https://grenzgaenger-tools.de",
-    },
-    {
-      name: "HI-PRO Europe",
-      logo: "/sponsors/hi-pro.webp",
-      website: "https://www.hi-pro.eu/",
-      square: true,
-    },
-    {
-      name: "Enis Sporttreff",
-      logo: "/sponsors/enis-sporttreff.webp",
-      website: "https://enis-sporttreff.de/",
-      square: true,
-    },
-    {
-      name: "ZMVZ Dr. Schütz GmbH",
-      logo: "/sponsors/dr-schuetz.svg",
-      website: "https://www.schuetz-die-zaehne.de/",
-    },
-    {
-      name: "Adel Bruno Grimm",
-      logo: "/sponsors/adelbrunogrimm.png",
-      website: "https://adelbrunogrimm.com/",
-      square: true,
-    },
+    { name: "Graf Hardenberg", logo: "/sponsors/grafhardenberg.png", website: "https://www.grafhardenberg.de/standorte/konstanz" },
+    { name: "Stadtwerke Konstanz", logo: "/sponsors/Stadtwerke.avif", website: "http://www.stadtwerke-konstanz.de/karriere/" },
+    // sckw.de shows Sparkasse without a link
+    { name: "Sparkasse Bodensee", logo: "/sponsors/sparkasse-bodensee.png", website: "https://www.sparkasse-bodensee.de/" },
+    { name: "Fuchs Haustechnik", logo: "/sponsors/fuchs.png", website: "https://www.fuchs-haustechnik.de/" },
+    { name: "Logans Linde", logo: "/sponsors/logans-linde.png", website: "https://logans-wollmatingen.de/", square: true },
+    { name: "MUMM Magazin", logo: "/sponsors/mumm-magazin.png", website: "https://www.nil-media.de/mumm-magazin/" },
+    { name: "DANLIN Media", logo: "/sponsors/DANLIN.avif", website: "https://www.danlin-media.de/" },
+    { name: "Grenzgänger-Tools", logo: "/sponsors/grenzgaenger-tools.png", website: "https://grenzgaenger-tools.de" },
+    { name: "Karaki Services", logo: "/sponsors/karaki-services.png", website: "https://karaki-services.de/" },
+    { name: "HI-PRO Europe", logo: "/sponsors/hi-pro.webp", website: "https://www.hi-pro.eu/", square: true },
+    { name: "Enis Sporttreff", logo: "/sponsors/enis-sporttreff.webp", website: "https://enis-sporttreff.de/", square: true },
+    { name: "ZMVZ Dr. Schütz GmbH", logo: "/sponsors/dr-schuetz.svg", website: "https://www.schuetz-die-zaehne.de/" },
+    { name: "Adel Bruno Grimm", logo: "/sponsors/adelbrunogrimm.png", website: "https://adelbrunogrimm.com/", square: true },
   ],
 };
 
