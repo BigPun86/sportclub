@@ -74,7 +74,7 @@ const VIEWS: View[] = [
           y={560.5}
           maxWidth={258}
           size={10.5}
-          text={`${name} STADION`}
+          text={name}
         />
       </>
     ),
