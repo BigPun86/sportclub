@@ -113,7 +113,7 @@ export default function Foerdertafel() {
                   border: eintrag ? "none" : `2px solid ${FARBEN.rahmen}`,
                   borderRadius: 8,
                   padding: ".5rem .4rem",
-                  minHeight: 62,
+                  minHeight: 76,
                   display: "flex",
                   flexDirection: "column",
                   justifyContent: eintrag ? "space-between" : "center",
@@ -122,9 +122,9 @@ export default function Foerdertafel() {
               >
                 <span
                   style={{
-                    fontSize: eintrag ? ".7rem" : "1.1rem",
+                    fontSize: eintrag ? ".8rem" : "1.1rem",
                     fontWeight: 700,
-                    color: eintrag ? "#C6DEFC" : "#5C7CA0",
+                    color: eintrag ? "#C6DEFC" : "#3E5A80",
                     lineHeight: 1,
                   }}
                 >
@@ -133,11 +133,11 @@ export default function Foerdertafel() {
                 {label && (
                   <span
                     style={{
-                      fontSize: ".8rem",
-                      fontWeight: 600,
+                      fontSize: "1.05rem",
+                      fontWeight: 700,
                       textAlign: "center",
                       lineHeight: 1.15,
-                      hyphens: "auto",
+                      hyphens: "manual",
                       whiteSpace: "pre-line",
                     }}
                   >
