@@ -1,3 +1,5 @@
+import { useState } from "react";
+import styled, { css } from "styled-components";
 import foerdererData from "../data/foerderer.json";
 
 /**
@@ -26,15 +28,66 @@ const FARBEN = {
   gedaempft: "#96BAF0",
 };
 
+// Am Handy 3 Spalten; freie Felder hinter den belegten sind zugeklappt,
+// sonst scrollt man durch 30 Reihen leerer Kästen.
+const Raster = styled.ol<{ $zugeklappt: boolean }>`
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 0.5rem;
+  padding: 0;
+  margin: 0;
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.4rem;
+
+    .tafel-name {
+      font-size: 0.85rem;
+    }
+
+    ${({ $zugeklappt }) =>
+      $zugeklappt &&
+      css`
+        /* !important: die Felder setzen display inline */
+        li[data-extra="true"] {
+          display: none !important;
+        }
+      `}
+  }
+`;
+
+const AlleButton = styled.button`
+  display: none;
+  width: 100%;
+  margin-top: 0.75rem;
+  padding: 0.75rem;
+  font: inherit;
+  font-weight: 700;
+  color: ${FARBEN.weiss};
+  background: transparent;
+  border: 2px solid ${FARBEN.rahmen};
+  border-radius: 8px;
+  cursor: pointer;
+
+  @media (max-width: 768px) {
+    display: block;
+  }
+`;
+
 export default function Foerdertafel() {
   const { felderGesamt, foerderer } = foerdererData as {
     felderGesamt: number;
     foerderer: Foerderer[];
   };
 
+  const [alleZeigen, setAlleZeigen] = useState(false);
   const belegt = new Map(foerderer.map((f) => [f.feld, f]));
   const vergeben = foerderer.length;
   const felder = Array.from({ length: felderGesamt }, (_, i) => i + 1);
+  // Belegte Felder plus zwei volle Reihen freie, auf 3 Spalten aufgerundet
+  const letztesBelegt = Math.max(0, ...foerderer.map((f) => f.feld));
+  const sichtbarBis = Math.ceil((letztesBelegt + 6) / 3) * 3;
 
   return (
     <section
@@ -85,16 +138,7 @@ export default function Foerdertafel() {
           />
         </div>
 
-        <ol
-          style={{
-            listStyle: "none",
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fill, minmax(140px, 1fr))",
-            gap: ".5rem",
-            padding: 0,
-            margin: 0,
-          }}
-        >
+        <Raster id="tafel-felder" $zugeklappt={!alleZeigen}>
           {felder.map((nr) => {
             const eintrag = belegt.get(nr);
             const rohName = eintrag
@@ -108,6 +152,7 @@ export default function Foerdertafel() {
             return (
               <li
                 key={nr}
+                data-extra={!eintrag && nr > sichtbarBis}
                 style={{
                   background: eintrag ? FARBEN.blau : FARBEN.navy,
                   border: eintrag ? "none" : `2px solid ${FARBEN.rahmen}`,
@@ -132,6 +177,7 @@ export default function Foerdertafel() {
                 </span>
                 {label && (
                   <span
+                    className="tafel-name"
                     style={{
                       fontSize: "1.05rem",
                       fontWeight: 700,
@@ -147,7 +193,20 @@ export default function Foerdertafel() {
               </li>
             );
           })}
-        </ol>
+        </Raster>
+
+        {sichtbarBis < felderGesamt && (
+          <AlleButton
+            type="button"
+            aria-expanded={alleZeigen}
+            aria-controls="tafel-felder"
+            onClick={() => setAlleZeigen((v) => !v)}
+          >
+            {alleZeigen
+              ? "Weniger anzeigen"
+              : `Alle ${felderGesamt} Felder anzeigen`}
+          </AlleButton>
+        )}
 
         <p
           style={{
