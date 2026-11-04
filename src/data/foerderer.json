@@ -1,5 +1,5 @@
 {
-  "stand": "2026-10-21",
+  "stand": "2026-11-04",
   "felderGesamt": 100,
   "foerderer": [
     { "feld": 1,  "name": "Ulrike Dunand",                "anonym": false, "saisonBis": 2027 },
@@ -17,6 +17,8 @@
     { "feld": 13, "name": "Brigitte und Thomas Fuchs",    "anonym": false, "saisonBis": 2027 },
     { "feld": 14, "name": "ZMVZ|Dr. Schütz GmbH",         "anonym": false, "saisonBis": 2027 },
     { "feld": 15, "name": "Izet|Roter Gugelhan",          "anonym": false, "saisonBis": 2027 },
-    { "feld": 17, "name": "Manni",                       "anonym": false, "saisonBis": 2027 }
+    { "feld": 16, "name": "Dr. Laubach|Zahnheilkunde",    "anonym": false, "saisonBis": 2027 },
+    { "feld": 17, "name": "Manni",                       "anonym": false, "saisonBis": 2027 },
+    { "feld": 18, "name": "Martina|Laubach",              "anonym": false, "saisonBis": 2027 }
   ]
 }
