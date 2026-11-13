@@ -91,7 +91,8 @@ const NavLinks = styled.div<{ $open?: boolean }>`
   gap: 0.25rem;
   align-items: center;
 
-  @media (max-width: 767px) {
+  /* Burger bis 1023px: vier Links plus CTA passen auf Tablet-Breite nicht in eine Zeile */
+  @media (max-width: 1023px) {
     position: absolute;
     top: 100%;
     right: 0;
@@ -115,6 +116,7 @@ const NavLink = styled(Link)<{ $active?: boolean }>`
   padding: 0.6rem 0.9rem;
   border-radius: 8px;
   position: relative;
+  white-space: nowrap;
 
   &::after {
     content: "";
@@ -132,7 +134,7 @@ const NavLink = styled(Link)<{ $active?: boolean }>`
     background: ${brand.paper};
   }
 
-  @media (max-width: 767px) {
+  @media (max-width: 1023px) {
     padding: 0.85rem 0.9rem;
 
     &::after {
@@ -159,12 +161,13 @@ const NavCTA = styled(Link)`
   font-weight: 700;
   font-size: 0.95rem;
   text-decoration: none;
+  white-space: nowrap;
 
   &:hover {
     background: ${brand.redDark};
   }
 
-  @media (max-width: 767px) {
+  @media (max-width: 1023px) {
     margin: 0.5rem 0 0;
   }
 `;
@@ -187,7 +190,7 @@ const MobileToggle = styled.button`
     border-color: transparent;
   }
 
-  @media (max-width: 767px) {
+  @media (max-width: 1023px) {
     display: inline-flex;
   }
 `;

@@ -183,9 +183,8 @@ const Text = styled.p`
 `;
 
 const Card = styled.div`
-  background: #fff;
+  background: linear-gradient(${brand.red}, ${brand.red}) top / 100% 4px no-repeat, #fff;
   border: 1px solid ${brand.line};
-  border-top: 4px solid ${brand.red};
   border-radius: 14px;
   padding: 1.5rem;
 

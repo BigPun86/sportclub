@@ -688,9 +688,8 @@ const ClubTeaser = styled.div`
   align-items: center;
   padding: 2rem 1.5rem;
   border: 1px solid ${brand.line};
-  border-top: 4px solid ${brand.blue};
   border-radius: 14px;
-  background: #fff;
+  background: linear-gradient(${brand.blue}, ${brand.blue}) top / 100% 4px no-repeat, #fff;
 
   @media (min-width: 768px) {
     grid-template-columns: minmax(0, 1fr) auto;

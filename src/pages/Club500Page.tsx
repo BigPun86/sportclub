@@ -120,9 +120,8 @@ const BenefitGrid = styled.div`
 `;
 
 const BenefitCard = styled.article`
-  background: #fff;
+  background: linear-gradient(${brand.red}, ${brand.red}) top / 100% 4px no-repeat, #fff;
   border: 1px solid ${brand.line};
-  border-top: 4px solid ${brand.red};
   border-radius: 14px;
   padding: 1.5rem;
 `;
@@ -130,11 +129,13 @@ const BenefitCard = styled.article`
 const BenefitTitle = styled.h3`
   font-family: ${brand.fontDisplay};
   font-weight: 800;
-  font-size: 1.5rem;
+  font-size: clamp(1.25rem, 2.2vw, 1.5rem);
   line-height: 1.05;
   text-transform: uppercase;
   color: ${brand.navy};
-  margin: 0 0 0.6rem;
+  margin: 0.5rem 0 0.6rem;
+  overflow-wrap: break-word;
+  hyphens: auto;
 `;
 
 const BenefitText = styled.p`
@@ -516,9 +517,8 @@ const ModalBackdrop = styled.div`
 `;
 
 const ModalBox = styled.div`
-  background: #fff;
+  background: linear-gradient(${brand.red}, ${brand.red}) top / 100% 4px no-repeat, #fff;
   border-radius: 14px;
-  border-top: 4px solid ${brand.red};
   padding: 2rem 1.5rem 1.5rem;
   max-width: 460px;
   width: 100%;
