@@ -276,6 +276,18 @@ export default function Navigation() {
             >
               500er Club
             </NavLink>
+            <NavLink
+              to="/sponsoring/ballspende"
+              $active={location.pathname === "/sponsoring/ballspende"}
+              aria-current={
+                location.pathname === "/sponsoring/ballspende"
+                  ? "page"
+                  : undefined
+              }
+              onClick={close}
+            >
+              Ballspende
+            </NavLink>
             {ENABLE_RENOVIERUNG && (
               <NavLink
                 to="/renovierung"

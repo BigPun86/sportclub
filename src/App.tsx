@@ -12,6 +12,7 @@ import SponsoringV2Page from "./pages/SponsoringV2Page";
 import SponsoringHandoffPage from "./pages/SponsoringHandoffPage";
 import MockupGeneratorPage from "./pages/MockupGeneratorPage";
 import Club500Page from "./pages/Club500Page";
+import BallspendePage from "./pages/BallspendePage";
 import SpielerPartnerPage from "./pages/SpielerPartnerPage";
 import WidgetPage from "./pages/WidgetPage";
 import "./App.css";
@@ -92,6 +93,14 @@ export default function App() {
           element={
             <WithNav>
               <Club500Page />
+            </WithNav>
+          }
+        />
+        <Route
+          path="/sponsoring/ballspende"
+          element={
+            <WithNav>
+              <BallspendePage />
             </WithNav>
           }
         />

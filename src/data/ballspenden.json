@@ -1,0 +1,22 @@
+{
+  "stand": "2026-11-13",
+  "saison": "2026/27",
+  "spiele": [
+    { "anstoss": "2026-08-15T16:00", "gegner": "FC Wolfenweiler-Schallstadt", "ort": "Fürstenberg", "wettbewerb": "Verbandsliga", "spender": "Heidi Reister" },
+    { "anstoss": "2026-08-26T17:45", "gegner": "FC Rot-Weiß Salem", "ort": "Fürstenberg", "wettbewerb": "SBFV-Pokal", "spender": "Manuel Nicoletti" },
+    { "anstoss": "2026-08-29T16:00", "gegner": "SC Lahr", "ort": "Fürstenberg", "wettbewerb": "Verbandsliga", "spender": "Lutz Grüneberg" },
+    { "anstoss": "2026-09-12T16:00", "gegner": "SV 08 Laufenburg", "ort": "Fürstenberg", "wettbewerb": "Verbandsliga", "spender": "Espac Maschinenbau GmbH" },
+    { "anstoss": "2026-09-26T16:00", "gegner": "Spvgg. Gundelfingen/Wildtal", "ort": "Fürstenberg", "wettbewerb": "Verbandsliga", "spender": "Lejla Kocan" },
+    { "anstoss": "2026-10-10T16:00", "gegner": "SC Pfullendorf", "ort": "Fürstenberg", "wettbewerb": "Verbandsliga", "spender": "Gerhard Huger" },
+    { "anstoss": "2026-10-24T16:00", "gegner": "1. FC Rielasingen-Arlen", "ort": "Fürstenberg", "wettbewerb": "Verbandsliga", "spender": "Sabine und Michael Uhl" },
+    { "anstoss": "2026-11-07T14:30", "gegner": "FC Denzlingen", "ort": "Waldheim Kunstrasen", "wettbewerb": "Verbandsliga", "spender": "Iris und Thomas Bode" },
+    { "anstoss": "2026-11-14T14:30", "gegner": "SV 08 Kuppenheim", "ort": "Waldheim Kunstrasen", "wettbewerb": "Verbandsliga", "spender": "Phoenicia" },
+    { "anstoss": "2026-12-05T14:30", "gegner": "SV Bühlertal", "ort": "Waldheim Kunstrasen", "wettbewerb": "Verbandsliga", "spender": null },
+    { "anstoss": "2027-03-20T16:00", "gegner": "FC Auggen", "ort": "Waldheim Kunstrasen", "wettbewerb": "Verbandsliga", "spender": null },
+    { "anstoss": "2027-04-03T16:00", "gegner": "SV Linx", "ort": "Waldheim Kunstrasen", "wettbewerb": "Verbandsliga", "spender": null },
+    { "anstoss": "2027-04-17T16:00", "gegner": "VfR Hausen", "ort": "Fürstenberg", "wettbewerb": "Verbandsliga", "spender": null },
+    { "anstoss": "2027-05-01T16:00", "gegner": "SC Wyhl", "ort": "Fürstenberg", "wettbewerb": "Verbandsliga", "spender": null },
+    { "anstoss": "2027-05-15T16:00", "gegner": "SC Hofstetten", "ort": "Fürstenberg", "wettbewerb": "Verbandsliga", "spender": null },
+    { "anstoss": "2027-06-05T16:00", "gegner": "FC Rot-Weiß Salem", "ort": "Fürstenberg", "wettbewerb": "Verbandsliga", "spender": null }
+  ]
+}

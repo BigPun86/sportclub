@@ -127,6 +127,9 @@ export default function Footer() {
               <LinkRouter to="/sponsoring/club-500">500er Club</LinkRouter>
             </li>
             <li>
+              <LinkRouter to="/sponsoring/ballspende">Ballspende</LinkRouter>
+            </li>
+            <li>
               <LinkA href="https://www.sckw.de" target="_blank" rel="noopener">
                 sckw.de
               </LinkA>
