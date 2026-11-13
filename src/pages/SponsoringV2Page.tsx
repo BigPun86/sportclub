@@ -1087,6 +1087,15 @@ export default function SponsoringV2Page() {
                 <MatchdayPrice>{nb(a.preis)}</MatchdayPrice>
                 <p>{nb(a.beschreibung)}</p>
                 {a.hinweis && <MatchdayHint>{nb(a.hinweis)}</MatchdayHint>}
+                {a.link && (
+                  <ClubLink
+                    to={a.link.to}
+                    $variant="outlineDark"
+                    style={{ marginTop: "1rem" }}
+                  >
+                    {a.link.label}
+                  </ClubLink>
+                )}
               </MatchdayCard>
             ))}
           </MatchdayGrid>

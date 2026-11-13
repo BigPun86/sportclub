@@ -211,6 +211,7 @@ export interface SpieltagAngebot {
   beschreibung: string;
   preis: string;
   hinweis?: string;
+  link?: { to: string; label: string };
 }
 
 export const spieltagAngebote: SpieltagAngebot[] = [
@@ -220,6 +221,7 @@ export const spieltagAngebote: SpieltagAngebot[] = [
       "Ihr Name als Ballspender: Durchsage vor dem Spiel, bei jedem Tor und zur Halbzeit, dazu eine Instagram-Story.",
     preis: "150 € / Spiel",
     hinweis: "5er-Pack: 500 €",
+    link: { to: "/sponsoring/ballspende", label: "Freie Spiele ansehen" },
   },
   {
     name: "Spielpräsentator",
