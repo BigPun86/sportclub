@@ -4,7 +4,7 @@ import { QRCodeSVG } from "qrcode.react";
 import { getHeroImage } from "../utils/imageLoader";
 import { club500Config } from "../data/club500Data";
 import Footer from "../components/Footer";
-import Foerdertafel from "../components/Foerdertafel";
+import foerdererData from "../data/foerderer.json";
 import {
   ButtonLink,
   Container,
@@ -145,12 +145,75 @@ const BenefitText = styled.p`
 
 // -- Fördertafel (component stays untouched, only typography via wrapper) --
 
-const TafelWrap = styled.div`
-  h2 {
+// -- Förderer (die dunkle Tafel gibt es nur als Grafik für Instagram/Website) --
+
+const ANONYM_LABEL = "SCKW Gönner";
+
+const Fortschritt = styled.div`
+  max-width: 640px;
+  height: 8px;
+  margin: 0.75rem 0 2rem;
+  border-radius: 999px;
+  background: ${brand.line};
+  overflow: hidden;
+
+  i {
+    display: block;
+    height: 100%;
+    background: ${brand.red};
+  }
+`;
+
+const FortschrittText = styled.p`
+  margin: 0;
+  font-weight: 700;
+`;
+
+const FoerdererGrid = styled.ol`
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.6rem;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+`;
+
+const FoerdererCard = styled.li`
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  background: #fff;
+  border: 1px solid ${brand.line};
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+
+  span {
+    min-width: 2.2rem;
     font-family: ${brand.fontDisplay};
+    font-size: 1.4rem;
     font-weight: 800;
-    text-transform: uppercase;
-    scroll-margin-top: 90px;
+    color: ${brand.blue};
+  }
+
+  strong {
+    line-height: 1.25;
+  }
+`;
+
+const FreiCard = styled(FoerdererCard)`
+  justify-content: space-between;
+  flex-wrap: wrap;
+  background: transparent;
+  border: 2px dashed ${brand.line};
+
+  strong {
+    color: ${brand.muted};
+  }
+
+  a {
+    font-weight: 700;
+    color: ${brand.red};
+    text-decoration: none;
   }
 `;
 
@@ -589,6 +652,8 @@ const scrollToId = (id: string) => {
 
 export default function Club500Page() {
   const cfg = club500Config;
+  const { felderGesamt } = foerdererData;
+  const foerderer = [...foerdererData.foerderer].sort((a, b) => a.feld - b.feld);
 
   const [heroIdx, setHeroIdx] = useState(0);
   useEffect(() => {
@@ -676,11 +741,11 @@ export default function Club500Page() {
               Feld sichern
             </ButtonLink>
             <ButtonLink
-              href="#tafel-titel"
+              href="#foerderer"
               $variant="outlineLight"
               onClick={(e) => {
                 e.preventDefault();
-                scrollToId("tafel-titel");
+                scrollToId("foerderer");
               }}
             >
               Unsere Förderer ansehen
@@ -708,13 +773,55 @@ export default function Club500Page() {
         </Container>
       </Section>
 
-      {/* ===== Fördertafel ===== */}
-      <TafelWrap data-dark>
-        <Foerdertafel />
-      </TafelWrap>
+      {/* ===== Förderer ===== */}
+      <Section $paper id="foerderer" aria-labelledby="foerderer-title">
+        <Container>
+          <SectionHeader
+            id="foerderer-title"
+            eyebrow="Fördertafel"
+            title="Unsere Förderer."
+            lead={`Ob Ihr Name erscheint, entscheiden Sie selbst - sonst steht dort „${ANONYM_LABEL}".`}
+          />
+          <FortschrittText>
+            {foerderer.length} von {felderGesamt} Feldern vergeben
+          </FortschrittText>
+          <Fortschritt
+            role="progressbar"
+            aria-valuenow={foerderer.length}
+            aria-valuemin={0}
+            aria-valuemax={felderGesamt}
+            aria-label={`${foerderer.length} von ${felderGesamt} Feldern vergeben`}
+          >
+            <i style={{ width: `${(foerderer.length / felderGesamt) * 100}%` }} />
+          </Fortschritt>
+          <FoerdererGrid>
+            {foerderer.map((f) => (
+              <FoerdererCard key={f.feld}>
+                <span>{String(f.feld).padStart(2, "0")}</span>
+                {/* "|" ist der Zeilenumbruch für die Grafiken, hier reicht ein Leerzeichen */}
+                <strong>{f.anonym ? ANONYM_LABEL : f.name.replace("|", " ")}</strong>
+              </FoerdererCard>
+            ))}
+            {felderGesamt > foerderer.length && (
+              <FreiCard>
+                <strong>{felderGesamt - foerderer.length} Felder frei</strong>
+                <a
+                  href="#feld-sichern"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    scrollToId("feld-sichern");
+                  }}
+                >
+                  Feld sichern →
+                </a>
+              </FreiCard>
+            )}
+          </FoerdererGrid>
+        </Container>
+      </Section>
 
       {/* ===== Form ===== */}
-      <Section $paper id="feld-sichern" aria-labelledby="feld-title">
+      <Section id="feld-sichern" aria-labelledby="feld-title">
         <Container>
           <SectionHeader
             id="feld-title"
